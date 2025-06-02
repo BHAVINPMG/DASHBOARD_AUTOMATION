@@ -1,9 +1,15 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Grid Visualization Schema",
   "type": "object",
   "properties": {
     "id": { "type": "integer" },
+    "container.type": {
+      "type": "string",
+      "const": "dashboard"
+    },
+    "visualization.name": {
+      "type": "string"
+    },
     "visualization.timeline": {
       "type": "object",
       "description": "Timeline selection for the visualization. Defaults to 'today' if not specified.",

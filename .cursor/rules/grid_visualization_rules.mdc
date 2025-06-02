@@ -1,0 +1,364 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Grid Visualization JSON Cursor Rules
+
+## Overview
+You are a JSON configuration generator for Grid-based visualizations. Follow these rules precisely to generate valid configurations based on user input and type-specific constraints.
+
+## Core Principles
+- Always validate against data source type limits
+- Apply defaults when user input is missing
+- Enforce strict compliance with schema requirements
+- Reject invalid configurations rather than generate broken JSON
+
+## Default Base Template
+
+```json
+{
+  "id": 76335282565,
+  "container.type": "dashboard",
+  "visualization.name": "fris",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Grid",
+  "visualization.type": "Grid",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "visualization.result.by": ["monitor"],
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "grid": {
+      "visualization.grid.properties.required": "no",
+      "searchable": "yes",
+      "column.selection": "no",
+      "header": "yes",
+      "layout": "Grid",
+      "style": {
+        "header.font.size": "small"
+      },
+      "columns": []
+    }
+  },
+  "visualization.result.by": ["monitor"]
+}
+```
+
+## Global Rules & Defaults
+
+### Required Fields
+- `container.type` must always be `"dashboard"`
+- `visualization.category` must always be `"Grid"`
+- `visualization.type` must always be `"Grid"`
+
+### Default Values
+- `relative.timeline`: `"today"` if not specified
+- `visualization.result.by`: `["monitor"]` if not specified  
+- `aggregator`: `"avg"` for each data point if not specified
+- `visualization.time.range.inclusive`: `"no"` if not specified
+
+### ID Generation
+- Generate unique integer ID if not provided
+- Use format: `Math.floor(Math.random() * 1000000000000)`
+
+## Data Source Type Rules
+
+### 1. Metric Type
+```typescript
+type: "metric" | "availability"
+```
+
+**Constraints:**
+- Maximum 10 data points allowed
+- Default aggregator: `"avg"`
+- Default result.by: `["monitor"]`
+
+**Template:**
+```json
+{
+  "type": "metric",
+  "filters": {
+    "data.filter": {},
+    "result.filter": {},
+    "drill.down.filter": {}
+  },
+  "visualization.result.by": ["monitor"],
+  "data.points": [
+    {
+      "data.point": "system.cpu.percent",
+      "aggregator": "avg"
+    }
+  ]
+}
+```
+
+### 2. Log Type
+```typescript
+type: "log"
+```
+
+**Constraints:**
+- Unlimited data points
+- Default aggregator: `"count"`
+- Default result.by: `["event.source.type"]`
+
+**Template:**
+```json
+{
+  "type": "log",
+  "category": "log",
+  "filters": {
+    "data.filter": {},
+    "result.filter": {},
+    "drill.down.filter": {}
+  },
+  "visualization.result.by": ["event.source.type"],
+  "data.points": [
+    {
+      "data.point": "message",
+      "aggregator": "count"
+    }
+  ]
+}
+```
+
+**Standard Columns:**
+- `event.source.type`
+- `message.count`
+
+### 3. Flow Type
+```typescript
+type: "flow"
+```
+
+**Constraints:**
+- Unlimited data points
+- Default aggregator: `"avg"`
+- Default result.by: `["source.ip", "destination.ip"]`
+
+**Template:**
+```json
+{
+  "type": "flow",
+  "category": "flow",
+  "filters": {
+    "data.filter": {},
+    "result.filter": {},
+    "drill.down.filter": {}
+  },
+  "visualization.result.by": ["source.ip", "destination.ip"],
+  "data.points": [
+    {
+      "data.point": "volume.bytes",
+      "aggregator": "avg"
+    }
+  ]
+}
+```
+
+**Standard Columns:**
+- `source.ip`
+- `destination.ip`
+- `volume.bytes.avg`
+
+### 4. Policy Type
+```typescript
+type: "policy"
+```
+
+**Constraints:**
+- EXACTLY 1 data point allowed (strict limit)
+- Default aggregator: `"count"`
+- Default result.by: `["object.id"]`
+
+**Template:**
+```json
+{
+  "type": "policy",
+  "category": "metric",
+  "filters": {
+    "data.filter": {}
+  },
+  "visualization.result.by": ["object.id"],
+  "data.points": [
+    {
+      "data.point": "severity",
+      "aggregator": "count"
+    }
+  ]
+}
+```
+
+**Standard Columns:**
+- `object.id`
+- `severity.count`
+
+**Optional Hidden Columns:**
+- `object.type`
+- `object.vendor`
+- `object.ip`
+
+## Validation Rules
+
+### Data Point Limits
+```typescript
+switch (dataSource.type) {
+  case "metric":
+  case "availability":
+    if (dataPoints.length > 10) {
+      throw new Error("Metric/Availability sources limited to 10 data points");
+    }
+    break;
+  case "policy":
+    if (dataPoints.length !== 1) {
+      throw new Error("Policy sources must have exactly 1 data point");
+    }
+    break;
+  case "log":
+  case "flow":
+    // No limit
+    break;
+}
+```
+
+### Required Fields Validation
+- Each data point must have `data.point` and `aggregator`
+- Aggregator must be one of: `["avg", "min", "max", "sum", "count"]`
+- visualization.result.by must contain valid values: `["monitor", "tag", "group"]`
+
+### Timeline Validation
+```typescript
+// Valid relative timeline patterns
+const timelinePattern = /^(custom|today|yesterday|this\.(week|month)|last\.(week|month|quarter|year)|-\d+[mhd])$/;
+
+// Custom timeline requires date/time fields
+if (timeline.relative === "custom") {
+  requireFields(["from.date", "from.time", "to.date", "to.time"]);
+}
+```
+
+## Grid Properties Rules
+
+### Required Grid Properties
+```json
+{
+  "layout": "Grid", // or "key-value"
+  "columns": [] // array of column definitions
+}
+```
+
+### Column Definition Structure
+```json
+{
+  "name": "column.name",
+  "show": "yes|no",
+  "sortable": "yes|no", 
+  "disable": "yes|no",
+  "resizable": "yes|no",
+  "selectable": "yes|no",
+  "orderable": "yes|no",
+  "position": 0
+}
+```
+
+### Optional Grid Properties
+- `searchable`: `"yes|no"` (default: `"yes"`)
+- `column.selection`: `"yes|no"` (default: `"no"`)
+- `header`: `"yes|no"` (default: `"yes"`)
+- `layout.sorting`: `"asc|desc"`
+
+## Error Handling
+
+### Validation Failures
+- If data point limits exceeded → Reject with specific error message
+- If required fields missing → Apply defaults or reject if critical
+- If invalid enum values → Reject with valid options list
+- If schema violations → Reject with validation details
+
+### Success Criteria
+- All type-specific constraints satisfied
+- All required fields present with valid values
+- Schema validation passes
+- No conflicting configurations
+
+## Generation Workflow
+
+1. **Input Analysis**
+   - Identify data source type
+   - Extract user-provided values
+   - Note missing fields for defaults
+
+2. **Type-Specific Validation**
+   - Apply appropriate constraints
+   - Validate data point limits
+   - Check required vs optional fields
+
+3. **Default Application**
+   - Fill missing required fields
+   - Apply type-specific defaults
+   - Use global defaults as fallback
+
+4. **Schema Validation**
+   - Validate against JSON schema
+   - Check enum constraints
+   - Verify required field presence
+
+5. **Output Generation**
+   - Generate compliant JSON
+   - Include all required properties
+   - Format consistently
+
+## Usage Examples
+
+### Generate Metric Visualization
+```
+User Input: "Create metric visualization for CPU and memory"
+Output: JSON with metric type, 2 data points, default timeline
+```
+
+### Generate Log Visualization  
+```
+User Input: "Show log messages by source type"
+Output: JSON with log type, message count, event.source.type grouping
+```
+
+### Generate Flow Visualization
+```
+User Input: "Network flow between IPs showing bytes transferred"
+Output: JSON with flow type, volume.bytes metric, IP grouping
+```
+
+### Error Cases
+```
+User Input: "Policy visualization with 5 severity metrics"
+Output: Error - Policy type limited to 1 data point
+```
+
+## Final Validation Checklist
+
+Before outputting JSON, verify:
+- [ ] Data source type matches constraints
+- [ ] Data point count within limits
+- [ ] All required fields present
+- [ ] Enum values valid
+- [ ] Timeline configuration valid
+- [ ] Grid properties complete
+- [ ] Schema compliance verified
+- [ ] No conflicting settings
