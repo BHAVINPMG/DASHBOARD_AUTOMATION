@@ -1,0 +1,462 @@
+[
+  {
+        "_type": "0",
+        "id": 55820265119925,
+        "visualization.name": "Today's Availability",
+        "visualization.category": "Custom",
+        "visualization.type": "Pie",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "visualization.data.sources": [
+          {
+            "visualization.result.by": [
+              "monitor"
+            ],
+            "type": "availability",
+            "join.type": "all",
+            "join.result": "availability",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~uptime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~downtime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unreachabletime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~maintenancetime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~disabletime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~suspendtime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unknowntime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              }
+            ]
+          },
+          {
+            "visualization.result.by":[
+              "monitor"
+            ],
+            "type":"availability",
+            "filters":{
+              "data.filter":{
+
+              },
+              "result.filter":{
+
+              }
+            },
+            "data.points":[
+              {
+                "data.point": "ipsla~uptime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~downtime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unreachabletime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~maintenancetime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~disabletime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~suspendtime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unknowntime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "no",
+            "chart.label": "no",
+            "axis.titles": {},
+            "highchart.settings": {
+              "plotOptions": {
+                "pie": {
+                  "innerSize": "70%"
+                }
+              }
+            }
+          }
+        },
+        "join.type": "all",
+        "join.columns": [
+          "monitor"
+        ],
+        "entity.type": "Monitor",
+        "container.type": "Template",
+        "entities": [
+
+        ],
+        "drill.down.type": "yes"
+      },
+  {
+    "_type": "0",
+    "id": 55820265119926,
+    "visualization.name": "Availability Statistics",
+    "visualization.category": "Grid",
+    "visualization.type": "Availability Time Series",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.data.sources": [
+      {
+        "type": "availability",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "ipsla~uptime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~downtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~unreachabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~maintenancetime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~suspendtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~disabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~unknowntime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          }
+        ],
+        "visualization.timeline": {
+          "relative.timeline": "-1d"
+        }
+      },
+      {
+        "type": "availability",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "ipsla~uptime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~downtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~unreachabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~maintenancetime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~suspendtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~disabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~unknowntime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          }
+        ],
+        "visualization.timeline": {
+          "relative.timeline": "-7d"
+        }
+      },
+      {
+        "type": "availability",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "ipsla~uptime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~downtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~unreachabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~maintenancetime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~suspendtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~disabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla~unknowntime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          }
+        ],
+        "visualization.timeline": {
+          "relative.timeline": "-15d"
+        }
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "axis.titles": {},
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "ipsla~uptime.percent.avg"
+        }
+      }
+    },
+    "container.type": "template",
+    "drill.down.type": "yes"
+  },
+  {
+    "id": 55820265119927,
+    "_type": "0",
+    "visualization.name": "Path Summary",
+    "visualization.description": "Path Summary path Path Echo",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "correlated.metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "ipsla.path.index",
+            "aggregator": "last",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla.path.hop.index",
+            "aggregator": "last",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla.path.target.address",
+            "aggregator": "last",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ipsla.path.avg.latency",
+            "aggregator": "last",
+            "entity.type": "monitor",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "medium"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "ipsla.path.index.last",
+            "title": "Path Index",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "ipsla.hop.index.last",
+            "title": "Hop In Path Index",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "ipsla.target.address.last",
+            "title": "Target Address",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "ipsla.avg.latency.last",
+            "title": "Avg Latency",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          }
+        ]
+      }
+    }
+  }
+]

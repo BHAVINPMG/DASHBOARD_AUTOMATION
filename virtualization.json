@@ -1,0 +1,231 @@
+[
+  {
+    "_type": "0",
+    "id": 1712655926628,
+    "visualization.name": "Health Overview",
+    "visualization.description": "Health Overview Details",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "group.by": "monitor",
+        "type": "policy",
+        "category": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "severity": [
+          "CRITICAL",
+          "DOWN",
+          "MAJOR",
+          "WARNING",
+          "CLEAR",
+          "UNREACHABLE",
+          "UNKNOWN"
+        ],
+        "visualization.result.by": [
+          "severity"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "category",
+            "entities": [
+              "Virtualization"
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "yes",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "color.conditions": [
+            {
+              "color": "#f04e3e"
+            },
+            {
+              "color": "#f58518"
+            },
+            {
+              "color": "#f5bc18"
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [
+      "severity"
+    ],
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 1712655926629,
+    "visualization.name": "Monitor Health By Severity",
+    "visualization.description": "Monitor Health By Severity",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "group.by": "monitor",
+        "type": "policy.stream",
+        "category": "metric",
+        "filters": {
+          "data.filter": {}
+        },
+        "visualization.result.by": [
+          "severity",
+          "object.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "category",
+            "entities": [
+              "Virtualization"
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "view": "AlertStackedVerticalBar"
+      }
+    },
+    "visualization.result.by": [
+      "severity",
+      "object.type"
+    ],
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 1712655926630,
+    "visualization.name": "VMWare",
+    "visualization.description": "VMWare",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "HeatMap",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "filters": {
+          "data.filter": {}
+        },
+        "visualization.result.by": [
+          "object.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "object.type",
+            "entities": [
+              "VMware ESXi",
+              "vCenter"
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {},
+    "visualization.result.by": [
+      "object.type"
+    ],
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 1712655926631,
+    "visualization.name": "Hyper-V",
+    "visualization.description": "Hyper-V",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "HeatMap",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "filters": {
+          "data.filter": {}
+        },
+        "visualization.result.by": [
+          "object.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "object.type",
+            "entities": [
+              "Hyper-V",
+              "Hyper-V Cluster"
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {},
+    "visualization.result.by": [
+      "object.type"
+    ],
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 1712655926632,
+    "visualization.name": "Citrix",
+    "visualization.description": "Citrix",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "HeatMap",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "filters": {
+          "data.filter": {}
+        },
+        "visualization.result.by": [
+          "object.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "object.type",
+            "entities": [
+              "Citrix Xen",
+              "Citrix Xen Cluster"
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {},
+    "visualization.result.by": [
+      "object.type"
+    ],
+    "container.type": "dashboard"
+  }
+]

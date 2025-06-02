@@ -1,0 +1,92 @@
+{
+    "id": 74709997294,
+    "dashboard.name": "AI TEST",
+    "dashboard.category": "ai test",
+    "dashboard.access.type": "public",
+    "dashboard.users": [],
+    "dashboard.tabs": [],
+    "custom.tabs": [],
+    "style": {
+        "font.size": "medium",
+        "h.gap": 8,
+        "v.gap": 8,
+        "row.height": 50
+    },
+    "dashboard.context": {
+        "dashboard.widgets": [
+            {
+                "x": 0,
+                "y": 0,
+                "h": 5,
+                "w": 6,
+                "id": 74709997293,
+                "i": "90002264-993a-4ddd-899a-cd2069b6a24a",
+                "options": {}
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "h": 5,
+                "w": 6,
+                "id": 74857647546,
+                "i": "e1d50c8c-90f6-4cb3-96ff-7a372536e812",
+                "options": {}
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "h": 7,
+                "w": 6,
+                "id": 74857647547,
+                "i": "53774aba-183c-4000-b004-5fd0f1ffb341",
+                "options": {}
+            },
+            {
+                "x": 6,
+                "y": 5,
+                "h": 7,
+                "w": 6,
+                "id": 74857647548,
+                "i": "2bfc754e-6214-4beb-8448-870595d4e33d",
+                "options": {}
+            },
+            {
+                "x": 6,
+                "y": 12,
+                "h": 8,
+                "w": 6,
+                "id": 74857647549,
+                "i": "5c5fb84c-0bb1-4ebe-be61-e7a636a1abd7",
+                "options": {}
+            },
+            {
+                "x": 0,
+                "y": 12,
+                "h": 8,
+                "w": 6,
+                "id": 74857647550,
+                "i": "4f532e07-c6e4-4a9e-be8d-0891eb36390c",
+                "options": {}
+            },
+            {
+                "x": 0,
+                "y": 20,
+                "h": 11,
+                "w": 6,
+                "id": 74857647551,
+                "i": "141f931a-6a22-4586-b2f1-2d73ff04099e",
+                "options": {}
+            },
+            {
+                "x": 6,
+                "y": 20,
+                "h": 11,
+                "w": 6,
+                "id": 74857647552,
+                "i": "1b7f3ffe-fb4e-4d5c-9e44-f422ae251c20",
+                "options": {}
+            }
+        ],
+        "dashboard.users": []
+    }
+}

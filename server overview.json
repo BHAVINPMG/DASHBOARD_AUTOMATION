@@ -1,0 +1,1268 @@
+[
+  {
+    "visualization.name": "Server Availability",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "availability",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "monitor.up.count",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          },
+          {
+            "data.point": "monitor.down.count",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          },
+          {
+            "data.point": "monitor.maintenance.count",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          },
+          {
+            "data.point": "monitor.unreachable.count",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "layout": "Radial View",
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630981
+  },
+  {
+    "visualization.name": "Server Health Summary",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "HeatMap",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "visualization.result.by": [
+          "monitor",
+          "severity"
+        ],
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "map": {
+        "show.counts": "no"
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630982
+  },
+  {
+    "visualization.name": "Server Alert Summary",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "visualization.result.by": [
+          "severity"
+        ],
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "severity": [
+          "DOWN",
+          "CRITICAL",
+          "MAJOR",
+          "WARNING"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "layout": "Radial View",
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630983
+  },
+  {
+    "visualization.name": "Top Server Monitor by CPU Percent",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "system.cpu.percent",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          },
+          {
+            "data.point": "system.cpu.percent",
+            "aggregator": "sparkline",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "system.cpu.percent.avg",
+            "title": "CPU Percent",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "system.cpu.percent.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F5BC18"
+              }
+            }
+          }
+        ],
+        "sorting": {
+          "limit": "10",
+          "order": "desc",
+          "column": "system.cpu.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": "5",
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630984
+  },
+  {
+    "visualization.name": "Top Server Monitor by Memory Used",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "system.memory.used.percent",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          },
+          {
+            "data.point": "system.memory.used.percent",
+            "aggregator": "sparkline",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "medium"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "system.memory.used.percent.avg",
+            "title": "Memory Used Percent",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "system.memory.used.percent.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F7A35C"
+              }
+            }
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": "10",
+          "order": "desc",
+          "column": "system.memory.used.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630986
+  },
+  {
+    "visualization.name": "Top Server Monitor by CPU User Percent",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "system.cpu.user.percent",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "system.cpu.user.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630987
+  },
+  {
+    "visualization.name": "Top Server Monitor by Disk Usage",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "system.disk.used.percent",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "system.disk.used.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630988
+  },
+  {
+    "visualization.name": "Top Server Monitor by Disk Operations/s",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "system.disk~ops.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          },
+          {
+            "data.point": "system.disk~ops.per.sec",
+            "aggregator": "sparkline",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "system.disk~ops.per.sec.avg",
+            "title": "Disk Operations/s",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "system.disk~ops.per.sec.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F15C80"
+              }
+            }
+          }
+        ],
+        "sorting": {
+          "limit": "25",
+          "order": "desc",
+          "column": "system.disk~ops.per.sec.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630989
+  },
+  {
+    "visualization.name": "Top Server Monitor by Latency",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "ping.latency.ms",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          },
+          {
+            "data.point": "ping.latency.ms",
+            "aggregator": "sparkline",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "ping.latency.ms.avg",
+            "title": "Latency",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "ping.latency.ms.sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F5BC18"
+              }
+            }
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "ping.latency.ms.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630990
+  },
+  {
+    "visualization.name": "Top Server Interface by Network Bytes per Sec",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "system.network.interface"
+        ],
+        "data.points": [
+          {
+            "data.point": "system.network.interface~bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          },
+          {
+            "data.point": "system.network.interface~bytes.per.sec",
+            "aggregator": "sparkline",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "system.network.interface",
+            "title": "Interface Name",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "system.network.interface~bytes.per.sec.avg",
+            "title": "Network Bytes per Sec.",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "system.network.interface~bytes.per.sec.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F15C80"
+              }
+            }
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "system.network.interface~bytes.per.sec.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "system.network.interface"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630991
+  },
+  {
+    "visualization.name": "Top Server Process by CPU Percent",
+    "visualization.timeline": {
+      "relative.timeline": "-6h",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "system.process"
+        ],
+        "data.points": [
+          {
+            "data.point": "system.process~cpu.percent",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          },
+          {
+            "data.point": "system.process~cpu.percent",
+            "aggregator": "sparkline",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "system.process",
+            "title": "Process",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "system.process~cpu.percent.avg",
+            "title": "Process CPU Percent",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "system.process~cpu.percent.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F45B5B"
+              }
+            }
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "system.process~cpu.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "system.process"
+    ],
+    "granularity": {
+      "value": "5",
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630992
+  },
+  {
+    "visualization.name": "Top Server Process by Memory Usage",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "system.process"
+        ],
+        "data.points": [
+          {
+            "data.point": "system.process~memory.used.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          },
+          {
+            "data.point": "system.process~memory.used.bytes",
+            "aggregator": "sparkline",
+            "entity.type": "Group",
+            "entities": [
+              10000000000017
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "system.process",
+            "title": "Process",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "system.process~memory.used.bytes.avg",
+            "title": "Memory Usage",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "system.process~memory.used.bytes.sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#89C540"
+              }
+            }
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "system.process~memory.used.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "system.process"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 342085551630993
+  }
+]

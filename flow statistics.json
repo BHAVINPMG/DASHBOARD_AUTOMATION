@@ -1,0 +1,625 @@
+[
+  {
+    "id": 55820265119908,
+    "visualization.name": "Event Per Second",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "flows.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 55820265119909,
+    "visualization.name": "Flow Source Count",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "MetroTileCount",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "flows",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "event.source",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "event.source.count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 55820265119910,
+    "visualization.name": "Total Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "flows",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 55820265119911,
+    "visualization.name": "Flow Volume",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "flow.volume.bytes",
+            "aggregator": "sum"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 55820265119912,
+    "visualization.name": "Flow Events per Second",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [],
+        "data.points": [
+          {
+            "data.point": "flows.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 55820265119913,
+    "visualization.name": "Flow Events",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [],
+        "data.points": [
+          {
+            "data.point": "flows",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 55820265119914,
+    "visualization.name": "Flow Volume",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [],
+        "data.points": [
+          {
+            "data.point": "flow.volume.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 55820265119915,
+    "visualization.name": "Top Flow Source By Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "flows",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "flows.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 55820265119916,
+    "visualization.name": "Flow Source By Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "flows",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "event.source",
+            "title": "Event Source",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "message.count",
+            "title": "Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 55820265119917,
+    "visualization.name": "Top Flow Source By Volume",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "flow.volume.bytes",
+            "aggregator": "sum"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "flow.volume.bytes.sum"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 55820265119918,
+    "visualization.name": "Flow Source By Volume",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "flow.volume.bytes",
+            "aggregator": "sum"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "event.source",
+            "title": "Event Source",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "flow.volume.bytes.sum",
+            "title": "Flow Volume",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  }
+]

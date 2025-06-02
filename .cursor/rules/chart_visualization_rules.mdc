@@ -1,0 +1,550 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Cursor Rules: Chart Visualization JSON Generator
+
+## Overview
+These rules help generate valid JSON configurations for chart visualizations based on a specific schema. Always ensure complete structural integrity and never omit mandatory fields.
+
+## Core Principles
+1. **NEVER omit any field** from the mandatory structure
+2. **Always validate** against the provided JSON schema
+3. **Use exact default values** unless explicitly overridden by user
+4. **Maintain structural integrity** - missing fields = failed generation
+
+## Mandatory Default Structure Template
+
+```json
+{
+  "id": -1,
+  "container.type": "dashboard",
+  "visualization.name": "",
+  "visualization.description": "",
+  "visualization.granularity": "10 m",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Chart",
+  "visualization.type": "Line",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "rotation.angle": "10",
+      "chart.legend": "yes",
+      "vertical.legend": "no",
+      "line.width": 2,
+      "chart.label": "no",
+      "highchart.settings": {},
+      "marker.property": [
+        {
+          "marker.threshold": [null, null]
+        }
+      ],
+      "sorting": {
+        "limit": 10,
+        "order": "desc"
+      }
+    }
+  },
+  "visualization.result.by": ["monitor"],
+  "granularity": {
+    "value": "10",
+    "unit": "m"
+  }
+}
+```
+
+## Field-Specific Rules
+
+### Timeline Configuration
+- **Default**: `"relative.timeline": "today"`
+- **Valid patterns**: `custom|today|yesterday|this.(week|month)|last.(week|month|quarter|year)|-\d+[mhd]`
+- **Custom timeline requires**: `from.date`, `from.time`, `to.date`, `to.time`
+- **Date format**: `YYYY/MM/DD`
+- **Time format**: `HH:MM:SS`
+
+### Granularity Rules
+- **Pattern**: `^\d+\s[s|m|h|d|M]$`
+- **Default**: `"10 m"`
+- **Units**: `s` (seconds), `m` (minutes), `h` (hours), `d` (days), `M` (months)
+- **Must match** both `visualization.granularity` string and `granularity` object
+
+### Visualization Types
+```typescript
+type VisualizationType = 
+  | "Area" | "Line" | "HorizontalBar" | "VerticalBar"
+  | "StackedArea" | "StackedLine" | "StackedHorizontalBar" | "StackedVerticalBar"
+```
+
+### Data Source Types
+```typescript
+type DataSourceType = "metric" | "log" | "flow" | "policy" | "availability"
+```
+
+### Aggregator Functions
+```typescript
+type Aggregator = "avg" | "min" | "max" | "sum" | "count"
+```
+
+### Statistical Functions (Optional)
+```typescript
+type StatisticalFunc = 
+  | "ema3" | "ema5" | "ema7" | "ema10" | "ema20"
+  | "median3" | "median5" | "median7" | "median9"
+  | "monotonic" | "delta" | "cumulative.sum"
+  | "log2" | "log10"
+```
+
+## Filter Structure Rules
+
+### Data Filter Template
+```json
+{
+  "data.filter": {
+    "operator": "and|or",
+    "filter": "include|exclude",
+    "groups": [
+      {
+        "filter": "include|exclude",
+        "operator": "and|or",
+        "conditions": [
+          {
+            "operand": "field_name",
+            "operator": "=|contains|in|start with|end with",
+            "value": "string|number|boolean"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+## Entity Configuration Rules
+
+### Entity Types
+- `"Monitor"`: Use with `entities` array of integers
+- `"Group"`: Use with `entities` array of integers  
+- `"Tag"`: Use with `entities` array of integers
+- **No entity.type**: `entities` array must be empty `[]`
+
+### Result Grouping
+```typescript
+type ResultBy = "monitor" | "tag" | "group"
+```
+
+## Chart Properties Rules
+
+### Marker Properties
+```json
+{
+  "marker.type": "line|range",
+  "marker.threshold": number | [number, number],
+  "marker.color": "CLEAR|WARNING|CRITICAL|MAJOR",
+  "marker.line.type": "solid.bold|solid|dash",
+  "marker.label": "string"
+}
+```
+
+### Sorting Rules
+- **Limit**: Maximum 50
+- **Order**: `"asc"` or `"desc"`
+- **Always include** both limit and order
+
+## Validation Checklist
+
+Before generating, verify:
+- [ ] All mandatory fields present
+- [ ] Granularity format matches pattern
+- [ ] Timeline configuration is valid
+- [ ] Data source type is valid enum value
+- [ ] Aggregator is valid enum value
+- [ ] Visualization type is valid enum value
+- [ ] Filter operators use valid enum values
+- [ ] Entity configuration follows rules
+- [ ] **Maximum 4 markers** in marker.property array
+- [ ] **Every marker has marker.line.type** field (MANDATORY)
+- [ ] Marker properties use valid enum values
+- [ ] Sorting limit ≤ 50
+
+## Error Prevention
+
+### Common Mistakes to Avoid
+1. **Missing nested objects**: Always include `filters`, `chart`, `granularity` objects
+2. **Empty arrays where objects expected**: `data.points` needs objects, not empty array
+3. **Incorrect enum values**: Double-check all enum constraints
+4. **Mismatched granularity**: String and object must align
+5. **Invalid date/time formats**: Follow exact patterns
+
+### Required Non-Empty Fields
+- `visualization.data.sources` - Must have at least one source
+- `data.points` - Must have at least one data point
+- `visualization.result.by` - Must have at least one grouping method
+
+## Usage Examples
+
+### Basic CPU Monitoring
+```json
+{
+  "visualization.name": "CPU Usage Monitor",
+  "visualization.description": "Real-time CPU percentage tracking",
+  "data.points": [
+    {
+      "data.point": "system.cpu.percent",
+      "aggregator": "avg"
+    }
+  ]
+}
+```
+
+### Custom Time Range
+```json
+{
+  "visualization.timeline": {
+    "relative.timeline": "custom",
+    "from.date": "2024/01/01",
+    "from.time": "00:00:00",
+    "to.date": "2024/01/31",
+    "to.time": "23:59:59",
+    "visualization.time.range.inclusive": "yes"
+  }
+}
+```
+
+### Multiple Metrics with Entities
+```json
+{
+  "data.points": [
+    {
+      "data.point": "system.memory.usage",
+      "aggregator": "max",
+      "entity.type": "Monitor",
+      "entities": [1, 2, 3]
+    }
+  ]
+}
+```
+
+## Conditional Logic and Validation Rules
+
+### 🔢 Data Source Constraints
+- **Maximum 2** `visualization.data.sources` allowed
+- **NEVER exceed** this limit regardless of user request
+
+### 📊 Type-Specific Rules
+
+#### `"type": "metric"`
+- **Maximum 4** `data.points` allowed per source
+- **Conditional Result Grouping**:
+  - If **only 1** `data.point`: `"visualization.result.by": ["monitor"]`
+  - If **more than 1** `data.point`: `"visualization.result.by": []` (empty array)
+
+#### `"type": "availability"`
+- **Maximum 4** `data.points` allowed per source
+- **Single Source Constraint**: When any data source has `"type": "availability"`, the entire `visualization.data.sources` array can contain **ONLY ONE source** (the availability source)
+- **Conditional Result Grouping**:
+  - If **only 1** `data.point`: `"visualization.result.by": ["monitor"]`
+  - If **more than 1** `data.point`: `"visualization.result.by": []` (empty array)
+
+#### `"type": "log"`
+- **Unlimited** `data.points` allowed
+- **MUST set** source `"category": "log"` within `visualization.data.sources`
+- **Override default** category when this type is used
+
+#### `"type": "flow"`
+- **Unlimited** `data.points` allowed
+- **MUST set** source `"category": "flow"` within `visualization.data.sources`
+- **Override default** category when this type is usedx 
+
+#### `"type": "alert"`
+- **Only 1** `data.point` allowed
+- **ENFORCE strictly** - reject requests for multiple data points
+
+### 🧩 Filter Group Constraints
+
+#### `data.filter.groups`
+- **Maximum 3 groups** per data filter
+- **Maximum 3 conditions** per group
+- **Structure validation**:
+```json
+{
+  "data.filter": {
+    "groups": [
+      {
+        "conditions": [
+          // MAX 3 conditions here
+        ]
+      }
+      // MAX 3 groups total
+    ]
+  }
+}
+```
+
+#### `result.filter`
+- **Maximum 1 group** only
+- **Maximum 3 conditions** in that single group
+- **Structure validation**:
+```json
+{
+  "result.filter": {
+    "groups": [
+      {
+        "conditions": [
+          // MAX 3 conditions here
+        ]
+      }
+      // ONLY 1 group allowed
+    ]
+  }
+}
+```
+
+### 📈 Statistical Function Rules
+
+#### Default Behavior
+- **NO statistical function** included by default
+- **Only add** when user explicitly requests
+
+#### User Intent Mapping
+- User says **"moving average"** → `"statistical.func": "ema5"`
+- User says **"median"** → `"statistical.func": "median5"`
+- **No mention** → **Omit field entirely**
+
+#### Application Example
+```json
+// User requests "show CPU with moving average"
+{
+  "data.points": [
+    {
+      "data.point": "system.cpu.percent",
+      "aggregator": "avg",
+      "statistical.func": "ema5"
+    }
+  ]
+}
+
+// User requests basic CPU (no statistical function mentioned)
+{
+  "data.points": [
+    {
+      "data.point": "system.cpu.percent",
+      "aggregator": "avg"
+      // NO statistical.func field
+    }
+  ]
+}
+```
+
+### 🎯 Marker Constraints
+- **Maximum 4 markers** allowed in `marker.property` array
+- **NEVER exceed** this limit regardless of user request
+- **MANDATORY**: `marker.line.type` field is **REQUIRED** for every marker
+- **Structure validation**:
+```json
+{
+  "marker.property": [
+    // MAXIMUM 4 marker objects allowed
+    {
+      "marker.type": "line|range",
+      "marker.threshold": "number | [number, number]",
+      "marker.color": "CLEAR|WARNING|CRITICAL|MAJOR",
+      "marker.line.type": "solid.bold|solid|dash", // REQUIRED FIELD
+      "marker.label": "string"
+    }
+  ]
+}
+```
+
+#### Maximum Markers Example (4 markers - DO NOT EXCEED)
+```json
+"marker.property": [
+  {
+    "marker.type": "line",
+    "marker.threshold": 25,
+    "marker.color": "CLEAR",
+    "marker.line.type": "solid",
+    "marker.label": "Low Activity (25%)"
+  },
+  {
+    "marker.type": "line",
+    "marker.threshold": 30,
+    "marker.color": "CLEAR",
+    "marker.line.type": "dash",
+    "marker.label": "Normal Threshold (50%)"
+  },
+  {
+    "marker.type": "range",
+    "marker.threshold": [0, 10],
+    "marker.color": "MAJOR",
+    "marker.line.type": "solid",
+    "marker.label": "Moderate Usage (65%)"
+  },
+  {
+    "marker.type": "range",
+    "marker.threshold": [10, 20],
+    "marker.color": "WARNING",
+    "marker.line.type": "dash",
+    "marker.label": "Elevated Usage (75%)"
+  }
+]
+```
+
+#### Marker Validation Rules
+- **Count check**: Array length ≤ 4
+- **Required fields**: Every marker MUST have `marker.line.type`
+- **Type validation**: `"line"` uses single number, `"range"` uses array of 2 numbers
+- **Color validation**: Must be one of `CLEAR|WARNING|CRITICAL|MAJOR`
+- **Line type validation**: Must be one of `solid.bold|solid|dash`
+
+## Validation Workflow
+
+### Pre-Generation Checks
+1. **Count data sources** - Reject if > 2
+2. **Check data source type** - Apply type-specific rules
+3. **Count data points** - Enforce type-specific limits
+4. **Validate filter groups** - Enforce group/condition limits
+5. **Count markers** - Reject if > 4 markers
+6. **Check statistical functions** - Only include if explicitly requested
+7. **Set result grouping** - Apply conditional logic based on data point count
+
+### Type-Specific Validation
+```typescript
+function validateDataSource(source, allSources) {
+  switch(source.type) {
+    case "metric":
+      if (source.data.points.length > 4) throw "Max 4 data points for metric"
+      if (source.data.points.length === 1) {
+        source.visualization.result.by = ["monitor"]
+      } else {
+        source.visualization.result.by = []
+      }
+      break;
+    
+    case "availability":
+      // Availability sources must be the ONLY source in the array
+      if (allSources.length > 1) throw "Availability type requires single source only"
+      if (source.data.points.length > 4) throw "Max 4 data points for availability"
+      if (source.data.points.length === 1) {
+        source.visualization.result.by = ["monitor"]
+      } else {
+        source.visualization.result.by = []
+      }
+      break;
+    
+    case "log":
+      if (source.data.points.length > 4) throw "Max 4 data points for log"
+      if (source.data.points.length === 1) {
+        source.visualization.result.by = ["monitor"]
+      } else {
+        source.visualization.result.by = []
+      }
+      source.category = "log"
+      break;
+    
+    case "flow":
+      if (source.data.points.length > 4) throw "Max 4 data points for flow"
+      if (source.data.points.length === 1) {
+        source.visualization.result.by = ["monitor"]
+      } else {
+        source.visualization.result.by = []
+      }
+      source.category = "flow"
+      break;
+    
+    case "alert":
+      if (source.data.points.length > 1) throw "Only 1 data point for alert"
+      break;
+  }
+}
+```
+
+### Filter Validation
+```typescript
+function validateFilters(filters) {
+  // Data filter validation
+  if (filters.data.filter?.groups?.length > 3) {
+    throw "Max 3 groups in data.filter"
+  }
+  
+  filters.data.filter?.groups?.forEach(group => {
+    if (group.conditions?.length > 3) {
+      throw "Max 3 conditions per group"
+    }
+  })
+  
+  // Result filter validation
+  if (filters.result.filter?.groups?.length > 1) {
+    throw "Max 1 group in result.filter"
+  }
+  
+  if (filters.result.filter?.groups?.[0]?.conditions?.length > 3) {
+    throw "Max 3 conditions in result.filter group"
+  }
+}
+
+function validateMarkers(chartProperties) {
+  // Marker validation
+  const markers = chartProperties.chart?.marker?.property;
+  
+  if (markers && markers.length > 4) {
+    throw "Max 4 markers allowed in marker.property"
+  }
+  
+  // Validate each marker has required fields
+  markers?.forEach((marker, index) => {
+    if (!marker.marker?.line?.type) {
+      throw `Marker ${index + 1}: marker.line.type is REQUIRED`
+    }
+    
+    const validLineTypes = ["solid.bold", "solid", "dash"];
+    if (!validLineTypes.includes(marker.marker.line.type)) {
+      throw `Marker ${index + 1}: Invalid marker.line.type. Must be: ${validLineTypes.join("|")}`
+    }
+    
+    const validColors = ["CLEAR", "WARNING", "CRITICAL", "MAJOR"];
+    if (marker.marker.color && !validColors.includes(marker.marker.color)) {
+      throw `Marker ${index + 1}: Invalid marker.color. Must be: ${validColors.join("|")}`
+    }
+    
+    // Validate threshold based on marker type
+    if (marker.marker.type === "line" && Array.isArray(marker.marker.threshold)) {
+      throw `Marker ${index + 1}: Line markers must use single number threshold`
+    }
+    
+    if (marker.marker.type === "range" && !Array.isArray(marker.marker.threshold)) {
+      throw `Marker ${index + 1}: Range markers must use array of 2 numbers [min, max]`
+    }
+  });
+}
+```
+
+## Generation Command
+When user requests a chart configuration:
+1. Start with mandatory template
+2. **Apply conditional logic rules** based on data source types
+3. **Enforce all constraints** (data sources, data points, filters)
+4. Apply user-specified overrides
+5. **Validate against all rules** before generation
+6. Ensure no mandatory fields are missing
+7. Return complete, valid JSON
+
+Remember: **Complete structure integrity + conditional logic compliance is non-negotiable**. Violating any constraint results in generation failure.

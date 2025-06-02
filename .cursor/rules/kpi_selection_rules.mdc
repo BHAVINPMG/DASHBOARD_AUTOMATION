@@ -1,0 +1,234 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# System KPI Selection Rules for Dashboard Creation
+
+## Core KPI Categories
+
+Select metrics from these categories when building system monitoring dashboards:
+
+### CPU Metrics
+- **Primary**: `system.cpu.percent` - Overall CPU utilization monitoring
+- **Secondary**:
+  - `system.cpu.user.percent` - User process CPU utilization
+  - `system.cpu.idle.percent` - CPU availability (higher is better)
+  - `system.cpu.interrupt.percent` - Hardware interrupt troubleshooting
+- **System Info**: 
+  - `system.cpu.cores` - Number of CPU cores
+  - `system.logical.processors` - Number of logical processors
+  - `system.physical.processors` - Number of physical processors
+
+### Memory Metrics
+- **Primary**: `system.memory.used.percent` - Overall memory utilization
+- **Secondary**:
+  - `system.memory.free.percent` - Available memory percentage
+  - `system.memory.available.bytes` - Precise memory availability
+  - `system.memory.used.bytes` - Absolute memory consumption
+  - `system.memory.free.bytes` - Total free RAM space
+- **Advanced**:
+  - `system.cache.memory.bytes` - Cache memory analysis
+  - `system.memory.committed.bytes` - Virtual memory analysis
+  - `system.paged.memory.bytes` - Paged memory analysis
+  - `system.non.paged.memory.bytes` - Non-paged memory analysis
+
+### Disk Metrics
+- **Utilization**:
+  - `system.disk.used.percent` - Overall disk usage percentage
+  - `system.disk.free.percent` - Available disk space percentage
+  - `system.disk.used.bytes` - Absolute disk usage
+  - `system.disk.free.bytes` - Absolute free space
+- **Performance**:
+  - `system.disk.io.ops.per.sec` - Overall disk operations
+  - `system.disk.io.bytes.per.sec` - Overall disk throughput
+  - `system.disk.io.read.ops.per.sec` - Read operations rate
+  - `system.disk.io.write.ops.per.sec` - Write operations rate
+  - `system.disk.io.read.bytes.per.sec` - Read throughput
+  - `system.disk.io.write.bytes.per.sec` - Write throughput
+  - `system.disk.io.queue.length` - Disk queue bottlenecks
+  - `system.disk.io.time.percent` - Disk busy time
+  - `system.disk.io.idle.time.percent` - Disk idle time during I/O
+
+### Network Metrics
+- **Primary**:
+  - `system.network.bytes.per.sec` - Total network throughput
+  - `system.network.tcp.connections` - Connection count monitoring
+- **Directional Traffic**:
+  - `system.network.in.bytes.per.sec` - Incoming traffic volume
+  - `system.network.out.bytes.per.sec` - Outgoing traffic volume
+  - `system.network.in.packets.per.sec` - Incoming packet rate
+  - `system.network.out.packets.per.sec` - Outgoing packet rate
+- **Network Health**:
+  - `system.network.tcp.retransmissions` - Packet loss monitoring
+  - `system.network.error.packets` - Network error diagnosis
+  - `system.network.output.queue.length` - Network congestion monitoring
+
+### System Load Metrics
+- **Primary**:
+  - `system.processor.queue.length` - CPU scheduling queue
+  - `system.running.processes` - Process count monitoring
+- **Advanced**:
+  - `system.context.switches.per.sec` - Context switching overhead
+  - `system.interrupts.per.sec` - Hardware interrupt frequency
+  - `system.pages.per.sec` - Disk paging activity
+  - `system.pages.faults.per.sec` - Memory page fault frequency
+  - `system.threads` - Thread count monitoring
+
+### System Information
+- `system.name` - System identification
+- `system.os.name` - Operating system identification
+- `system.os.version` - OS version tracking
+- `system.uptime` or `uptime.sec` - System stability monitoring
+- `system.virtual` - Virtual machine identification
+- `system.model` - Hardware model tracking
+- `system.vendor` - Hardware vendor identification
+
+## Dashboard-Specific KPI Selection
+
+### 1. System Health Overview Dashboard
+- `system.cpu.percent`
+- `system.memory.used.percent`
+- `system.disk.used.percent`
+- `system.network.bytes.per.sec`
+- `system.running.processes`
+
+### 2. CPU Performance Dashboard
+- `system.cpu.percent`
+- `system.cpu.user.percent`
+- `system.cpu.idle.percent`
+- `system.processor.queue.length`
+- `system.interrupts.per.sec`
+- `system.context.switches.per.sec`
+
+### 3. Memory Analysis Dashboard
+- `system.memory.used.percent`
+- `system.memory.available.bytes`
+- `system.memory.committed.bytes`
+- `system.cache.memory.bytes`
+- `system.pages.faults.per.sec`
+- `system.pages.per.sec`
+
+### 4. Disk Performance Dashboard
+- `system.disk.used.percent`
+- `system.disk.io.ops.per.sec`
+- `system.disk.io.bytes.per.sec`
+- `system.disk.io.read.bytes.per.sec`
+- `system.disk.io.write.bytes.per.sec`
+- `system.disk.io.queue.length`
+- `system.disk.io.time.percent`
+
+### 5. Network Activity Dashboard
+- `system.network.in.bytes.per.sec`
+- `system.network.out.bytes.per.sec`
+- `system.network.in.packets.per.sec`
+- `system.network.out.packets.per.sec`
+- `system.network.tcp.connections`
+- `system.network.tcp.retransmissions`
+- `system.network.error.packets`
+- `system.network.output.queue.length`
+
+### 6. System Information Dashboard
+- `system.name`
+- `system.model`
+- `system.vendor`
+- `system.os.name`
+- `system.os.version`
+- `system.uptime`
+- `system.cpu.cores`
+- `system.logical.processors`
+- `system.physical.processors`
+- `system.memory.installed.bytes`
+- `system.disk.capacity.bytes`
+
+## KPI Pairing Rules
+
+1. **Complementary Metrics**: Always combine these pairs when possible:
+   - `system.cpu.user.percent` with `system.cpu.idle.percent`
+   - `system.memory.used.percent` with `system.memory.free.percent`
+   - `system.disk.io.read.bytes.per.sec` with `system.disk.io.write.bytes.per.sec`
+   - `system.network.in.bytes.per.sec` with `system.network.out.bytes.per.sec`
+
+2. **Cause and Effect Metrics**: Pair metrics that reveal relationships:
+   - `system.processor.queue.length` with `system.cpu.percent`
+   - `system.pages.faults.per.sec` with `system.memory.used.percent`
+   - `system.disk.io.queue.length` with `system.disk.io.bytes.per.sec`
+   - `system.network.output.queue.length` with `system.network.out.bytes.per.sec`
+
+3. **Utilization and Performance Metrics**: Combine usage with performance indicators:
+   - `system.cpu.percent` with `system.context.switches.per.sec`
+   - `system.memory.used.percent` with `system.pages.per.sec`
+   - `system.disk.used.percent` with `system.disk.io.ops.per.sec`
+   - `system.network.tcp.connections` with `system.network.bytes.per.sec`
+
+## KPI Selection for Monitoring Scenarios
+
+### 1. Performance Bottleneck Identification
+- `system.cpu.percent`
+- `system.processor.queue.length`
+- `system.memory.used.percent`
+- `system.disk.io.queue.length`
+- `system.network.output.queue.length`
+- `system.context.switches.per.sec`
+
+### 2. Capacity Planning
+- `system.cpu.percent` (with historical trend)
+- `system.memory.used.percent` (with historical trend)
+- `system.disk.used.percent` (with historical trend)
+- `system.disk.used.bytes` and `system.disk.capacity.bytes`
+- `system.network.bytes.per.sec` (peak analysis)
+
+### 3. System Stability Monitoring
+- `uptime.sec` or `uptime`
+- `system.running.processes` (tracking sudden changes)
+- `system.cpu.percent` (looking for sustained high values)
+- `system.memory.free.percent` (tracking drops)
+- `system.pages.faults.per.sec` (spikes indicate issues)
+
+### 4. I/O Performance Analysis
+- `system.disk.io.bytes.per.sec`
+- `system.disk.io.ops.per.sec`
+- `system.disk.io.queue.length`
+- `system.disk.io.time.percent`
+- `system.network.bytes.per.sec`
+- `system.network.tcp.retransmissions`
+
+### 5. Resource Saturation Detection
+- `system.cpu.idle.percent` (low values indicate saturation)
+- `system.processor.queue.length` (high values indicate saturation)
+- `system.memory.available.bytes` (low values indicate saturation)
+- `system.disk.io.queue.length` (high values indicate saturation)
+- `system.network.output.queue.length` (high values indicate saturation)
+
+## KPI Visualization Type Selection
+
+Select visualization types based on the metrics being displayed:
+
+1. **Time Series Line Charts** - Best for:
+   - CPU, memory, and disk utilization percentages
+   - Network throughput metrics
+   - I/O operations rates
+
+2. **Stacked Area Charts** - Best for:
+   - Memory composition (used, free, cache)
+   - Network traffic direction (in/out)
+   - Disk operations (read/write)
+
+3. **Bar Charts** - Best for:
+   - Comparing system.running.processes across systems
+   - Comparing system.disk.used.percent across multiple disks
+   - Displaying system.network.tcp.connections by endpoint
+
+4. **Gauge Charts** - Best for:
+   - system.cpu.percent
+   - system.memory.used.percent
+   - system.disk.used.percent
+
+5. **Single Value Displays** - Best for:
+   - uptime.sec or uptime
+   - system.name
+
+
+
+
+   - system.os.name and system.os.version

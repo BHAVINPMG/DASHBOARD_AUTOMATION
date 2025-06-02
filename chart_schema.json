@@ -1,0 +1,413 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "container.type": {
+      "type": "string",
+      "const": "dashboard"
+    },
+    "visualization.name": {
+      "type": "string"
+    },
+    "visualization.description": {
+      "type": "string"
+    },
+    "visualization.granularity": {
+      "type": "string",
+      "pattern": "^\\d+\\s[s|m|h|d|M]$",
+      "default": "10 m",
+      "description": "If not specified, '10 m' will be used as the default visualization granularity."
+    },
+    "visualization.timeline": {
+      "type": "object",
+      "description": "Timeline selection for the visualization. Defaults to 'today' if not specified.",
+      "properties": {
+        "relative.timeline": {
+          "type": "string",
+          "pattern": "^(custom|today|yesterday|this\\.(week|month)|last\\.(week|month|quarter|year)|-\\d+[mhd])$",
+          "default": "today"
+        },
+        "from.date": {
+          "type": "string",
+          "pattern": "^\\d{4}/\\d{2}/\\d{2}$"
+        },
+        "from.time": {
+          "type": "string",
+          "pattern": "^\\d{2}:\\d{2}:\\d{2}$"
+        },
+        "to.date": {
+          "type": "string",
+          "pattern": "^\\d{4}/\\d{2}/\\d{2}$"
+        },
+        "to.time": {
+          "type": "string",
+          "pattern": "^\\d{2}:\\d{2}:\\d{2}$"
+        },
+        "visualization.time.range.inclusive": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "no"
+          ],
+          "default": "yes"
+        }
+      },
+      "default": {
+        "relative.timeline": "today",
+        "visualization.time.range.inclusive": "yes"
+      }
+    },
+    "visualization.category": {
+      "type": "string",
+      "const": "Chart"
+    },
+    "visualization.type": {
+      "type": "string",
+      "enum": [
+        "Area",
+        "Line",
+        "HorizontalBar",
+        "VerticalBar",
+        "StackedArea",
+        "StackedLine",
+        "StackedHorizontalBar",
+        "StackedVerticalBar"
+      ],
+      "default": "Line",
+      "description": "If not specified, 'Line' will be used as the default visualization type."
+    },
+    "visualization.data.sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "metric",
+              "log",
+              "flow",
+              "policy",
+              "availability"
+            ]
+          },
+          "filters": {
+            "type": "object",
+            "properties": {
+              "data.filter": {
+                "type": "object",
+                "properties": {
+                  "operator": {
+                    "type": "string",
+                    "enum": [
+                      "and",
+                      "or"
+                    ]
+                  },
+                  "filter": {
+                    "type": "string",
+                    "enum": [
+                      "include",
+                      "exclude"
+                    ]
+                  },
+                  "groups": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "filter": {
+                          "type": "string",
+                          "enum": [
+                            "include",
+                            "exclude"
+                          ]
+                        },
+                        "operator": {
+                          "type": "string",
+                          "enum": [
+                            "and",
+                            "or"
+                          ]
+                        },
+                        "conditions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "operand": {
+                                "type": "string"
+                              },
+                              "operator": {
+                                "type": "string",
+                                "enum": [
+                                  "=",
+                                  "contains",
+                                  "in",
+                                  "start with",
+                                  "end with"
+                                ]
+                              },
+                              "value": {
+                                "type": [
+                                  "string",
+                                  "number",
+                                  "boolean"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "operand",
+                              "operator",
+                              "value"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "result.filter": {
+                "type": "object"
+              },
+              "drill.down.filter": {
+                "type": "object"
+              }
+            }
+          },
+          "data.points": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "data.point": {
+                  "type": "string"
+                },
+                "aggregator": {
+                  "type": "string",
+                  "enum": [
+                    "avg",
+                    "min",
+                    "max",
+                    "sum",
+                    "count"
+                  ]
+                },
+                "allOf": [
+                  {
+                    "if": {
+                      "not": {
+                        "required": [
+                          "entity.type"
+                        ]
+                      }
+                    },
+                    "then": {
+                      "properties": {
+                        "entities": {
+                          "type": "array",
+                          "maxItems": 0
+                        }
+                      }
+                    }
+                  }
+                ],
+                "properties": {
+                  "entity.type": {
+                    "type": "string",
+                    "enum": [
+                      "Monitor",
+                      "Group",
+                      "Tag"
+                    ]
+                  },
+                  "entities": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "statistical.func": {
+                  "type": "string",
+                  "enum": [
+                    "ema3",
+                    "ema5",
+                    "ema7",
+                    "ema10",
+                    "ema20",
+                    "median3",
+                    "median5",
+                    "median7",
+                    "median9",
+                    "monotonic",
+                    "delta",
+                    "cumulative.sum",
+                    "log2",
+                    "log10"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "visualization.properties": {
+      "type": "object",
+      "properties": {
+        "chart": {
+          "type": "object",
+          "properties": {
+            "rotation.angle": {
+              "type": "string"
+            },
+            "chart.legend": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "vertical.legend": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "line.width": {
+              "type": "integer"
+            },
+            "chart.label": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "axis.titles": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "string"
+                },
+                "y": {
+                  "type": "string"
+                },
+                "z": {
+                  "type": "string"
+                }
+              }
+            },
+            "highchart.settings": {
+              "type": "object"
+            },
+            "marker.property": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "marker.type": {
+                    "type": "string",
+                    "enum": [
+                      "line",
+                      "range"
+                    ]
+                  },
+                  "marker.threshold": {
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 2,
+                        "maxItems": 2
+                      }
+                    ]
+                  },
+                  "marker.color": {
+                    "type": "string",
+                    "enum": [
+                      "CLEAR",
+                      "WARNING",
+                      "CRITICAL",
+                      "MAJOR"
+                    ]
+                  },
+                  "marker.line.type": {
+                    "type": "string",
+                    "enum": [
+                      "solid.bold",
+                      "solid",
+                      "dash"
+                    ]
+                  },
+                  "marker.label": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "sorting": {
+              "type": "object",
+              "properties": {
+                "limit": {
+                  "type": "integer",
+                  "maximum": 50
+                },
+                "order": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "visualization.result.by": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "monitor",
+          "tag",
+          "group"
+        ]
+      }
+    },
+    "granularity": {
+      "type": "object",
+      "description": "Defines the granularity as a numeric value and time unit (s, m, h, d, M). Default is '10 m'.",
+      "properties": {
+        "value": {
+          "type": "string",
+          "default": "10"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "s",
+            "m",
+            "h",
+            "d",
+            "M"
+          ],
+          "default": "m"
+        }
+      }
+    }
+  }
+}

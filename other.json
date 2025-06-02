@@ -1,0 +1,495 @@
+[
+  {
+    "_type": "0",
+    "id": 10000000001841,
+    "visualization.name": "Max Latency",
+    "visualization.description": "Max Latency",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "ping.max.latency.ms",
+            "aggregator": "last",
+            "entity.type": "Monitor"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "ping.max.latency.ms",
+          "icon": {
+            "name": "backup",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Max Latency",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "ping.max.latency.ms.last",
+              "type": "gauge"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001842,
+    "visualization.name": "Latency",
+    "visualization.description": "Latency",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "ping.latency.ms",
+            "aggregator": "last",
+            "entity.type": "Monitor"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "ping.latency.ms",
+          "icon": {
+            "name": "backup",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Latency",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "ping.latency.ms.last"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001843,
+    "visualization.name": "Packet Lost",
+    "visualization.description": "Packet Lost",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "ping.packet.lost.percent",
+            "aggregator": "last",
+            "entity.type": "Monitor"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "ping.packet.lost.percent",
+          "icon": {
+            "name": "rejected-connections",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Packet Lost",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "ping.packet.lost.percent.last",
+              "type": "gauge"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001844,
+    "visualization.name": "Packets",
+    "visualization.description": "Latency",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "ping.sent.packets",
+            "aggregator": "last",
+            "entity.type": "Monitor"
+          },
+          {
+            "data.point": "ping.received.packets",
+            "aggregator": "last",
+            "entity.type": "Monitor"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "ping.received.packets",
+          "icon": {
+            "name": "node-count",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Packets",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Sent",
+              "value": "ping.sent.packets.last"
+            },
+            {
+              "label": "Received",
+              "value": "ping.received.packets.last"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001845,
+    "visualization.name": "Availability Statistics",
+    "visualization.category": "Grid",
+    "visualization.type": "Availability Time Series",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.data.sources": [
+      {
+        "type": "availability",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "monitor.uptime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.downtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.suspendtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.unknowntime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.maintenancetime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.disabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.unreachabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          }
+        ],
+        "visualization.timeline": {
+          "relative.timeline": "-1d"
+        }
+      },
+      {
+        "type": "availability",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "monitor.uptime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.downtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.suspendtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.unknowntime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.maintenancetime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.disabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.unreachabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          }
+        ],
+        "visualization.timeline": {
+          "relative.timeline": "-7d"
+        }
+      },
+      {
+        "type": "availability",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "monitor.uptime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.downtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.suspendtime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.unknowntime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.maintenancetime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.disabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "monitor.unreachabletime.percent",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          }
+        ],
+        "visualization.timeline": {
+          "relative.timeline": "-15d"
+        }
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "axis.titles": {},
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "monitor.uptime.percent.avg"
+        }
+      }
+    },
+    "container.type": "template"
+  },
+  {
+    "id": 10000000001846,
+    "visualization.name": "Latency",
+    "visualization.description": "Latency",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Area",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "ping.latency.ms",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ping.min.latency.ms",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "ping.max.latency.ms",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  }
+]

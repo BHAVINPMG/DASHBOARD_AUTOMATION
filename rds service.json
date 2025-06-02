@@ -1,0 +1,899 @@
+[
+  {
+    "_type": "0",
+    "id": 10000000001606,
+    "visualization.name": "RDS Instances",
+    "visualization.description": "RDS Instances",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.instances",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.rds.instances",
+          "icon": {
+            "name": "rds",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "RDS Instances",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.rds.instances.last"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001607,
+    "visualization.name": "Connections",
+    "visualization.description": "RDS Connections",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.database.connections",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.rds.database.connections",
+          "icon": {
+            "name": "active-connections",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Connections",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.rds.database.connections.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001608,
+    "visualization.name": "Queries",
+    "visualization.description": "RDS Queries",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "",
+          "icon": {
+            "name": "query",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Queries",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Total",
+              "value": ""
+            },
+            {
+              "label": "Slow",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001609,
+    "visualization.name": "Threads",
+    "visualization.description": "RDS Threads",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "",
+          "icon": {
+            "name": "queue",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Threads",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Connected",
+              "value": ""
+            },
+            {
+              "label": "Running",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001610,
+    "visualization.name": "Transactions",
+    "visualization.description": "RDS Transactions",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "",
+          "icon": {
+            "name": "transactions",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Transactions",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Active",
+              "value": ""
+            },
+            {
+              "label": "Blocked",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001611,
+    "visualization.name": "IO Latency",
+    "visualization.description": "RDS IO Latency",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.disk.io.read.latency.ms",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "aws.rds.disk.io.write.latency.ms",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.rds.disk.io.write.latency.ms",
+          "icon": {
+            "name": "backup",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "IO Latency",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Read",
+              "value": "aws.rds.disk.io.read.latency.ms.avg"
+            },
+            {
+              "label": "Write",
+              "value": "aws.rds.disk.io.write.latency.ms.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001612,
+    "visualization.name": "Top Connection Count By Databases",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.database.connections",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.rds.database.connections.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001613,
+    "visualization.name": "Top Databases Instances By Engine Type",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.engine",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.rds.engine.last"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001614,
+    "visualization.name": "Top Databases By Available RAM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.memory.free.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.rds.memory.free.bytes.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001615,
+    "visualization.name": "Top Databases By Swap Usage",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.swap.memory.used.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.rds.swap.memory.used.bytes.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001616,
+    "visualization.name": "Top Databases By Network Traffic",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.network.traffic.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.rds.network.traffic.bytes.per.sec.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001617,
+    "visualization.name": "Top Databases By Disk IO Read Latency ",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.disk.io.read.latency.ms",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001618,
+    "visualization.name": "Top Databases By Disk IO Write Latency ",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.disk.io.write.latency.ms",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001619,
+    "visualization.name": "Top Databases By Storage Free",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.storage.free.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001620,
+    "visualization.name": "Top Databases By Disk IO Read Operations ",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.disk.io.read.ops.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001621,
+    "visualization.name": "Top Databases By Disk IO Write Operations ",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.disk.io.write.ops.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001622,
+    "visualization.name": "Top Databases By CPU Utilization",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.rds.cpu.percent",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  }
+]

@@ -1,0 +1,1259 @@
+[
+  {
+    "_type": "0",
+    "id": 10000000001493,
+    "visualization.name": "Clusters",
+    "visualization.description": "DocumentDB Clusters",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "",
+            "aggregator": "last",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "",
+          "icon": {
+            "name": "cluster",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Clusters",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001494,
+    "visualization.name": "Instances",
+    "visualization.description": "DocumentDB Instances",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "",
+            "aggregator": "last",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "",
+          "icon": {
+            "name": "instances",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Instances",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001495,
+    "visualization.name": "Snapshots",
+    "visualization.description": "DocumentDB Snapshots",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "",
+            "aggregator": "last",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "",
+          "icon": {
+            "name": "snapshots",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Snapshots",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001496,
+    "visualization.name": "Connection",
+    "visualization.description": "DocumentDB Connection",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.database.connections",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "aws.documentdb.database.max.connections",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.documentdb.database.max.connections",
+          "icon": {
+            "name": "active-connections",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Connection",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Total",
+              "value": "aws.documentdb.database.connections.last"
+            },
+            {
+              "label": "Max",
+              "value": "aws.documentdb.database.max.connections.last"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001497,
+    "visualization.name": "Total Volume Used",
+    "visualization.description": "DocumentDB Total Volume Used",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.volume.used.bytes",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.documentdb.volume.used.bytes",
+          "icon": {
+            "name": "ebs",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Total Volume Used",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.documentdb.volume.used.bytes.last"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001498,
+    "visualization.name": "Avg Latency",
+    "visualization.description": "DocumentDB Avg Latency",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.read.latency.seconds",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "aws.documentdb.write.latency.seconds",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.documentdb.write.latency.seconds",
+          "icon": {
+            "name": "backup",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Avg Latency",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.documentdb.write.latency.seconds"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001499,
+    "visualization.name": "Cluster By Volume Bytes Used",
+    "visualization.description": "Cluster By Volume Bytes Used",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.volume.used.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.documentdb.volume.used.bytes.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001500,
+    "visualization.name": "Cluster By Snapshot Storage Used",
+    "visualization.description": "Cluster By Snapshot Storage Used",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.snapshot.storage.used.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.documentdb.snapshot.storage.used.bytes.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001501,
+    "visualization.name": "Total Backup Storage Billed Per Cluster",
+    "visualization.description": "Total Backup Storage Billed Per Cluster",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.backup.storage.billed.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.documentdb.backup.storage.billed.bytes.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001502,
+    "visualization.name": "Backup Retention Period Storage Used Per Cluster",
+    "visualization.description": "Backup Retention Period Storage Used Per Cluster",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.backup.retention.period.storage.used.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.documentdb.backup.retention.period.storage.used.bytes.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001503,
+    "visualization.name": "Free Local Storage Per Cluster",
+    "visualization.description": "Free Local Storage Per Cluster",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.local.storage.free.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.documentdb.local.storage.free.bytes.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001504,
+    "visualization.name": "CPU Utilization Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.cpu.percent",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001505,
+    "visualization.name": "Free Memory Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.memory.free.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001506,
+    "visualization.name": "Swap Usage Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.swap.used.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001507,
+    "visualization.name": "Top Cluster By Volume Read IOPS",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.disk.read.ops.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001508,
+    "visualization.name": "Top Cluster By Volume Write IOPS",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.disk.write.ops.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001509,
+    "visualization.name": "Read Latency Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.read.latency.seconds",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001510,
+    "visualization.name": "Network Received Throughput Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.network.received.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001511,
+    "visualization.name": "Network Throughput Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.network.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001512,
+    "visualization.name": "Network Transmit Throughput Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.network.sent.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001513,
+    "visualization.name": "Disk Read Bytes Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.disk.read.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001514,
+    "visualization.name": "Disk Write Bytes Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.disk.write.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001515,
+    "visualization.name": "Write Latency Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.write.latency.seconds",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001516,
+    "visualization.name": "Read Throughput Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.disk.read.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001517,
+    "visualization.name": "Write Throughput Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.disk.write.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001518,
+    "visualization.name": "Buffer Cache Hit Ratio Per Cluster",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.documentdb.buffer.cache.hit.ratio.percent",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  }
+]

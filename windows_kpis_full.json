@@ -1,0 +1,238 @@
+[
+  {
+    "metric": "system.network.output.queue.length",
+    "description": "The number of network packets in the output packet queue."
+  },
+  {
+    "metric": "uptime.sec",
+    "description": ""
+  },
+  {
+    "metric": "system.network.out.packets.per.sec",
+    "description": "The number of packets being transferred out of the device per second."
+  },
+  {
+    "metric": "system.disk.io.write.bytes.per.sec",
+    "description": "The bytes transferred per second writing to the disk."
+  },
+  {
+    "metric": "system.cpu.idle.percent",
+    "description": "The percentage of time a CPU has spent in the idle state."
+  },
+  {
+    "metric": "system.disk.used.bytes",
+    "description": "The total amount of used disk space on a system."
+  },
+  {
+    "metric": "system.memory.free.percent",
+    "description": "The percentage of free RAM out of total RAM."
+  },
+  {
+    "metric": "system.serial.number",
+    "description": "The serial number of the device."
+  },
+  {
+    "metric": "system.logical.processors",
+    "description": "The number of logical processors on the device CPU."
+  },
+  {
+    "metric": "system.virtual",
+    "description": "\u2018No\u2019, if the system is not virtual. \u2018Yes\u2019, if the system is virtual."
+  },
+  {
+    "metric": "system.cache.memory.bytes",
+    "description": "The amount of the RAM used as cache memory."
+  },
+  {
+    "metric": "system.disk.io.time.percent",
+    "description": "The percentage of time spent reading or writing to the disk."
+  },
+  {
+    "metric": "system.os.name",
+    "description": "The name of the operating system on the device."
+  },
+  {
+    "metric": "system.disk.io.write.ops.per.sec",
+    "description": "The writing operations per second to the disk."
+  },
+  {
+    "metric": "system.network.bytes.per.sec",
+    "description": "The number of bytes per second sent or received for a device."
+  },
+  {
+    "metric": "system.memory.used.percent",
+    "description": "The percentage of used RAM out of the total RAM."
+  },
+  {
+    "metric": "system.model",
+    "description": "The model of the device."
+  },
+  {
+    "metric": "system.disk.io.bytes.per.sec",
+    "description": "The amount of bytes transferred per second in I/O operations to and from the disk."
+  },
+  {
+    "metric": "system.memory.available.bytes",
+    "description": "The amount of free RAM."
+  },
+  {
+    "metric": "system.cpu.interrupt.percent",
+    "description": "The percentage of time the CPU has spent servicing hardware interrupts."
+  },
+  {
+    "metric": "system.network.out.bytes.per.sec",
+    "description": "The number of bytes per second being sent out of an interface."
+  },
+  {
+    "metric": "system.memory.used.bytes",
+    "description": "The total amount of used RAM on a system."
+  },
+  {
+    "metric": "system.network.error.packets",
+    "description": "The total number of error packets in a network."
+  },
+  {
+    "metric": "system.cpu.description",
+    "description": "The description of the CPU."
+  },
+  {
+    "metric": "system.os.service.pack",
+    "description": "The service pack of the operating system."
+  },
+  {
+    "metric": "system.interrupts.per.sec",
+    "description": "The number of CPU interrupts per second."
+  },
+  {
+    "metric": "system.memory.committed.bytes",
+    "description": "The amount of committed virtual memory on the RAM."
+  },
+  {
+    "metric": "system.disk.free.percent",
+    "description": "The percentage of free disk space out of the total disk space in the system."
+  },
+  {
+    "metric": "system.disk.used.percent",
+    "description": "The percentage of used disk space out of the total disk space on a system."
+  },
+  {
+    "metric": "system.network.tcp.connections",
+    "description": "The total number of TCP connections."
+  },
+  {
+    "metric": "system.context.switches.per.sec",
+    "description": "The number of context switches per second."
+  },
+  {
+    "metric": "system.disk.io.read.ops.per.sec",
+    "description": "The number of read operations per second from the disk."
+  },
+  {
+    "metric": "system.disk.capacity.bytes",
+    "description": "The capacity of the disk."
+  },
+  {
+    "metric": "system.cpu.type",
+    "description": "The type of the CPU."
+  },
+  {
+    "metric": "system.vendor",
+    "description": "The vendor name of the device."
+  },
+  {
+    "metric": "system.name",
+    "description": "The name of the system."
+  },
+  {
+    "metric": "system.threads",
+    "description": "The number of threads used by this process."
+  },
+  {
+    "metric": "system.processor.queue.length",
+    "description": "The number of threads that are delayed in the processor ready queue and are waiting to be executed."
+  },
+  {
+    "metric": "system.disk.free.bytes",
+    "description": "The total amount of free disk space available on a system."
+  },
+  {
+    "metric": "system.memory.installed.bytes",
+    "description": ""
+  },
+  {
+    "metric": "system.disk.io.ops.per.sec",
+    "description": "The number of read-write operations per second on the device."
+  },
+  {
+    "metric": "system.disk.io.idle.time.percent",
+    "description": "The percentage of time the CPU was idle while having pending disk I/O requests."
+  },
+  {
+    "metric": "system.memory.free.bytes",
+    "description": "The total amount of free RAM space on a system."
+  },
+  {
+    "metric": "system.pages.per.sec",
+    "description": "The number of pages per second written or read to the disk"
+  },
+  {
+    "metric": "uptime",
+    "description": ""
+  },
+  {
+    "metric": "system.disk.io.read.bytes.per.sec",
+    "description": "The number of bytes transferred per second while reading from the disk."
+  },
+  {
+    "metric": "system.cpu.user.percent",
+    "description": "The percentage of time the CPU spent running user space processes."
+  },
+  {
+    "metric": "system.cpu.percent",
+    "description": "The percentage of a CPU being utilized at a particular instance."
+  },
+  {
+    "metric": "system.pages.faults.per.sec",
+    "description": "The number of page faults per second."
+  },
+  {
+    "metric": "system.network.tcp.retransmissions",
+    "description": "The count of lost or damaged packets that were resent over the network."
+  },
+  {
+    "metric": "system.os.version",
+    "description": "The version of the operating system."
+  },
+  {
+    "metric": "system.physical.processors",
+    "description": "The count of physical processors on the system."
+  },
+  {
+    "metric": "system.running.processes",
+    "description": "The count of running processes on the system."
+  },
+  {
+    "metric": "system.disk.io.queue.length",
+    "description": "The queue length of IO requests issued to your device."
+  },
+  {
+    "metric": "system.cpu.cores",
+    "description": "The number of CPU cores on your host."
+  },
+  {
+    "metric": "system.non.paged.memory.bytes",
+    "description": "The space allocated as non-paged memory on the RAM."
+  },
+  {
+    "metric": "system.paged.memory.bytes",
+    "description": "The space allocated as paged memory on the RAM."
+  },
+  {
+    "metric": "system.network.in.packets.per.sec",
+    "description": "The number of packets per second transferred into a device."
+  },
+  {
+    "metric": "system.network.in.bytes.per.sec",
+    "description": "Bytes per second transferred into a device."
+  }
+]

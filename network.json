@@ -1,0 +1,209 @@
+[
+  {
+    "_type": "0",
+    "id": 10000000001463,
+    "visualization.name": "Health Overview",
+    "visualization.description": "Health Overview Details",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "group.by": "monitor",
+        "type": "policy",
+        "category": "metric",
+        "filters": {
+          "data.filter": {
+          },
+          "result.filter": {
+          }
+        },
+        "severity": [
+          "CRITICAL",
+          "DOWN",
+          "MAJOR",
+          "WARNING",
+          "CLEAR",
+          "UNREACHABLE",
+          "UNKNOWN"
+        ],
+        "visualization.result.by": [
+          "severity"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "category",
+            "entities": [
+              "Network"
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "yes",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "color.conditions": [
+            {
+              "color": "#f04e3e"
+            },
+            {
+              "color": "#f58518"
+            },
+            {
+              "color": "#f5bc18"
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [
+      "severity"
+    ],
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001464,
+    "visualization.name": "Monitor Health By Severity",
+    "visualization.description": "Monitor Health By Severity",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "group.by": "monitor",
+        "type": "policy.stream",
+        "category": "metric",
+        "filters": {
+          "data.filter": {
+          }
+        },
+        "visualization.result.by": [
+          "severity",
+          "object.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "category",
+            "entities": [
+              "Network"
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "view": "AlertStackedVerticalBar"
+      }
+    },
+    "visualization.result.by": [
+      "severity",
+      "object.type"
+    ],
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001465,
+    "visualization.name": "Network",
+    "visualization.description": "Network",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "HeatMap",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "filters": {
+          "data.filter": {
+          }
+        },
+        "visualization.result.by": [
+          "object.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "object.type",
+            "entities": [
+              "SNMP Device",
+              "Switch",
+              "Router",
+              "Firewall",
+              "Load Balancer",
+              "UPS",
+              "Printer",
+              "Wireless Controller",
+              "Hardware Sensor",
+              "Email Gateway"
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+    },
+    "visualization.result.by": [
+      "object.type"
+    ],
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001466,
+    "visualization.name": "Wireless",
+    "visualization.description": "Wireless",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "HeatMap",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "filters": {
+          "data.filter": {
+          }
+        },
+        "visualization.result.by": [
+          "object.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "object.type",
+            "entities": [
+              "Cisco Wireless",
+              "Ruckus Wireless",
+              "Aruba Wireless"
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+    },
+    "visualization.result.by": [
+      "object.type"
+    ],
+    "container.type": "dashboard"
+  }
+]

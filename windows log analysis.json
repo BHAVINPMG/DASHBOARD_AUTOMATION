@@ -1,0 +1,901 @@
+[
+  {
+    "visualization.name": "Windows Events by Level",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.event.level"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.event.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.event.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.event.level"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881709
+  },
+  {
+    "visualization.name": "Windows Events by Provider",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.event.provider"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.event.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.event.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.event.provider"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881710
+  },
+  {
+    "visualization.name": "Windows Events by Task",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.event.task"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.event.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.event.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.event.task"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881711
+  },
+  {
+    "visualization.name": "Windows Login Events by Status",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.login.audit.audit.status",
+          "windows.login.audit.account.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.login.audit.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "windows.login.audit.account.name",
+            "title": "Account",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "windows.login.audit.id.count",
+            "title": "Events",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "windows.login.audit.audit.status",
+            "title": "Audit Status",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {
+              "color.conditions": [
+                {
+                  "operator": "=",
+                  "value": "success",
+                  "color.type": "background",
+                  "color": "#89C540"
+                },
+                {
+                  "operator": "=",
+                  "value": "Failed",
+                  "color.type": "background",
+                  "color": "#F04E3E"
+                }
+              ]
+            }
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.login.audit.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.login.audit.audit.status",
+      "windows.login.audit.account.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881713
+  },
+  {
+    "visualization.name": "Windows Login Events by Level",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.login.audit.level"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.login.audit.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.login.audit.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.login.audit.level"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881714
+  },
+  {
+    "visualization.name": "Windows Login Events by Remote Threat",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.login.audit.remote.threat"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.login.audit.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.login.audit.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.login.audit.remote.threat"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881715
+  },
+  {
+    "visualization.name": "Windows Logout Events by Level",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.logout.audit.level"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.logout.audit.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.logout.audit.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.logout.audit.level"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881716
+  },
+  {
+    "visualization.name": "Windows Logout Events by Status",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.logout.audit.audit.status",
+          "windows.logout.audit.account.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.logout.audit.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "windows.logout.audit.account.name",
+            "title": "Account Name",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "windows.logout.audit.id.count",
+            "title": "Events",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "windows.logout.audit.audit.status",
+            "title": "Audit Status",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {
+              "color.conditions": [
+                {
+                  "operator": "=",
+                  "value": "success",
+                  "color.type": "background",
+                  "color": "#89C540"
+                },
+                {
+                  "operator": "=",
+                  "value": "failed",
+                  "color.type": "background",
+                  "color": "#F04E3E"
+                }
+              ]
+            }
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.logout.audit.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.logout.audit.audit.status",
+      "windows.logout.audit.account.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881728
+  },
+  {
+    "visualization.name": "Windows Logout Events by Domain",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.logout.audit.account.domain"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.logout.audit.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.logout.audit.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.logout.audit.account.domain"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881730
+  },
+  {
+    "visualization.name": "Windows Login Events by Workstation",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.login.audit.workstation.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.login.audit.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.login.audit.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.login.audit.workstation.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881737
+  },
+  {
+    "visualization.name": "Windows login Events by Remote IP",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.login.audit.remote.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.login.audit.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.login.audit.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.login.audit.remote.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881738
+  },
+  {
+    "visualization.name": "Windows Login Events by Domain",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.login.audit.account.domain"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.login.audit.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "windows.login.audit.id.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.login.audit.account.domain"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881739
+  },
+  {
+    "visualization.name": "Windows Events by Event ID",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "StackedVerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.event.id"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.event.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.event.id"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881743
+  },
+  {
+    "visualization.name": "Windows Events by Source",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "StackedVerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "windows.event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "windows.event.id",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "windows.event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881759
+  },
+  {
+    "visualization.name": "Events count by Category",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Area",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.category"
+        ],
+        "data.points": [
+          {
+            "data.point": "message",
+            "aggregator": "count",
+            "entity.type": "event.source.type",
+            "entities": [
+              "Windows"
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.category"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881760
+  }
+]

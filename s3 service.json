@@ -1,0 +1,901 @@
+[
+  {
+    "_type": "0",
+    "id": 10000000001623,
+    "visualization.name": "S3 Buckets",
+    "visualization.description": "S3 Buckets",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.s3.bucket.bytes",
+          "icon": {
+            "name": "bucket",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "S3 Buckets",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.s3.bucket.bytes.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001624,
+    "visualization.name": "Total S3 Buckets Size",
+    "visualization.description": "Total S3 Buckets Size",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.s3.bucket.bytes",
+          "icon": {
+            "name": "disk",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Total S3 Buckets Size",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.s3.bucket.bytes.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001625,
+    "visualization.name": "Total S3 Objects",
+    "visualization.description": "Total S3 Objects",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.objects",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.s3.bucket.objects",
+          "icon": {
+            "name": "bucket-object",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Total S3 Objects",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.s3.bucket.objects.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001626,
+    "visualization.name": "Request",
+    "visualization.description": "Request",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.s3.bucket.requests",
+          "icon": {
+            "name": "requests",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Request",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.s3.bucket.requests.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001627,
+    "visualization.name": "Download Rate",
+    "visualization.description": "Download Rate",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.downloaded.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.s3.bucket.downloaded.bytes",
+          "icon": {
+            "name": "cloud-download",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Download Rate",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.s3.bucket.downloaded.bytes.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001628,
+    "visualization.name": "Upload Rate",
+    "visualization.description": "Upload Rate",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.uploaded.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.s3.bucket.uploaded.bytes",
+          "icon": {
+            "name": "cloud-upload",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Upload Rate",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.s3.bucket.uploaded.bytes.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001629,
+    "visualization.name": "S3 Buckets By Size",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.s3.bucket.bytes.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001630,
+    "visualization.name": "Buckets By Request Count",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.s3.bucket.requests.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001631,
+    "visualization.name": "Top 5 Buckets By Object Count",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.objects",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.s3.bucket.objects.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001632,
+    "visualization.name": "Top 5 Buckets By Put Request",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.http.put.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.s3.bucket.http.put.requests.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001633,
+    "visualization.name": "Top 5 Buckets By Post Request",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.http.post.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.s3.bucket.http.post.requests.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001634,
+    "visualization.name": "Top 5 Buckets By Get Request",
+    "visualization.description": "Top 5 Buckets By Get Request",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.http.get.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001635,
+    "visualization.name": "Top 5 Buckets By List Request",
+    "visualization.description": "Top 5 Buckets By List Request",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.list.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001636,
+    "visualization.name": "Top 5 Buckets By Head Request",
+    "visualization.description": "Top 5 Buckets By Head Request",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.http.head.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001637,
+    "visualization.name": "Top 5 Buckets By Total Request Latency",
+    "visualization.description": "Top 5 Buckets By Total Request Latency",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.request.latency.ms",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001638,
+    "visualization.name": "Top 5 Buckets By First Byte Latency",
+    "visualization.description": "Top 5 Buckets By First Byte Latency",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.first.byte.latency.ms",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001639,
+    "visualization.name": "Top 5 Buckets By 4XX Error",
+    "visualization.description": "Top 5 Buckets By 4XX Error",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.http.4xx.errors",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001640,
+    "visualization.name": "Top 5 Buckets By 5XX Error",
+    "visualization.description": "Top 5 Buckets By 5XX Error",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.s3.bucket.http.5xx.errors",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  }
+]

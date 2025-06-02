@@ -1,0 +1,645 @@
+[
+  {
+    "visualization.name": "Top Application by Deny Action",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "fortinet.traffic.action",
+                    "operator": "=",
+                    "value": "deny"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.application"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "fortinet.traffic.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.application"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963532
+  },
+  {
+    "visualization.name": "Top Destination city by Byte Received",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.destination.city"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.received.bytes",
+            "aggregator": "sum",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "fortinet.traffic.received.bytes.sum"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.destination.city"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963534
+  },
+  {
+    "visualization.name": "Fortinet service over time",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.service"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.event.type",
+            "aggregator": "count",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.service"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963535
+  },
+  {
+    "visualization.name": "Top Source IP by Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.source.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "fortinet.traffic.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.source.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963537
+  },
+  {
+    "visualization.name": "Top Apps by Bytes Sent",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.application"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.sent.bytes",
+            "aggregator": "sum"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "fortinet.traffic.sent.bytes.sum"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.application"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963538
+  },
+  {
+    "visualization.name": "Top Destination IP by Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.destination.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "fortinet.traffic.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.destination.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963539
+  },
+  {
+    "visualization.name": "Top Application by Bytes Received",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.application"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.received.bytes",
+            "aggregator": "sum",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "fortinet.traffic.received.bytes.sum"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.application"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963540
+  },
+  {
+    "visualization.name": "Bytes Sent/Received over Time",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Area",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.sent.bytes",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "fortinet.traffic.received.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963541
+  },
+  {
+    "visualization.name": "Top Destination Port by Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.destination.port"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "fortinet.traffic.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.destination.port"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963542
+  },
+  {
+    "visualization.name": "Top Applications by Requests",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.application"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "fortinet.traffic.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.application"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963543
+  },
+  {
+    "visualization.name": "Top Source by Requests",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.source.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "fortinet.traffic.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.source.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963544
+  },
+  {
+    "visualization.name": "Top Source IP by Bytes Sent",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "fortinet.traffic.source.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "fortinet.traffic.sent.bytes",
+            "aggregator": "sum"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "fortinet.traffic.sent.bytes.sum"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "fortinet.traffic.source.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963545
+  }
+]

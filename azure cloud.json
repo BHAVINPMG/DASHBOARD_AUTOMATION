@@ -1,0 +1,1225 @@
+[
+  {
+    "visualization.name": "Azure VM Count",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vms",
+            "aggregator": "last"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "medium",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354825
+  },
+  {
+    "visualization.name": "Azure SQL Databases",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.sql.databases",
+            "aggregator": "last",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "medium",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354829
+  },
+  {
+    "visualization.name": "Azure Cloud Health Summary",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "HeatMap",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "visualization.result.by": [
+          "monitor",
+          "severity"
+        ],
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "Group",
+            "entities": [
+              10000000000015
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {},
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354833
+  },
+  {
+    "visualization.name": "Azure cloud Alert Summary",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "visualization.result.by": [
+          "severity"
+        ],
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "severity": [
+          "DOWN",
+          "CRITICAL",
+          "MAJOR",
+          "WARNING"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "Group",
+            "entities": [
+              10000000000015
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "layout": "Radial View",
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354834
+  },
+  {
+    "visualization.name": "Top Azure VM by CPU Percent",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "azure.vm.cpu.percent",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "azure.vm.cpu.percent",
+            "aggregator": "sparkline"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "azure.vm.cpu.percent.avg",
+            "title": "VM CPU Percent",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "azure.vm.cpu.percent.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F5BC18"
+              }
+            }
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "azure.vm.cpu.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354835
+  },
+  {
+    "visualization.name": "Azure Storage Transactions",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "azure.storage.transactions",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "layout": "key-value",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "azure.storage.transactions.avg",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354859
+  },
+  {
+    "visualization.name": "Azure MySQL Active Connections",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.mysql.server.active.connections",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "medium",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354869
+  },
+  {
+    "visualization.name": "Azure PostgreSQL Active Connections",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.postgresql.server.active.connections",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "medium",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354870
+  },
+  {
+    "visualization.name": "Azure Billing Amount",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.billing.amount",
+            "aggregator": "last"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "center",
+          "icon": {
+            "name": "dollar-sign",
+            "placement": "suffix"
+          },
+          "color.conditions": [
+            {
+              "color": "#f04e3e"
+            },
+            {
+              "color": "#f58518"
+            },
+            {
+              "color": "#f5bc18"
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 243427659755232
+  },
+  {
+    "visualization.name": "Azure Service Usage Amount",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.billing.service~usage.amount",
+            "aggregator": "last"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "center",
+          "icon": {
+            "name": "dollar-sign",
+            "placement": "suffix"
+          },
+          "color.conditions": [
+            {
+              "color": "#f04e3e"
+            },
+            {
+              "color": "#f58518"
+            },
+            {
+              "color": "#f5bc18"
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 243427659755233
+  },
+  {
+    "visualization.name": "Azure Storage Accounts",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.storage.accounts",
+            "aggregator": "last"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "medium",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 243427659755234
+  },
+  {
+    "visualization.name": "Azure Web Apps",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.webapps",
+            "aggregator": "last"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "medium",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 243427659755235
+  },
+  {
+    "visualization.name": "Azure VM Network Received bytes per sec.",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Area",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "azure.vm.network.received.bytes.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 243427659755237
+  },
+  {
+    "visualization.name": "Azure VM Disk IO Write Ops/s",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "azure.vm.disk.io.ops.writes.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 243427659755238
+  },
+  {
+    "visualization.name": "Azure Storage Summary",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "azure.storage.blobs",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "azure.storage.tables",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "azure.storage.queues",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "azure.storage.containers",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "azure.storage.fileshares",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {
+              "width.percent": 38
+            }
+          },
+          {
+            "name": "azure.storage.containers.avg",
+            "title": "Container",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {
+              "width.percent": 12
+            }
+          },
+          {
+            "name": "azure.storage.blobs.avg",
+            "title": "Blob",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {
+              "width.percent": 13
+            }
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "azure.storage.tables.avg",
+            "title": "Table",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "style": {
+              "width.percent": 11
+            }
+          },
+          {
+            "name": "azure.storage.queues.avg",
+            "title": "Queue",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 7,
+            "style": {
+              "width.percent": 13
+            }
+          },
+          {
+            "name": "azure.storage.fileshares.avg",
+            "title": "Fileshare",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 8,
+            "style": {
+              "width.percent": 11
+            }
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 243427659755245
+  },
+  {
+    "visualization.name": "Azure Blob Storage Latency",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "azure.storage.blob.server.latency.ms",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 243427659755246
+  },
+  {
+    "visualization.name": "Azure PostgreSQL Server CPU Percent",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "azure.postgresql.server.cpu.percent",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 243427659755247
+  },
+  {
+    "visualization.name": "Azure MySQL Server CPU Percent",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "azure.mysql.server.cpu.percent",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 243427659755248
+  }
+]

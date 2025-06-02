@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Grid Visualization Schema",
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer" },
+    "visualization.timeline": {
+      "type": "object",
+      "description": "Timeline selection for the visualization. Defaults to 'today' if not specified.",
+      "properties": {
+        "relative.timeline": {
+          "type": "string",
+          "pattern": "^(custom|today|yesterday|this\\.(week|month)|last\\.(week|month|quarter|year)|-\\d+[mhd])$",
+          "default": "today"
+        },
+        "from.date": {
+          "type": "string",
+          "pattern": "^\\d{4}/\\d{2}/\\d{2}$"
+        },
+        "from.time": {
+          "type": "string",
+          "pattern": "^\\d{2}:\\d{2}:\\d{2}$"
+        },
+        "to.date": {
+          "type": "string",
+          "pattern": "^\\d{4}/\\d{2}/\\d{2}$"
+        },
+        "to.time": {
+          "type": "string",
+          "pattern": "^\\d{2}:\\d{2}:\\d{2}$"
+        },
+        "visualization.time.range.inclusive": {
+          "type": "string",
+          "enum": ["yes", "no"],
+          "default": "yes"
+        }
+      },
+      "default": {
+        "relative.timeline": "today",
+        "visualization.time.range.inclusive": "yes"
+      }
+    },
+    "visualization.category": {
+      "type": "string",
+      "const": "Grid"
+    },
+    "visualization.type": {
+      "type": "string",
+      "const": "Grid"
+    },
+    "visualization.data.sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["metric", "log", "flow", "policy", "availability"]
+          },
+          "filters": {
+            "type": "object",
+            "properties": {
+              "data.filter": {
+                "type": "object",
+                "properties": {
+                  "operator": { "type": "string", "enum": ["and", "or"] },
+                  "filter": { "type": "string", "enum": ["include", "exclude"] },
+                  "groups": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "filter": { "type": "string", "enum": ["include", "exclude"] },
+                        "operator": { "type": "string", "enum": ["and", "or"] },
+                        "conditions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "operand": { "type": "string" },
+                              "operator": {
+                                "type": "string",
+                                "enum": ["=", "contains", "in", "start with", "end with"]
+                              },
+                              "value": {
+                                "type": ["string", "number", "boolean"]
+                              }
+                            },
+                            "required": ["operand", "operator", "value"]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "result.filter": { "type": "object" },
+              "drill.down.filter": { "type": "object" }
+            }
+          },
+          "data.points": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "data.point": { "type": "string" },
+                "aggregator": {
+                  "type": "string",
+                  "enum": ["avg", "min", "max", "sum", "count"]
+                },
+                "allOf": [
+                  {
+                    "if": {
+                      "not": { "required": ["entity.type"] }
+                    },
+                    "then": {
+                      "properties": {
+                        "entities": {
+                          "type": "array",
+                          "maxItems": 0
+                        }
+                      }
+                    }
+                  }
+                ],
+                "properties": {
+                  "entity.type": {
+                    "type": "string",
+                    "enum": ["Monitor", "Group", "Tag"]
+                  },
+                  "entities": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "statistical.func": {
+                  "type": "string",
+                  "enum": [
+                    "ema3", "ema5", "ema7", "ema10", "ema20",
+                    "median3", "median5", "median7", "median9",
+                    "monotonic", "delta", "cumulative.sum", "log2", "log10"
+                  ]
+                }
+              },
+              "required": ["data.point", "aggregator"]
+            }
+          },
+          "visualization.result.by": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["monitor", "tag", "group"]
+            }
+          }
+        }
+      }
+    },
+    "visualization.properties": {
+      "type": "object",
+      "properties": {
+        "grid": {
+          "type": "object",
+          "properties": {
+            "visualization.grid.properties.required": {
+              "type": "string",
+              "enum": ["yes", "no"]
+            },
+            "searchable": { "type": "string", "enum": ["yes", "no"] },
+            "column.selection": { "type": "string", "enum": ["yes", "no"] },
+            "header": { "type": "string", "enum": ["yes", "no"] },
+            "layout": { "type": "string", "enum": ["Grid", "key-value"] },
+            "layout.sorting": { "type": "string", "enum": ["asc", "desc"] },
+            "style": {
+              "type": "object",
+              "properties": {
+                "header.font.size": {
+                  "type": "string",
+                  "enum": ["small", "medium", "large"]
+                }
+              }
+            },
+            "columns": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "pattern": "^(object\\.(type|vendor|ip|id)|[a-zA-Z0-9_.]+)$"
+                  },
+                  "show": { "type": "string", "enum": ["yes", "no"] },
+                  "sortable": { "type": "string", "enum": ["yes", "no"] },
+                  "disable": { "type": "string", "enum": ["yes", "no"] },
+                  "resizable": { "type": "string", "enum": ["yes", "no"] },
+                  "selectable": { "type": "string", "enum": ["yes", "no"] },
+                  "orderable": { "type": "string", "enum": ["yes", "no"] },
+                  "position": { "type": "integer" },
+                  "style": {
+                    "type": "object",
+                    "properties": {
+                      "width.percent": { "type": "number" },
+                      "icon": {
+                        "type": "object",
+                        "properties": {
+                          "name": { "type": "string" },
+                          "placement": {
+                            "type": "string",
+                            "enum": ["prefix", "suffix"]
+                          }
+                        }
+                      },
+                      "color.conditions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "operator": {
+                              "type": "string",
+                              "enum": ["=", ">", ">=", "<", "<=", "contain"]
+                            },
+                            "value": { "type": "string" },
+                            "color.type": {
+                              "type": "string",
+                              "enum": ["foreground", "background"]
+                            },
+                            "color": { "type": "string" }
+                          }
+                        }
+                      },
+                      "value.display.operations": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "operator": {
+                              "type": "string",
+                              "enum": ["=", ">", ">=", "<", "<=", "contain"]
+                            },
+                            "value.to.compare": { "type": "string" },
+                            "operation.type": {
+                              "type": "string",
+                              "enum": ["prefix", "suffix"]
+                            },
+                            "value": { "type": "string" }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": ["name", "show", "sortable", "disable", "resizable", "selectable", "orderable", "position"]
+              }
+            }
+          },
+          "required": ["layout", "columns"]
+        }
+      }
+    },
+    "visualization.result.by": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["monitor", "tag", "group"]
+      }
+    }
+  }
+}

@@ -1,0 +1,681 @@
+[
+  {
+    "visualization.name": "Tomcat Connection Summary",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "tomcat.connections",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 680305309747403
+  },
+  {
+    "visualization.name": "Top Tomcat Sessions Summary",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "tomcat.active.sessions",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "tomcat.expired.sessions",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "tomcat.rejected.sessions",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "tomcat.created.sessions",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "tomcat.created.sessions.avg",
+            "title": "Created",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "tomcat.active.sessions.avg",
+            "title": "Active",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "tomcat.expired.sessions.avg",
+            "title": "Expired",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "style": {}
+          },
+          {
+            "name": "tomcat.rejected.sessions.avg",
+            "title": "Rejected",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 7,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "tomcat.active.sessions.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 680305309747400
+  },
+  {
+    "visualization.name": "Top Tomcat Thread Pool Connections",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "tomcat.thread.pool"
+        ],
+        "data.points": [
+          {
+            "data.point": "tomcat.thread.pool~threads",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "tomcat.thread.pool~busy.threads",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "tomcat.thread.pool~connections",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "tomcat.thread.pool",
+            "title": "Thread Pool",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "tomcat.thread.pool~threads.avg",
+            "title": "Total Thread Pool",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "tomcat.thread.pool~busy.threads.avg",
+            "title": "Busy Thread Pool",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "style": {}
+          },
+          {
+            "name": "tomcat.thread.pool~connections.avg",
+            "title": "Thread Pool Connections",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 7,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "tomcat.thread.pool~threads.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "tomcat.thread.pool"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 680305309747401
+  },
+  {
+    "visualization.name": "Top Tomcat JDBC Connections",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "tomcat.jdbc.pool"
+        ],
+        "data.points": [
+          {
+            "data.point": "tomcat.jdbc.pool~active.connections",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "tomcat.jdbc.pool~idle.connections",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "tomcat.jdbc.pool",
+            "title": "JDBC Pool",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "tomcat.jdbc.pool~active.connections.avg",
+            "title": "Active Pool",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "tomcat.jdbc.pool~idle.connections.avg",
+            "title": "Idle Pool",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "tomcat.jdbc.pool~active.connections.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "tomcat.jdbc.pool"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 680305309747406
+  },
+  {
+    "visualization.name": "Tomcat Requests",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "tomcat.requests",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 680305309747407
+  },
+  {
+    "visualization.name": "Tomcat Received Bytes",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "tomcat.received.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 680305309747404
+  },
+  {
+    "visualization.name": "Tomcat Sent Bytes",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "tomcat.sent.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 680305309747405
+  },
+  {
+    "visualization.name": "Tomcat Errors",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Area",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "tomcat.errors",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": [
+              10000000000098
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 680305309747491
+  }
+]

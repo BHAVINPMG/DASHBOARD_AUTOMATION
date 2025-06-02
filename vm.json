@@ -1,0 +1,946 @@
+[
+  {
+    "_type": "0",
+    "id": 10000000001777,
+    "visualization.name": "Total VM's",
+    "visualization.description": "Total VM's Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vms",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "azure.vms",
+          "icon": {
+            "name": "azure-vm",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Total VM's",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "azure.vms.last"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001778,
+    "visualization.name": "CPU",
+    "visualization.description": "VM CPU Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.cpu.percent",
+            "aggregator": "min",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "azure.vm.cpu.percent",
+            "aggregator": "max",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "azure.vm.cpu.percent",
+          "icon": {
+            "name": "cpu",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "CPU Utilization",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Min",
+              "value": "azure.vm.cpu.percent.min"
+            },
+            {
+              "label": "Max",
+              "value": "azure.vm.cpu.percent.max"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001779,
+    "visualization.name": "Running VM's",
+    "visualization.description": "Running Applications Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.asp.net.running.applications",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "azure.vm.asp.net.running.applications",
+          "icon": {
+            "name": "running-vm",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Running VM's",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "azure.vm.asp.net.running.applications.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001780,
+    "visualization.name": "Deallocated VM's",
+    "visualization.description": "Deallocated VM's Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "",
+          "icon": {
+            "name": "cpu",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Deallocated VM's",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001781,
+    "visualization.name": "VM Platforms",
+    "visualization.description": "VM Platforms Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": []
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "",
+          "icon": {
+            "name": "cpu",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "VM Platforms",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": []
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001782,
+    "visualization.name": "Public IPs",
+    "visualization.description": "Public IPs Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.public.ip.address",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "azure.vm.public.ip.address",
+          "icon": {
+            "name": "ip",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Public IPs",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "azure.vm.public.ip.address.last"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001783,
+    "visualization.name": "Running Virtual Machines By Type",
+    "visualization.description": "Running Virtual Machines By Type Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.asp.net.running.applications",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "azure.vm.asp.net.running.applications.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001784,
+    "visualization.name": "Active VM By Resource Group",
+    "visualization.description": "Active VM By Resource Group Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.asp.net.application.active.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "azure.vm.asp.net.application.active.requests.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001785,
+    "visualization.name": "Virtual Machine By CPU Utilization",
+    "visualization.description": "Virtual Machine By CPU Utilization Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.cpu.percent",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "azure.vm.cpu.consumed.credits",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "VM Name",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "azure.vm.cpu.percent.avg",
+            "title": "CPU Utilization",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "azure.vm.cpu.consumed.credits.avg",
+            "title": "Consumed Credits ",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001786,
+    "visualization.name": "Top Virtual Machine By Memory Utilization",
+    "visualization.description": "Top Virtual Machine By Memory Utilization Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.memory.used.percent",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "VM Name",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "azure.vm.memory.used.percent.avg",
+            "title": "Memory Utilization",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001787,
+    "visualization.name": "Top Virtual Machine By Network Utilization",
+    "visualization.description": "Top Virtual Machine By Network Utilization Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.network.traffic.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "VM Name",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "azure.vm.network.traffic.bytes.avg",
+            "title": "Network Utilization",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001788,
+    "visualization.name": "TOP 5 Virtual Machine By Disk IO Read Bytes",
+    "visualization.description": "TOP 5 Virtual Machine By Disk IO Read Bytes Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.disk.io.read.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 5,
+          "order": "desc",
+          "column": "azure.vm.disk.io.read.bytes.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001789,
+    "visualization.name": "TOP 5 Virtual Machine By Disk IO Write Bytes",
+    "visualization.description": "TOP 5 Virtual Machine By Disk IO Write Bytes Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.disk.io.write.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 5,
+          "order": "desc",
+          "column": "azure.vm.disk.io.write.bytes.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001790,
+    "visualization.name": "TOP 5 Virtual Machine By IO Read Per Sec",
+    "visualization.description": "TOP 5 Virtual Machine By IO Read Per Sec Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.disk.io.read.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 5,
+          "order": "desc",
+          "column": "azure.vm.disk.io.read.bytes.per.sec.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001791,
+    "visualization.name": "TOP 5 Virtual Machine By IO Write Per Sec",
+    "visualization.description": "TOP 5 Virtual Machine By IO Write Per Sec Azure VM",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.disk.io.write.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 5,
+          "order": "desc",
+          "column": "azure.vm.disk.io.write.bytes.per.sec.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001792,
+    "visualization.name": "TOP 5 Virtual Machine By Network In Bytes Rate",
+    "visualization.description": "TOP 5 Virtual Machine By Network In Bytes Rate Azure VM",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "StackedLine",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.network.in.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001793,
+    "visualization.name": "TOP 5 Virtual Machine By Network Out Bytes Rate",
+    "visualization.description": "TOP 5 Virtual Machine By Network Out Bytes Rate Azure VM",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "StackedLine",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.vm.network.out.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  }
+]

@@ -1,0 +1,748 @@
+[
+  {
+    "id": 15146830480338,
+    "visualization.name": "Event Per Second",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "logs.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480339,
+    "visualization.name": "Log Source Count",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "MetroTileCount",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "message",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "event.source",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "event.source.count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480340,
+    "visualization.name": "Total Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "message",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480341,
+    "visualization.name": "Log Total Volume",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "log.volume.bytes",
+            "aggregator": "sum"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480342,
+    "visualization.name": "Log Events per Second",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [],
+        "data.points": [
+          {
+            "data.point": "logs.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480350,
+    "visualization.name": "Log Events",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [],
+        "data.points": [
+          {
+            "data.point": "message",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480343,
+    "visualization.name": "Log Volume",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [],
+        "data.points": [
+          {
+            "data.point": "log.volume.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480344,
+    "visualization.name": "Log Source By type",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "message",
+            "aggregator": "count",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "message.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source.type"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480347,
+    "visualization.name": "Log Events By Type",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "message",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "event.source.type",
+            "title": "Event Source",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "message.count",
+            "title": "Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "event.source.type"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480346,
+    "visualization.name": "Top Log Source By Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "message",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "message.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480345,
+    "visualization.name": "Log Source By Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "message",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "event.source",
+            "title": "Event Source",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "message.count",
+            "title": "Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480348,
+    "visualization.name": "Top Log Source By Volume",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "log.volume.bytes",
+            "aggregator": "sum"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "log.volume.bytes.sum"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  },
+  {
+    "id": 15146830480349,
+    "visualization.name": "Log Source By Volume",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "log.volume.bytes",
+            "aggregator": "sum"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "event.source",
+            "title": "Event Source",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "log.volume.bytes.sum",
+            "title": "Log Volume",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    }
+  }
+]

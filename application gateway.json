@@ -1,0 +1,702 @@
+[
+  {
+    "_type": "0",
+    "id": 10000000001722,
+    "visualization.name": "Application Geteway Instances",
+    "visualization.description": "Application Geteway Instances",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.instances",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "azure.application.gateway.instances",
+          "icon": {
+            "name": "instances",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Application Geteway Instances",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "azure.application.gateway.instances.last"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001723,
+    "visualization.name": "Request",
+    "visualization.description": "Request Azure Application Gateway",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "azure.application.gateway.failed.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "azure.application.gateway.failed.requests",
+          "icon": {
+            "name": "requests",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Request",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Total",
+              "value": "azure.application.gateway.requests.avg"
+            },
+            {
+              "label": "Failed",
+              "value": "azure.application.gateway.failed.requests.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001724,
+    "visualization.name": "Rejected Connections",
+    "visualization.description": "Rejected Connections Azure Application Gateway",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "",
+          "icon": {
+            "name": "rejected-connections",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Rejected Connections",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001725,
+    "visualization.name": "New Connection Per Second",
+    "visualization.description": "New Connection per Second Azure Application Gateway",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.new.connections.per.sec",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "azure.application.gateway.new.connections.per.sec.avg",
+          "icon": {
+            "name": "sitemap",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "New Connection Per Second",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "azure.application.gateway.new.connections.per.sec.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001726,
+    "visualization.name": "Current Connection",
+    "visualization.description": "Current Connection Azure Application Gateway",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.active.connections",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "azure.application.gateway.active.connections",
+          "icon": {
+            "name": "active-connections",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Current Connection",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "azure.application.gateway.active.connections.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001727,
+    "visualization.name": "Host Status",
+    "visualization.description": "Host Status Azure Application Gateway",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.healthy.hosts",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "azure.application.gateway.unhealthy.hosts",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "azure.application.gateway.unhealthy.hosts",
+          "icon": {
+            "name": "host",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Host Status",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Healthy",
+              "value": "azure.application.gateway.healthy.hosts.avg"
+            },
+            {
+              "label": "Unhealthy",
+              "value": "azure.application.gateway.unhealthy.hosts.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001728,
+    "visualization.name": "Top Interfaces By Connections",
+    "visualization.description": "Top Interfaces By Connections Azure Application Gateway",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.active.connections",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          },
+          {
+            "data.point": "azure.application.gateway.backend.connect.time.ms",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "medium"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "monitor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "type": "monitor",
+            "style": {}
+          },
+          {
+            "name": "",
+            "title": "Instances ID",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "type": "number",
+            "style": {}
+          },
+          {
+            "name": "azure.application.gateway.active.connections.avg",
+            "title": "Active Connections",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "type": "number",
+            "style": {}
+          },
+          {
+            "name": "azure.application.gateway.backend.connect.time.ms.avg",
+            "title": "Backend Time",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "type": "number",
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "azure.application.gateway.active.connections.avg"
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001729,
+    "visualization.name": "Top Interfaces By Successful Request",
+    "visualization.description": "Top Interfaces By Successful Request Azure Application Gateway ",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.requests",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "azure.application.gateway.requests.avg"
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001730,
+    "visualization.name": "Gateway Throughput",
+    "visualization.description": "Gateway Throughput Azure Application Gateway",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.throughput.bytes.per.sec",
+            "aggregator": "avg",
+            "entity.type": "monitor",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "azure.application.gateway.throughput.bytes.per.sec.avg"
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001731,
+    "visualization.name": "TOP Instances By Highest Client RTT",
+    "visualization.description": "TOP Instances By Highest Client RTT Azure Application Gateway",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.client.rtt.ms",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "azure.application.gateway.client.rtt.ms.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001732,
+    "visualization.name": "TOP Instances By Highest Request Rate",
+    "visualization.description": "TOP Instances By Highest Request Rate Azure Application Gateway",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "azure.application.gateway.requests.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001733,
+    "visualization.name": "Top Instance By Response status",
+    "visualization.description": "Top Instance By Response status Azure Application Gateway",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "azure.application.gateway.response.status",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "azure.application.gateway.response.status.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  }
+]

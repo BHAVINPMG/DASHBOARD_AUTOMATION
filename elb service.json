@@ -1,0 +1,974 @@
+[
+  {
+    "_type": "0",
+    "id": 10000000001794,
+    "visualization.name": "ELB",
+    "visualization.description": "ELB",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb",
+            "aggregator": "last",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elb",
+          "icon": {
+            "name": "elb",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "ELB",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.elb.last"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001795,
+    "visualization.name": "Hosts",
+    "visualization.description": "ELB Hosts",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.healthy.hosts",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elb.unhealthy.hosts",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elb.healthy.hosts",
+          "icon": {
+            "name": "host",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Hosts",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Healthy",
+              "value": "aws.elb.healthy.hosts.avg"
+            },
+            {
+              "label": "Unhealthy",
+              "value": "aws.elb.unhealthy.hosts.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001796,
+    "visualization.name": "Connections",
+    "visualization.description": "ELB Connections",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.active.connections",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elb.rejected.connections",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elb.active.connections",
+          "icon": {
+            "name": "active-connections",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Connections",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "Active",
+              "value": "aws.elb.active.connections.avg"
+            },
+            {
+              "label": "Rejected",
+              "value": "aws.elb.rejected.connections.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001797,
+    "visualization.name": "Total Request Counts",
+    "visualization.description": "ELB Total Request Counts",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.requests",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elb.requests",
+          "icon": {
+            "name": "requests",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Total Request Counts",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.elb.requests.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001798,
+    "visualization.name": "Active Flows",
+    "visualization.description": "ELB Active Flows",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.active.flows",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ],
+        "correlated.data.points": [
+          {
+            "type": "metric",
+            "data.point": "aws.elb.tcp.active.flows"
+          },
+          {
+            "type": "metric",
+            "data.point": "aws.elb.tls.active.flows"
+          },
+          {
+            "type": "metric",
+            "data.point": "aws.elb.udp.active.flows"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elb.active.flows",
+          "icon": {
+            "name": "active-flow",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Active Flows",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.elb.active.flows.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001799,
+    "visualization.name": "Consumed Lcus",
+    "visualization.description": "ELB Consumed Lcus",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.consumed.lcus",
+            "aggregator": "avg",
+            "entity.type": "Group",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elb.consumed.lcus",
+          "icon": {
+            "name": "consumed-lcus",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Consumed Lcus",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.elb.consumed.lcus.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001800,
+    "visualization.name": "ELB By Availability Zone",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.availability.zone",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.availability.zone.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001801,
+    "visualization.name": "ELB By Type",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.type",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.elb.type.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001802,
+    "visualization.name": "Top ELB By Healthy Hosts Count",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.healthy.hosts",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.elb.healthy.hosts.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001803,
+    "visualization.name": "Top ELB By Unhealthy Hosts Count",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.unhealthy.hosts",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.elb.unhealthy.hosts.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001804,
+    "visualization.name": "Top ELB By Request Count",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.requests",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.elb.requests.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001805,
+    "visualization.name": "Top ELB By Http 3xx Error",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.3xx.responses",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001806,
+    "visualization.name": "Top ELB By Http 4xx Error",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.4xx.responses",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001807,
+    "visualization.name": "Top ELB By 5xx Error",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.5xx.responses",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001808,
+    "visualization.name": "Top Processed Bytes By ELB",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.processed.bytes",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001809,
+    "visualization.name": "Top Consumed Lcus By ELB",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.consumed.lcus",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001810,
+    "visualization.name": "Top Active Flows By ELB",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.active.flows",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001811,
+    "visualization.name": "Top ELB By Negotiation Errors",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.client.tls.negotiation.errors",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          },
+          {
+            "data.point": "aws.elb.target.tls.negotiation.errors",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001812,
+    "visualization.name": "Top ELB By Connections",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elb.active.connections",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  }
+]

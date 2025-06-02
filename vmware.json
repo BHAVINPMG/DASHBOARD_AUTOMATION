@@ -1,0 +1,1801 @@
+[
+  {
+    "visualization.name": "Top VM by CPU Usage",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "esxi.vm"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.vm~cpu.percent",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "esxi.vm~cpu.percent",
+            "aggregator": "sparkline"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "esxi.vm",
+            "title": "VM",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "esxi.vm~cpu.percent.avg",
+            "title": "CPU Percent",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "esxi.vm~cpu.percent.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#2B908F"
+              }
+            }
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "esxi.vm~cpu.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "esxi.vm"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243731,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "Top VM by Disk Usage",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "esxi.vm"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.vm~disk.used.percent",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "esxi.vm~disk.used.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "esxi.vm"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243732,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "vCenter DataCenter CPU Usage",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "vcenter.datacenter~cpu.percent",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243733,
+    "visualization.result.by": [],
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "vCenter Datacenter Memory Usage",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "vcenter.datacenter~memory.used.percent",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243734,
+    "visualization.result.by": [],
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "vCenter Datastore Usage",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "vcenter.datastore~used.percent",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243735,
+    "visualization.result.by": [],
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "Top ESXi Host by CPU Usage",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.cpu.percent",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "esxi.cpu.percent",
+            "aggregator": "sparkline"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "esxi.cpu.percent.avg",
+            "title": "CPU Percent",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "esxi.cpu.percent.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F15C80"
+              }
+            }
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "esxi.cpu.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243736,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "Top ESXi Host by Datastore Free Bytes",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.datastore~free.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "esxi.datastore~free.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243737,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "Top ESXi Interface by Network Traffic",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "esxi.network.interface"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.network.interface~bytes.per.sec",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "esxi.network.interface~bytes.per.sec",
+            "aggregator": "sparkline"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {
+              "width.percent": 22
+            }
+          },
+          {
+            "name": "esxi.network.interface",
+            "title": "Network Interface",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {
+              "width.percent": 19
+            }
+          },
+          {
+            "name": "esxi.network.interface~bytes.per.sec.avg",
+            "title": "Bytes per Sec.",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {
+              "width.percent": 22
+            }
+          },
+          {
+            "name": "esxi.network.interface~bytes.per.sec.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "type": "sparkline",
+            "style": {
+              "width.percent": 44,
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F04E3E"
+              }
+            }
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "esxi.network.interface~bytes.per.sec.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "esxi.network.interface"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243738,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "Top ESXi Host by Memory Usage",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.memory.used.percent",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "esxi.memory.used.percent",
+            "aggregator": "sparkline"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "esxi.memory.used.percent.avg",
+            "title": "Memory Used Percent",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "esxi.memory.used.percent.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F7A35C"
+              }
+            }
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "esxi.memory.used.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243739,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "vCenter Cluster VMs",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "vcenter.virtual.machines",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243740,
+    "visualization.result.by": [],
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "Top ESXi Host by no. of VMs",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.virtual.machines",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "esxi.virtual.machines.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243742,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "ESXi Disk Latency",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Area",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "esxi.disk"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.disk~latency.ms",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": "5",
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "esxi.disk"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243743,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "Storage Adapter Write Ops/s",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "esxi.storage.adapter"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.storage.adapter~write.ops.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": "5",
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "esxi.storage.adapter"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243744,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "ESXi Datastore Write Ops/s",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "esxi.datastore"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.datastore~write.ops.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": "5",
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "esxi.datastore"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243745,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "VM Network Bytes per Sec.",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "-12h",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "esxi.vm"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.vm~network.bytes.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": "5",
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "esxi.vm"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243748,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "Top VM by Memory usage",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.time.range.inclusive": "no",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "esxi.vm"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.vm~memory.used.percent",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "esxi.vm~memory.used.percent",
+            "aggregator": "sparkline"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "sparkline": "yes",
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "esxi.vm",
+            "title": "VM",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "esxi.vm~memory.used.percent.avg",
+            "title": "Memory used percent",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "esxi.vm~memory.used.percent.sparkline",
+            "title": "Sparkline",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "type": "sparkline",
+            "style": {
+              "inline.chart": {
+                "type": "sparkarea",
+                "color": "#F7A35C"
+              }
+            }
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "esxi.vm~memory.used.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "esxi.vm"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "_type": "0",
+    "id": 1820764169243750,
+    "container.type": "dashboard"
+  },
+  {
+    "visualization.name": "ESXi Health",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "HeatMap",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "visualization.result.by": [
+          "monitor",
+          "severity"
+        ],
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "Group",
+            "entities": [
+              10000000000028,
+              10000000000027
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "map": {
+        "show.counts": "yes"
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 235902439670159
+  },
+  {
+    "visualization.name": "vCenter Clusters",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "vcenter.clusters",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e"
+            },
+            {
+              "color": "#f58518"
+            },
+            {
+              "color": "#f5bc18"
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 96435113520203
+  },
+  {
+    "visualization.name": "vCenter Datastores",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "vcenter.datastores",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e"
+            },
+            {
+              "color": "#f58518"
+            },
+            {
+              "color": "#f5bc18"
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 96435113520204
+  },
+  {
+    "visualization.name": "ESXi Disk I/O bytes per Sec.",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.disk.io.bytes.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 96435113520205
+  },
+  {
+    "visualization.name": "VMWare Health Overview",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "policy",
+        "category": "metric",
+        "visualization.result.by": [
+          "severity"
+        ],
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "severity": [
+          "DOWN",
+          "CRITICAL",
+          "MAJOR",
+          "WARNING"
+        ],
+        "data.points": [
+          {
+            "data.point": "severity",
+            "aggregator": "count",
+            "entity.type": "Group",
+            "entities": [
+              10000000000027,
+              10000000000028
+            ]
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "layout": "Radial View",
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 96435113520208
+  },
+  {
+    "visualization.name": "ESXi VM Summary",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "availability",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "esxi.vm~up.count",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "esxi.vm~down.count",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "esxi.vm~maintenance.count",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "esxi.vm~unreachable.count",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "layout": "Progress With Count View",
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "left",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354832
+  },
+  {
+    "visualization.name": "VM by Disk I/O Bytes per Sec.",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "esxi.vm"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.vm~disk.io.bytes.per.sec",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": "5",
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "esxi.vm"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354866
+  },
+  {
+    "visualization.name": "ESXi Sensor Health",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "esxi.sensor"
+        ],
+        "data.points": [
+          {
+            "data.point": "esxi.sensor~type",
+            "aggregator": "last"
+          },
+          {
+            "data.point": "esxi.sensor~health",
+            "aggregator": "last"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "monitor",
+            "title": "Monitor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "esxi.sensor",
+            "title": "Sensor",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "object.type",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "esxi.sensor~type.last",
+            "title": "Sensor Type",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "object.vendor",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          },
+          {
+            "name": "esxi.sensor~health.last",
+            "title": "Sensor Health",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 6,
+            "style": {
+              "color.conditions": [
+                {
+                  "operator": "contain",
+                  "value": "Critical",
+                  "color.type": "background",
+                  "color": "#F04E3E"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "esxi.sensor"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1585017354894
+  }
+]

@@ -1,0 +1,101 @@
+{
+  "id": 1,
+  "container.type": "dashboard",
+  "visualization.name": "Today's Timeline",
+  "visualization.description": "Shows metrics for today's timeline",
+  "visualization.granularity": "5m",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "from.date": "2024/03/08",
+    "from.time": "00:00:00",
+    "to.date": "2024/03/08",
+    "to.time": "23:59:59",
+    "visualization.time.range.inclusive": "true"
+  },
+  "visualization.category": "Chart",
+  "visualization.type": "Line",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "filters": {
+        "data.filter": {
+          "operator": "and",
+          "filter": "include",
+          "groups": [
+            {
+              "filter": "include",
+              "operator": "and",
+              "conditions": [
+                {
+                  "operand": "system.cpu.percent",
+                  "operator": "=",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg",
+          "statistical.func": "monotonic"
+        },
+        {
+          "data.point": "system.memory.used.percent",
+          "aggregator": "avg",
+          "statistical.func": "monotonic"
+        },
+        {
+          "data.point": "system.disk.used.percent",
+          "aggregator": "avg",
+          "statistical.func": "monotonic"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "rotation.angle": "0",
+      "chart.legend": "yes",
+      "vertical.legend": "yes",
+      "line.width": 2,
+      "chart.label": "yes",
+      "axis.titles": {
+        "x": "Time",
+        "y": "Percentage (%)"
+      },
+      "highchart.settings": {
+        "chart": {
+          "type": "line"
+        }
+      },
+      "marker.property": [
+        {
+          "marker.type": "line",
+          "marker.threshold": 80,
+          "marker.color": "WARNING",
+          "marker.line.type": "dash",
+          "marker.label": "Warning Threshold"
+        },
+        {
+          "marker.type": "line",
+          "marker.threshold": 90,
+          "marker.color": "CRITICAL",
+          "marker.line.type": "dash",
+          "marker.label": "Critical Threshold"
+        }
+      ],
+      "sorting": {
+        "limit": 50,
+        "order": "desc"
+      }
+    }
+  },
+  "visualization.result.by": ["monitor"],
+  "granularity": {
+    "value": "5",
+    "unit": "m"
+  }
+} 

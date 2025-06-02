@@ -1,0 +1,193 @@
+{
+  "dashboard": {
+    "name": "Real User Monitoring Overview",
+    "description": "Provide insights into user sessions, performance vitals, user errors, and user geography based on JavaScript SDK telemetry",
+    "layout": {
+      "type": "grid",
+      "columns": 3,
+      "widgets": [
+        {
+          "id": "total-sessions",
+          "name": "Total Sessions",
+          "type": "SingleValue",
+          "position": {"x": 0, "y": 0, "w": 1, "h": 1},
+          "data": {
+            "source": "rum",
+            "metric": "rum.sessions.total",
+            "aggregator": "sum"
+          },
+          "visualization": {
+            "type": "SingleValue",
+            "properties": {
+              "showTrend": true,
+              "trendTimeRange": "1h",
+              "unit": "sessions"
+            }
+          }
+        },
+        {
+          "id": "page-load-time",
+          "name": "Average Page Load Time",
+          "type": "Line",
+          "position": {"x": 1, "y": 0, "w": 2, "h": 2},
+          "data": {
+            "source": "rum",
+            "metric": "rum.performance.loadTime",
+            "groupBy": ["time"],
+            "aggregator": "avg",
+            "interval": "5m"
+          },
+          "visualization": {
+            "type": "Line",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "smooth": true,
+              "markers": true,
+              "fill": false,
+              "unit": "ms",
+              "thresholds": {
+                "warning": 2000,
+                "critical": 4000
+              }
+            }
+          }
+        },
+        {
+          "id": "lcp",
+          "name": "Largest Contentful Paint",
+          "type": "VerticalBar",
+          "position": {"x": 0, "y": 1, "w": 1, "h": 2},
+          "data": {
+            "source": "rum",
+            "metric": "rum.webVitals.lcp",
+            "groupBy": ["page"],
+            "aggregator": "avg"
+          },
+          "visualization": {
+            "type": "VerticalBar",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "orientation": "vertical",
+              "sort": "desc",
+              "unit": "ms",
+              "thresholds": {
+                "good": 2500,
+                "needs-improvement": 4000
+              }
+            }
+          }
+        },
+        {
+          "id": "error-heatmap",
+          "name": "Error Count by View",
+          "type": "Heatmap",
+          "position": {"x": 0, "y": 3, "w": 2, "h": 2},
+          "data": {
+            "source": "rum",
+            "metric": "rum.errors.byView",
+            "groupBy": ["view", "time"],
+            "aggregator": "count",
+            "interval": "1h"
+          },
+          "visualization": {
+            "type": "Heatmap",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "colorScale": "red"
+            }
+          }
+        },
+        {
+          "id": "apdex-score",
+          "name": "Apdex Score",
+          "type": "Gauge",
+          "position": {"x": 2, "y": 3, "w": 1, "h": 2},
+          "data": {
+            "source": "rum",
+            "metric": "rum.apdex.score",
+            "aggregator": "avg"
+          },
+          "visualization": {
+            "type": "Gauge",
+            "properties": {
+              "showLabels": true,
+              "min": 0,
+              "max": 1,
+              "thresholds": {
+                "satisfied": 0.94,
+                "tolerating": 0.85
+              }
+            }
+          }
+        },
+        {
+          "id": "browser-distribution",
+          "name": "Browser Usage Distribution",
+          "type": "Pie",
+          "position": {"x": 0, "y": 5, "w": 1, "h": 2},
+          "data": {
+            "source": "rum",
+            "metric": "rum.user.browser",
+            "groupBy": ["browser"],
+            "aggregator": "count"
+          },
+          "visualization": {
+            "type": "Pie",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "donut": false
+            }
+          }
+        },
+        {
+          "id": "session-errors",
+          "name": "Session Errors",
+          "type": "Grid",
+          "position": {"x": 1, "y": 5, "w": 2, "h": 2},
+          "data": {
+            "source": "rum",
+            "metric": "rum.session.errors",
+            "columns": [
+              "timestamp",
+              "session_id",
+              "error_type",
+              "error_message",
+              "page_url"
+            ],
+            "sort": {
+              "field": "timestamp",
+              "direction": "desc"
+            },
+            "limit": 20
+          },
+          "visualization": {
+            "type": "Grid",
+            "properties": {
+              "showHeaders": true,
+              "pagination": true,
+              "pageSize": 20
+            }
+          }
+        }
+      ]
+    },
+    "filters": {
+      "timeRange": {
+        "type": "relative",
+        "value": "24h"
+      },
+      "browser": {
+        "type": "multi-select",
+        "options": []
+      }
+    },
+    "refresh": {
+      "interval": 60,
+      "unit": "seconds"
+    }
+  }
+} 

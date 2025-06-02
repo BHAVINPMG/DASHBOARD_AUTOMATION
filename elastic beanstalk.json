@@ -1,0 +1,760 @@
+[
+  {
+    "_type": "0",
+    "id": 10000000001572,
+    "visualization.name": "CPU Utilization",
+    "visualization.description": "CPU Utilization",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.cpu.idle.percent",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elasticbeanstalk.cpu.idle.percent",
+          "icon": {
+            "name": "cpu",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "CPU Utilization",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "aws.elasticbeanstalk.cpu.idle.percent",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.elasticbeanstalk.cpu.idle.percent.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001573,
+    "visualization.name": "Degraded Instance Count",
+    "visualization.description": "Degraded Instance Count",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.degraded.instances",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elasticbeanstalk.degraded.instances",
+          "icon": {
+            "name": "stopped-instances",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Degraded Instance Count",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.elasticbeanstalk.degraded.instances.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001574,
+    "visualization.name": "Severe Instance Count",
+    "visualization.description": "Severe Instance Count",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.severe.instances",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elasticbeanstalk.severe.instances",
+          "icon": {
+            "name": "severe-instance",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Severe Instance Count",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.elasticbeanstalk.severe.instances.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001575,
+    "visualization.name": "Environment Health",
+    "visualization.description": "Environment Health",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.environment.health",
+            "aggregator": "last",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elasticbeanstalk.environment.health",
+          "icon": {
+            "name": "health",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Environment Health",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.elasticbeanstalk.environment.health.last"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001576,
+    "visualization.name": "Instances Count",
+    "visualization.description": "Instances Count",
+    "visualization.timeline": {
+      "relative.timeline": "-3h"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.environments",
+            "aggregator": "last",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "",
+          "icon": {
+            "name": "instances",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Instances Count",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.elasticbeanstalk.environments"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001577,
+    "visualization.name": "Total Requests",
+    "visualization.description": "Total Requests",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "KPI Gauge",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.application.requests",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "type": "number",
+          "font.size": "small",
+          "color.data.point": "aws.elasticbeanstalk.application.requests",
+          "icon": {
+            "name": "requests",
+            "placement": "prefix"
+          }
+        },
+        "header": {
+          "title": "Total Requests",
+          "style": {
+            "font.size": "medium"
+          },
+          "data.points": []
+        },
+        "footer": {
+          "title": "",
+          "style": {
+            "font.size": "large"
+          },
+          "data.points": [
+            {
+              "label": "",
+              "value": "aws.elasticbeanstalk.application.requests.avg"
+            }
+          ]
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001578,
+    "visualization.name": "Instance Status Summary",
+    "visualization.description": "Instance Status Summary",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "StackedHorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.degraded.instances",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.info.instances",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.nodata.instances",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.ok.instances",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.pending.instances",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.severe.instances",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.unknown.instances",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.warning.instances",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000001579,
+    "visualization.name": "Top Instances By Error Requests",
+    "visualization.description": "Top Instances By Error Requests",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "StackedHorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.application.2xx.requests",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.application.3xx.requests",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.application.4xx.requests",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.application.5xx.requests",
+            "aggregator": "avg",
+            "entity.type": "Monitor",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001580,
+    "visualization.name": "CPU Utilization",
+    "visualization.description": "CPU Utilization",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.cpu.system.percent",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.cpu.user.percent",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001581,
+    "visualization.name": "CPU Load - Last 1 min",
+    "visualization.description": "CPU Load - Last 1 min",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.load.avg1.min",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001582,
+    "visualization.name": "Request/minute",
+    "visualization.description": "Request/minute",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.result.by": [
+      "monitor"
+    ],
+    "visualization.data.sources": [
+      {
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.application.requests",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {}
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001583,
+    "visualization.name": "Top Application By Request Count",
+    "visualization.description": "Top 10 Application By Request Count",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.application.2xx.requests",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.application.3xx.requests",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.application.4xx.requests",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.application.5xx.requests",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.elasticbeanstalk.application.4xx.requests.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "id": 10000000001584,
+    "visualization.name": "Fastest Request Latency Per Application",
+    "visualization.description": "Fastest 10 Request Latency Per Application",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Area",
+    "visualization.data.sources": [
+      {
+        "type": "metric",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "aws.elasticbeanstalk.application.p10.latency.seconds",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.application.p50.latency.seconds",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.application.p75.latency.seconds",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.application.p90.latency.seconds",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          },
+          {
+            "data.point": "aws.elasticbeanstalk.application.p99.latency.seconds",
+            "aggregator": "avg",
+            "entity.type": "Group"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "aws.elasticbeanstalk.application.p10.latency.seconds.avg"
+        }
+      }
+    },
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard"
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "_type": "0",
+    "id": 10000000002025,
+    "visualization.name": "Top 10 Sources By Traffic Volume",
+    "visualization.description": "Flow Traffic Volume By Sources",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "sum",
+            "entity.type": "Source",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "volume.bytes.sum"
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000002026,
+    "visualization.name": "Top 10 Source Interface By Traffic Volume",
+    "visualization.description": "Flow Traffic Volume By Source Interface",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "visualization.result.by": [
+          "source.if.index"
+        ],
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "sum",
+            "entity.type": "Source",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "volume.bytes.sum"
+        }
+      }
+    },
+    "container.type": "dashboard"
+  },
+  {
+    "_type": "0",
+    "id": 10000000002027,
+    "visualization.name": "Top 10 Destination Interface By Traffic Volume",
+    "visualization.description": "Flow Traffic Volume By Destination Interface",
+    "visualization.timeline": {
+      "relative.timeline": "today"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "visualization.result.by": [
+          "destination.if.index"
+        ],
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "sum",
+            "entity.type": "Source",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "volume.bytes.sum"
+        }
+      }
+    },
+    "container.type": "dashboard"
+  }
+]

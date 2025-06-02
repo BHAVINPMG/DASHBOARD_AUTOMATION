@@ -1,0 +1,1124 @@
+[
+    {
+        "_type": "0",
+        "id": 55820265119928,
+        "visualization.name": "RTT",
+        "visualization.description": "RTT ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "-3h"
+        },
+        "visualization.category": "Grid",
+        "visualization.type": "KPI Gauge",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~latency.ms",
+                "aggregator": "last",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~max.latency.ms",
+                "aggregator": "last",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~min.latency.ms",
+                "aggregator": "last",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "gauge": {
+            "header": {
+              "title": "RTT",
+              "style": {
+                "font.size": "medium"
+              },
+              "data.points": [
+                {
+                  "label": "Avg",
+                  "value": "ipsla.latency.ms.last"
+                }
+              ]
+            },
+            "footer": {
+              "style": {
+                "font.size": "large"
+              },
+              "data.points": [
+                {
+                  "label": "Min",
+                  "value": "ipsla.min.latency.ms.last"
+                },
+                {
+                  "label": "Max",
+                  "value": "ipsla.max.latency.ms.last"
+                }
+              ]
+            },
+            "style": {
+              "icon": {
+                "name": "rtt"
+              }
+            }
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119929,
+        "visualization.name": "Source to Destination Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "-3h"
+        },
+        "visualization.category": "Grid",
+        "visualization.type": "KPI Gauge",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~source.to.destination.avg.jitter.ms",
+                "aggregator": "last",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+           
+          }
+        ],
+        "visualization.properties": {
+          "gauge": {
+            "header": {
+              "title": "SRC to DST Jitter",
+              "style": {
+                "font.size": "medium"
+              },
+              "data.points": []
+            },
+            "footer": {
+              "style": {
+                "font.size": "large"
+              },
+              "data.points": [
+                {
+                  "label": "",
+                  "value": "ipsla.source.to.destination.avg.jitter.ms.last"
+                }
+              ]
+            },
+            "style": {
+              "icon": {
+                "name": "left-to-right-arrow"
+              }
+            }
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119930,
+        "visualization.name": "Destination to Source Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "-3h"
+        },
+        "visualization.category": "Grid",
+        "visualization.type": "KPI Gauge",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~destination.to.source.avg.jitter.ms",
+                "aggregator": "last",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "gauge": {
+            "header": {
+              "title": "DST to SRC Jitter",
+              "style": {
+                "font.size": "medium"
+              },
+              "data.points": []
+            },
+            "footer": {
+              "style": {
+                "font.size": "large"
+              },
+              "data.points": [
+                {
+                  "label": "",
+                  "value": "ipsla.destination.to.source.avg.jitter.ms.last"
+                }
+              ]
+            },
+            "style": {
+              "icon": {
+                "name": "right-to-left-arrow"
+              }
+            }
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119931,
+        "visualization.name": "Source to Destination Latency",
+        "visualization.timeline": {
+          "relative.timeline": "-3h"
+        },
+        "visualization.category": "Grid",
+        "visualization.type": "KPI Gauge",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~source.to.destination.avg.latency.ms",
+                "aggregator": "last",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "gauge": {
+            "header": {
+              "title": "SRC to DST Latency",
+              "style": {
+                "font.size": "medium"
+              },
+              "data.points": []
+            },
+            "footer": {
+              "style": {
+                "font.size": "large"
+              },
+              "data.points": [
+                {
+                  "label": "",
+                  "value": "ipsla.source.to.destination.avg.latency.ms.last"
+                }
+              ]
+            },
+            "style": {
+              "icon": {
+                "name": "left-to-right-arrow"
+              }
+            }
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119932,
+        "visualization.name": "Destination to Source Latency",
+        "visualization.timeline": {
+          "relative.timeline": "-3h"
+        },
+        "visualization.category": "Grid",
+        "visualization.type": "KPI Gauge",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~destination.to.source.avg.latency.ms",
+                "aggregator": "last",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "gauge": {
+            "header": {
+              "title": "DST to SRC Latency",
+              "style": {
+                "font.size": "medium"
+              },
+              "data.points": []
+            },
+            "footer": {
+              "style": {
+                "font.size": "large"
+              },
+              "data.points": [
+                {
+                  "label": "",
+                  "value": "ipsla.destination.to.source.avg.latency.ms.last"
+                }
+              ]
+            },
+            "style": {
+              "icon": {
+                "name": "right-to-left-arrow"
+              }
+            }
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119933,
+        "visualization.name": "Packet Lost",
+        "visualization.description": "Packet Lost",
+        "visualization.timeline": {
+          "relative.timeline": "-3h"
+        },
+        "visualization.category": "Grid",
+        "visualization.type": "KPI Gauge",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~lost.packets",
+                "aggregator": "last",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "gauge": {
+            "style": {
+              "type": "number",
+              "font.size": "small",
+              "color.data.point": "ipsla.lost.packets",
+              "icon": {
+                "name": "rejected-connections",
+                "placement": "prefix"
+              }
+            },
+            "header": {
+              "title": "Packet Lost",
+              "style": {
+                "font.size": "medium"
+              },
+              "data.points": []
+            },
+            "footer": {
+              "title": "",
+              "style": {
+                "font.size": "large"
+              },
+              "data.points": [
+                {
+                  "label": "",
+                  "value": "ipsla.lost.packets.last"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119934,
+        "visualization.name": "Today's Availability",
+        "visualization.category": "Custom",
+        "visualization.type": "Pie",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.result.by": [
+          "monitor"
+        ],
+        "visualization.data.sources": [
+          {
+            "visualization.result.by": [
+              "monitor"
+            ],
+            "type": "availability",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~uptime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~downtime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unreachabletime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~maintenancetime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~disabletime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~suspendtime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unknowntime.percent",
+                "aggregator": "avg",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~uptime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~downtime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unreachabletime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~maintenancetime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~disabletime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~suspendtime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unknowntime.seconds",
+                "aggregator": "sum",
+                "entity.type": "Monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "no",
+            "chart.label": "no",
+            "axis.titles": {},
+            "highchart.settings": {
+              "plotOptions": {
+                "pie": {
+                  "innerSize": "70%"
+                }
+              }
+            }
+          }
+        },
+        "container.type": "template",
+        "drill.down.type": "yes"
+      },
+      {
+        "_type": "0",
+        "id": 55820265119935,
+        "visualization.name": "Availability Statistics",
+        "visualization.category": "Grid",
+        "visualization.type": "Availability Time Series",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.data.sources": [
+          {
+            "type": "availability",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~uptime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~downtime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unreachabletime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~maintenancetime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~suspendtime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~disabletime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unknowntime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ],
+            "visualization.timeline": {
+              "relative.timeline": "-1d"
+            }
+          },
+          {
+            "type": "availability",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~uptime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~downtime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unreachabletime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~maintenancetime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~suspendtime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~disabletime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unknowntime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ],
+            "visualization.timeline": {
+              "relative.timeline": "-7d"
+            }
+          },
+          {
+            "type": "availability",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~uptime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~downtime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unreachabletime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~maintenancetime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~suspendtime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~disabletime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~unknowntime.percent",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ],
+            "visualization.timeline": {
+              "relative.timeline": "-15d"
+            }
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "rotation.angle": 0,
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "axis.titles": {},
+            "highchart.settings": {},
+            "sorting": {
+              "limit": 10,
+              "order": "desc",
+              "column": "ipsla~uptime.percent.avg"
+            }
+          }
+        },
+        "container.type": "template",
+        "drill.down.type": "yes"
+      },
+      {
+        "_type": "0",
+        "id": 55820265119936,
+        "visualization.name": "RTT History",
+        "visualization.description": "RTT History ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.category": "Chart",
+        "visualization.type": "Line",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~latency.ms",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~max.latency.ms",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~min.latency.ms",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "highchart.settings": {}
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119937,
+        "visualization.name": "Source to Destination Positive Jitter",
+        "visualization.description": "Source to Destination Positive Jitter ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.category": "Chart",
+        "visualization.type": "Line",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~source.to.destination.avg.positive.jitter.ms",
+                "aggregator": "min",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~source.to.destination.avg.positive.jitter.ms",
+                "aggregator": "max",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~source.to.destination.avg.positive.jitter.ms",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "highchart.settings": {}
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119938,
+        "visualization.name": "Destination to Source Positive Jitter",
+        "visualization.description": "Destination to Source Positive Jitter ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.category": "Chart",
+        "visualization.type": "Line",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~destination.to.source.avg.positive.jitter.ms",
+                "aggregator": "min",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~destination.to.source.avg.positive.jitter.ms",
+                "aggregator": "max",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~destination.to.source.avg.positive.jitter.ms",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "highchart.settings": {}
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119939,
+        "visualization.name": "Average Jitter",
+        "visualization.description": "Average Jitter ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.category": "Chart",
+        "visualization.type": "Line",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~avg.jitter.ms",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "highchart.settings": {}
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119940,
+        "visualization.name": "Source to Destination Negative Jitter",
+        "visualization.description": "Source to Destination Negative Jitter ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.category": "Chart",
+        "visualization.type": "Line",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point":  "ipsla~source.to.destination.avg.negative.jitter.ms",
+                "aggregator": "min",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~source.to.destination.avg.negative.jitter.ms",
+                "aggregator": "max",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~source.to.destination.avg.negative.jitter.ms",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "highchart.settings": {}
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119941,
+        "visualization.name": "Destination to Source Negative Jitter",
+        "visualization.description": "Destination to Source Negative Jitter ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.category": "Chart",
+        "visualization.type": "Line",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point":  "ipsla~destination.to.source.avg.negative.jitter.ms",
+                "aggregator": "min",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point":  "ipsla~destination.to.source.avg.negative.jitter.ms",
+                "aggregator": "max",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point":  "ipsla~destination.to.source.avg.negative.jitter.ms",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "highchart.settings": {}
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119942,
+        "visualization.name": "Packet Loss",
+        "visualization.description": "Packet Loss ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.category": "Chart",
+        "visualization.type": "Line",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~lost.packets",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "highchart.settings": {}
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119943,
+        "visualization.name": "Source to Destination Latency",
+        "visualization.description": "Source to Destination Latency ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.category": "Chart",
+        "visualization.type": "Line",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~source.to.destination.avg.latency.ms",
+                "aggregator": "min",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~source.to.destination.avg.latency.ms",
+                "aggregator": "max",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~source.to.destination.avg.latency.ms",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "highchart.settings": {}
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119944,
+        "visualization.name": "Destination to Source Latency",
+        "visualization.description": "Destination to Source Latency ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.category": "Chart",
+        "visualization.type": "Line",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~destination.to.source.avg.latency.ms",
+                "aggregator": "min",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~destination.to.source.avg.latency.ms",
+                "aggregator": "max",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~destination.to.source.avg.latency.ms",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "highchart.settings": {}
+          }
+        }
+      },
+      {
+        "_type": "0",
+        "id": 55820265119945,
+        "visualization.name": "Packets Trend",
+        "visualization.description": "Packets Trend ICMP Jitter",
+        "visualization.timeline": {
+          "relative.timeline": "today"
+        },
+        "visualization.category": "Chart",
+        "visualization.type": "Line",
+        "visualization.data.sources": [
+          {
+            "type": "metric",
+            "filters": {
+              "data.filter": {},
+              "result.filter": {}
+            },
+            "data.points": [
+              {
+                "data.point": "ipsla~skipped.packets",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~timed.out.packets",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~min.dropped.packets",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              },
+              {
+                "data.point": "ipsla~max.dropped.packets",
+                "aggregator": "avg",
+                "entity.type": "monitor",
+                "entities": []
+              }
+            ]
+          }
+        ],
+        "visualization.properties": {
+          "chart": {
+            "chart.legend": "yes",
+            "chart.label": "no",
+            "highchart.settings": {}
+          }
+        }
+      }
+]

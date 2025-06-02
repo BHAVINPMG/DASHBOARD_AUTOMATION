@@ -1,0 +1,149 @@
+{
+  "kpi_mappings": [
+    {
+      "category": "CPU",
+      "descriptions": [
+        "cpu type",
+        "processor type",
+        "cpu model",
+        "processor model",
+        "cpu description"
+      ],
+      "metric": "system.cpu.type",
+      "full_description": "The type of the CPU."
+    },
+    {
+      "category": "CPU",
+      "descriptions": [
+        "cpu usage",
+        "cpu percentage",
+        "cpu utilization",
+        "processor usage",
+        "cpu load",
+        "processor utilization"
+      ],
+      "metric": "system.cpu.percent",
+      "full_description": "The percentage of a CPU being utilized at a particular instance."
+    },
+    {
+      "category": "CPU",
+      "descriptions": [
+        "cpu idle",
+        "processor idle",
+        "idle time",
+        "cpu idle time",
+        "processor idle time"
+      ],
+      "metric": "system.cpu.idle.percent",
+      "full_description": "The percentage of time a CPU has spent in the idle state."
+    },
+    {
+      "category": "CPU",
+      "descriptions": [
+        "cpu interrupts",
+        "processor interrupts",
+        "hardware interrupts",
+        "interrupt time",
+        "cpu interrupt time"
+      ],
+      "metric": "system.cpu.interrupt.percent",
+      "full_description": "The percentage of time the CPU has spent servicing hardware interrupts."
+    },
+    {
+      "category": "Memory",
+      "descriptions": [
+        "memory usage",
+        "ram usage",
+        "memory utilization",
+        "ram utilization",
+        "memory percentage"
+      ],
+      "metric": "system.memory.used.percent",
+      "full_description": "The percentage of used RAM out of the total RAM."
+    },
+    {
+      "category": "Memory",
+      "descriptions": [
+        "free memory",
+        "available memory",
+        "free ram",
+        "available ram",
+        "memory available"
+      ],
+      "metric": "system.memory.free.percent",
+      "full_description": "The percentage of free RAM out of total RAM."
+    },
+    {
+      "category": "Disk",
+      "descriptions": [
+        "disk usage",
+        "disk space",
+        "storage usage",
+        "disk utilization",
+        "disk percentage"
+      ],
+      "metric": "system.disk.used.percent",
+      "full_description": "The percentage of used disk space out of the total disk space on a system."
+    },
+    {
+      "category": "Disk",
+      "descriptions": [
+        "free disk",
+        "available disk",
+        "free space",
+        "available space",
+        "disk available"
+      ],
+      "metric": "system.disk.free.percent",
+      "full_description": "The percentage of free disk space out of the total disk space in the system."
+    },
+    {
+      "category": "Network",
+      "descriptions": [
+        "network traffic",
+        "network usage",
+        "bandwidth",
+        "network throughput",
+        "network bytes"
+      ],
+      "metric": "system.network.bytes.per.sec",
+      "full_description": "The number of bytes per second sent or received for a device."
+    },
+    {
+      "category": "Network",
+      "descriptions": [
+        "network packets",
+        "packet rate",
+        "packets per second",
+        "network packet rate",
+        "packet throughput"
+      ],
+      "metric": "system.network.in.packets.per.sec",
+      "full_description": "The number of packets per second transferred into a device."
+    },
+    {
+      "category": "System",
+      "descriptions": [
+        "system uptime",
+        "uptime",
+        "system running time",
+        "server uptime",
+        "running time"
+      ],
+      "metric": "uptime.sec",
+      "full_description": "The time the system has been running."
+    },
+    {
+      "category": "System",
+      "descriptions": [
+        "running processes",
+        "active processes",
+        "process count",
+        "number of processes",
+        "system processes"
+      ],
+      "metric": "system.running.processes",
+      "full_description": "The count of running processes on the system."
+    }
+  ]
+} 

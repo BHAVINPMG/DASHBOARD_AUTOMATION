@@ -1,0 +1,470 @@
+[
+  {
+    "visualization.name": "SonicWall - Top Source IP by Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "sonicwall.traffic.source.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "sonicwall.traffic.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "sonicwall.traffic.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "sonicwall.traffic.source.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 72123740013476
+  },
+  {
+    "visualization.name": "SonicWall - Top Destination IP by Events",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "sonicwall.traffic.destination.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "sonicwall.traffic.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "sonicwall.traffic.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "sonicwall.traffic.destination.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 72123740013477
+  },
+  {
+    "visualization.name": "SonicWall - Bytes Sent/Received over Time",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Area",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "sonicwall.traffic.sent.bytes",
+            "aggregator": "avg"
+          },
+          {
+            "data.point": "sonicwall.traffic.received.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 72123740013478
+  },
+  {
+    "visualization.name": "SonicWall - Top Applications by Bytes Sent",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "sonicwall.traffic.application.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "sonicwall.traffic.sent.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "sonicwall.traffic.sent.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "sonicwall.traffic.application.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 72123740013479
+  },
+  {
+    "visualization.name": "SonicWall - Top Applications by Bytes Received",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "sonicwall.traffic.application.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "sonicwall.traffic.received.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "sonicwall.traffic.received.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "sonicwall.traffic.application.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 72123740013480
+  },
+  {
+    "visualization.name": "SonicWall - Top Applications by Requests",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "sonicwall.traffic.application.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "sonicwall.traffic.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "sonicwall.traffic.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "sonicwall.traffic.application.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 72123740013482
+  },
+  {
+    "visualization.name": "SonicWall - Top Destination City by Bytes Received",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "sonicwall.traffic.destination.city"
+        ],
+        "data.points": [
+          {
+            "data.point": "sonicwall.traffic.received.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "sonicwall.traffic.received.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "sonicwall.traffic.destination.city"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 72123740013483
+  },
+  {
+    "visualization.name": "SonicWall - Top Source IP by Bytes Sent",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "sonicwall.traffic.source.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "sonicwall.traffic.sent.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "sonicwall.traffic.sent.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "sonicwall.traffic.source.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 72123740013484
+  },
+  {
+    "visualization.name": "SonicWall - Events by Severity Level",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "sonicwall.traffic.severity"
+        ],
+        "data.points": [
+          {
+            "data.point": "sonicwall.traffic.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "sonicwall.traffic.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "sonicwall.traffic.severity"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 72123740013510
+  }
+]

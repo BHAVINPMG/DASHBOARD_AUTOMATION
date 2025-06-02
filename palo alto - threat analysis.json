@@ -1,0 +1,632 @@
+[
+  {
+    "visualization.name": "Palo Alto - Non Informational Threats",
+    "visualization.timeline": {
+      "relative.timeline": "last.week",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Gauge",
+    "visualization.type": "MetroTile",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "exclude",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "palo.alto.threat.severity",
+                    "operator": "=",
+                    "value": "informational"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "data.points": [
+          {
+            "data.point": "palo.alto.threat.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "gauge": {
+        "style": {
+          "chart.legend": "no",
+          "chart.label": "no",
+          "type": "number",
+          "font.size": "small",
+          "text.align": "center",
+          "color.conditions": [
+            {
+              "color": "#f04e3e",
+              "value": 0
+            },
+            {
+              "color": "#f58518",
+              "value": 0
+            },
+            {
+              "color": "#f5bc18",
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    "visualization.result.by": [],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1799950354655274
+  },
+  {
+    "visualization.name": "Palo Alto - Threat Direction by Content Type",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Grid",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.threat.source.ip",
+          "palo.alto.threat.destination.ip",
+          "palo.alto.threat.content.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.threat.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.threat.content.type",
+            "title": "Content Type",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.threat.source.ip",
+            "title": "Source IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.threat.destination.ip",
+            "title": "Destination IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.threat.event.type.count",
+            "title": "Event Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          }
+        ]
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.threat.source.ip",
+      "palo.alto.threat.destination.ip",
+      "palo.alto.threat.content.type"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786277
+  },
+  {
+    "visualization.name": "Palo Alto - Threat Content Type",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.threat.content.type"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.threat.content.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.threat.content.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.threat.content.type"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2160349514968011
+  },
+  {
+    "visualization.name": "Palo Alto - Threat Type by Severity",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "this.week",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "StackedVerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.system.severity"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.system.severity",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "axis.titles": {
+          "x": "Severity"
+        },
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.system.severity"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2060301136488009
+  },
+  {
+    "visualization.name": "Palo Alto - Top Threat Source IP",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.threat.source.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.threat.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.threat.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.threat.source.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786278
+  },
+  {
+    "visualization.name": "Palo Alto - Top Threat Destination IP",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.threat.destination.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.threat.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.threat.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.threat.destination.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786279
+  },
+  {
+    "visualization.name": "Palo Alto - Threat by Category",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.threat.category"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.threat.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.threat.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.threat.category"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786280
+  },
+  {
+    "visualization.name": "Palo Alto - Destination IP with High Severity",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "palo.alto.threat.severity",
+                    "operator": "contain",
+                    "value": "high"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.threat.destination.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.threat.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.threat.destination.ip",
+            "title": "Destination IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.threat.event.type.count",
+            "title": "High Event Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.threat.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.threat.destination.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786281
+  },
+  {
+    "visualization.name": "Palo Alto - Source IP with High Severity",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "palo.alto.threat.severity",
+                    "operator": "contain",
+                    "value": "high"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.threat.source.ip"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.threat.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.threat.source.ip",
+            "title": "Source IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.threat.event.type.count",
+            "title": "High Event Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.threat.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.threat.source.ip"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786282
+  }
+]

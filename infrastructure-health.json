@@ -1,0 +1,159 @@
+{
+  "dashboard": {
+    "name": "Infrastructure Health Overview",
+    "description": "Monitor the health and availability of all critical infrastructure components",
+    "layout": {
+      "type": "grid",
+      "columns": 3,
+      "widgets": [
+        {
+          "id": "cpu-usage",
+          "name": "CPU Usage",
+          "type": "Line",
+          "position": {"x": 0, "y": 0, "w": 2, "h": 2},
+          "data": {
+            "source": "metrics",
+            "metric": "cpu.usage.percent",
+            "groupBy": ["time", "host"],
+            "aggregator": "avg",
+            "interval": "5m"
+          },
+          "visualization": {
+            "type": "Line",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "smooth": true,
+              "markers": true,
+              "fill": false,
+              "unit": "percent",
+              "thresholds": {
+                "warning": 70,
+                "critical": 90
+              }
+            }
+          }
+        },
+        {
+          "id": "memory-usage",
+          "name": "Memory Usage",
+          "type": "VerticalBar",
+          "position": {"x": 2, "y": 0, "w": 1, "h": 2},
+          "data": {
+            "source": "metrics",
+            "metric": "memory.usage.percent",
+            "groupBy": ["host"],
+            "aggregator": "avg"
+          },
+          "visualization": {
+            "type": "VerticalBar",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "orientation": "vertical",
+              "sort": "desc",
+              "unit": "percent",
+              "thresholds": {
+                "warning": 75,
+                "critical": 90
+              }
+            }
+          }
+        },
+        {
+          "id": "disk-usage",
+          "name": "Disk Usage",
+          "type": "Pie",
+          "position": {"x": 0, "y": 2, "w": 1, "h": 2},
+          "data": {
+            "source": "metrics",
+            "metric": "disk.usage.percent",
+            "groupBy": ["host", "mount"],
+            "aggregator": "avg"
+          },
+          "visualization": {
+            "type": "Pie",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "donut": true,
+              "unit": "percent",
+              "colors": {
+                "warning": "#FFA500",
+                "critical": "#FF0000",
+                "normal": "#00FF00"
+              }
+            }
+          }
+        },
+        {
+          "id": "server-uptime",
+          "name": "Server Uptime",
+          "type": "Grid",
+          "position": {"x": 1, "y": 2, "w": 2, "h": 2},
+          "data": {
+            "source": "metrics",
+            "metric": "server.uptime",
+            "groupBy": ["host"],
+            "columns": [
+              "host",
+              "uptime",
+              "last_boot",
+              "status"
+            ],
+            "sort": {
+              "field": "uptime",
+              "direction": "desc"
+            }
+          },
+          "visualization": {
+            "type": "Grid",
+            "properties": {
+              "showHeaders": true,
+              "pagination": true,
+              "pageSize": 10
+            }
+          }
+        },
+        {
+          "id": "network-io",
+          "name": "Network I/O",
+          "type": "Area",
+          "position": {"x": 0, "y": 4, "w": 3, "h": 2},
+          "data": {
+            "source": "metrics",
+            "metric": "network.throughput.mbps",
+            "groupBy": ["time", "interface"],
+            "aggregator": "sum",
+            "interval": "1m"
+          },
+          "visualization": {
+            "type": "Area",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "stacked": true,
+              "smooth": true,
+              "fill": true,
+              "unit": "Mbps"
+            }
+          }
+        }
+      ]
+    },
+    "filters": {
+      "timeRange": {
+        "type": "relative",
+        "value": "24h"
+      },
+      "host": {
+        "type": "multi-select",
+        "options": []
+      }
+    },
+    "refresh": {
+      "interval": 60,
+      "unit": "seconds"
+    }
+  }
+} 

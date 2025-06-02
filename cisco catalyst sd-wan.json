@@ -1,0 +1,1240 @@
+[
+  {
+    "visualization.name" : "Total Sites",
+    "visualization.timeline" : {
+      "relative.timeline" : "today",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "Gauge",
+    "visualization.type" : "MetroTile",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "data.points" : [ {
+        "data.point" : "cisco.vmanage.sites",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "gauge" : {
+        "style" : {
+          "chart.legend" : "no",
+          "chart.label" : "no",
+          "type" : "number",
+          "font.size" : "small",
+          "text.align" : "center",
+          "color.conditions" : [ {
+            "color" : "#f04e3e",
+            "value" : 0
+          }, {
+            "color" : "#f58518",
+            "value" : 0
+          }, {
+            "color" : "#f5bc18",
+            "value" : 0
+          } ]
+        }
+      }
+    },
+    "visualization.result.by" : [ ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327342
+  },
+  {
+    "visualization.name" : "Down Tlocs",
+    "visualization.description" : "Total down Tlocs in Cisco Catalyst",
+    "visualization.timeline" : {
+      "relative.timeline" : "today",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "Gauge",
+    "visualization.type" : "MetroTile",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "data.points" : [ {
+        "data.point" : "cisco.vmanage.down.tlocs",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "gauge" : {
+        "style" : {
+          "chart.legend" : "no",
+          "chart.label" : "no",
+          "type" : "number",
+          "font.size" : "small",
+          "text.align" : "center",
+          "color.conditions" : [ {
+            "color" : "#f04e3e",
+            "value" : 0
+          }, {
+            "color" : "#f58518",
+            "value" : 0
+          }, {
+            "color" : "#f5bc18",
+            "value" : 0
+          } ]
+        }
+      }
+    },
+    "visualization.result.by" : [ ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327344
+  },
+  {
+    "visualization.name" : "Tunnels",
+    "visualization.timeline" : {
+      "relative.timeline" : "today",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "Gauge",
+    "visualization.type" : "MetroTile",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "data.points" : [ {
+        "data.point" : "cisco.vmanage.tunnels",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "gauge" : {
+        "style" : {
+          "chart.legend" : "no",
+          "chart.label" : "no",
+          "type" : "number",
+          "font.size" : "small",
+          "text.align" : "center",
+          "color.conditions" : [ {
+            "color" : "#f04e3e",
+            "value" : 0
+          }, {
+            "color" : "#f58518",
+            "value" : 0
+          }, {
+            "color" : "#f5bc18",
+            "value" : 0
+          } ]
+        }
+      }
+    },
+    "visualization.result.by" : [ ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327350
+  },
+  {
+    "visualization.name" : "Up Tlocs",
+    "visualization.timeline" : {
+      "relative.timeline" : "today",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "Gauge",
+    "visualization.type" : "MetroTile",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "data.points" : [ {
+        "data.point" : "cisco.vmanage.up.tlocs",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "gauge" : {
+        "style" : {
+          "chart.legend" : "no",
+          "chart.label" : "no",
+          "type" : "number",
+          "font.size" : "small",
+          "text.align" : "center",
+          "color.conditions" : [ {
+            "color" : "#f04e3e",
+            "value" : 0
+          }, {
+            "color" : "#f58518",
+            "value" : 0
+          }, {
+            "color" : "#f5bc18",
+            "value" : 0
+          } ]
+        }
+      }
+    },
+    "visualization.result.by" : [ ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327351,
+    "visualization.description" : "Total Up Tlocs in Cisco Catalyst"
+  },
+  {
+    "visualization.name" : "Tunnel Availability",
+    "visualization.timeline" : {
+      "relative.timeline" : "today",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "Gauge",
+    "visualization.type" : "MetroTile",
+    "visualization.data.sources" : [ {
+      "type" : "availability",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "data.points" : [ {
+        "data.point" : "cisco.vedge.tunnel~down.count",
+        "aggregator" : "avg"
+      }, {
+        "data.point" : "cisco.vedge.tunnel~up.count",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "gauge" : {
+        "style" : {
+          "layout" : "Radial View",
+          "chart.legend" : "no",
+          "chart.label" : "no",
+          "type" : "number",
+          "font.size" : "small",
+          "text.align" : "left",
+          "color.conditions" : [ {
+            "color" : "#f04e3e",
+            "value" : 0
+          }, {
+            "color" : "#f58518",
+            "value" : 0
+          }, {
+            "color" : "#f5bc18",
+            "value" : 0
+          } ]
+        }
+      }
+    },
+    "visualization.result.by" : [ ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327354
+  },
+  {
+    "visualization.name" : "Cisco Catalyst SDN Device Availability",
+    "visualization.timeline" : {
+      "relative.timeline" : "today",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "HeatMap",
+    "visualization.type" : "PlainHeatMap",
+    "visualization.data.sources" : [ {
+      "type" : "availability",
+      "status" : [ ],
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "data.points" : [ {
+        "data.point" : "monitor",
+        "aggregator" : "last",
+        "entity.type" : "Group",
+        "entities" : [ 10000000000109 ]
+      } ]
+    } ],
+    "visualization.properties" : {
+      "map" : {
+        "show.counts" : "yes"
+      }
+    },
+    "visualization.result.by" : [ ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327369
+  },
+  {
+    "visualization.name" : "Top WAN Edge Devices by CPU Utilization",
+    "visualization.timeline" : {
+      "relative.timeline" : "last.week",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "TopN",
+    "visualization.type" : "Grid",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "visualization.result.by" : [ "monitor" ],
+      "data.points" : [ {
+        "data.point" : "cisco.vedge.cpu.percent",
+        "aggregator" : "avg",
+        "entities" : [ ]
+      }, {
+        "data.point" : "cisco.vedge.cpu.percent",
+        "aggregator" : "sparkline",
+        "entities" : [ ]
+      } ]
+    } ],
+    "visualization.properties" : {
+      "sparkline" : "yes",
+      "grid" : {
+        "visualization.grid.properties.required" : "no",
+        "searchable" : "yes",
+        "column.selection" : "no",
+        "header" : "yes",
+        "style" : {
+          "header.font.size" : "small"
+        },
+        "columns" : [ {
+          "name" : "monitor",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 1,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.cpu.percent.avg",
+          "title" : "CPU utilization",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 2,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.cpu.percent.sparkline",
+          "title" : " ",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 3,
+          "type" : "sparkline",
+          "style" : {
+            "inline.chart" : {
+              "type" : "sparkline",
+              "color" : "#099dd9"
+            }
+          }
+        }, {
+          "name" : "object.type",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 4,
+          "style" : { }
+        }, {
+          "name" : "object.vendor",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 5,
+          "style" : { }
+        }, {
+          "name" : "object.ip",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 6,
+          "style" : { }
+        } ],
+        "sorting" : {
+          "limit" : 10,
+          "order" : "desc",
+          "column" : "cisco.vedge.cpu.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by" : [ "monitor" ],
+    "granularity" : {
+      "value" : 5,
+      "unit" : "m"
+    },
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327370
+  },
+  {
+    "visualization.name" : "Top WAN Edge Devices by Memory Utilization",
+    "visualization.timeline" : {
+      "relative.timeline" : "last.week",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "TopN",
+    "visualization.type" : "Grid",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "visualization.result.by" : [ "monitor" ],
+      "data.points" : [ {
+        "data.point" : "cisco.vedge.memory.used.percent",
+        "aggregator" : "avg",
+        "entities" : [ ]
+      }, {
+        "data.point" : "cisco.vedge.memory.used.percent",
+        "aggregator" : "sparkline",
+        "entities" : [ ]
+      } ]
+    } ],
+    "visualization.properties" : {
+      "sparkline" : "yes",
+      "grid" : {
+        "visualization.grid.properties.required" : "no",
+        "searchable" : "yes",
+        "column.selection" : "no",
+        "header" : "yes",
+        "style" : {
+          "header.font.size" : "small"
+        },
+        "columns" : [ {
+          "name" : "monitor",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 1,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.memory.used.percent.avg",
+          "title" : "Memory utilization",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 2,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.memory.used.percent.sparkline",
+          "title" : " ",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 3,
+          "type" : "sparkline",
+          "style" : {
+            "inline.chart" : {
+              "type" : "sparkline",
+              "color" : "#099dd9"
+            }
+          }
+        }, {
+          "name" : "object.type",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 4,
+          "style" : { }
+        }, {
+          "name" : "object.vendor",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 5,
+          "style" : { }
+        }, {
+          "name" : "object.ip",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 6,
+          "style" : { }
+        } ],
+        "sorting" : {
+          "limit" : 10,
+          "order" : "desc",
+          "column" : "cisco.vedge.memory.used.percent.avg"
+        }
+      }
+    },
+    "visualization.result.by" : [ "monitor" ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327371
+  },
+  {
+    "visualization.name" : "Top WAN Edge Devices by Control Connections",
+    "visualization.timeline" : {
+      "relative.timeline" : "today",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "TopN",
+    "visualization.type" : "Pie",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "visualization.result.by" : [ "monitor" ],
+      "data.points" : [ {
+        "data.point" : "cisco.vedge.control.connections",
+        "aggregator" : "avg",
+        "entities" : [ ]
+      } ]
+    } ],
+    "visualization.properties" : {
+      "chart" : {
+        "chart.legend" : "yes",
+        "vertical.legend" : "no",
+        "line.width" : 2,
+        "chart.label" : "no",
+        "highchart.settings" : { },
+        "sorting" : {
+          "limit" : "10",
+          "order" : "desc",
+          "column" : "cisco.vedge.control.connections.avg"
+        }
+      }
+    },
+    "visualization.result.by" : [ "monitor" ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327372
+  },
+  {
+    "visualization.name" : "Top Tunnel Performance",
+    "visualization.timeline" : {
+      "relative.timeline" : "last.week",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "TopN",
+    "visualization.type" : "Grid",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "visualization.result.by" : [ "cisco.vedge.tunnel" ],
+      "data.points" : [ {
+        "data.point" : "cisco.vedge.tunnel~latency.ms",
+        "aggregator" : "avg"
+      }, {
+        "data.point" : "cisco.vedge.tunnel~jitter.ms",
+        "aggregator" : "avg"
+      }, {
+        "data.point" : "cisco.vedge.tunnel~lost.percent",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "grid" : {
+        "visualization.grid.properties.required" : "no",
+        "searchable" : "yes",
+        "column.selection" : "no",
+        "header" : "yes",
+        "style" : {
+          "header.font.size" : "small"
+        },
+        "columns" : [ {
+          "name" : "cisco.vedge.tunnel",
+          "title" : "Tunnel",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 1,
+          "style" : { }
+        }, {
+          "name" : "monitor",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 2,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.tunnel~latency.ms.avg",
+          "title" : "Latency",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 3,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.tunnel~jitter.ms.avg",
+          "title" : "Jitter",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 4,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.tunnel~lost.percent.avg",
+          "title" : "Lost %",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 5,
+          "style" : { }
+        }, {
+          "name" : "object.type",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 6,
+          "style" : { }
+        }, {
+          "name" : "object.vendor",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 7,
+          "style" : { }
+        }, {
+          "name" : "object.ip",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 8,
+          "style" : { }
+        } ],
+        "sorting" : {
+          "limit" : 10,
+          "order" : "desc",
+          "column" : "cisco.vedge.tunnel~latency.ms.avg"
+        }
+      }
+    },
+    "visualization.result.by" : [ "cisco.vedge.tunnel" ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327374
+  },
+  {
+    "visualization.name" : "WAN Edge TLOC Performance",
+    "visualization.timeline" : {
+      "relative.timeline" : "last.week",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "Grid",
+    "visualization.type" : "Grid",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "visualization.result.by" : [ "cisco.vedge.tloc" ],
+      "data.points" : [ {
+        "data.point" : "cisco.vedge.tloc~latency.ms",
+        "aggregator" : "avg"
+      }, {
+        "data.point" : "cisco.vedge.tloc~jitter.ms",
+        "aggregator" : "avg"
+      }, {
+        "data.point" : "cisco.vedge.tloc~lost.percent",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "grid" : {
+        "visualization.grid.properties.required" : "no",
+        "searchable" : "yes",
+        "column.selection" : "no",
+        "header" : "yes",
+        "style" : {
+          "header.font.size" : "small"
+        },
+        "columns" : [ {
+          "name" : "cisco.vedge.tloc",
+          "title" : "TLOC",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 1,
+          "style" : { }
+        }, {
+          "name" : "monitor",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 2,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.tloc~latency.ms.avg",
+          "title" : "Latency",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 3,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.tloc~jitter.ms.avg",
+          "title" : "Jitter",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 4,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.tloc~lost.percent.avg",
+          "title" : "Lost %",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 5,
+          "style" : { }
+        }, {
+          "name" : "object.type",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 6,
+          "style" : { }
+        }, {
+          "name" : "object.vendor",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 7,
+          "style" : { }
+        }, {
+          "name" : "object.ip",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 8,
+          "style" : { }
+        } ]
+      }
+    },
+    "visualization.result.by" : [ "cisco.vedge.tloc" ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327376
+  },
+  {
+    "visualization.name" : "Top Interface by Errors",
+    "visualization.timeline" : {
+      "relative.timeline" : "today",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "TopN",
+    "visualization.type" : "Grid",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "visualization.result.by" : [ "cisco.vedge.interface" ],
+      "data.points" : [ {
+        "data.point" : "cisco.vedge.interface~received.error.packets",
+        "aggregator" : "avg"
+      }, {
+        "data.point" : "cisco.vedge.interface~sent.error.packets",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "grid" : {
+        "visualization.grid.properties.required" : "no",
+        "searchable" : "yes",
+        "column.selection" : "no",
+        "header" : "yes",
+        "style" : {
+          "header.font.size" : "small"
+        },
+        "columns" : [ {
+          "name" : "cisco.vedge.interface",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 1,
+          "style" : { }
+        }, {
+          "name" : "monitor",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 2,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.interface~received.error.packets.avg",
+          "title" : "rx errors",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 3,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.interface~sent.error.packets.avg",
+          "title" : "tx errors",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 4,
+          "style" : { }
+        }, {
+          "name" : "object.type",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 5,
+          "style" : { }
+        }, {
+          "name" : "object.vendor",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 6,
+          "style" : { }
+        }, {
+          "name" : "object.ip",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 7,
+          "style" : { }
+        } ],
+        "sorting" : {
+          "limit" : 10,
+          "order" : "desc",
+          "column" : "cisco.vedge.interface~received.error.packets.avg"
+        }
+      }
+    },
+    "visualization.result.by" : [ "cisco.vedge.interface" ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327385
+  },
+  {
+    "visualization.name" : "Top Interface by Traffic",
+    "visualization.timeline" : {
+      "relative.timeline" : "today",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "TopN",
+    "visualization.type" : "Grid",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "visualization.result.by" : [ "cisco.vedge.interface" ],
+      "data.points" : [ {
+        "data.point" : "cisco.vedge.interface~received.bytes.per.sec",
+        "aggregator" : "avg"
+      }, {
+        "data.point" : "cisco.vedge.interface~sent.bytes.per.sec",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "grid" : {
+        "visualization.grid.properties.required" : "no",
+        "searchable" : "yes",
+        "column.selection" : "no",
+        "header" : "yes",
+        "style" : {
+          "header.font.size" : "small"
+        },
+        "columns" : [ {
+          "name" : "cisco.vedge.interface",
+          "title" : "interface",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 1,
+          "style" : { }
+        }, {
+          "name" : "monitor",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 2,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.interface~received.bytes.per.sec.avg",
+          "title" : "rx  bytes",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 3,
+          "style" : { }
+        }, {
+          "name" : "cisco.vedge.interface~sent.bytes.per.sec.avg",
+          "title" : "tx bytes",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 4,
+          "style" : { }
+        }, {
+          "name" : "object.type",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 5,
+          "style" : { }
+        }, {
+          "name" : "object.vendor",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 6,
+          "style" : { }
+        }, {
+          "name" : "object.ip",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 7,
+          "style" : { }
+        } ],
+        "sorting" : {
+          "limit" : 10,
+          "order" : "desc",
+          "column" : "cisco.vedge.interface~received.bytes.per.sec.avg"
+        }
+      }
+    },
+    "visualization.result.by" : [ "cisco.vedge.interface" ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327434
+  },
+  {
+    "visualization.name" : "Manager's CPU Utilization",
+    "visualization.timeline" : {
+      "relative.timeline" : "last.week",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "Gauge",
+    "visualization.type" : "MetroTile",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "data.points" : [ {
+        "data.point" : "cisco.vmanage.cpu.percent",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "gauge" : {
+        "style" : {
+          "chart.legend" : "no",
+          "chart.label" : "no",
+          "type" : "number",
+          "font.size" : "small",
+          "text.align" : "center",
+          "color.conditions" : [ {
+            "color" : "#f04e3e",
+            "value" : 0
+          }, {
+            "color" : "#f58518",
+            "value" : 0
+          }, {
+            "color" : "#f5bc18",
+            "value" : 0
+          } ]
+        }
+      }
+    },
+    "visualization.result.by" : [ ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327439
+  },
+  {
+    "visualization.name" : "Manager's Memory Utilization",
+    "visualization.timeline" : {
+      "relative.timeline" : "last.week",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "Gauge",
+    "visualization.type" : "MetroTile",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "data.points" : [ {
+        "data.point" : "cisco.vmanage.memory.used.percent",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "gauge" : {
+        "style" : {
+          "chart.legend" : "no",
+          "chart.label" : "no",
+          "type" : "number",
+          "font.size" : "small",
+          "text.align" : "center",
+          "color.conditions" : [ {
+            "color" : "#f04e3e",
+            "value" : 0
+          }, {
+            "color" : "#f58518",
+            "value" : 0
+          }, {
+            "color" : "#f5bc18",
+            "value" : 0
+          } ]
+        }
+      }
+    },
+    "visualization.result.by" : [ ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327440
+  },
+  {
+    "visualization.name" : "WAN Edge Deployment Summary",
+    "visualization.timeline" : {
+      "relative.timeline" : "last.week",
+      "visualization.time.range.inclusive" : "no"
+    },
+    "visualization.category" : "Grid",
+    "visualization.type" : "Grid",
+    "visualization.data.sources" : [ {
+      "type" : "metric",
+      "filters" : {
+        "data.filter" : { },
+        "result.filter" : { },
+        "drill.down.filter" : { }
+      },
+      "visualization.result.by" : [ "cisco.vmanage.wan.edge" ],
+      "data.points" : [ {
+        "data.point" : "cisco.vmanage.wan.edge~devices",
+        "aggregator" : "avg"
+      } ]
+    } ],
+    "visualization.properties" : {
+      "grid" : {
+        "visualization.grid.properties.required" : "no",
+        "searchable" : "yes",
+        "column.selection" : "no",
+        "header" : "yes",
+        "style" : {
+          "header.font.size" : "small"
+        },
+        "columns" : [ {
+          "name" : "monitor",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 1,
+          "style" : { }
+        }, {
+          "name" : "cisco.vmanage.wan.edge",
+          "title" : "Deployment stage",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 2,
+          "style" : { }
+        }, {
+          "name" : "cisco.vmanage.wan.edge~devices.avg",
+          "title" : "device count",
+          "show" : "yes",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 3,
+          "style" : { }
+        }, {
+          "name" : "object.type",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 4,
+          "style" : { }
+        }, {
+          "name" : "object.vendor",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 5,
+          "style" : { }
+        }, {
+          "name" : "object.ip",
+          "show" : "no",
+          "sortable" : "yes",
+          "disable" : "no",
+          "resizable" : "yes",
+          "selectable" : "yes",
+          "orderable" : "yes",
+          "position" : 6,
+          "style" : { }
+        } ]
+      }
+    },
+    "visualization.result.by" : [ "cisco.vmanage.wan.edge" ],
+    "container.type" : "dashboard",
+    "_type" : "0",
+    "id" : 58179327442
+  }
+]

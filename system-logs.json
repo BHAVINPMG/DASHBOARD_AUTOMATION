@@ -1,0 +1,156 @@
+{
+  "dashboard": {
+    "name": "System Log & Event Monitoring",
+    "description": "Analyze system logs across servers to track warnings, errors, system crashes, service start/stop events, and critical kernel logs",
+    "layout": {
+      "type": "grid",
+      "columns": 3,
+      "widgets": [
+        {
+          "id": "log-events",
+          "name": "Log Events Over Time",
+          "type": "Line",
+          "position": {"x": 0, "y": 0, "w": 3, "h": 2},
+          "data": {
+            "source": "logs",
+            "metric": "syslog.events.count",
+            "groupBy": ["time", "severity"],
+            "aggregator": "count",
+            "interval": "5m"
+          },
+          "visualization": {
+            "type": "Line",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "smooth": true,
+              "markers": true,
+              "fill": false,
+              "colors": {
+                "critical": "#FF0000",
+                "error": "#FF4500",
+                "warning": "#FFA500",
+                "info": "#00FF00"
+              }
+            }
+          }
+        },
+        {
+          "id": "errors-by-host",
+          "name": "Errors by Host",
+          "type": "HorizontalBar",
+          "position": {"x": 0, "y": 2, "w": 2, "h": 2},
+          "data": {
+            "source": "logs",
+            "metric": "syslog.errors.byHost",
+            "groupBy": ["host"],
+            "aggregator": "count"
+          },
+          "visualization": {
+            "type": "HorizontalBar",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "orientation": "horizontal",
+              "sort": "desc"
+            }
+          }
+        },
+        {
+          "id": "severity-breakdown",
+          "name": "Warning vs Critical Logs",
+          "type": "StackedVerticalBar",
+          "position": {"x": 2, "y": 2, "w": 1, "h": 2},
+          "data": {
+            "source": "logs",
+            "metric": "syslog.severity.breakdown",
+            "groupBy": ["severity", "time"],
+            "aggregator": "count",
+            "interval": "1h"
+          },
+          "visualization": {
+            "type": "StackedVerticalBar",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "stacked": true,
+              "colors": {
+                "critical": "#FF0000",
+                "warning": "#FFA500"
+              }
+            }
+          }
+        },
+        {
+          "id": "top-sources",
+          "name": "Top Event Sources",
+          "type": "Pie",
+          "position": {"x": 0, "y": 4, "w": 1, "h": 2},
+          "data": {
+            "source": "logs",
+            "metric": "syslog.top.sources",
+            "groupBy": ["source"],
+            "aggregator": "count",
+            "limit": 5
+          },
+          "visualization": {
+            "type": "Pie",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "donut": true
+            }
+          }
+        },
+        {
+          "id": "critical-logs",
+          "name": "Latest Critical Logs",
+          "type": "Grid",
+          "position": {"x": 1, "y": 4, "w": 2, "h": 2},
+          "data": {
+            "source": "logs",
+            "metric": "syslog.critical.latest",
+            "columns": [
+              "timestamp",
+              "host",
+              "source",
+              "message",
+              "severity"
+            ],
+            "sort": {
+              "field": "timestamp",
+              "direction": "desc"
+            },
+            "limit": 20
+          },
+          "visualization": {
+            "type": "Grid",
+            "properties": {
+              "showHeaders": true,
+              "pagination": true,
+              "pageSize": 20
+            }
+          }
+        }
+      ]
+    },
+    "filters": {
+      "timeRange": {
+        "type": "relative",
+        "value": "24h"
+      },
+      "severity": {
+        "type": "multi-select",
+        "options": ["critical", "error", "warning", "info"]
+      },
+      "host": {
+        "type": "multi-select",
+        "options": []
+      }
+    },
+    "refresh": {
+      "interval": 60,
+      "unit": "seconds"
+    }
+  }
+} 

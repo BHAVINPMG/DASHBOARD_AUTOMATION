@@ -1,0 +1,1210 @@
+[
+  {
+    "visualization.name": "Palo Alto - Configuration Status",
+    "visualization.timeline": {
+      "relative.timeline": "last.week",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.result"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.result"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1799950354655254
+  },
+  {
+    "visualization.name": "Palo Alto - Configuration Status Trend",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "StackedVerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.result"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.result"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786284
+  },
+  {
+    "visualization.name": "Palo Alto - Top 10 IP's Used for Configuration",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.host"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.host"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786285
+  },
+  {
+    "visualization.name": "Palo Alto - Client Used",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.client"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.client"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786286
+  },
+  {
+    "visualization.name": "Palo Alto - Top 10 Admin Users",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.admin"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.admin"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786287
+  },
+  {
+    "visualization.name": "Palo Alto - Commands Executed",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "HorizontalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.command"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.command"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786288
+  },
+  {
+    "visualization.name": "Palo Alto - Failed Configurations",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "palo.alto.config.result",
+                    "operator": "=",
+                    "value": "Failed"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.host"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.config.host",
+            "title": "Host IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.event.type.count",
+            "title": "Event Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.host"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786289
+  },
+  {
+    "visualization.name": "Palo Alto - Failed Configurations by Admin User",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "palo.alto.config.result",
+                    "operator": "=",
+                    "value": "Failed"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.admin"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.config.admin",
+            "title": "Admin User Name",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.event.type.count",
+            "title": "Event Name",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.admin"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786290
+  },
+  {
+    "visualization.name": "Palo Alto - Submitted Configurations",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "palo.alto.config.result",
+                    "operator": "=",
+                    "value": "Submitted"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.host"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.config.host",
+            "title": "Host IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.event.type.count",
+            "title": "Event Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.host"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786291
+  },
+  {
+    "visualization.name": "Palo Alto - Successful Configurations",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "palo.alto.config.result",
+                    "operator": "=",
+                    "value": "Succeeded"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.host"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.config.host",
+            "title": "Host IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.event.type.count",
+            "title": "Event Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.host"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786292
+  },
+  {
+    "visualization.name": "Palo Alto - Top 10 Failed Configurations",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "palo.alto.config.result",
+                    "operator": "=",
+                    "value": "Failed"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.serial.number",
+          "palo.alto.config.command",
+          "palo.alto.config.receive.time",
+          "palo.alto.config.host"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.config.receive.time",
+            "title": "Time",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.serial.number",
+            "title": "Serial Number",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.host",
+            "title": "Host IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.command",
+            "title": "Command",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.event.type.count",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.serial.number",
+      "palo.alto.config.command",
+      "palo.alto.config.receive.time",
+      "palo.alto.config.host"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786293
+  },
+  {
+    "visualization.name": "Palo Alto - Top 10 Submitted Configurations",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "palo.alto.config.result",
+                    "operator": "=",
+                    "value": "Submitted"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.serial.number",
+          "palo.alto.config.command",
+          "palo.alto.config.receive.time",
+          "palo.alto.config.host"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.config.receive.time",
+            "title": "Time",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.serial.number",
+            "title": "Serial Number",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.host",
+            "title": "Host IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.command",
+            "title": "Command",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.event.type.count",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.serial.number",
+      "palo.alto.config.command",
+      "palo.alto.config.receive.time",
+      "palo.alto.config.host"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786294
+  },
+  {
+    "visualization.name": "Palo Alto - Top 10 Successful Configurations",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "palo.alto.config.result",
+                    "operator": "=",
+                    "value": "Succeeded"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.serial.number",
+          "palo.alto.config.command",
+          "palo.alto.config.receive.time",
+          "palo.alto.config.host"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.config.receive.time",
+            "title": "Time",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.serial.number",
+            "title": "Serial Number",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.host",
+            "title": "Host IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.command",
+            "title": "Command",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.event.type.count",
+            "show": "no",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 5,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.serial.number",
+      "palo.alto.config.command",
+      "palo.alto.config.receive.time",
+      "palo.alto.config.host"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786295
+  },
+  {
+    "visualization.name": "Palo Alto - Events by Serial Number",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "palo.alto.config.serial.number",
+          "palo.alto.config.result",
+          "palo.alto.config.host"
+        ],
+        "data.points": [
+          {
+            "data.point": "palo.alto.config.serial.number",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "palo.alto.config.serial.number",
+            "title": "Serial Number",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.host",
+            "title": "Host IP",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.result",
+            "title": "Config Status",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {}
+          },
+          {
+            "name": "palo.alto.config.serial.number.count",
+            "title": "Event Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 4,
+            "style": {}
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "palo.alto.config.serial.number.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "palo.alto.config.serial.number",
+      "palo.alto.config.result",
+      "palo.alto.config.host"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2402402844786296
+  }
+]

@@ -1,0 +1,233 @@
+{
+  "dashboard": {
+    "name": "Test",
+    "description": "Comprehensive Alert and Error Monitoring Dashboard",
+    "layout": {
+      "type": "grid",
+      "columns": 3,
+      "widgets": [
+        {
+          "id": "total-alerts-severity",
+          "name": "Total Alerts by Severity",
+          "type": "Pie",
+          "position": {"x": 0, "y": 0, "w": 1, "h": 2},
+          "data": {
+            "source": "alerts",
+            "metric": "alert.count",
+            "groupBy": ["severity"],
+            "aggregator": "count"
+          },
+          "visualization": {
+            "type": "Pie",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "donut": true,
+              "colors": {
+                "critical": "#FF0000",
+                "warning": "#FFA500",
+                "info": "#00FF00"
+              }
+            }
+          }
+        },
+        {
+          "id": "error-rate-trend",
+          "name": "Error Rate Over Time",
+          "type": "Line",
+          "position": {"x": 1, "y": 0, "w": 2, "h": 2},
+          "data": {
+            "source": "errors",
+            "metric": "error.count",
+            "groupBy": ["time"],
+            "aggregator": "count",
+            "interval": "5m"
+          },
+          "visualization": {
+            "type": "Line",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "smooth": true,
+              "markers": true,
+              "fill": false
+            }
+          }
+        },
+        {
+          "id": "alerts-by-category",
+          "name": "Alerts by Category",
+          "type": "HorizontalBar",
+          "position": {"x": 0, "y": 2, "w": 1, "h": 2},
+          "data": {
+            "source": "alerts",
+            "metric": "alert.count",
+            "groupBy": ["category"],
+            "aggregator": "count"
+          },
+          "visualization": {
+            "type": "HorizontalBar",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "orientation": "horizontal",
+              "sort": "desc"
+            }
+          }
+        },
+        {
+          "id": "top-alert-sources",
+          "name": "Top Resources Generating Alerts",
+          "type": "VerticalBar",
+          "position": {"x": 1, "y": 2, "w": 2, "h": 2},
+          "data": {
+            "source": "alerts",
+            "metric": "alert.count",
+            "groupBy": ["resource"],
+            "aggregator": "count",
+            "limit": 10
+          },
+          "visualization": {
+            "type": "VerticalBar",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "orientation": "vertical",
+              "sort": "desc"
+            }
+          }
+        },
+        {
+          "id": "recent-critical-errors",
+          "name": "Recent Critical Errors",
+          "type": "Grid",
+          "position": {"x": 0, "y": 4, "w": 3, "h": 2},
+          "data": {
+            "source": "errors",
+            "filters": {
+              "severity": "critical",
+              "time": "last 24h"
+            },
+            "columns": [
+              "timestamp",
+              "source",
+              "message",
+              "severity",
+              "status"
+            ],
+            "sort": {
+              "field": "timestamp",
+              "direction": "desc"
+            },
+            "limit": 10
+          },
+          "visualization": {
+            "type": "Grid",
+            "properties": {
+              "showHeaders": true,
+              "pagination": true,
+              "pageSize": 10
+            }
+          }
+        },
+        {
+          "id": "alert-trends",
+          "name": "Alert Trends",
+          "type": "Area",
+          "position": {"x": 0, "y": 6, "w": 2, "h": 2},
+          "data": {
+            "source": "alerts",
+            "metric": "alert.count",
+            "groupBy": ["time", "severity"],
+            "aggregator": "count",
+            "interval": "1h"
+          },
+          "visualization": {
+            "type": "Area",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "stacked": true,
+              "smooth": true,
+              "fill": true
+            }
+          }
+        },
+        {
+          "id": "errors-by-host",
+          "name": "Errors by Host/Source",
+          "type": "HorizontalBar",
+          "position": {"x": 2, "y": 6, "w": 1, "h": 2},
+          "data": {
+            "source": "errors",
+            "metric": "error.count",
+            "groupBy": ["host"],
+            "aggregator": "count",
+            "limit": 5
+          },
+          "visualization": {
+            "type": "HorizontalBar",
+            "properties": {
+              "showLabels": true,
+              "showLegend": true,
+              "orientation": "horizontal",
+              "sort": "desc"
+            }
+          }
+        },
+        {
+          "id": "active-alerts",
+          "name": "Active Unresolved Alerts",
+          "type": "Grid",
+          "position": {"x": 0, "y": 8, "w": 3, "h": 2},
+          "data": {
+            "source": "alerts",
+            "filters": {
+              "status": "active",
+              "resolved": false
+            },
+            "columns": [
+              "timestamp",
+              "source",
+              "category",
+              "severity",
+              "message",
+              "status"
+            ],
+            "sort": {
+              "field": "severity",
+              "direction": "desc"
+            },
+            "limit": 20
+          },
+          "visualization": {
+            "type": "Grid",
+            "properties": {
+              "showHeaders": true,
+              "pagination": true,
+              "pageSize": 20
+            }
+          }
+        }
+      ]
+    },
+    "filters": {
+      "timeRange": {
+        "type": "relative",
+        "value": "24h"
+      },
+      "severity": {
+        "type": "multi-select",
+        "options": ["critical", "warning", "info"]
+      },
+      "source": {
+        "type": "multi-select",
+        "options": ["network", "application", "database", "system"]
+      }
+    },
+    "refresh": {
+      "interval": 60,
+      "unit": "seconds"
+    }
+  }
+} 

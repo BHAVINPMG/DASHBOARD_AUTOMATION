@@ -1,0 +1,70 @@
+{
+  "rules": [
+    {
+      "name": "Visualization Name Format",
+      "description": "Visualization names should be descriptive and follow Title Case format",
+      "pattern": "\"visualization.name\": \"[A-Z][a-zA-Z0-9 ]+\"",
+      "severity": "warning"
+    },
+    {
+      "name": "Timeline Configuration",
+      "description": "Timeline configuration should be consistent across visualizations",
+      "pattern": "\"visualization.timeline\":\\s*{\\s*\"relative.timeline\":\\s*\"[^\"]+\",\\s*\"visualization.time.range.inclusive\":\\s*\"(yes|no)\"\\s*}",
+      "severity": "warning"
+    },
+    {
+      "name": "Granularity Format",
+      "description": "Granularity should be specified with value and unit",
+      "pattern": "\"granularity\":\\s*{\\s*\"value\":\\s*\\d+,\\s*\"unit\":\\s*\"[mh]\"\\s*}",
+      "severity": "error"
+    },
+    {
+      "name": "Chart Properties",
+      "description": "Chart properties should include required fields",
+      "pattern": "\"chart\":\\s*{\\s*\"chart.legend\":\\s*\"(yes|no)\",\\s*\"vertical.legend\":\\s*\"(yes|no)\",\\s*\"line.width\":\\s*\\d+,\\s*\"chart.label\":\\s*\"(yes|no)\"",
+      "severity": "warning"
+    },
+    {
+      "name": "Data Source Configuration",
+      "description": "Data sources should have proper type and category",
+      "pattern": "\"type\":\\s*\"[^\"]+\",\\s*\"category\":\\s*\"[^\"]+\"",
+      "severity": "error"
+    },
+    {
+      "name": "ID Format",
+      "description": "IDs should be numeric and properly formatted",
+      "pattern": "\"id\":\\s*\\d{12,}",
+      "severity": "warning"
+    },
+    {
+      "name": "Severity Levels",
+      "description": "Severity levels should be one of: DOWN, CRITICAL, MAJOR, WARNING",
+      "pattern": "\"severity\":\\s*\\[\\s*\"(DOWN|CRITICAL|MAJOR|WARNING)\"",
+      "severity": "error"
+    },
+    {
+      "name": "Color Conditions",
+      "description": "Color conditions should include color and value",
+      "pattern": "\"color.conditions\":\\s*\\[\\s*{\\s*\"color\":\\s*\"#[0-9a-fA-F]{6}\",\\s*\"value\":\\s*\\d+\\s*}",
+      "severity": "warning"
+    },
+    {
+      "name": "Grid Configuration",
+      "description": "Grid configuration should include required properties",
+      "pattern": "\"grid\":\\s*{\\s*\"searchable\":\\s*\"(yes|no)\",\\s*\"column.selection\":\\s*\"(yes|no)\",\\s*\"header\":\\s*\"(yes|no)\"",
+      "severity": "warning"
+    },
+    {
+      "name": "Container Type",
+      "description": "Container type should be specified",
+      "pattern": "\"container.type\":\\s*\"dashboard\"",
+      "severity": "error"
+    }
+  ],
+  "settings": {
+    "maxLineLength": 120,
+    "indentSize": 2,
+    "requireTrailingComma": true,
+    "requireQuotes": true
+  }
+} 

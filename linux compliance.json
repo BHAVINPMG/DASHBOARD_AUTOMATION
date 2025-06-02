@@ -1,0 +1,1303 @@
+[
+  {
+    "visualization.name": "Linux Individual User Action",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.syslog.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.syslog.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1799950354655248
+  },
+  {
+    "visualization.name": "Linux User Logons",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "linux.login.audit.user.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.login.audit.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.login.audit.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "linux.login.audit.user.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1799950354655249
+  },
+  {
+    "visualization.name": "Linux User Logons (SSHD)",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "linux.login.audit.program",
+                    "operator": "=",
+                    "value": "sshd"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "linux.login.audit.user.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.login.audit.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.login.audit.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "linux.login.audit.user.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1799950354655250
+  },
+  {
+    "visualization.name": "Linux User Logoffs",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "linux.logout.audit.user.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.logout.audit.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.logout.audit.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "linux.logout.audit.user.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1799950354655252
+  },
+  {
+    "visualization.name": "Linux User Logoffs(SSHD)",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "linux.logout.audit.program",
+                    "operator": "contain",
+                    "value": "SSHD"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "linux.logout.audit.user.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.logout.audit.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.logout.audit.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "linux.logout.audit.user.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1799950354655256
+  },
+  {
+    "visualization.name": "Linux Unsuccessful User Logons",
+    "visualization.timeline": {
+      "relative.timeline": "this.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "linux.login.audit.audit.status",
+                    "operator": "=",
+                    "value": "failed"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "linux.login.audit.user.name",
+          "linux.login.audit.audit.status"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.login.audit.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "small"
+        },
+        "columns": [
+          {
+            "name": "linux.login.audit.user.name",
+            "title": "User Name",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 1,
+            "style": {}
+          },
+          {
+            "name": "linux.login.audit.event.type.count",
+            "title": "Event Count",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 2,
+            "style": {}
+          },
+          {
+            "name": "linux.login.audit.audit.status",
+            "title": "Audit Status",
+            "show": "yes",
+            "sortable": "yes",
+            "disable": "no",
+            "resizable": "yes",
+            "selectable": "yes",
+            "orderable": "yes",
+            "position": 3,
+            "style": {
+              "color.conditions": [
+                {
+                  "operator": "=",
+                  "value": "failed",
+                  "color.type": "background",
+                  "color": "#F04E3E"
+                }
+              ]
+            }
+          }
+        ],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.login.audit.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "linux.login.audit.user.name",
+      "linux.login.audit.audit.status"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1799950354655272
+  },
+  {
+    "visualization.name": "Linux User Account Management (New User Added)",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "or",
+                "conditions": [
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "useradd"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "new user"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "new account"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.syslog.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.syslog.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1799950354655275
+  },
+  {
+    "visualization.name": "Linux User Account Management (Users Deleted)",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "or",
+                "conditions": [
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "userdelete"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "account remove"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "user remove"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.syslog.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.syslog.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1799950354655276
+  },
+  {
+    "visualization.name": "Linux User Account Management (Password Changed)",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "or",
+                "conditions": [
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "password changed"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "password was changed"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.syslog.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.syslog.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2060301136488008
+  },
+  {
+    "visualization.name": "Linux User Account Management (Password Changed Failed)",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "or",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "or",
+                "conditions": [
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "password changed failed"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "password changed was failed"
+                  }
+                ]
+              },
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "password"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "changed"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "failed"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.syslog.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.syslog.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2060301136488010
+  },
+  {
+    "visualization.name": "Linux Failed User Logons",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "or",
+                "conditions": [
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "Failed password"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "failed password"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.syslog.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.syslog.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2060301136488012
+  },
+  {
+    "visualization.name": "Linux User Account Management (Group Added)",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "or",
+                "conditions": [
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "group added"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "new group"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "group added"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.syslog.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.syslog.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2060301136488016
+  },
+  {
+    "visualization.name": "Linux User Account Management (Group Delete)",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "or",
+                "conditions": [
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "group delete"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "group removed"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.syslog.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.syslog.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2060301136488017
+  },
+  {
+    "visualization.name": "Linux User Account Management (Group Modified)",
+    "visualization.timeline": {
+      "relative.timeline": "last.month",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "or",
+                "conditions": [
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "group modified"
+                  },
+                  {
+                    "operand": "message",
+                    "operator": "contain",
+                    "value": "group changed"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "event.source"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.syslog.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.syslog.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "event.source"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2060301136488020
+  },
+  {
+    "visualization.name": "Linux User Logons (SU)",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "linux.login.audit.program",
+                    "operator": "=",
+                    "value": "su"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "linux.login.audit.user.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.login.audit.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.login.audit.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "linux.login.audit.user.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2060301136488021
+  },
+  {
+    "visualization.name": "Linux User Logons (FTP)",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "linux.login.audit.program",
+                    "operator": "=",
+                    "value": "ftpd"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "linux.login.audit.user.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.login.audit.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.login.audit.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "linux.login.audit.user.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2060301136488022
+  },
+  {
+    "visualization.name": "Linux User Logoffs(SU)",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "linux.logout.audit.program",
+                    "operator": "contain",
+                    "value": "su"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "linux.logout.audit.user.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.logout.audit.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.logout.audit.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "linux.logout.audit.user.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2060301136488023
+  },
+  {
+    "visualization.name": "Linux User Logoffs(FTP)",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "log",
+        "category": "log",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "linux.logout.audit.program",
+                    "operator": "contain",
+                    "value": "ftpd"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "linux.logout.audit.user.name"
+        ],
+        "data.points": [
+          {
+            "data.point": "linux.logout.audit.event.type",
+            "aggregator": "count"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "linux.logout.audit.event.type.count"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "linux.logout.audit.user.name"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 2160349514968010
+  }
+]

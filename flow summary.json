@@ -1,0 +1,537 @@
+[
+  {
+    "visualization.name": "Traffic from Source to Destination Country",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Map",
+    "visualization.type": "Map",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "destination.country",
+          "source.country"
+        ],
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "avg",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {},
+    "visualization.result.by": [
+      "destination.country",
+      "source.country"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 96435113520225
+  },
+  {
+    "visualization.name": "Traffic by Source to Destination City",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Sankey",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "destination.country",
+          "destination.city",
+          "source.city",
+          "source.country"
+        ],
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "medium"
+        },
+        "columns": [],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "volume.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "destination.country",
+      "destination.city",
+      "source.city",
+      "source.country"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 287585494788
+  },
+  {
+    "visualization.name": "Traffic by Source IP to Destination IP",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Sankey",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "destination.ip",
+          "source.ip",
+          "protocol",
+          "source.port"
+        ],
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "avg",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "grid": {
+        "searchable": "yes",
+        "column.selection": "no",
+        "header": "yes",
+        "style": {
+          "header.font.size": "medium"
+        },
+        "columns": [],
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "volume.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "destination.ip",
+      "source.ip",
+      "protocol",
+      "source.port"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 235902439670263
+  },
+  {
+    "visualization.name": "Tree Map - Traffic by Destination Country",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Map",
+    "visualization.type": "Tree View",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {
+            "operator": "and",
+            "filter": "include",
+            "groups": [
+              {
+                "filter": "include",
+                "operator": "and",
+                "conditions": [
+                  {
+                    "operand": "source.city",
+                    "operator": "=",
+                    "value": "Ahmedabad"
+                  }
+                ]
+              }
+            ]
+          },
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "destination.country"
+        ],
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "avg",
+            "entities": []
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {},
+    "visualization.result.by": [
+      "destination.country"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 96435113520226
+  },
+  {
+    "visualization.name": "Volume Bytes by Application",
+    "visualization.granularity": "5 m",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "Chart",
+    "visualization.type": "Line",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "application"
+        ],
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": 0,
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "application"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 287585494785
+  },
+  {
+    "visualization.name": "Traffic by Protocol",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "protocol"
+        ],
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "volume.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "protocol"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963883
+  },
+  {
+    "visualization.name": "Packets by TCP Flags",
+    "visualization.timeline": {
+      "relative.timeline": "yesterday",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "tcp.flags"
+        ],
+        "data.points": [
+          {
+            "data.point": "packets",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": "",
+        "chart.legend": "no",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "packets.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "tcp.flags"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963884
+  },
+  {
+    "visualization.name": "Traffic by Destination Port",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "destination.port"
+        ],
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "no",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "volume.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "destination.port"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963882
+  },
+  {
+    "visualization.name": "Traffic by Destination Domain",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "destination.domain"
+        ],
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": "0",
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "yes",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "volume.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "destination.domain"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1369898082963886
+  },
+  {
+    "visualization.name": "Traffic by Source Domain",
+    "visualization.timeline": {
+      "relative.timeline": "today",
+      "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Pie",
+    "visualization.data.sources": [
+      {
+        "type": "flow",
+        "category": "flow",
+        "filters": {
+          "data.filter": {},
+          "result.filter": {}
+        },
+        "visualization.result.by": [
+          "source.domain"
+        ],
+        "data.points": [
+          {
+            "data.point": "volume.bytes",
+            "aggregator": "avg"
+          }
+        ]
+      }
+    ],
+    "visualization.properties": {
+      "chart": {
+        "rotation.angle": "0",
+        "chart.legend": "yes",
+        "vertical.legend": "no",
+        "line.width": 2,
+        "chart.label": "yes",
+        "highchart.settings": {},
+        "sorting": {
+          "limit": 10,
+          "order": "desc",
+          "column": "volume.bytes.avg"
+        }
+      }
+    },
+    "visualization.result.by": [
+      "source.domain"
+    ],
+    "granularity": {
+      "value": 5,
+      "unit": "m"
+    },
+    "container.type": "dashboard",
+    "_type": "0",
+    "id": 1841296899881712
+  }
+]
