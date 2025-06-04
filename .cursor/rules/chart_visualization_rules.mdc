@@ -99,6 +99,8 @@ type VisualizationType =
 type DataSourceType = "metric" | "log" | "flow" | "policy" | "availability"
 ```
 
+**Note**: The `category` field is only available when `type` is `"policy"`. For policy types, the category can be `"metric"`, `"log"`, `"flow"`, or `"trap"`.
+
 ### Aggregator Functions
 ```typescript
 type Aggregator = "avg" | "min" | "max" | "sum" | "count"
@@ -150,6 +152,84 @@ type StatisticalFunc =
 ```typescript
 type ResultBy = "monitor" | "tag" | "group"
 ```
+
+## 🧩 Data Source Type-Specific Rules
+
+### Rules for `entity.type` Based on Data Source Type
+
+Set allowed values for `entity.type` based on the `type` of data source:
+
+| `type`         | Allowed `entity.type` Values                       |
+| -------------- | -------------------------------------------------- |
+| `metric`       | `"Monitor"`, `"Group"`, `"Tag"`                    |
+| `availability` | `"Monitor"`, `"Group"`, `"Tag"`                    |
+| `policy`       | `"Monitor"`, `"Group"`, `"Tag"`                    |
+| `log`          | `"event.source"`, `"event.source.type"`, `"Group"` |
+| `flow`         | `"event.source"`, `"Group"`                        |
+
+### Rules for `aggregator` Based on Data Source Type
+
+Set allowed values for `aggregator` based on the `type` of data source:
+
+| `type`         | Allowed `aggregator` Values                   |
+| -------------- | --------------------------------------------- |
+| `metric`       | `"avg"`, `"min"`, `"max"`, `"sum"`, `"count"` |
+| `availability` | `"avg"`, `"min"`, `"max"`, `"sum"`, `"count"` |
+| `policy`       | `"count"`                                     |
+| `log`          | `"count"`                                     |
+| `flow`         | `"avg"`, `"sum"`, `"count"`                   |
+
+### Rules for `visualization.result.by` Based on Data Source Type and Category
+
+Define allowed and default values based on the `type` and optionally the `category`:
+
+#### ▶ Type: `metric` or `availability`
+
+* Allowed values: `"monitor"`, `"group"`, `"tag"`
+* Max selections: **1 only**
+* Default: `"monitor"`
+
+#### ▶ Type: `log`
+
+* Allowed values:
+  * `"event.source.type"`
+  * `"event.severity"`
+  * `"event.category"`
+  * `"event.source"`
+* Max selections: **4**
+* Default: `"event.source.type"`
+
+#### ▶ Type: `flow`
+
+* Allowed values:
+  * `"destination.aso"`, `"destination.port"`, `"source.aso"`, `"destination.if.index"`,
+  * `"destination.isp"`, `"source.domain"`, `"destination.threat"`, `"protocol"`,
+  * `"destination.city"`, `"source.ip"`, `"tos"`, `"source.isp"`, `"source.city"`,
+  * `"tcp.flags"`, `"source.as"`, `"source.threat"`, `"destination.domain"`,
+  * `"destination.ip.as"`, `"destination.ip"`, `"source.country"`, `"source.if.index"`,
+  * `"application"`, `"source.port"`, `"event.source"`, `"destination.as"`,
+  * `"destination.country"`, `"user"`
+* Max selections: **4**
+* Default: `["source.ip", "destination.ip"]`
+
+#### ▶ Type: `policy`, Category: `metric`
+
+* Allowed values: `"monitor"`, `"severity"`, `"policy.id"`
+* Max selections: **1 only**
+* Default: `"monitor"`
+
+#### ▶ Type: `policy`, Category: `log`, `trap`, or `flow`
+
+* Allowed values: `"severity"`, `"policy.id"`
+* Max selections: **1 only**
+* Default: `"severity"`
+
+### Enforcement Rules for Data Source Types
+
+* If the `type` is not matched with its respective `entity.type`, `aggregator`, or `visualization.result.by`, reject the JSON as **invalid**.
+* If no `entity.type` or `visualization.result.by` is explicitly provided and the schema allows it, use defaults.
+* Prevent invalid combinations like `metric` with `"event.source"` or `log` with `"avg"`.
+* Ensure that combinations like `metric` with `"entity.type": "event.source"` or `log` with `"aggregator": "avg"` are strictly **disallowed**.
 
 ## Chart Properties Rules
 
@@ -425,6 +505,10 @@ Before generating, verify:
 5. **Count markers** - Reject if > 4 markers
 6. **Check statistical functions** - Only include if explicitly requested
 7. **Set result grouping** - Apply conditional logic based on data point count
+8. **Validate entity.type** - Ensure compatibility with data source type
+9. **Validate aggregator** - Ensure compatibility with data source type
+10. **Validate visualization.result.by** - Enforce type-specific constraints and limits
+11. **Validate category field** - Only allow for policy types
 
 ### Type-Specific Validation
 ```typescript
@@ -432,6 +516,28 @@ function validateDataSource(source, allSources) {
   switch(source.type) {
     case "metric":
       if (source.data.points.length > 4) throw "Max 4 data points for metric"
+      
+      // Validate entity.type for metric
+      source.data.points.forEach(point => {
+        if (point.entity?.type && !["Monitor", "Group", "Tag"].includes(point.entity.type)) {
+          throw `Invalid entity.type "${point.entity.type}" for metric. Allowed: Monitor, Group, Tag`
+        }
+        if (point.aggregator && !["avg", "min", "max", "sum", "count"].includes(point.aggregator)) {
+          throw `Invalid aggregator "${point.aggregator}" for metric. Allowed: avg, min, max, sum, count`
+        }
+      })
+      
+      // Validate visualization.result.by for metric
+      if (source.visualization?.result?.by) {
+        if (source.visualization.result.by.length > 1) {
+          throw "Max 1 selection for visualization.result.by with metric type"
+        }
+        const validResultBy = ["monitor", "group", "tag"]
+        if (!validResultBy.includes(source.visualization.result.by[0])) {
+          throw `Invalid visualization.result.by "${source.visualization.result.by[0]}" for metric. Allowed: ${validResultBy.join(", ")}`
+        }
+      }
+      
       if (source.data.points.length === 1) {
         source.visualization.result.by = ["monitor"]
       } else {
@@ -443,6 +549,28 @@ function validateDataSource(source, allSources) {
       // Availability sources must be the ONLY source in the array
       if (allSources.length > 1) throw "Availability type requires single source only"
       if (source.data.points.length > 4) throw "Max 4 data points for availability"
+      
+      // Validate entity.type for availability
+      source.data.points.forEach(point => {
+        if (point.entity?.type && !["Monitor", "Group", "Tag"].includes(point.entity.type)) {
+          throw `Invalid entity.type "${point.entity.type}" for availability. Allowed: Monitor, Group, Tag`
+        }
+        if (point.aggregator && !["avg", "min", "max", "sum", "count"].includes(point.aggregator)) {
+          throw `Invalid aggregator "${point.aggregator}" for availability. Allowed: avg, min, max, sum, count`
+        }
+      })
+      
+      // Validate visualization.result.by for availability
+      if (source.visualization?.result?.by) {
+        if (source.visualization.result.by.length > 1) {
+          throw "Max 1 selection for visualization.result.by with availability type"
+        }
+        const validResultBy = ["monitor", "group", "tag"]
+        if (!validResultBy.includes(source.visualization.result.by[0])) {
+          throw `Invalid visualization.result.by "${source.visualization.result.by[0]}" for availability. Allowed: ${validResultBy.join(", ")}`
+        }
+      }
+      
       if (source.data.points.length === 1) {
         source.visualization.result.by = ["monitor"]
       } else {
@@ -452,6 +580,32 @@ function validateDataSource(source, allSources) {
     
     case "log":
       if (source.data.points.length > 4) throw "Max 4 data points for log"
+      
+      // Validate entity.type for log
+      source.data.points.forEach(point => {
+        if (point.entity?.type && !["event.source", "event.source.type", "Group"].includes(point.entity.type)) {
+          throw `Invalid entity.type "${point.entity.type}" for log. Allowed: event.source, event.source.type, Group`
+        }
+        if (point.aggregator && point.aggregator !== "count") {
+          throw `Invalid aggregator "${point.aggregator}" for log. Only "count" is allowed`
+        }
+      })
+      
+      // Validate visualization.result.by for log
+      if (source.visualization?.result?.by) {
+        if (source.visualization.result.by.length > 4) {
+          throw "Max 4 selections for visualization.result.by with log type"
+        }
+        const validResultBy = ["event.source.type", "event.severity", "event.category", "event.source"]
+        source.visualization.result.by.forEach(resultBy => {
+          if (!validResultBy.includes(resultBy)) {
+            throw `Invalid visualization.result.by "${resultBy}" for log. Allowed: ${validResultBy.join(", ")}`
+          }
+        })
+      } else {
+        source.visualization.result.by = ["event.source.type"]
+      }
+      
       if (source.data.points.length === 1) {
         source.visualization.result.by = ["monitor"]
       } else {
@@ -462,6 +616,40 @@ function validateDataSource(source, allSources) {
     
     case "flow":
       if (source.data.points.length > 4) throw "Max 4 data points for flow"
+      
+      // Validate entity.type for flow
+      source.data.points.forEach(point => {
+        if (point.entity?.type && !["event.source", "Group"].includes(point.entity.type)) {
+          throw `Invalid entity.type "${point.entity.type}" for flow. Allowed: event.source, Group`
+        }
+        if (point.aggregator && !["avg", "sum", "count"].includes(point.aggregator)) {
+          throw `Invalid aggregator "${point.aggregator}" for flow. Allowed: avg, sum, count`
+        }
+      })
+      
+      // Validate visualization.result.by for flow
+      if (source.visualization?.result?.by) {
+        if (source.visualization.result.by.length > 4) {
+          throw "Max 4 selections for visualization.result.by with flow type"
+        }
+        const validResultBy = [
+          "destination.aso", "destination.port", "source.aso", "destination.if.index",
+          "destination.isp", "source.domain", "destination.threat", "protocol",
+          "destination.city", "source.ip", "tos", "source.isp", "source.city",
+          "tcp.flags", "source.as", "source.threat", "destination.domain",
+          "destination.ip.as", "destination.ip", "source.country", "source.if.index",
+          "application", "source.port", "event.source", "destination.as",
+          "destination.country", "user"
+        ]
+        source.visualization.result.by.forEach(resultBy => {
+          if (!validResultBy.includes(resultBy)) {
+            throw `Invalid visualization.result.by "${resultBy}" for flow. Allowed: ${validResultBy.join(", ")}`
+          }
+        })
+      } else {
+        source.visualization.result.by = ["source.ip", "destination.ip"]
+      }
+      
       if (source.data.points.length === 1) {
         source.visualization.result.by = ["monitor"]
       } else {
@@ -470,9 +658,56 @@ function validateDataSource(source, allSources) {
       source.category = "flow"
       break;
     
+    case "policy":
+      // Validate category field - only allowed for policy type
+      if (source.category && !["metric", "log", "flow", "trap"].includes(source.category)) {
+        throw `Invalid category "${source.category}" for policy. Allowed: metric, log, flow, trap`
+      }
+      
+      // Validate entity.type for policy
+      source.data.points.forEach(point => {
+        if (point.entity?.type && !["Monitor", "Group", "Tag"].includes(point.entity.type)) {
+          throw `Invalid entity.type "${point.entity.type}" for policy. Allowed: Monitor, Group, Tag`
+        }
+        if (point.aggregator && point.aggregator !== "count") {
+          throw `Invalid aggregator "${point.aggregator}" for policy. Only "count" is allowed`
+        }
+      })
+      
+      // Validate visualization.result.by for policy based on category
+      if (source.visualization?.result?.by) {
+        if (source.visualization.result.by.length > 1) {
+          throw "Max 1 selection for visualization.result.by with policy type"
+        }
+        
+        let validResultBy = []
+        if (source.category === "metric") {
+          validResultBy = ["monitor", "severity", "policy.id"]
+        } else if (["log", "trap", "flow"].includes(source.category)) {
+          validResultBy = ["severity", "policy.id"]
+        }
+        
+        if (!validResultBy.includes(source.visualization.result.by[0])) {
+          throw `Invalid visualization.result.by "${source.visualization.result.by[0]}" for policy with category "${source.category}". Allowed: ${validResultBy.join(", ")}`
+        }
+      } else {
+        // Set default based on category
+        if (source.category === "metric") {
+          source.visualization.result.by = ["monitor"]
+        } else if (["log", "trap", "flow"].includes(source.category)) {
+          source.visualization.result.by = ["severity"]
+        }
+      }
+      break;
+    
     case "alert":
       if (source.data.points.length > 1) throw "Only 1 data point for alert"
       break;
+  }
+  
+  // Validate category field is only used with policy type
+  if (source.category && source.type !== "policy") {
+    throw `Category field is only allowed when type is "policy". Current type: "${source.type}"`
   }
 }
 ```
@@ -542,9 +777,13 @@ When user requests a chart configuration:
 1. Start with mandatory template
 2. **Apply conditional logic rules** based on data source types
 3. **Enforce all constraints** (data sources, data points, filters)
-4. Apply user-specified overrides
-5. **Validate against all rules** before generation
-6. Ensure no mandatory fields are missing
-7. Return complete, valid JSON
+4. **Validate entity.type, aggregator, and visualization.result.by** against data source type rules
+5. **Validate category field** - only allow for policy types
+6. Apply user-specified overrides
+7. **Validate against all rules** before generation
+8. Ensure no mandatory fields are missing
+9. Return complete, valid JSON
 
-Remember: **Complete structure integrity + conditional logic compliance is non-negotiable**. Violating any constraint results in generation failure.
+Remember: **Complete structure integrity + conditional logic compliance + data source type validation is non-negotiable**. Violating any constraint results in generation failure.
+
+## Chart Properties Rules

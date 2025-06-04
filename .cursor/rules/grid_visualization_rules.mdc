@@ -6,15 +6,17 @@ alwaysApply: false
 # Grid Visualization JSON Cursor Rules
 
 ## Overview
-You are a JSON configuration generator for Grid-based visualizations. Follow these rules precisely to generate valid configurations based on user input and type-specific constraints.
+You are a JSON configuration generator for Grid-based visualizations. Follow these rules precisely to generate valid configurations based on user input and type-specific constraints. Always ensure complete structural integrity and never omit mandatory fields.
 
 ## Core Principles
-- Always validate against data source type limits
-- Apply defaults when user input is missing
-- Enforce strict compliance with schema requirements
-- Reject invalid configurations rather than generate broken JSON
+1. **NEVER omit any field** from the mandatory structure
+2. **Always validate** against the provided JSON schema
+3. **Use exact default values** unless explicitly overridden by user
+4. **Maintain structural integrity** - missing fields = failed generation
+5. **Enforce strict compliance** with schema requirements
+6. **Reject invalid configurations** rather than generate broken JSON
 
-## Default Base Template
+## Mandatory Default Structure Template
 
 ```json
 {
@@ -70,7 +72,7 @@ You are a JSON configuration generator for Grid-based visualizations. Follow the
 
 ### Default Values
 - `relative.timeline`: `"today"` if not specified
-- `visualization.result.by`: `["monitor"]` if not specified  
+- `visualization.result.by`: Type-specific defaults (see Visualization Result By & Grid Column Mapping Rules)
 - `aggregator`: `"avg"` for each data point if not specified
 - `visualization.time.range.inclusive`: `"no"` if not specified
 
@@ -78,19 +80,83 @@ You are a JSON configuration generator for Grid-based visualizations. Follow the
 - Generate unique integer ID if not provided
 - Use format: `Math.floor(Math.random() * 1000000000000)`
 
-## Data Source Type Rules
+## Timeline Configuration Rules
 
-### 1. Metric Type
-```typescript
-type: "metric" | "availability"
+### Default Timeline
+- **Default**: `"relative.timeline": "today"`
+- **Valid patterns**: `custom|today|yesterday|this\.(week|month)|last\.(week|month|quarter|year)|-\d+[mhd]`
+
+### Custom Timeline Requirements
+- **Custom timeline requires**: `from.date`, `from.time`, `to.date`, `to.time`
+- **Date format**: `YYYY/MM/DD`
+- **Time format**: `HH:MM:SS`
+- **Must set**: `"visualization.time.range.inclusive": "yes"` for custom ranges
+
+### Timeline Validation
+```json
+// Basic timeline
+{
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  }
+}
+
+// Custom timeline (all fields required)
+{
+  "visualization.timeline": {
+    "relative.timeline": "custom",
+    "from.date": "2024/01/01",
+    "from.time": "00:00:00",
+    "to.date": "2024/01/31",
+    "to.time": "23:59:59",
+    "visualization.time.range.inclusive": "yes"
+  }
+}
 ```
 
-**Constraints:**
-- Maximum 10 data points allowed
-- Default aggregator: `"avg"`
-- Default result.by: `["monitor"]`
+## Data Source Constraints
 
-**Template:**
+### 📊 Maximum Data Sources
+- **ONLY ONE** data source allowed in `visualization.data.sources` array
+- **NEVER exceed** this limit regardless of user request
+- **Validation**: `visualization.data.sources.length === 1`
+
+### 📈 Data Source Types
+```typescript
+type DataSourceType = "metric" | "log" | "flow" | "policy" | "availability"
+```
+
+### 🔢 Type-Specific Data Point Limits
+
+#### `"type": "metric"`
+- **Maximum 10** `data.points` allowed
+- **Default aggregator**: `"avg"`
+- **Default result.by**: `["monitor"]` (see comprehensive rules below)
+
+#### `"type": "availability"`  
+- **Maximum 10** `data.points` allowed
+- **Default aggregator**: `"avg"`
+- **Default result.by**: `["monitor"]` (see comprehensive rules below)
+
+#### `"type": "log"`
+- **Unlimited** `data.points` allowed
+- **Default aggregator**: `"count"`
+- **Default result.by**: `["event.source.type"]` (see comprehensive rules below)
+
+#### `"type": "flow"`
+- **Unlimited** `data.points` allowed
+- **Default aggregator**: `"avg"`
+- **Default result.by**: `["source.ip", "destination.ip"]` (see comprehensive rules below)
+
+#### `"type": "policy"`
+- **EXACTLY 1** `data.point` allowed (strict limit)
+- **Default aggregator**: `"count"`
+- **Default result.by**: Depends on category - `["monitor"]` for metric, `["severity"]` for log/trap/flow (see comprehensive rules below)
+
+## Data Source Templates
+
+### Metric/Availability Template
 ```json
 {
   "type": "metric",
@@ -109,17 +175,7 @@ type: "metric" | "availability"
 }
 ```
 
-### 2. Log Type
-```typescript
-type: "log"
-```
-
-**Constraints:**
-- Unlimited data points
-- Default aggregator: `"count"`
-- Default result.by: `["event.source.type"]`
-
-**Template:**
+### Log Template
 ```json
 {
   "type": "log",
@@ -139,21 +195,7 @@ type: "log"
 }
 ```
 
-**Standard Columns:**
-- `event.source.type`
-- `message.count`
-
-### 3. Flow Type
-```typescript
-type: "flow"
-```
-
-**Constraints:**
-- Unlimited data points
-- Default aggregator: `"avg"`
-- Default result.by: `["source.ip", "destination.ip"]`
-
-**Template:**
+### Flow Template
 ```json
 {
   "type": "flow",
@@ -173,22 +215,7 @@ type: "flow"
 }
 ```
 
-**Standard Columns:**
-- `source.ip`
-- `destination.ip`
-- `volume.bytes.avg`
-
-### 4. Policy Type
-```typescript
-type: "policy"
-```
-
-**Constraints:**
-- EXACTLY 1 data point allowed (strict limit)
-- Default aggregator: `"count"`
-- Default result.by: `["object.id"]`
-
-**Template:**
+### Policy Template
 ```json
 {
   "type": "policy",
@@ -206,61 +233,1227 @@ type: "policy"
 }
 ```
 
-**Standard Columns:**
-- `object.id`
-- `severity.count`
+## Visualization Result By & Grid Column Mapping Rules
 
-**Optional Hidden Columns:**
-- `object.type`
-- `object.vendor`
-- `object.ip`
+### 🧩 Global Column Behavior
+- **Every selected** `"visualization.result.by"` value must generate a corresponding column
+- **Each `data.point`** must be appended to the columns list as: `<data.point>.<aggregator>` *(e.g., `system.cpu.percent.avg`)*
+- **Column auto-generation** is mandatory and follows type-specific patterns
+- **Position ordering** follows: result.by columns first, then data.point columns
 
-## Validation Rules
+### 📊 Rules by Type & Category
 
-### Data Point Limits
-```typescript
-switch (dataSource.type) {
-  case "metric":
-  case "availability":
-    if (dataPoints.length > 10) {
-      throw new Error("Metric/Availability sources limited to 10 data points");
+#### **1. Type: `metric` or `availability`**
+- **Allowed `visualization.result.by` values**: `"monitor"`, `"group"`, `"tag"`
+- **Maximum selections**: **1 value only**
+- **Default**: `["monitor"]`
+
+##### ✅ Column Mapping for Metric/Availability
+```json
+// If visualization.result.by: ["monitor"]
+{
+  "columns": [
+    {
+      "name": "monitor",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "object.type",
+      "show": "no",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 2
+    },
+    {
+      "name": "object.vendor",
+      "show": "no",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 3
+    },
+    {
+      "name": "object.ip",
+      "show": "no",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 4
     }
-    break;
-  case "policy":
-    if (dataPoints.length !== 1) {
-      throw new Error("Policy sources must have exactly 1 data point");
+    // + data.point.aggregator columns at positions 5, 6, etc.
+  ]
+}
+
+// If visualization.result.by: ["group"]
+{
+  "columns": [
+    {
+      "name": "group",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
     }
-    break;
-  case "log":
-  case "flow":
-    // No limit
-    break;
+    // + data.point.aggregator columns at positions 2, 3, etc.
+  ]
+}
+
+// If visualization.result.by: ["tag"]
+{
+  "columns": [
+    {
+      "name": "tag",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    }
+    // + data.point.aggregator columns at positions 2, 3, etc.
+  ]
 }
 ```
 
-### Required Fields Validation
-- Each data point must have `data.point` and `aggregator`
-- Aggregator must be one of: `["avg", "min", "max", "sum", "count"]`
-- visualization.result.by must contain valid values: `["monitor", "tag", "group"]`
+#### **2. Type: `log`**
+- **Allowed `visualization.result.by` values**: `"event.source.type"`, `"event.severity"`, `"event.category"`, `"event.source"`
+- **Maximum selections**: **4 values**
+- **Default**: `["event.source.type"]`
 
-### Timeline Validation
-```typescript
-// Valid relative timeline patterns
-const timelinePattern = /^(custom|today|yesterday|this\.(week|month)|last\.(week|month|quarter|year)|-\d+[mhd])$/;
-
-// Custom timeline requires date/time fields
-if (timeline.relative === "custom") {
-  requireFields(["from.date", "from.time", "to.date", "to.time"]);
+##### ✅ Column Mapping for Log
+```json
+// Each selected value in visualization.result.by becomes a column
+// Plus every data.point gets a column: data.point.aggregator
+{
+  "columns": [
+    // Result.by columns (positions 1, 2, 3, 4)
+    {
+      "name": "event.source.type",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "event.severity",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 2
+    },
+    // Data point columns (positions 5+)
+    {
+      "name": "message.count",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 5
+    }
+  ]
 }
 ```
+
+#### **3. Type: `flow`**
+- **Allowed `visualization.result.by` values**:
+  ```
+  "destination.aso", "destination.port", "source.aso", "destination.if.index",
+  "destination.isp", "source.domain", "destination.threat", "protocol",
+  "destination.city", "source.ip", "tos", "source.isp", "source.city",
+  "tcp.flags", "source.as", "source.threat", "destination.domain",
+  "destination.ip.as", "destination.ip", "source.country", "source.if.index",
+  "application", "source.port", "event.source", "destination.as",
+  "destination.country", "user"
+  ```
+- **Maximum selections**: **4 values**
+- **Default**: `["source.ip", "destination.ip"]`
+
+##### ✅ Column Mapping for Flow
+```json
+// Each selected value in visualization.result.by becomes a column
+// Plus every data.point gets a column: data.point.aggregator
+{
+  "columns": [
+    // Result.by columns
+    {
+      "name": "source.ip",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "destination.ip",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 2
+    },
+    // Data point columns
+    {
+      "name": "volume.bytes.avg",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 3
+    }
+  ]
+}
+```
+
+#### **4. Type: `policy`, Category: `metric`**
+- **Allowed `visualization.result.by` values**: `"monitor"`, `"severity"`, `"policy.id"`
+- **Maximum selections**: **1 value only**
+- **Default**: `["monitor"]`
+
+##### ✅ Column Mapping for Policy (Category: metric)
+```json
+// If visualization.result.by: ["monitor"]
+{
+  "columns": [
+    {
+      "name": "monitor",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "object.type",
+      "show": "no",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 2
+    },
+    {
+      "name": "object.vendor",
+      "show": "no",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 3
+    },
+    {
+      "name": "object.ip",
+      "show": "no",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 4
+    },
+    {
+      "name": "severity.count",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 5
+    }
+  ]
+}
+
+// If visualization.result.by: ["severity"]
+{
+  "columns": [
+    {
+      "name": "severity",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "severity.count",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 2
+    }
+  ]
+}
+
+// If visualization.result.by: ["policy.id"]
+{
+  "columns": [
+    {
+      "name": "policy.name",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "policy.id",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 2
+    },
+    {
+      "name": "severity.count",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 3
+    }
+  ]
+}
+```
+
+#### **5. Type: `policy`, Category: `log`, `trap`, or `flow`**
+- **Allowed `visualization.result.by` values**: `"severity"`, `"policy.id"`
+- **Maximum selections**: **1 value only**
+- **Default**: `["severity"]`
+
+##### ✅ Column Mapping for Policy (Category: log/trap/flow)
+```json
+// If visualization.result.by: ["severity"]
+{
+  "columns": [
+    {
+      "name": "severity",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "severity.count",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 2
+    }
+  ]
+}
+
+// If visualization.result.by: ["policy.id"]
+{
+  "columns": [
+    {
+      "name": "policy.name",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "policy.id",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 2
+    },
+    {
+      "name": "severity.count",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 3
+    }
+  ]
+}
+```
+
+### 🔧 Data Point Column Auto-Generation Rules
+
+#### Column Name Pattern
+- **Format**: `<data.point>.<aggregator>`
+- **Examples**: 
+  - `system.cpu.percent` + `avg` → `system.cpu.percent.avg`
+  - `message` + `count` → `message.count`
+  - `volume.bytes` + `sum` → `volume.bytes.sum`
+
+#### Column Properties Template
+```json
+{
+  "name": "<data.point>.<aggregator>",
+  "show": "yes",
+  "sortable": "yes",
+  "disable": "no",
+  "resizable": "yes",
+  "selectable": "yes",
+  "orderable": "yes",
+  "position": <next_available_position>
+}
+```
+
+### ❗ Enforcement & Validation Rules
+
+#### Pre-Generation Validation
+```typescript
+function validateVisualizationResultBy(dataSource) {
+  const { type, category, "visualization.result.by": resultBy } = dataSource;
+  
+  // Type-specific validation
+  switch(type) {
+    case "metric":
+    case "availability":
+      if (!["monitor", "group", "tag"].includes(resultBy[0]) || resultBy.length > 1) {
+        throw new Error(`${type} allows only one of: monitor, group, tag`);
+      }
+      break;
+      
+    case "log":
+      const logAllowed = ["event.source.type", "event.severity", "event.category", "event.source"];
+      if (resultBy.length > 4 || !resultBy.every(val => logAllowed.includes(val))) {
+        throw new Error(`Log allows max 4 values from: ${logAllowed.join(", ")}`);
+      }
+      break;
+      
+    case "flow":
+      const flowAllowed = [
+        "destination.aso", "destination.port", "source.aso", "destination.if.index",
+        "destination.isp", "source.domain", "destination.threat", "protocol",
+        "destination.city", "source.ip", "tos", "source.isp", "source.city",
+        "tcp.flags", "source.as", "source.threat", "destination.domain",
+        "destination.ip.as", "destination.ip", "source.country", "source.if.index",
+        "application", "source.port", "event.source", "destination.as",
+        "destination.country", "user"
+      ];
+      if (resultBy.length > 4 || !resultBy.every(val => flowAllowed.includes(val))) {
+        throw new Error(`Flow allows max 4 values from allowed list`);
+      }
+      break;
+      
+    case "policy":
+      if (category === "metric") {
+        if (!["monitor", "severity", "policy.id"].includes(resultBy[0]) || resultBy.length > 1) {
+          throw new Error(`Policy (metric) allows only one of: monitor, severity, policy.id`);
+        }
+      } else if (["log", "trap", "flow"].includes(category)) {
+        if (!["severity", "policy.id"].includes(resultBy[0]) || resultBy.length > 1) {
+          throw new Error(`Policy (${category}) allows only one of: severity, policy.id`);
+        }
+      }
+      break;
+  }
+}
+```
+
+#### Column Generation Validation
+```typescript
+function validateGeneratedColumns(columns, dataSource) {
+  const { type, category, "visualization.result.by": resultBy, "data.points": dataPoints } = dataSource;
+  
+  // Check result.by columns exist
+  resultBy.forEach(resultByValue => {
+    const hasColumn = columns.some(col => col.name === resultByValue || 
+      (resultByValue === "policy.id" && (col.name === "policy.name" || col.name === "policy.id")));
+    if (!hasColumn) {
+      throw new Error(`Missing column for result.by value: ${resultByValue}`);
+    }
+  });
+  
+  // Check data.point columns exist
+  dataPoints.forEach(dataPoint => {
+    const expectedColumnName = `${dataPoint["data.point"]}.${dataPoint.aggregator}`;
+    const hasColumn = columns.some(col => col.name === expectedColumnName);
+    if (!hasColumn) {
+      throw new Error(`Missing column for data point: ${expectedColumnName}`);
+    }
+  });
+  
+  // Type-specific column validation
+  if (type === "policy") {
+    const hasSeverityCount = columns.some(col => col.name === "severity.count");
+    if (!hasSeverityCount) {
+      throw new Error("Policy type must always include severity.count column");
+    }
+  }
+}
+```
+
+### 📋 Default Application Rules
+
+#### Missing `visualization.result.by` Handling
+```typescript
+function applyResultByDefaults(dataSource) {
+  if (!dataSource["visualization.result.by"]) {
+    switch(dataSource.type) {
+      case "metric":
+      case "availability":
+        dataSource["visualization.result.by"] = ["monitor"];
+        break;
+      case "log":
+        dataSource["visualization.result.by"] = ["event.source.type"];
+        break;
+      case "flow":
+        dataSource["visualization.result.by"] = ["source.ip", "destination.ip"];
+        break;
+      case "policy":
+        if (dataSource.category === "metric") {
+          dataSource["visualization.result.by"] = ["monitor"];
+        } else {
+          dataSource["visualization.result.by"] = ["severity"];
+        }
+        break;
+    }
+  }
+}
+```
+
+#### Column Auto-Generation Process
+1. **Start with empty columns array**
+2. **Add result.by columns** (positions 1, 2, 3, 4...)
+3. **Add special columns** (e.g., object.type, object.vendor for monitor)
+4. **Add data.point columns** (next available positions)
+5. **Add mandatory columns** (e.g., severity.count for policy)
+6. **Apply standard column properties** (show, sortable, etc.)
+7. **Set sequential positions**
+
+#### Layout Selection Function
+```typescript
+function applyLayoutSelection(userInput, gridProperties) {
+  const keyValueKeywords = [
+    "key value chart", "key-value chart", 
+    "key value grid", "key-value grid",
+    "key value", "key-value"
+  ];
+  
+  const userInputLower = userInput.toLowerCase();
+  const isKeyValueRequest = keyValueKeywords.some(keyword => 
+    userInputLower.includes(keyword)
+  );
+  
+  if (isKeyValueRequest) {
+    gridProperties.grid.layout = "key-value";
+  } else {
+    gridProperties.grid.layout = gridProperties.grid.layout || "Grid";
+  }
+}
+```
+
+#### Style Configuration Function
+```typescript
+function applyColumnStyleConfiguration(userInput, columns) {
+  // Apply style configuration to each column
+  columns.forEach(column => {
+    // Initialize style as empty object if not specified
+    if (!column.style) {
+      column.style = {};
+    }
+    
+    // Check for specific column style mentions in user input
+    const userInputLower = userInput.toLowerCase();
+    
+    // Width detection for specific columns
+    if (userInputLower.includes("column width") || userInputLower.includes("width percent")) {
+      // This would be applied based on specific user requirements
+      // Example: column.style["width.percent"] = 25.0;
+    }
+    
+    // Color conditions detection
+    if (userInputLower.includes("color condition") || userInputLower.includes("highlight")) {
+      // This would be applied based on specific user requirements
+      // Example: column.style["color.conditions"] = [...];
+    }
+    
+    // If no column style properties specified, leave style as empty object
+  });
+}
+```
+
+Remember: **All validation rules must pass before JSON generation**. Invalid `visualization.result.by` configurations result in generation failure.
+
+## Entity Type & Aggregator Rules by Data Source Type
+
+### 🧩 Entity Type Rules
+
+Set allowed values for `entity.type` based on the `type` of data source:
+
+| **Data Source Type** | **Allowed `entity.type` Values** |
+|---------------------|-----------------------------------|
+| `metric`            | `"Monitor"`, `"Group"`, `"Tag"`   |
+| `availability`      | `"Monitor"`, `"Group"`, `"Tag"`   |
+| `policy`            | `"Monitor"`, `"Group"`, `"Tag"`   |
+| `log`               | `"event.source"`, `"event.source.type"`, `"Group"` |
+| `flow`              | `"event.source"`, `"Group"`       |
+
+#### Entity Type Validation Rules
+- **Case Sensitive**: Entity types must match exactly (e.g., `"Monitor"` not `"monitor"`)
+- **Type Enforcement**: Each data source type has strict entity type constraints
+- **Optional Field**: If no `entity.type` is provided, skip entities assignment entirely
+- **Invalid Combinations**: Reject configurations with mismatched type/entity.type pairs
+
+#### Entity Type Examples
+```json
+// ✅ VALID: metric with Monitor entity type
+{
+  "type": "metric",
+  "data.points": [
+    {
+      "data.point": "system.cpu.percent",
+      "aggregator": "avg",
+      "entity.type": "Monitor",
+      "entities": [1, 2, 3]
+    }
+  ]
+}
+
+// ✅ VALID: log with event.source.type entity type
+{
+  "type": "log",
+  "data.points": [
+    {
+      "data.point": "message",
+      "aggregator": "count",
+      "entity.type": "event.source.type",
+      "entities": [1, 2, 3]
+    }
+  ]
+}
+
+// ❌ INVALID: metric with event.source entity type
+{
+  "type": "metric",
+  "data.points": [
+    {
+      "data.point": "system.cpu.percent",
+      "aggregator": "avg",
+      "entity.type": "event.source", // INVALID for metric type
+      "entities": [1, 2, 3]
+    }
+  ]
+}
+
+// ✅ VALID: No entity type specified (optional)
+{
+  "type": "metric",
+  "data.points": [
+    {
+      "data.point": "system.cpu.percent",
+      "aggregator": "avg"
+      // No entity.type or entities fields
+    }
+  ]
+}
+```
+
+### 🧮 Aggregator Rules
+
+Set allowed values for `aggregator` based on the `type` of data source:
+
+| **Data Source Type** | **Allowed `aggregator` Values** |
+|---------------------|----------------------------------|
+| `metric`            | `"avg"`, `"min"`, `"max"`, `"sum"`, `"last"` |
+| `availability`      | `"avg"`, `"min"`, `"max"`, `"sum"`, `"last"` |
+| `policy`            | `"count"` |
+| `log`               | `"count"` |
+| `flow`              | `"avg"`, `"sum"`, `"count"` |
+
+#### Aggregator Validation Rules
+- **Strict Enforcement**: Only listed aggregators are valid for each type
+- **Case Sensitive**: Aggregator values must match exactly (e.g., `"avg"` not `"AVG"`)
+- **Mandatory Field**: Every data point must have a valid aggregator
+- **Type-Specific Defaults**: Apply defaults when aggregator not specified
+
+#### Default Aggregators by Type
+```typescript
+const DEFAULT_AGGREGATORS = {
+  "metric": "avg",
+  "availability": "avg", 
+  "policy": "count",
+  "log": "count",
+  "flow": "avg"
+};
+```
+
+#### Aggregator Examples
+```json
+// ✅ VALID: metric with allowed aggregators
+{
+  "type": "metric",
+  "data.points": [
+    {
+      "data.point": "system.cpu.percent",
+      "aggregator": "avg" // Valid for metric
+    },
+    {
+      "data.point": "system.memory.usage",
+      "aggregator": "max" // Valid for metric
+    }
+  ]
+}
+
+// ✅ VALID: flow with allowed aggregators
+{
+  "type": "flow",
+  "data.points": [
+    {
+      "data.point": "volume.bytes",
+      "aggregator": "sum" // Valid for flow
+    },
+    {
+      "data.point": "packet.count",
+      "aggregator": "count" // Valid for flow
+    }
+  ]
+}
+
+// ❌ INVALID: log with disallowed aggregator
+{
+  "type": "log", 
+  "data.points": [
+    {
+      "data.point": "message",
+      "aggregator": "avg" // INVALID for log type
+    }
+  ]
+}
+
+// ❌ INVALID: policy with disallowed aggregator
+{
+  "type": "policy",
+  "data.points": [
+    {
+      "data.point": "severity",
+      "aggregator": "sum" // INVALID for policy type
+    }
+  ]
+}
+```
+
+### ❗ Enforcement & Validation Functions
+
+#### Entity Type Validation
+```typescript
+function validateEntityType(dataSource) {
+  const { type, "data.points": dataPoints } = dataSource;
+  
+  const ALLOWED_ENTITY_TYPES = {
+    "metric": ["Monitor", "Group", "Tag"],
+    "availability": ["Monitor", "Group", "Tag"],
+    "policy": ["Monitor", "Group", "Tag"],
+    "log": ["event.source", "event.source.type", "Group"],
+    "flow": ["event.source", "Group"]
+  };
+  
+  dataPoints.forEach((dataPoint, index) => {
+    if (dataPoint["entity.type"]) {
+      const allowedTypes = ALLOWED_ENTITY_TYPES[type];
+      if (!allowedTypes || !allowedTypes.includes(dataPoint["entity.type"])) {
+        throw new Error(
+          `Invalid entity.type "${dataPoint["entity.type"]}" for data source type "${type}". ` +
+          `Allowed values: ${allowedTypes ? allowedTypes.join(", ") : "none"}`
+        );
+      }
+      
+      // Validate entities array exists when entity.type is specified
+      if (!dataPoint.entities || !Array.isArray(dataPoint.entities)) {
+        throw new Error(
+          `Data point ${index + 1}: entity.type specified but entities array is missing or invalid`
+        );
+      }
+    }
+  });
+}
+```
+
+#### Aggregator Validation
+```typescript
+function validateAggregator(dataSource) {
+  const { type, "data.points": dataPoints } = dataSource;
+  
+  const ALLOWED_AGGREGATORS = {
+    "metric": ["avg", "min", "max", "sum", "last"],
+    "availability": ["avg", "min", "max", "sum", "last"],
+    "policy": ["count"],
+    "log": ["count"],
+    "flow": ["avg", "sum", "count"]
+  };
+  
+  dataPoints.forEach((dataPoint, index) => {
+    const aggregator = dataPoint.aggregator;
+    const allowedAggregators = ALLOWED_AGGREGATORS[type];
+    
+    if (!aggregator) {
+      throw new Error(`Data point ${index + 1}: aggregator is required`);
+    }
+    
+    if (!allowedAggregators || !allowedAggregators.includes(aggregator)) {
+      throw new Error(
+        `Invalid aggregator "${aggregator}" for data source type "${type}". ` +
+        `Allowed values: ${allowedAggregators ? allowedAggregators.join(", ") : "none"}`
+      );
+    }
+  });
+}
+```
+
+#### Combined Validation Function
+```typescript
+function validateDataPointConstraints(dataSource) {
+  validateEntityType(dataSource);
+  validateAggregator(dataSource);
+  
+  // Additional cross-validation
+  const { type } = dataSource;
+  
+  // Ensure policy type restrictions
+  if (type === "policy") {
+    dataSource["data.points"].forEach((dataPoint, index) => {
+      if (dataPoint.aggregator !== "count") {
+        throw new Error(`Policy type only supports "count" aggregator, got "${dataPoint.aggregator}" at data point ${index + 1}`);
+      }
+    });
+  }
+  
+  // Ensure log type restrictions  
+  if (type === "log") {
+    dataSource["data.points"].forEach((dataPoint, index) => {
+      if (dataPoint.aggregator !== "count") {
+        throw new Error(`Log type only supports "count" aggregator, got "${dataPoint.aggregator}" at data point ${index + 1}`);
+      }
+    });
+  }
+}
+```
+
+### 🔧 Default Application Rules
+
+#### Apply Entity Type Defaults
+```typescript
+function applyEntityTypeDefaults(dataSource) {
+  // Entity type is optional - only validate if provided
+  // No defaults applied for entity.type
+  dataSource["data.points"].forEach(dataPoint => {
+    if (dataPoint["entity.type"] && !dataPoint.entities) {
+      dataPoint.entities = []; // Initialize empty entities array if entity.type provided
+    }
+  });
+}
+```
+
+#### Apply Aggregator Defaults
+```typescript
+function applyAggregatorDefaults(dataSource) {
+  const { type } = dataSource;
+  
+  const DEFAULT_AGGREGATORS = {
+    "metric": "avg",
+    "availability": "avg",
+    "policy": "count", 
+    "log": "count",
+    "flow": "avg"
+  };
+  
+  dataSource["data.points"].forEach(dataPoint => {
+    if (!dataPoint.aggregator) {
+      dataPoint.aggregator = DEFAULT_AGGREGATORS[type];
+    }
+  });
+}
+```
+
+### 📋 Type-Specific Constraint Matrix
+
+#### Complete Validation Matrix
+```typescript
+const TYPE_CONSTRAINTS = {
+  "metric": {
+    entityTypes: ["Monitor", "Group", "Tag"],
+    aggregators: ["avg", "min", "max", "sum", "last"],
+    defaultAggregator: "avg",
+    maxDataPoints: 10
+  },
+  "availability": {
+    entityTypes: ["Monitor", "Group", "Tag"],
+    aggregators: ["avg", "min", "max", "sum", "last"],
+    defaultAggregator: "avg",
+    maxDataPoints: 10
+  },
+  "policy": {
+    entityTypes: ["Monitor", "Group", "Tag"],
+    aggregators: ["count"],
+    defaultAggregator: "count",
+    maxDataPoints: 1
+  },
+  "log": {
+    entityTypes: ["event.source", "event.source.type", "Group"],
+    aggregators: ["count"],
+    defaultAggregator: "count",
+    maxDataPoints: Infinity
+  },
+  "flow": {
+    entityTypes: ["event.source", "Group"],
+    aggregators: ["avg", "sum", "count"],
+    defaultAggregator: "avg",
+    maxDataPoints: Infinity
+  }
+};
+```
+
+### ❌ Common Invalid Combinations to Reject
+
+#### Strictly Disallowed Combinations
+```json
+// ❌ INVALID: metric with event.source entity type
+{
+  "type": "metric",
+  "data.points": [
+    {
+      "entity.type": "event.source" // REJECT
+    }
+  ]
+}
+
+// ❌ INVALID: log with avg aggregator
+{
+  "type": "log", 
+  "data.points": [
+    {
+      "aggregator": "avg" // REJECT
+    }
+  ]
+}
+
+// ❌ INVALID: policy with sum aggregator
+{
+  "type": "policy",
+  "data.points": [
+    {
+      "aggregator": "sum" // REJECT
+    }
+  ]
+}
+
+// ❌ INVALID: flow with Monitor entity type
+{
+  "type": "flow",
+  "data.points": [
+    {
+      "entity.type": "Monitor" // REJECT
+    }
+  ]
+}
+
+// ❌ INVALID: availability with event.source.type entity type
+{
+  "type": "availability",
+  "data.points": [
+    {
+      "entity.type": "event.source.type" // REJECT
+    }
+  ]
+}
+```
+
+Remember: **Strict enforcement of entity.type and aggregator constraints is mandatory**. Any invalid combination results in immediate rejection of the JSON configuration.
+
+## Data Point Configuration Rules
+
+### Aggregator Functions
+```typescript
+type Aggregator = "avg" | "min" | "max" | "sum" | "count" | "last"
+```
+
+### Statistical Functions (Grid-Specific)
+```typescript
+type StatisticalFunc = "log2" | "log10"
+```
+
+#### Statistical Function Rules
+- **Default Behavior**: NO statistical function included by default
+- **Only add** when user explicitly requests
+- **Grid-specific limitation**: Only `"log2"` and `"log10"` available
+
+#### User Intent Mapping
+- User says **"logarithm base 2"** or **"log2"** → `"statistical.func": "log2"`
+- User says **"logarithm base 10"** or **"log10"** → `"statistical.func": "log10"`
+- **No mention** → **Omit field entirely**
+
+#### Application Examples
+```json
+// User requests "show CPU with log2 transformation"
+{
+  "data.points": [
+    {
+      "data.point": "system.cpu.percent",
+      "aggregator": "avg",
+      "statistical.func": "log2"
+    }
+  ]
+}
+
+// User requests basic CPU (no statistical function mentioned)
+{
+  "data.points": [
+    {
+      "data.point": "system.cpu.percent",
+      "aggregator": "avg"
+      // NO statistical.func field
+    }
+  ]
+}
+```
+
+### Entity Configuration Rules
+
+**⚠️ DEPRECATED**: This section has been superseded by the comprehensive **"Entity Type & Aggregator Rules by Data Source Type"** section above.
+
+**Please refer to the comprehensive rules above for:**
+- Complete entity.type validation by data source type
+- Complete aggregator validation by data source type  
+- Type-specific constraints and validation functions
+- Default application rules
+- Invalid combination examples
+
+#### Quick Reference
+- **Entity types are now type-specific** (see comprehensive rules above)
+- **Aggregators are now type-specific** (see comprehensive rules above)
+- **Validation is strictly enforced** based on data source type
+- **No entity.type**: entities field should be omitted entirely
+
+### Result Grouping
+**⚠️ DEPRECATED**: This section has been superseded by the comprehensive **"Visualization Result By & Grid Column Mapping Rules"** section above.
+
+**Please refer to the comprehensive visualization.result.by rules above for:**
+- Complete result grouping validation by data source type
+- Column auto-generation based on result.by values
+- Type-specific constraints and limits
+
+## Filter Structure Rules
+
+### 🧩 Filter Group Constraints
+
+#### `data.filter.groups`
+- **Maximum 3 groups** per data filter
+- **Maximum 3 conditions** per group
+
+#### `result.filter.groups`
+- **Maximum 1 group** only
+- **Maximum 3 conditions** in that single group
+
+#### `drill.down.filter`
+- Same structure as `data.filter`
+- **Maximum 3 groups** per drill down filter
+- **Maximum 3 conditions** per group
+
+### Filter Structure Template
+```json
+{
+  "data.filter": {
+    "operator": "and|or",
+    "filter": "include|exclude", 
+    "groups": [
+      {
+        "filter": "include|exclude",
+        "operator": "and|or",
+        "conditions": [
+          {
+            "operand": "field_name",
+            "operator": "=|contains|in|start with|end with",
+            "value": "string|number|boolean"
+          }
+          // MAX 3 conditions per group
+        ]
+      }
+      // MAX 3 groups for data.filter and drill.down.filter
+    ]
+  },
+  "result.filter": {
+    "operator": "and|or",
+    "filter": "include|exclude",
+    "groups": [
+      {
+        "filter": "include|exclude", 
+        "operator": "and|or",
+        "conditions": [
+          // MAX 3 conditions in the single group
+        ]
+      }
+      // ONLY 1 group allowed for result.filter
+    ]
+  },
+  "drill.down.filter": {
+    // Same structure as data.filter
+    // MAX 3 groups, MAX 3 conditions per group
+  }
+}
+```
+
+### Filter Operators
+- **Group operators**: `"and"` | `"or"`
+- **Filter types**: `"include"` | `"exclude"`
+- **Condition operators**: `"="` | `"contains"` | `"in"` | `"start with"` | `"end with"`
+- **Value types**: `string` | `number` | `boolean`
 
 ## Grid Properties Rules
 
 ### Required Grid Properties
 ```json
 {
-  "layout": "Grid", // or "key-value"
-  "columns": [] // array of column definitions
+  "grid": {
+    "layout": "Grid", // or "key-value"
+    "columns": [] // array of column definitions
+  }
+}
+```
+
+### Grid Configuration Options
+- `visualization.grid.properties.required`: `"yes"` | `"no"` (default: `"no"`)
+- `searchable`: `"yes"` | `"no"` (default: `"yes"`)
+- `column.selection`: `"yes"` | `"no"` (default: `"no"`)
+- `header`: `"yes"` | `"no"` (default: `"yes"`)
+- `layout`: `"Grid"` | `"key-value"` (default: `"Grid"`)
+- `layout.sorting`: `"asc"` | `"desc"`
+
+#### Layout Selection Rules
+- **Default Layout**: `"Grid"` for standard tabular display
+- **Key-Value Layout**: `"key-value"` for paired data display
+- **User Intent Mapping**: 
+  - User requests **"key value chart"**, **"key-value chart"**, **"key value grid"**, or **"key-value grid"** → Set `"layout": "key-value"`
+  - User requests **"grid"**, **"table"**, or no specific layout mentioned → Set `"layout": "Grid"`
+- **Layout Behavior**: 
+  - `"Grid"`: Standard tabular layout with columns and rows
+  - `"key-value"`: Displays data as key-value pairs, ideal for single metric per monitor/entity
+
+### Style Properties
+```json
+{
+  "style": {
+    "header.font.size": "small" | "medium" | "large"
+  }
+}
+```
+
+#### Style Configuration Rules
+- **Default Column Style**: When no style properties are specified for columns, use empty style object: `"style": {}`
+- **Partial Column Style**: When only some style properties are specified for columns, include only those properties
+- **Complete Column Style**: When all style properties are specified for columns, include all properties
+- **User Intent Mapping**:
+  - No column style mentioned by user → Each column gets `"style": {}`
+  - Specific column style properties mentioned → Include only specified properties in column style
+  - Column-specific styling needed → Apply to individual columns
+
+#### Column Style Examples
+```json
+// No column style specified by user
+{
+  "name": "system.cpu.percent.avg",
+  "show": "yes",
+  "sortable": "yes",
+  "disable": "no",
+  "resizable": "yes",
+  "selectable": "yes",
+  "orderable": "yes",
+  "position": 5,
+  "style": {}
+}
+
+// Column width specified
+{
+  "name": "monitor",
+  "show": "yes",
+  "sortable": "yes",
+  "disable": "no",
+  "resizable": "yes",
+  "selectable": "yes",
+  "orderable": "yes",
+  "position": 1,
+  "style": {
+    "width.percent": 25.5
+  }
+}
+
+// Multiple column style properties specified
+{
+  "name": "system.memory.used.percent.avg",
+  "show": "yes",
+  "sortable": "yes",
+  "disable": "no",
+  "resizable": "yes",
+  "selectable": "yes",
+  "orderable": "yes",
+  "position": 8,
+  "style": {
+    "width.percent": 20.0,
+    "color.conditions": [
+      {
+        "operator": ">",
+        "value": "80",
+        "color.type": "background",
+        "color": "#ff0000"
+      }
+    ]
+  }
 }
 ```
 
@@ -274,29 +1467,328 @@ if (timeline.relative === "custom") {
   "resizable": "yes|no",
   "selectable": "yes|no",
   "orderable": "yes|no",
-  "position": 0
+  "position": 0,
+  "style": {
+    "width.percent": 25.5,
+    "icon": {
+      "name": "icon-name",
+      "placement": "prefix|suffix"
+    },
+    "color.conditions": [
+      {
+        "operator": "=|>|>=|<|<=|contain",
+        "value": "comparison_value",
+        "color.type": "foreground|background",
+        "color": "#hex_color"
+      }
+    ],
+    "value.display.operations": [
+      {
+        "operator": "=|>|>=|<|<=|contain",
+        "value.to.compare": "comparison_value",
+        "operation.type": "prefix|suffix",
+        "value": "display_value"
+      }
+    ]
+  }
 }
 ```
 
-### Optional Grid Properties
-- `searchable`: `"yes|no"` (default: `"yes"`)
-- `column.selection`: `"yes|no"` (default: `"no"`)
-- `header`: `"yes|no"` (default: `"yes"`)
-- `layout.sorting`: `"asc|desc"`
+### Column Name Patterns
+- **Standard columns**: `object.type`, `object.vendor`, `object.ip`, `object.id`
+- **Custom columns**: `[a-zA-Z0-9_.]+`
+- **Pattern validation**: `^(object\\.(type|vendor|ip|id)|[a-zA-Z0-9_.]+)$`
 
-## Error Handling
+## Validation Rules
 
-### Validation Failures
-- If data point limits exceeded → Reject with specific error message
-- If required fields missing → Apply defaults or reject if critical
-- If invalid enum values → Reject with valid options list
-- If schema violations → Reject with validation details
+### Pre-Generation Checks
+1. **Count data sources** - Must be exactly 1
+2. **Check data source type** - Apply type-specific rules
+3. **Count data points** - Enforce type-specific limits
+4. **Validate filter groups** - Enforce group/condition limits
+5. **Check statistical functions** - Only include if explicitly requested
+6. **Validate timeline** - Check format and required fields
+7. **Validate grid properties** - Check required fields and enum values
 
-### Success Criteria
-- All type-specific constraints satisfied
-- All required fields present with valid values
-- Schema validation passes
-- No conflicting configurations
+### Data Point Limits Validation
+```typescript
+function validateDataPoints(dataSource) {
+  const pointCount = dataSource.data.points.length;
+  
+  switch(dataSource.type) {
+    case "metric":
+    case "availability":
+      if (pointCount > 10) {
+        throw new Error(`${dataSource.type} sources limited to 10 data points, got ${pointCount}`);
+      }
+      break;
+    
+    case "policy":
+      if (pointCount !== 1) {
+        throw new Error(`Policy sources must have exactly 1 data point, got ${pointCount}`);
+      }
+      break;
+    
+    case "log":
+    case "flow":
+      // No limit for log and flow
+      break;
+    
+    default:
+      throw new Error(`Invalid data source type: ${dataSource.type}`);
+  }
+}
+```
+
+### Filter Validation
+```typescript
+function validateFilters(filters) {
+  // Data filter validation
+  if (filters.data?.filter?.groups?.length > 3) {
+    throw new Error("Maximum 3 groups allowed in data.filter");
+  }
+  
+  filters.data?.filter?.groups?.forEach((group, groupIndex) => {
+    if (group.conditions?.length > 3) {
+      throw new Error(`Maximum 3 conditions per group. Group ${groupIndex + 1} has ${group.conditions.length}`);
+    }
+  });
+  
+  // Result filter validation  
+  if (filters.result?.filter?.groups?.length > 1) {
+    throw new Error("Maximum 1 group allowed in result.filter");
+  }
+  
+  if (filters.result?.filter?.groups?.[0]?.conditions?.length > 3) {
+    throw new Error("Maximum 3 conditions allowed in result.filter group");
+  }
+  
+  // Drill down filter validation
+  if (filters.drill?.down?.filter?.groups?.length > 3) {
+    throw new Error("Maximum 3 groups allowed in drill.down.filter");
+  }
+  
+  filters.drill?.down?.filter?.groups?.forEach((group, groupIndex) => {
+    if (group.conditions?.length > 3) {
+      throw new Error(`Maximum 3 conditions per drill down group. Group ${groupIndex + 1} has ${group.conditions.length}`);
+    }
+  });
+}
+```
+
+### Timeline Validation
+```typescript
+function validateTimeline(timeline) {
+  const timelinePattern = /^(custom|today|yesterday|this\.(week|month)|last\.(week|month|quarter|year)|-\d+[mhd])$/;
+  
+  if (!timelinePattern.test(timeline.relative?.timeline)) {
+    throw new Error(`Invalid timeline pattern: ${timeline.relative?.timeline}`);
+  }
+  
+  if (timeline.relative?.timeline === "custom") {
+    const required = ["from.date", "from.time", "to.date", "to.time"];
+    const missing = required.filter(field => !timeline[field]);
+    
+    if (missing.length > 0) {
+      throw new Error(`Custom timeline missing required fields: ${missing.join(", ")}`);
+    }
+    
+    // Validate date format YYYY/MM/DD
+    const datePattern = /^\d{4}\/\d{2}\/\d{2}$/;
+    if (!datePattern.test(timeline.from?.date) || !datePattern.test(timeline.to?.date)) {
+      throw new Error("Date format must be YYYY/MM/DD");
+    }
+    
+    // Validate time format HH:MM:SS
+    const timePattern = /^\d{2}:\d{2}:\d{2}$/;
+    if (!timePattern.test(timeline.from?.time) || !timePattern.test(timeline.to?.time)) {
+      throw new Error("Time format must be HH:MM:SS");
+    }
+  }
+}
+```
+
+## Error Prevention
+
+### Common Mistakes to Avoid
+1. **Multiple data sources**: Grid allows only 1 data source
+2. **Exceeding data point limits**: Check type-specific constraints
+3. **Missing nested objects**: Always include `filters`, `grid` objects
+4. **Empty arrays where objects expected**: `data.points` needs objects
+5. **Incorrect enum values**: Double-check all enum constraints
+6. **Invalid filter structure**: Respect group and condition limits
+7. **Missing required column fields**: Every column needs all required properties
+8. **Statistical functions without user request**: Only add when explicitly asked
+
+### Required Non-Empty Fields
+- `visualization.data.sources` - Must have exactly one source
+- `data.points` - Must have at least one data point
+- `visualization.result.by` - Must have at least one grouping method
+- `columns` - Can be empty array but field must exist
+
+## Type-Specific Column Standards
+
+### Log Type Standard Columns
+```json
+{
+  "columns": [
+    {
+      "name": "event.source.type",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes", 
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "message.count",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes", 
+      "orderable": "yes",
+      "position": 2
+    }
+  ]
+}
+```
+
+### Flow Type Standard Columns
+```json
+{
+  "columns": [
+    {
+      "name": "source.ip",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "destination.ip", 
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 2
+    },
+    {
+      "name": "volume.bytes.avg",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no", 
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 3
+    }
+  ]
+}
+```
+
+### Policy Type Standard Columns  
+```json
+{
+  "columns": [
+    {
+      "name": "object.id",
+      "show": "yes",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 1
+    },
+    {
+      "name": "severity.count",
+      "show": "yes", 
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 2
+    }
+  ]
+}
+```
+
+### Policy Type Optional Hidden Columns
+```json
+{
+  "columns": [
+    {
+      "name": "object.type",
+      "show": "no",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes", 
+      "position": 3
+    },
+    {
+      "name": "object.vendor",
+      "show": "no",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 4
+    },
+    {
+      "name": "object.ip",
+      "show": "no",
+      "sortable": "yes",
+      "disable": "no",
+      "resizable": "yes",
+      "selectable": "yes",
+      "orderable": "yes",
+      "position": 5
+    }
+  ]
+}
+```
+
+## Final Validation Checklist
+
+Before outputting JSON, verify:
+- [ ] Exactly 1 data source in array
+- [ ] Data source type matches constraints
+- [ ] Data point count within type-specific limits
+- [ ] All required fields present
+- [ ] Enum values valid
+- [ ] Timeline configuration valid
+- [ ] Filter groups within limits (3 for data/drill-down, 1 for result)
+- [ ] Filter conditions within limits (3 per group)
+- [ ] Grid properties complete with required fields
+- [ ] Column definitions have all required properties
+- [ ] Statistical functions only included when requested (log2/log10 only)
+- [ ] **visualization.result.by values are valid for the data source type**
+- [ ] **visualization.result.by count within type-specific limits**
+- [ ] **All result.by values have corresponding columns generated**
+- [ ] **All data.point values have corresponding columns generated (data.point.aggregator format)**
+- [ ] **Column positions are sequential and properly ordered**
+- [ ] **Policy types include mandatory severity.count column**
+- [ ] **entity.type values are valid for the data source type (if specified)**
+- [ ] **aggregator values are valid for the data source type**
+- [ ] **entities array exists when entity.type is specified**
+- [ ] **No invalid entity.type/aggregator combinations exist**
+- [ ] **Layout is set correctly based on user intent (key-value for key value charts)**
+- [ ] **Column style objects are properly configured (empty object when no column style specified)**
+- [ ] Schema compliance verified
+- [ ] No conflicting settings
+- [ ] Type-specific templates applied correctly
 
 ## Generation Workflow
 
@@ -305,60 +1797,155 @@ if (timeline.relative === "custom") {
    - Extract user-provided values
    - Note missing fields for defaults
 
-2. **Type-Specific Validation**
+2. **Single Source Validation**
+   - Ensure only 1 data source requested
+   - Reject if multiple sources specified
+
+3. **Type-Specific Validation**
    - Apply appropriate constraints
    - Validate data point limits
    - Check required vs optional fields
+   - **Validate visualization.result.by values and limits**
+   - **Validate entity.type values for data source type**
+   - **Validate aggregator values for data source type**
 
-3. **Default Application**
+4. **Filter Validation**
+   - Validate group limits
+   - Validate condition limits
+   - Check operator enums
+
+5. **Default Application**
    - Fill missing required fields
    - Apply type-specific defaults
    - Use global defaults as fallback
+   - **Apply visualization.result.by defaults based on type/category**
+   - **Apply aggregator defaults based on data source type**
+   - **Apply layout selection based on user intent (key-value for key value charts)**
+   - **Apply column style configuration (empty object when no column style specified)**
 
-4. **Schema Validation**
+6. **Column Generation**
+   - **Generate columns for all visualization.result.by values**
+   - **Generate columns for all data.point.aggregator combinations**
+   - **Add type-specific mandatory columns (e.g., severity.count for policy)**
+   - **Apply standard column properties and sequential positioning**
+
+7. **Schema Validation**
    - Validate against JSON schema
    - Check enum constraints
    - Verify required field presence
+   - **Validate generated columns match requirements**
+   - **Validate entity.type/aggregator combinations are valid**
 
-5. **Output Generation**
+8. **Output Generation**
    - Generate compliant JSON
    - Include all required properties
    - Format consistently
 
 ## Usage Examples
 
-### Generate Metric Visualization
-```
-User Input: "Create metric visualization for CPU and memory"
-Output: JSON with metric type, 2 data points, default timeline
-```
-
-### Generate Log Visualization  
-```
-User Input: "Show log messages by source type"
-Output: JSON with log type, message count, event.source.type grouping
-```
-
-### Generate Flow Visualization
-```
-User Input: "Network flow between IPs showing bytes transferred"
-Output: JSON with flow type, volume.bytes metric, IP grouping
-```
-
-### Error Cases
-```
-User Input: "Policy visualization with 5 severity metrics"
-Output: Error - Policy type limited to 1 data point
+### Basic Metric Grid
+```json
+{
+  "visualization.name": "CPU Usage Grid",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ]
+}
 ```
 
-## Final Validation Checklist
+### Log Grid with Statistical Function
+```json
+{
+  "visualization.name": "Log Analysis Grid",
+  "visualization.data.sources": [
+    {
+      "type": "log",
+      "data.points": [
+        {
+          "data.point": "message",
+          "aggregator": "count",
+          "statistical.func": "log10"
+        }
+      ]
+    }
+  ]
+}
+```
 
-Before outputting JSON, verify:
-- [ ] Data source type matches constraints
-- [ ] Data point count within limits
-- [ ] All required fields present
-- [ ] Enum values valid
-- [ ] Timeline configuration valid
-- [ ] Grid properties complete
-- [ ] Schema compliance verified
-- [ ] No conflicting settings
+### Policy Grid with Custom Timeline
+```json
+{
+  "visualization.name": "Security Policy Grid",
+  "visualization.timeline": {
+    "relative.timeline": "custom",
+    "from.date": "2024/01/01", 
+    "from.time": "00:00:00",
+    "to.date": "2024/01/31",
+    "to.time": "23:59:59",
+    "visualization.time.range.inclusive": "yes"
+  },
+  "visualization.data.sources": [
+    {
+      "type": "policy",
+      "data.points": [
+        {
+          "data.point": "severity", 
+          "aggregator": "count"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Metric Grid with Entity Type
+```json
+{
+  "visualization.name": "Server CPU Monitoring",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "max",
+          "entity.type": "Monitor",
+          "entities": [1, 2, 3, 4]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Flow Grid with Multiple Aggregators
+```json
+{
+  "visualization.name": "Network Flow Analysis",
+  "visualization.data.sources": [
+    {
+      "type": "flow",
+      "data.points": [
+        {
+          "data.point": "volume.bytes",
+          "aggregator": "sum"
+        },
+        {
+          "data.point": "packet.count",
+          "aggregator": "count"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Remember: **Complete structure integrity + all validation rules compliance is non-negotiable**. Violating any constraint results in generation failure.

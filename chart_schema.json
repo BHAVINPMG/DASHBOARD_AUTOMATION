@@ -222,7 +222,9 @@
                     "enum": [
                       "Monitor",
                       "Group",
-                      "Tag"
+                      "Tag",
+                      "event.source",
+                      "event.source.type"
                     ]
                   },
                   "entities": {
@@ -252,6 +254,31 @@
                   ]
                 }
               }
+            }
+          },
+          "if": {
+            "properties": {
+              "type": {
+                "const": "policy"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "category": {
+                "type": "string",
+                "enum": [
+                  "metric",
+                  "log",
+                  "flow",
+                  "trap"
+                ]
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "required": ["category"]
             }
           }
         }
@@ -384,7 +411,39 @@
         "enum": [
           "monitor",
           "tag",
-          "group"
+          "group",
+          "event.source.type",
+          "event.severity",
+          "event.category",
+          "event.source",
+          "destination.aso",
+          "destination.port",
+          "source.aso",
+          "destination.if.index",
+          "destination.isp",
+          "source.domain",
+          "destination.threat",
+          "protocol",
+          "destination.city",
+          "source.ip",
+          "tos",
+          "source.isp",
+          "source.city",
+          "tcp.flags",
+          "source.as",
+          "source.threat",
+          "destination.domain",
+          "destination.ip.as",
+          "destination.ip",
+          "source.country",
+          "source.if.index",
+          "application",
+          "source.port",
+          "destination.as",
+          "destination.country",
+          "user",
+          "severity",
+          "policy.id"
         ]
       }
     },

@@ -112,7 +112,7 @@
                 "data.point": { "type": "string" },
                 "aggregator": {
                   "type": "string",
-                  "enum": ["avg", "min", "max", "sum", "count"]
+                  "enum": ["avg", "min", "max", "sum", "last","count"]
                 },
                 "allOf": [
                   {
@@ -132,7 +132,7 @@
                 "properties": {
                   "entity.type": {
                     "type": "string",
-                    "enum": ["Monitor", "Group", "Tag"]
+                    "enum": ["Monitor", "Group", "Tag","event.source", "event.source.type"]
                   },
                   "entities": {
                     "type": "array",
@@ -144,9 +144,7 @@
                 "statistical.func": {
                   "type": "string",
                   "enum": [
-                    "ema3", "ema5", "ema7", "ema10", "ema20",
-                    "median3", "median5", "median7", "median9",
-                    "monotonic", "delta", "cumulative.sum", "log2", "log10"
+                     "log2", "log10"
                   ]
                 }
               },
@@ -157,7 +155,15 @@
             "type": "array",
             "items": {
               "type": "string",
-              "enum": ["monitor", "tag", "group"]
+              "enum": ["monitor", "tag", "group",
+      "destination.aso", "destination.port", "source.aso", "destination.if.index",
+      "destination.isp", "source.domain", "destination.threat", "protocol",
+      "destination.city", "source.ip", "tos", "source.isp", "source.city",
+      "tcp.flags", "source.as", "source.threat", "destination.domain",
+      "destination.ip.as", "destination.ip", "source.country", "source.if.index",
+      "application", "source.port", "event.source", "destination.as",
+      "destination.country", "user", "event.source.type", "event.severity",
+      "event.category", "severity", "policy.id"]
             }
           }
         }
@@ -268,7 +274,15 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["monitor", "tag", "group"]
+        "enum": ["monitor", "tag", "group",
+      "destination.aso", "destination.port", "source.aso", "destination.if.index",
+      "destination.isp", "source.domain", "destination.threat", "protocol",
+      "destination.city", "source.ip", "tos", "source.isp", "source.city",
+      "tcp.flags", "source.as", "source.threat", "destination.domain",
+      "destination.ip.as", "destination.ip", "source.country", "source.if.index",
+      "application", "source.port", "event.source", "destination.as",
+      "destination.country", "user", "event.source.type", "event.severity",
+      "event.category", "severity", "policy.id"]
       }
     }
   }
