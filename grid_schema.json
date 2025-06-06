@@ -2,7 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
-    "id": { "type": "integer" },
+    "id": {
+      "type": "integer"
+    },
     "container.type": {
       "type": "string",
       "const": "dashboard"
@@ -37,7 +39,10 @@
         },
         "visualization.time.range.inclusive": {
           "type": "string",
-          "enum": ["yes", "no"],
+          "enum": [
+            "yes",
+            "no"
+          ],
           "default": "yes"
         }
       },
@@ -61,7 +66,13 @@
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["metric", "log", "flow", "policy", "availability"]
+            "enum": [
+              "metric",
+              "log",
+              "flow",
+              "policy",
+              "availability"
+            ]
           },
           "filters": {
             "type": "object",
@@ -69,30 +80,70 @@
               "data.filter": {
                 "type": "object",
                 "properties": {
-                  "operator": { "type": "string", "enum": ["and", "or"] },
-                  "filter": { "type": "string", "enum": ["include", "exclude"] },
+                  "operator": {
+                    "type": "string",
+                    "enum": [
+                      "and",
+                      "or"
+                    ]
+                  },
+                  "filter": {
+                    "type": "string",
+                    "enum": [
+                      "include",
+                      "exclude"
+                    ]
+                  },
                   "groups": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "properties": {
-                        "filter": { "type": "string", "enum": ["include", "exclude"] },
-                        "operator": { "type": "string", "enum": ["and", "or"] },
+                        "filter": {
+                          "type": "string",
+                          "enum": [
+                            "include",
+                            "exclude"
+                          ]
+                        },
+                        "operator": {
+                          "type": "string",
+                          "enum": [
+                            "and",
+                            "or"
+                          ]
+                        },
                         "conditions": {
                           "type": "array",
                           "items": {
                             "type": "object",
                             "properties": {
-                              "operand": { "type": "string" },
+                              "operand": {
+                                "type": "string"
+                              },
                               "operator": {
                                 "type": "string",
-                                "enum": ["=", "contains", "in", "start with", "end with"]
+                                "enum": [
+                                  "=",
+                                  "contains",
+                                  "in",
+                                  "start with",
+                                  "end with"
+                                ]
                               },
                               "value": {
-                                "type": ["string", "number", "boolean"]
+                                "type": [
+                                  "string",
+                                  "number",
+                                  "boolean"
+                                ]
                               }
                             },
-                            "required": ["operand", "operator", "value"]
+                            "required": [
+                              "operand",
+                              "operator",
+                              "value"
+                            ]
                           }
                         }
                       }
@@ -100,8 +151,12 @@
                   }
                 }
               },
-              "result.filter": { "type": "object" },
-              "drill.down.filter": { "type": "object" }
+              "result.filter": {
+                "type": "object"
+              },
+              "drill.down.filter": {
+                "type": "object"
+              }
             }
           },
           "data.points": {
@@ -109,15 +164,28 @@
             "items": {
               "type": "object",
               "properties": {
-                "data.point": { "type": "string" },
+                "data.point": {
+                  "type": "string"
+                },
                 "aggregator": {
                   "type": "string",
-                  "enum": ["avg", "min", "max", "sum", "last","count"]
+                  "enum": [
+                    "avg",
+                    "min",
+                    "max",
+                    "sum",
+                    "last",
+                    "count"
+                  ]
                 },
                 "allOf": [
                   {
                     "if": {
-                      "not": { "required": ["entity.type"] }
+                      "not": {
+                        "required": [
+                          "entity.type"
+                        ]
+                      }
                     },
                     "then": {
                       "properties": {
@@ -132,7 +200,13 @@
                 "properties": {
                   "entity.type": {
                     "type": "string",
-                    "enum": ["Monitor", "Group", "Tag","event.source", "event.source.type"]
+                    "enum": [
+                      "Monitor",
+                      "Group",
+                      "Tag",
+                      "event.source",
+                      "event.source.type"
+                    ]
                   },
                   "entities": {
                     "type": "array",
@@ -144,26 +218,58 @@
                 "statistical.func": {
                   "type": "string",
                   "enum": [
-                     "log2", "log10"
+                    "log2",
+                    "log10"
                   ]
                 }
               },
-              "required": ["data.point", "aggregator"]
+              "required": [
+                "data.point",
+                "aggregator"
+              ]
             }
           },
           "visualization.result.by": {
             "type": "array",
             "items": {
               "type": "string",
-              "enum": ["monitor", "tag", "group",
-      "destination.aso", "destination.port", "source.aso", "destination.if.index",
-      "destination.isp", "source.domain", "destination.threat", "protocol",
-      "destination.city", "source.ip", "tos", "source.isp", "source.city",
-      "tcp.flags", "source.as", "source.threat", "destination.domain",
-      "destination.ip.as", "destination.ip", "source.country", "source.if.index",
-      "application", "source.port", "event.source", "destination.as",
-      "destination.country", "user", "event.source.type", "event.severity",
-      "event.category", "severity", "policy.id"]
+              "enum": [
+                "monitor",
+                "tag",
+                "group",
+                "destination.aso",
+                "destination.port",
+                "source.aso",
+                "destination.if.index",
+                "destination.isp",
+                "source.domain",
+                "destination.threat",
+                "protocol",
+                "destination.city",
+                "source.ip",
+                "tos",
+                "source.isp",
+                "source.city",
+                "tcp.flags",
+                "source.as",
+                "source.threat",
+                "destination.domain",
+                "destination.ip.as",
+                "destination.ip",
+                "source.country",
+                "source.if.index",
+                "application",
+                "source.port",
+                "event.source",
+                "destination.as",
+                "destination.country",
+                "user",
+                "event.source.type",
+                "event.severity",
+                "event.category",
+                "severity",
+                "policy.id"
+              ]
             }
           }
         }
@@ -177,19 +283,56 @@
           "properties": {
             "visualization.grid.properties.required": {
               "type": "string",
-              "enum": ["yes", "no"]
+              "enum": [
+                "yes",
+                "no"
+              ]
             },
-            "searchable": { "type": "string", "enum": ["yes", "no"] },
-            "column.selection": { "type": "string", "enum": ["yes", "no"] },
-            "header": { "type": "string", "enum": ["yes", "no"] },
-            "layout": { "type": "string", "enum": ["Grid", "key-value"] },
-            "layout.sorting": { "type": "string", "enum": ["asc", "desc"] },
+            "searchable": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "column.selection": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "header": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "layout": {
+              "type": "string",
+              "enum": [
+                "Grid",
+                "key-value"
+              ]
+            },
+            "layout.sorting": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
             "style": {
               "type": "object",
               "properties": {
                 "header.font.size": {
                   "type": "string",
-                  "enum": ["small", "medium", "large"]
+                  "enum": [
+                    "small",
+                    "medium",
+                    "large"
+                  ]
                 }
               }
             },
@@ -202,24 +345,512 @@
                     "type": "string",
                     "pattern": "^(object\\.(type|vendor|ip|id)|[a-zA-Z0-9_.]+)$"
                   },
-                  "show": { "type": "string", "enum": ["yes", "no"] },
-                  "sortable": { "type": "string", "enum": ["yes", "no"] },
-                  "disable": { "type": "string", "enum": ["yes", "no"] },
-                  "resizable": { "type": "string", "enum": ["yes", "no"] },
-                  "selectable": { "type": "string", "enum": ["yes", "no"] },
-                  "orderable": { "type": "string", "enum": ["yes", "no"] },
-                  "position": { "type": "integer" },
+                  "show": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "sortable": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "disable": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "resizable": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "selectable": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "orderable": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "position": {
+                    "type": "integer"
+                  },
                   "style": {
                     "type": "object",
                     "properties": {
-                      "width.percent": { "type": "number" },
+                      "width.percent": {
+                        "type": "number"
+                      },
                       "icon": {
                         "type": "object",
                         "properties": {
-                          "name": { "type": "string" },
+                          "name": {
+                            "type": "string",
+                            "enum": [
+                              "access-key",
+                              "accesses",
+                              "active-connections",
+                              "active-flow",
+                              "active-users",
+                              "add-messages",
+                              "agent",
+                              "alert",
+                              "align-center",
+                              "align-left",
+                              "align-right",
+                              "angle-down",
+                              "angle-up",
+                              "apm",
+                              "application",
+                              "arrow-from-left",
+                              "arrow-from-right",
+                              "arrow-up-right-from-circles",
+                              "assign-monitor",
+                              "assign-vlan",
+                              "audit",
+                              "auto-assignment",
+                              "auto-scroll",
+                              "autoscale",
+                              "availability",
+                              "available-ip",
+                              "avg",
+                              "award",
+                              "azure-vm",
+                              "backspace",
+                              "backup",
+                              "backup-now",
+                              "ban",
+                              "bars",
+                              "bell",
+                              "bfd-sessions",
+                              "blob",
+                              "block-messages",
+                              "bold",
+                              "book-open",
+                              "brain",
+                              "brush",
+                              "bucket",
+                              "bucket-object",
+                              "buffer",
+                              "buffer-miss",
+                              "bulk-users",
+                              "bulls-eye",
+                              "busy-server",
+                              "cache",
+                              "calendar-alt",
+                              "call",
+                              "chart",
+                              "chart-line",
+                              "chart-sync",
+                              "check",
+                              "check-circle",
+                              "check-point",
+                              "chevron-double-right",
+                              "chevron-down",
+                              "chevron-left",
+                              "chevron-right",
+                              "circle",
+                              "circle-pause",
+                              "circle-play",
+                              "circle-right",
+                              "circle-stop",
+                              "circle-warning",
+                              "cisco",
+                              "cisco-meraki-devices",
+                              "cisco-wan-link",
+                              "clear-all",
+                              "clipboard",
+                              "clock",
+                              "clone",
+                              "close",
+                              "cloud-data-sharing",
+                              "cloud-download",
+                              "cloud-topology",
+                              "cloud-upload",
+                              "cloud-wifi",
+                              "cluster",
+                              "code",
+                              "code-merge",
+                              "cog",
+                              "columns",
+                              "comment-alt-lines",
+                              "comment-dots",
+                              "comments",
+                              "compare",
+                              "compress-alt",
+                              "consumed-lcus",
+                              "container-runtime",
+                              "controller",
+                              "copy",
+                              "cpg",
+                              "cpu",
+                              "credential-profile",
+                              "cube",
+                              "custom-dashboard",
+                              "dashboard",
+                              "data-element",
+                              "database",
+                              "datastore",
+                              "declare-incident",
+                              "delayed-message",
+                              "delete",
+                              "delete-message",
+                              "delivered-notifications",
+                              "desired-capacity",
+                              "desktop",
+                              "disk",
+                              "docker-container",
+                              "document",
+                              "dollar-sign",
+                              "dot-circle",
+                              "download",
+                              "drag",
+                              "drag-arrows",
+                              "ebs",
+                              "elb",
+                              "ellipsis-v",
+                              "email",
+                              "empty-message",
+                              "enable-logging",
+                              "encryption",
+                              "end-point",
+                              "enter",
+                              "eraser",
+                              "error-connections",
+                              "errors",
+                              "exchange",
+                              "exchange-alt",
+                              "exclamation-circle",
+                              "exclamation-triangle",
+                              "exit-fullscreen",
+                              "expand",
+                              "export-csv",
+                              "export-pdf",
+                              "export-xlsx",
+                              "external-link",
+                              "eye",
+                              "eye-slash",
+                              "fabric",
+                              "failed-notifications",
+                              "fair",
+                              "fan",
+                              "field-datetime",
+                              "field-numeric",
+                              "field-string",
+                              "file-alt",
+                              "file-bookmark",
+                              "file-certificate",
+                              "file-check",
+                              "file-close",
+                              "file-edit",
+                              "file-search",
+                              "file-times",
+                              "files",
+                              "files-shared",
+                              "filled-star",
+                              "film",
+                              "filter",
+                              "filter-exclude",
+                              "filter-include",
+                              "flag",
+                              "flaps",
+                              "flow",
+                              "flow-aggregator",
+                              "flow-destination",
+                              "flow-metric",
+                              "flow-other",
+                              "flow-source",
+                              "folder-network",
+                              "folders",
+                              "forecast",
+                              "fullscreen",
+                              "function",
+                              "globe",
+                              "grid",
+                              "grid-table",
+                              "grip-line",
+                              "group-settings",
+                              "h1-01",
+                              "hardware-details",
+                              "hci-topology",
+                              "hdd",
+                              "health",
+                              "health-diagnostics",
+                              "health-log",
+                              "health-monitoring",
+                              "health-packet",
+                              "help",
+                              "history",
+                              "home-lg-alt",
+                              "horizontal-rule",
+                              "host",
+                              "id-badge",
+                              "image",
+                              "in-service-instances",
+                              "incoming-messages",
+                              "index",
+                              "info-circle",
+                              "infrastructure",
+                              "inno-db",
+                              "instances",
+                              "integration",
+                              "interface",
+                              "inventory",
+                              "iops",
+                              "ip",
+                              "java",
+                              "key",
+                              "key-value",
+                              "lambda-function",
+                              "layer-group",
+                              "ldap-sync",
+                              "lease-ip",
+                              "left-arrow",
+                              "left-to-right-arrow",
+                              "licence",
+                              "line",
+                              "line-columns",
+                              "link",
+                              "link-alt",
+                              "list",
+                              "list-ol",
+                              "listeners",
+                              "live-tail",
+                              "loader-new",
+                              "location-pin",
+                              "lock-alt",
+                              "locks",
+                              "log",
+                              "log-license",
+                              "long-arrow-down",
+                              "long-arrow-left",
+                              "long-arrow-right",
+                              "long-arrow-up",
+                              "luns",
+                              "mac-os",
+                              "mailbox",
+                              "manage-rpe",
+                              "manager",
+                              "map-marker",
+                              "map-marker-alt",
+                              "meeting",
+                              "memory",
+                              "merge-chart",
+                              "message-read",
+                              "message-size",
+                              "message-star",
+                              "message-storage",
+                              "messages",
+                              "metric-collection-time",
+                              "metric-detail",
+                              "metric-explorer",
+                              "minimize",
+                              "minus",
+                              "mobile",
+                              "monitor",
+                              "monitor-disable",
+                              "monitor-enable",
+                              "monitor-export",
+                              "monitor-import",
+                              "move-up",
+                              "my-account",
+                              "my-profile",
+                              "name-spaces",
+                              "navbar-monitor",
+                              "ncm",
+                              "netroute",
+                              "network",
+                              "network-discovery",
+                              "network-search",
+                              "network-topology",
+                              "next-hop",
+                              "node-count",
+                              "oldest-message",
+                              "open-connection",
+                              "other-topology",
+                              "outgoing-messages",
+                              "outgoing-session",
+                              "outlier",
+                              "pages",
+                              "paper-clip",
+                              "pause",
+                              "pause-circle",
+                              "pci",
+                              "pencil",
+                              "pending-instances",
+                              "pending-messages",
+                              "perf-score",
+                              "pie-chart",
+                              "play",
+                              "play-circle",
+                              "plug",
+                              "plugin-library",
+                              "plus",
+                              "plus-circle",
+                              "policy-settings",
+                              "port",
+                              "portrait",
+                              "power-off",
+                              "power-supply",
+                              "private",
+                              "process",
+                              "processes",
+                              "processor",
+                              "project-diagram",
+                              "provision",
+                              "public",
+                              "push-config",
+                              "query",
+                              "question",
+                              "question-circle",
+                              "queue",
+                              "radios",
+                              "random",
+                              "rds",
+                              "reading-connections",
+                              "reboot",
+                              "reconnect-count",
+                              "redo",
+                              "rejected-connections",
+                              "repeat",
+                              "report",
+                              "requests",
+                              "reserved-instances",
+                              "response-time",
+                              "restart",
+                              "restore",
+                              "right-arrow",
+                              "right-arrow-face-right",
+                              "right-to-left-arrow",
+                              "rotation",
+                              "router",
+                              "rtt",
+                              "runbook",
+                              "running-instance",
+                              "running-vm",
+                              "save",
+                              "schedule",
+                              "screen",
+                              "sd-card",
+                              "sdn-topology",
+                              "search",
+                              "secure",
+                              "server",
+                              "server-alt",
+                              "server-busy",
+                              "server-time",
+                              "service",
+                              "service-set",
+                              "sessions",
+                              "settings",
+                              "severe-instance",
+                              "share-alt",
+                              "shield-check",
+                              "sigma",
+                              "sign-in-alt",
+                              "sign-out-alt",
+                              "sitemap",
+                              "sites",
+                              "snapshots",
+                              "snmp-trap-settings",
+                              "solid-sleeve-thumbs-up",
+                              "solid-thumbs-up",
+                              "spinner-third",
+                              "splited-screen",
+                              "sqs",
+                              "standby-capacity",
+                              "star",
+                              "stop",
+                              "stop-circle",
+                              "stopped-instances",
+                              "stopped-vm",
+                              "stopwatch",
+                              "storage-pool",
+                              "success-message",
+                              "success-rate",
+                              "swap",
+                              "sync",
+                              "synchronization",
+                              "system-settings",
+                              "table",
+                              "tacho-meter",
+                              "tag",
+                              "target-point",
+                              "task-manager",
+                              "task-settings",
+                              "tenants",
+                              "terminal",
+                              "test-credentials",
+                              "th-large",
+                              "threads",
+                              "thumbs-down",
+                              "thumbs-up",
+                              "ticket-id",
+                              "times",
+                              "times-circle",
+                              "topics",
+                              "topology",
+                              "topology-link",
+                              "total-ip",
+                              "tour",
+                              "traffic",
+                              "transactions",
+                              "transient-ip",
+                              "trap-viewer",
+                              "trash",
+                              "trash-alt",
+                              "tree-view",
+                              "trending-down",
+                              "trending-up",
+                              "tunnel",
+                              "undo",
+                              "unlock-alt",
+                              "up-time",
+                              "upgrade",
+                              "upload",
+                              "user",
+                              "user-account",
+                              "user-circle",
+                              "user-error",
+                              "user-friends",
+                              "user-settings",
+                              "users",
+                              "utilization",
+                              "validator",
+                              "view-more",
+                              "virtualization-topology",
+                              "vm",
+                              "vm-scaleset",
+                              "volume",
+                              "waiting-connections",
+                              "wan-edges",
+                              "widget-view",
+                              "wifi",
+                              "window-restore",
+                              "writing-connections"
+                            ]
+                          },
                           "placement": {
                             "type": "string",
-                            "enum": ["prefix", "suffix"]
+                            "enum": [
+                              "prefix",
+                              "suffix"
+                            ]
                           }
                         }
                       },
@@ -230,14 +861,28 @@
                           "properties": {
                             "operator": {
                               "type": "string",
-                              "enum": ["=", ">", ">=", "<", "<=", "contain"]
+                              "enum": [
+                                "=",
+                                ">",
+                                ">=",
+                                "<",
+                                "<=",
+                                "contain"
+                              ]
                             },
-                            "value": { "type": "string" },
+                            "value": {
+                              "type": "string"
+                            },
                             "color.type": {
                               "type": "string",
-                              "enum": ["foreground", "background"]
+                              "enum": [
+                                "foreground",
+                                "background"
+                              ]
                             },
-                            "color": { "type": "string" }
+                            "color": {
+                              "type": "string"
+                            }
                           }
                         }
                       },
@@ -248,25 +893,51 @@
                           "properties": {
                             "operator": {
                               "type": "string",
-                              "enum": ["=", ">", ">=", "<", "<=", "contain"]
+                              "enum": [
+                                "=",
+                                ">",
+                                ">=",
+                                "<",
+                                "<=",
+                                "contain"
+                              ]
                             },
-                            "value.to.compare": { "type": "string" },
+                            "value.to.compare": {
+                              "type": "string"
+                            },
                             "operation.type": {
                               "type": "string",
-                              "enum": ["prefix", "suffix"]
+                              "enum": [
+                                "prefix",
+                                "suffix"
+                              ]
                             },
-                            "value": { "type": "string" }
+                            "value": {
+                              "type": "string"
+                            }
                           }
                         }
                       }
                     }
                   }
                 },
-                "required": ["name", "show", "sortable", "disable", "resizable", "selectable", "orderable", "position"]
+                "required": [
+                  "name",
+                  "show",
+                  "sortable",
+                  "disable",
+                  "resizable",
+                  "selectable",
+                  "orderable",
+                  "position"
+                ]
               }
             }
           },
-          "required": ["layout", "columns"]
+          "required": [
+            "layout",
+            "columns"
+          ]
         }
       }
     },
@@ -274,15 +945,43 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["monitor", "tag", "group",
-      "destination.aso", "destination.port", "source.aso", "destination.if.index",
-      "destination.isp", "source.domain", "destination.threat", "protocol",
-      "destination.city", "source.ip", "tos", "source.isp", "source.city",
-      "tcp.flags", "source.as", "source.threat", "destination.domain",
-      "destination.ip.as", "destination.ip", "source.country", "source.if.index",
-      "application", "source.port", "event.source", "destination.as",
-      "destination.country", "user", "event.source.type", "event.severity",
-      "event.category", "severity", "policy.id"]
+        "enum": [
+          "monitor",
+          "tag",
+          "group",
+          "destination.aso",
+          "destination.port",
+          "source.aso",
+          "destination.if.index",
+          "destination.isp",
+          "source.domain",
+          "destination.threat",
+          "protocol",
+          "destination.city",
+          "source.ip",
+          "tos",
+          "source.isp",
+          "source.city",
+          "tcp.flags",
+          "source.as",
+          "source.threat",
+          "destination.domain",
+          "destination.ip.as",
+          "destination.ip",
+          "source.country",
+          "source.if.index",
+          "application",
+          "source.port",
+          "event.source",
+          "destination.as",
+          "destination.country",
+          "user",
+          "event.source.type",
+          "event.severity",
+          "event.category",
+          "severity",
+          "policy.id"
+        ]
       }
     }
   }
