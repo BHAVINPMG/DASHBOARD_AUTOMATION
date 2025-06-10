@@ -1,0 +1,66 @@
+{
+  "id": 76661497038,
+  "container.type": "dashboard",
+  "visualization.name": "Volume Bytes Gauge",
+  "visualization.description": "Network traffic volume monitoring in bytes",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "SolidGauge",
+  "visualization.data.sources": [
+    {
+      "type": "flow",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "volume.bytes",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "type": "number",
+        "font.size": "large",
+        "text.align": "center",
+        "icon": {
+          "name": "traffic",
+          "placement": "prefix"
+        },
+        "color.conditions": [
+          {
+            "color": "#F45B5B",
+            "operator": ">",
+            "value": 1000000000
+          },
+          {
+            "color": "#f58518",
+            "operator": ">",
+            "value": 500000000
+          },
+          {
+            "color": "#f5bc18",
+            "operator": ">",
+            "value": 100000000
+          },
+          {
+            "color": "#4CAF50",
+            "operator": ">=",
+            "value": 0
+          }
+        ]
+      }
+    }
+  },
+  "visualization.result.by": []
+} 

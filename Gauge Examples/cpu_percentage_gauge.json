@@ -1,0 +1,40 @@
+{
+  "id": 76661497036,
+  "container.type": "dashboard",
+  "visualization.name": "CPU Percentage Gauge",
+  "visualization.description": "Monitor system CPU utilization percentage",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "SolidGauge",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "type": "number",
+        "font.size": "small",
+        "text.align": "left"
+      }
+    }
+  },
+  "visualization.result.by": []
+} 

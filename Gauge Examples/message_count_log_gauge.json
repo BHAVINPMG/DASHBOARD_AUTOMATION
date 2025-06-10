@@ -1,0 +1,40 @@
+{
+  "id": 76661497037,
+  "container.type": "dashboard",
+  "visualization.name": "Message Count Gauge",
+  "visualization.description": "Count of log messages",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "MetroTile",
+  "visualization.data.sources": [
+    {
+      "type": "log",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "message",
+          "aggregator": "count"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "type": "number",
+        "font.size": "small",
+        "text.align": "left"
+      }
+    }
+  },
+  "visualization.result.by": []
+} 

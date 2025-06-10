@@ -1,0 +1,57 @@
+{
+  "id": 76661497046,
+  "container.type": "dashboard",
+  "visualization.name": "System Availability Progress",
+  "visualization.description": "Monitor system availability with progress view and counters",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "MetroTile",
+  "visualization.data.sources": [
+    {
+      "type": "availability",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "monitor.up.count",
+          "aggregator": "avg",
+          "entities": []
+        },
+        {
+          "data.point": "monitor.down.count",
+          "aggregator": "avg",
+          "entities": []
+        },
+        {
+          "data.point": "monitor.suspend.count",
+          "aggregator": "avg",
+          "entities": []
+        },
+        {
+          "data.point": "monitor.warning.count",
+          "aggregator": "avg",
+          "entities": []
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "layout": "Progress With Count View",
+        "chart.legend": "no",
+        "chart.label": "no",
+        "type": "number",
+        "font.size": "small",
+        "text.align": "left"
+      }
+    }
+  },
+  "visualization.result.by": []
+} 

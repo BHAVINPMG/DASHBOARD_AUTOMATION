@@ -1,0 +1,41 @@
+{
+  "id": 76661497043,
+  "container.type": "dashboard",
+  "visualization.name": "Policy Violations Gauge",
+  "visualization.description": "Monitor policy compliance status",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "MetroTile",
+  "visualization.data.sources": [
+    {
+      "type": "policy",
+      "category": "metric",
+      "visualization.result.by": ["severity"],
+      "filters": {
+        "data.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "severity",
+          "aggregator": "count"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "layout": "Pie",
+        "chart.legend": "no",
+        "chart.label": "no",
+        "type": "number",
+        "font.size": "small",
+        "text.align": "left"
+      }
+    }
+  },
+  "visualization.result.by": []
+} 

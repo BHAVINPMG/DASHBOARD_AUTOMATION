@@ -1,0 +1,52 @@
+{
+  "id": 76661497042,
+  "container.type": "dashboard",
+  "visualization.name": "Monitor Availability Gauge",
+  "visualization.description": "System availability monitoring",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "MetroTile",
+  "visualization.data.sources": [
+    {
+      "type": "availability",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "monitor.up.count",
+          "aggregator": "avg",
+          "entities": []
+        },
+        {
+          "data.point": "monitor.down.count",
+          "aggregator": "avg",
+          "entities": []
+        },
+        {
+          "data.point": "monitor.suspend.count",
+          "aggregator": "avg",
+          "entities": []
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "layout": "Pie",
+        "chart.legend": "yes",
+        "chart.label": "yes",
+        "type": "number",
+        "font.size": "small",
+        "text.align": "left"
+      }
+    }
+  },
+  "visualization.result.by": []
+} 

@@ -1,0 +1,66 @@
+{
+  "id": 76661497037,
+  "container.type": "dashboard",
+  "visualization.name": "Message Count Gauge",
+  "visualization.description": "Real-time message count monitoring",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "MetroTile",
+  "visualization.data.sources": [
+    {
+      "type": "log",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "message",
+          "aggregator": "count"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "type": "number",
+        "font.size": "large",
+        "text.align": "center",
+        "icon": {
+          "name": "messages",
+          "placement": "prefix"
+        },
+        "color.conditions": [
+          {
+            "color": "#F45B5B",
+            "operator": ">",
+            "value": 1000
+          },
+          {
+            "color": "#f58518",
+            "operator": ">",
+            "value": 500
+          },
+          {
+            "color": "#f5bc18",
+            "operator": ">",
+            "value": 100
+          },
+          {
+            "color": "#4CAF50",
+            "operator": ">=",
+            "value": 0
+          }
+        ]
+      }
+    }
+  },
+  "visualization.result.by": []
+} 
