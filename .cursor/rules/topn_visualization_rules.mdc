@@ -1,0 +1,911 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Cursor Rules: TopN Visualization JSON Generator
+
+## Overview
+These rules help generate valid JSON configurations for TopN visualizations based on a specific schema. Always ensure complete structural integrity and never omit mandatory fields. TopN visualizations are specialized for ranking and sorting data to show top/bottom performers.
+
+## Core Principles
+1. **NEVER omit any field** from the mandatory structure
+2. **Always validate** against the provided JSON schema
+3. **Use exact default values** unless explicitly overridden by user
+4. **Maintain structural integrity** - missing fields = failed generation
+5. **Enforce TopN-specific constraints** for each visualization type
+6. **Reject invalid configurations** rather than generate broken JSON
+
+## Mandatory Default Structure Template
+
+```json
+{
+  "id": -1,
+  "container.type": "dashboard",
+  "visualization.name": "",
+  "visualization.description": "",
+  "visualization.granularity": "10 m",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "TopN",
+  "visualization.type": "Area",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "visualization.result.by": ["monitor"],
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "chart.legend": "no",
+      "vertical.legend": "no",
+      "chart.label": "no",
+      "axis.titles": {
+        "x": "",
+        "y": "",
+        "z": ""
+      },
+      "highchart.settings": {},
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "system.cpu.percent.avg"
+      }
+    }
+  },
+  "visualization.result.by": ["monitor"]
+}
+```
+
+## Global Rules & Defaults
+
+### Required Fields
+- `container.type` must always be `"dashboard"`
+- `visualization.category` must always be `"TopN"`
+- `visualization.type` must be one of: `"Area"`, `"Line"`, `"HorizontalBar"`, `"VerticalBar"`, `"TopN Solid Gauge View"`, `"Pie"`, `"Grid"`
+
+### Default Values
+- `relative.timeline`: `"today"` if not specified
+- `visualization.result.by`: Type-specific defaults (see Data Source Type Rules)
+- `aggregator`: `"avg"` for each data point if not specified
+- `visualization.time.range.inclusive`: `"no"` if not specified
+- `chart.legend`: `"no"` if not specified
+- `vertical.legend`: `"no"` if not specified
+- `chart.label`: `"no"` if not specified (except for Pie and TopN Solid Gauge View)
+
+### Legend and Axis Title Rules
+- **Default legend settings**: `chart.legend: "no"`, `vertical.legend: "no"`
+- **Axis titles**: Do NOT include `axis.titles` object if not specified by user
+- **Axis title requirement**: When user specifies ANY axis title (x, y, or z), it is **COMPULSORY** to provide a meaningful description/title
+- **Axis title validation**: If any axis title is provided, it must be a non-empty string with descriptive content
+- **No partial axis titles**: If one axis title is specified, all axis titles should be considered and provided appropriately
+- **Optional field**: `axis.titles` is completely optional and should only be included when explicitly requested
+
+### Optional Fields (Do Not Assume Defaults)
+- `rotation.angle`: Only include if explicitly specified by user
+- `line.width`: Only include if explicitly specified by user
+
+## TopN Visualization Type-Specific Rules
+
+### 📊 Visualization Type Constraints
+
+#### **1. Area, Line, HorizontalBar, VerticalBar**
+- **Maximum 4 data points** allowed per data source
+- **Default chart.label**: `"no"`
+- **Sorting required**: Must have `sorting` object with `limit`, `order`, and `column`
+- **Column format**: `"<data.point>.<aggregator>"` (e.g., `"system.cpu.percent.avg"`)
+
+#### **2. Pie**
+- **EXACTLY 1 data point** allowed per data source (strict limit)
+- **Default chart.label**: `"no"`
+- **Sorting required**: Must have `sorting` object with `limit`, `order`, and `column`
+- **Child visualization support**: Can include `"child.visualization": "Packed Bubble Chart"`
+
+#### **3. TopN Solid Gauge View**
+- **EXACTLY 1 data point** allowed per data source (strict limit)
+- **Default chart.label**: `"no"`
+- **Sorting required**: Must have `sorting` object with `limit`, `order`, and `column`
+- **Data source restrictions**: Only supported for `metric` and `availability` types
+
+#### **4. Grid**
+- **Maximum 4 data points** allowed per data source
+- **Special aggregator**: Supports `"sparkline"` aggregator (only for `metric` type)
+- **Grid properties required**: Must include `grid` object with columns
+- **Sparkline support**: Can include `"sparkline": "yes"` in visualization.properties (only for `metric` type)
+- **Child visualization support**: Can include `"child.visualization": "Tree View"`
+- **Column auto-generation**: Follows Grid visualization rules for column generation
+
+### 🔧 Data Source Type Rules
+
+#### **Type: `metric`**
+- **Maximum data points**: 4 for Area/Line/Bar, 1 for Pie/Gauge, 4 for Grid
+- **Allowed aggregators**: `"avg"`, `"min"`, `"max"`, `"sum"`, `"last"`, `"sparkline"` (Grid only)
+- **Default aggregator**: `"avg"`
+- **Default visualization.result.by**: `["monitor"]`
+- **Allowed visualization.result.by**: `["monitor"]`, `["group"]`, `["tag"]` (max 1 selection)
+- **Supported visualization types**: All types (Area, Line, Bar, Pie, TopN Solid Gauge View, Grid)
+
+#### **Type: `availability`**
+- **Maximum data points**: 4 for Area/Line/Bar, 1 for Pie/Gauge, 4 for Grid
+- **Allowed aggregators**: `"avg"`, `"min"`, `"max"`, `"sum"`, `"last"` (no sparkline support)
+- **Default aggregator**: `"avg"`
+- **Default visualization.result.by**: `["monitor"]`
+- **Allowed visualization.result.by**: `["monitor"]`, `["group"]`, `["tag"]` (max 1 selection)
+- **Supported visualization types**: All types except Grid with sparkline (Area, Line, Bar, Pie, TopN Solid Gauge View, Grid without sparkline)
+
+#### **Type: `log`**
+- **Maximum data points**: 1 for Pie/Tree View/Bubble Chart, unlimited for others
+- **Allowed aggregators**: `"count"` only
+- **Default aggregator**: `"count"`
+- **Default visualization.result.by**: `["event.source.type"]`
+- **Allowed visualization.result.by**: `["event.source.type"]`, `["event.severity"]`, `["event.category"]`, `["event.source"]` (max 4 selections)
+- **Supported visualization types**: Area, Line, Bar, Pie, Grid (no TopN Solid Gauge View, no sparkline support)
+
+#### **Type: `flow`**
+- **Maximum data points**: 1 for Pie/Tree View/Bubble Chart, unlimited for others
+- **Allowed aggregators**: `"avg"`, `"sum"`, `"count"` only (no sparkline support)
+- **Default aggregator**: `"avg"`
+- **Default visualization.result.by**: `["source.ip", "destination.ip"]`
+- **Allowed visualization.result.by**: All flow-specific values (max 4 selections)
+- **Supported visualization types**: Area, Line, Bar, Pie, Grid (no TopN Solid Gauge View, no sparkline support)
+
+#### **Type: `policy`**
+- **Maximum data points**: 1 for all visualization types
+- **Allowed aggregators**: `"count"` only
+- **Default aggregator**: `"count"`
+- **Data point**: Must be `"severity"`
+- **Default visualization.result.by**: `["monitor"]` (metric category), `["severity"]` (log/trap/flow category)
+- **Category field required**: Must specify `"category": "metric"|"log"|"flow"|"trap"`
+- **Supported visualization types**: Area, Line, Bar, Pie, Grid (no TopN Solid Gauge View, no sparkline support)
+
+### 🧩 Entity Type & Aggregator Rules
+
+#### Entity Type Rules by Data Source Type
+| **Data Source Type** | **Allowed `entity.type` Values** |
+|---|-----|
+| `metric`            | `"Monitor"`, `"Group"`, `"Tag"`   |
+| `availability`      | `"Monitor"`, `"Group"`, `"Tag"`   |
+| `policy`            | `"Monitor"`, `"Group"`, `"Tag"`   |
+| `log`               | `"event.source"`, `"event.source.type"`, `"Group"` |
+| `flow`              | `"event.source"`, `"Group"`       |
+
+#### Aggregator Rules by Data Source Type
+| **Data Source Type** | **Allowed `aggregator` Values** |
+|---|----|
+| `metric`            | `"avg"`, `"min"`, `"max"`, `"sum"`, `"last"`, `"sparkline"` (Grid only) |
+| `availability`      | `"avg"`, `"min"`, `"max"`, `"sum"`, `"last"` (no sparkline) |
+| `policy`            | `"count"` only |
+| `log`               | `"count"` only |
+| `flow`              | `"avg"`, `"sum"`, `"count"` only |
+
+### 📈 Sorting Configuration Rules
+
+#### Required Sorting Properties
+```json
+{
+  "sorting": {
+    "limit": 10,           // Maximum 50
+    "order": "desc",       // "asc" or "desc"
+    "column": "system.cpu.percent.avg"  // Must match data.point.aggregator format
+  }
+}
+```
+
+#### Sorting Validation Rules
+- **Limit**: Maximum 50, minimum 1
+- **Order**: Must be `"asc"` or `"desc"`
+- **Column**: Must follow pattern `"<data.point>.<aggregator>"` and match an actual data point
+- **Mandatory**: All TopN visualizations must include sorting configuration
+
+#### Column Name Generation
+- **Pattern**: `<data.point>.<aggregator>`
+- **Examples**: 
+  - `system.cpu.percent` + `avg` → `system.cpu.percent.avg`
+  - `message` + `count` → `message.count`
+  - `volume.bytes` + `sum` → `volume.bytes.sum`
+
+### 🎯 Grid-Specific Rules
+
+#### Grid Properties Structure
+```json
+{
+  "visualization.properties": {
+    "sparkline": "yes",  // Optional (only for metric type)
+    "grid": {
+      "visualization.grid.properties.required": "no",
+      "searchable": "yes",
+      "column.selection": "no",
+      "header": "yes",
+      "style": {
+        "header.font.size": "small"
+      },
+      "columns": [
+        // Auto-generated columns based on visualization.result.by and data.points
+      ],
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "system.cpu.percent.avg"
+      }
+    }
+  }
+}
+```
+
+#### Grid Column Auto-Generation Rules
+1. **Result.by columns**: Each `visualization.result.by` value becomes a column
+2. **Data point columns**: Each `data.point.aggregator` combination becomes a column
+3. **Special columns**: For monitor result.by, include `object.type`, `object.vendor`, `object.ip` (hidden)
+4. **Sparkline columns**: If `"sparkline": "yes"` and sparkline aggregator exists, create sparkline column (metric type only)
+
+#### Sparkline Column Structure
+```json
+{
+  "name": "system.cpu.percent.sparkline",
+  "title": " ",
+  "show": "yes",
+  "sortable": "yes",
+  "disable": "no",
+  "resizable": "yes",
+  "selectable": "yes",
+  "orderable": "yes",
+  "position": 9,
+  "type": "sparkline",
+  "style": {
+    "inline.chart": {
+      "type": "sparkline",
+      "color": "#099dd9"
+    }
+  }
+}
+```
+
+### 🎨 Child Visualization Rules
+
+#### Supported Child Visualizations
+- **Pie**: Can have `"child.visualization": "Packed Bubble Chart"` (only when user explicitly specifies)
+- **Grid**: Can have `"child.visualization": "Tree View"` (only when user explicitly specifies)
+
+#### Child Visualization Constraints
+- **User specification required**: Child visualizations should ONLY be included when user explicitly requests them
+- **Pie with Packed Bubble**: Requires exactly 1 data point
+- **Grid with Tree View**: Requires exactly 1 data point
+- **Other types**: No child visualization support
+- **Default behavior**: Do NOT automatically add child visualizations to Pie or Grid charts
+- **Explicit user request**: Only add child visualization when user specifically mentions "Packed Bubble Chart" or "Tree View"
+
+### 📋 Timeline Configuration Rules
+
+#### Default Timeline
+- **Default**: `"relative.timeline": "today"`
+- **Valid patterns**: `custom|today|yesterday|this\.(week|month)|last\.(week|month|quarter|year)|-\d+[mhd]`
+
+#### Custom Timeline Requirements
+- **Custom timeline requires**: `from.date`, `from.time`, `to.date`, `to.time`
+- **Date format**: `YYYY/MM/DD`
+- **Time format**: `HH:MM:SS`
+- **Must set**: `"visualization.time.range.inclusive": "yes"` for custom ranges
+
+### 🧩 Filter Structure Rules
+
+#### Filter Group Constraints
+- **data.filter.groups**: Maximum 3 groups per data filter
+- **result.filter.groups**: Maximum 1 group only
+- **drill.down.filter.groups**: Maximum 3 groups per drill down filter
+- **Conditions per group**: Maximum 3 conditions per group
+
+#### Filter Structure Template
+```json
+{
+  "data.filter": {
+    "operator": "and|or",
+    "filter": "include|exclude",
+    "groups": [
+      {
+        "filter": "include|exclude",
+        "operator": "and|or",
+        "conditions": [
+          {
+            "operand": "field_name",
+            "operator": "=|contains|in|start with|end with",
+            "value": "string|number|boolean"
+          }
+          // MAX 3 conditions per group
+        ]
+      }
+      // MAX 3 groups for data.filter and drill.down.filter
+    ]
+  },
+  "result.filter": {
+    "operator": "and|or",
+    "filter": "include|exclude",
+    "groups": [
+      {
+        "filter": "include|exclude",
+        "operator": "and|or",
+        "conditions": [
+          // MAX 3 conditions in the single group
+        ]
+      }
+      // ONLY 1 group allowed for result.filter
+    ]
+  },
+  "drill.down.filter": {
+    // Same structure as data.filter
+    // MAX 3 groups, MAX 3 conditions per group
+  }
+}
+```
+
+## Validation Rules
+
+### Pre-Generation Checks
+1. **Validate visualization type** - Check type-specific constraints
+2. **Count data points** - Enforce type-specific limits
+3. **Validate data source type** - Apply type-specific rules
+4. **Check aggregator compatibility** - Ensure valid for data source type
+5. **Validate entity type** - Ensure compatibility with data source type
+6. **Check sorting configuration** - Ensure required fields present
+7. **Validate filter groups** - Enforce group/condition limits
+8. **Check child visualization** - Ensure compatibility with visualization type
+9. **Validate grid properties** - Check required fields for Grid type
+10. **Check sparkline configuration** - Ensure proper setup for Grid type (metric only)
+11. **Validate TopN Solid Gauge View restrictions** - Only for metric and availability types
+12. **Validate policy data point** - Must be "severity" for policy type
+13. **Validate axis titles** - Ensure meaningful descriptions when provided
+14. **Validate legend settings** - Ensure proper default values (no by default)
+
+### Type-Specific Validation Functions
+
+#### Visualization Type Validation
+```typescript
+function validateVisualizationType(type, dataPoints, dataSourceType) {
+  switch(type) {
+    case "Area":
+    case "Line":
+    case "HorizontalBar":
+    case "VerticalBar":
+      if (dataPoints.length > 4) {
+        throw new Error(`${type} visualization limited to 4 data points, got ${dataPoints.length}`);
+      }
+      break;
+    
+    case "Pie":
+      if (dataPoints.length !== 1) {
+        throw new Error(`${type} visualization must have exactly 1 data point, got ${dataPoints.length}`);
+      }
+      break;
+    
+    case "TopN Solid Gauge View":
+      if (dataPoints.length !== 1) {
+        throw new Error(`${type} visualization must have exactly 1 data point, got ${dataPoints.length}`);
+      }
+      if (!["metric", "availability"].includes(dataSourceType)) {
+        throw new Error(`${type} visualization is only supported for metric and availability types, got ${dataSourceType}`);
+      }
+      break;
+    
+    case "Grid":
+      if (dataPoints.length > 4) {
+        throw new Error(`Grid visualization limited to 4 data points, got ${dataPoints.length}`);
+      }
+      break;
+    
+    default:
+      throw new Error(`Invalid visualization type: ${type}`);
+  }
+}
+```
+
+#### Data Source Type Validation
+```typescript
+function validateDataSourceType(dataSource) {
+  const { type, "data.points": dataPoints, "visualization.result.by": resultBy } = dataSource;
+  
+  // Validate data point limits
+  const pointCount = dataPoints.length;
+  
+  switch(type) {
+    case "metric":
+      if (pointCount > 4) {
+        throw new Error(`${type} sources limited to 4 data points, got ${pointCount}`);
+      }
+      break;
+    
+    case "availability":
+      if (pointCount > 4) {
+        throw new Error(`${type} sources limited to 4 data points, got ${pointCount}`);
+      }
+      break;
+    
+    case "policy":
+      if (pointCount !== 1) {
+        throw new Error(`Policy sources must have exactly 1 data point, got ${pointCount}`);
+      }
+      // Validate policy data point is severity
+      if (dataPoints[0]["data.point"] !== "severity") {
+        throw new Error(`Policy type data point must be "severity", got ${dataPoints[0]["data.point"]}`);
+      }
+      break;
+    
+    case "log":
+    case "flow":
+      // No limit for log and flow (except for child visualizations)
+      break;
+    
+    default:
+      throw new Error(`Invalid data source type: ${type}`);
+  }
+  
+  // Validate aggregators
+  dataPoints.forEach((dataPoint, index) => {
+    const aggregator = dataPoint.aggregator;
+    const allowedAggregators = getAllowedAggregators(type);
+    
+    if (!allowedAggregators.includes(aggregator)) {
+      throw new Error(
+        `Invalid aggregator "${aggregator}" for data source type "${type}". ` +
+        `Allowed values: ${allowedAggregators.join(", ")}`
+      );
+    }
+  });
+  
+  // Validate visualization.result.by
+  validateResultBy(type, resultBy, dataSource.category);
+}
+
+function getAllowedAggregators(type) {
+  const aggregators = {
+    "metric": ["avg", "min", "max", "sum", "last", "sparkline"],
+    "availability": ["avg", "min", "max", "sum", "last"],
+    "policy": ["count"],
+    "log": ["count"],
+    "flow": ["avg", "sum", "count"]
+  };
+  return aggregators[type] || [];
+}
+
+function validateResultBy(type, resultBy, category) {
+  const allowedResultBy = getAllowedResultBy(type, category);
+  
+  if (!resultBy || resultBy.length === 0) {
+    throw new Error(`visualization.result.by is required for ${type} type`);
+  }
+  
+  if (resultBy.length > allowedResultBy.maxSelections) {
+    throw new Error(`${type} allows max ${allowedResultBy.maxSelections} selections, got ${resultBy.length}`);
+  }
+  
+  resultBy.forEach(value => {
+    if (!allowedResultBy.values.includes(value)) {
+      throw new Error(`Invalid visualization.result.by "${value}" for ${type}. Allowed: ${allowedResultBy.values.join(", ")}`);
+    }
+  });
+}
+
+function getAllowedResultBy(type, category) {
+  const resultByRules = {
+    "metric": {
+      values: ["monitor", "group", "tag"],
+      maxSelections: 1
+    },
+    "availability": {
+      values: ["monitor", "group", "tag"],
+      maxSelections: 1
+    },
+    "log": {
+      values: ["event.source.type", "event.severity", "event.category", "event.source"],
+      maxSelections: 4
+    },
+    "flow": {
+      values: [
+        "destination.aso", "destination.port", "source.aso", "destination.if.index",
+        "destination.isp", "source.domain", "destination.threat", "protocol",
+        "destination.city", "source.ip", "tos", "source.isp", "source.city",
+        "tcp.flags", "source.as", "source.threat", "destination.domain",
+        "destination.ip.as", "destination.ip", "source.country", "source.if.index",
+        "application", "source.port", "event.source", "destination.as",
+        "destination.country", "user"
+      ],
+      maxSelections: 4
+    },
+    "policy": {
+      values: category === "metric" ? ["monitor", "severity", "policy.id"] : ["severity", "policy.id"],
+      maxSelections: 1
+    }
+  };
+  return resultByRules[type] || { values: [], maxSelections: 0 };
+}
+```
+
+#### Sparkline Validation
+```typescript
+function validateSparkline(dataSourceType, visualizationProperties) {
+  if (visualizationProperties.sparkline === "yes") {
+    if (dataSourceType !== "metric") {
+      throw new Error(`Sparkline is only supported for metric type, got ${dataSourceType}`);
+    }
+    
+    // Check if sparkline aggregator exists in data points
+    const hasSparklineAggregator = dataSource["data.points"].some(dp => dp.aggregator === "sparkline");
+    if (!hasSparklineAggregator) {
+      throw new Error("Sparkline enabled but no sparkline aggregator found in data points");
+    }
+  }
+}
+```
+
+#### Child Visualization Validation
+```typescript
+function validateChildVisualization(visualizationType, childVisualization, dataPoints) {
+  if (!childVisualization) return;
+  
+  const validChildVisualizations = {
+    "Pie": ["Packed Bubble Chart"],
+    "Grid": ["Tree View"]
+  };
+  
+  if (!validChildVisualizations[visualizationType]?.includes(childVisualization)) {
+    throw new Error(`Invalid child visualization "${childVisualization}" for ${visualizationType}`);
+  }
+  
+  // Child visualizations require exactly 1 data point
+  if (dataPoints.length !== 1) {
+    throw new Error(`Child visualization requires exactly 1 data point, got ${dataPoints.length}`);
+  }
+}
+```
+
+#### Axis Title Validation
+```typescript
+function validateAxisTitles(axisTitles) {
+  if (!axisTitles) return;
+  
+  const { x, y, z } = axisTitles;
+  
+  // Check if any axis title is provided
+  const hasAnyTitle = x || y || z;
+  
+  if (hasAnyTitle) {
+    // If any axis title is provided, validate that it's meaningful
+    if (x && x.trim() === "") {
+      throw new Error("X-axis title cannot be empty if provided");
+    }
+    if (y && y.trim() === "") {
+      throw new Error("Y-axis title cannot be empty if provided");
+    }
+    if (z && z.trim() === "") {
+      throw new Error("Z-axis title cannot be empty if provided");
+    }
+    
+    // Validate that titles are descriptive (not just whitespace or single characters)
+    if (x && x.trim().length < 2) {
+      throw new Error("X-axis title must be descriptive (minimum 2 characters)");
+    }
+    if (y && y.trim().length < 2) {
+      throw new Error("Y-axis title must be descriptive (minimum 2 characters)");
+    }
+    if (z && z.trim().length < 2) {
+      throw new Error("Z-axis title must be descriptive (minimum 2 characters)");
+    }
+  }
+}
+```
+
+## Error Prevention
+
+### Common Mistakes to Avoid
+1. **Missing sorting configuration**: All TopN visualizations require sorting
+2. **Exceeding data point limits**: Check type-specific constraints
+3. **Invalid aggregator for data source type**: Ensure compatibility
+4. **Missing nested objects**: Always include `filters`, `chart`/`grid` objects
+5. **Incorrect enum values**: Double-check all enum constraints
+6. **Invalid filter structure**: Respect group and condition limits
+7. **Missing required column fields**: Every column needs all required properties
+8. **Invalid child visualization**: Ensure compatibility with visualization type
+9. **Sparkline for non-metric types**: Only metric type supports sparkline
+10. **TopN Solid Gauge View for non-metric/availability**: Only metric and availability support it
+11. **Policy data point not severity**: Policy type must use "severity" data point
+12. **Assuming rotation.angle or line.width**: Only include if explicitly specified
+
+### Required Non-Empty Fields
+- `visualization.data.sources` - Must have at least one source
+- `data.points` - Must have at least one data point
+- `visualization.result.by` - Must have at least one grouping method
+- `sorting` - Must have limit, order, and column
+- `visualization.properties.chart` or `visualization.properties.grid` - Must exist
+
+## Generation Workflow
+
+1. **Input Analysis**
+   - Identify visualization type
+   - Extract user-provided values
+   - Note missing fields for defaults
+
+2. **Type-Specific Validation**
+   - Apply appropriate constraints
+   - Validate data point limits
+   - Check required vs optional fields
+
+3. **Data Source Validation**
+   - Apply type-specific rules
+   - Validate aggregator compatibility
+   - Check entity type constraints
+
+4. **Sorting Configuration**
+   - Ensure sorting object exists
+   - Validate limit, order, and column
+   - Generate column names from data points
+
+5. **Default Application**
+   - Fill missing required fields
+   - Apply type-specific defaults
+   - Use global defaults as fallback
+
+6. **Child Visualization Setup**
+   - Apply child visualization if specified
+   - Validate compatibility
+   - Ensure single data point constraint
+
+7. **Grid-Specific Setup** (if applicable)
+   - Generate columns based on result.by and data.points
+   - Setup sparkline if specified (metric only)
+   - Apply grid properties
+
+8. **Schema Validation**
+   - Validate against JSON schema
+   - Check enum constraints
+   - Verify required field presence
+
+9. **Output Generation**
+   - Generate compliant JSON
+   - Include all required properties
+   - Format consistently
+
+## Usage Examples
+
+### Basic TopN Area Chart
+```json
+{
+  "visualization.name": "Top CPU Usage",
+  "visualization.type": "Area",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "system.cpu.percent.avg"
+      }
+    }
+  }
+}
+```
+
+### TopN Pie Chart with Child Visualization
+```json
+{
+  "visualization.name": "Top Memory Usage",
+  "visualization.type": "Pie",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "data.points": [
+        {
+          "data.point": "system.memory.usage",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "child.visualization": "Packed Bubble Chart",
+  "visualization.properties": {
+    "chart": {
+      "sorting": {
+        "limit": 5,
+        "order": "desc",
+        "column": "system.memory.usage.avg"
+      }
+    }
+  }
+}
+```
+
+### TopN Grid with Sparkline (Metric Only)
+```json
+{
+  "visualization.name": "Top Network Usage",
+  "visualization.type": "Grid",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "data.points": [
+        {
+          "data.point": "system.network.bytes.in",
+          "aggregator": "avg"
+        },
+        {
+          "data.point": "system.network.bytes.in",
+          "aggregator": "sparkline"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "sparkline": "yes",
+    "grid": {
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "system.network.bytes.in.avg"
+      }
+    }
+  }
+}
+```
+
+### TopN Solid Gauge View (Metric/Availability Only)
+```json
+{
+  "visualization.name": "Top Disk Usage",
+  "visualization.type": "TopN Solid Gauge View",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "data.points": [
+        {
+          "data.point": "system.disk.usage.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "system.disk.usage.percent.avg"
+      }
+    }
+  }
+}
+```
+
+### Policy Type TopN
+```json
+{
+  "visualization.name": "Top Policy Violations",
+  "visualization.type": "Area",
+  "visualization.data.sources": [
+    {
+      "type": "policy",
+      "category": "metric",
+      "data.points": [
+        {
+          "data.point": "severity",
+          "aggregator": "count"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "severity.count"
+      }
+    }
+  }
+}
+```
+
+### TopN Chart with Axis Titles (Proper Usage)
+```json
+{
+  "visualization.name": "Top CPU Usage by Monitor",
+  "visualization.type": "Line",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "chart.legend": "no",
+      "vertical.legend": "no",
+      "chart.label": "no",
+      "axis.titles": {
+        "x": "Monitor Names",
+        "y": "CPU Utilization (%)",
+        "z": ""
+      },
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "system.cpu.percent.avg"
+      }
+    }
+  }
+}
+```
+
+### TopN Chart with Legend Enabled
+```json
+{
+  "visualization.name": "Top Memory Usage Comparison",
+  "visualization.type": "Area",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "data.points": [
+        {
+          "data.point": "system.memory.used.percent",
+          "aggregator": "avg"
+        },
+        {
+          "data.point": "system.memory.free.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "chart.legend": "yes",
+      "vertical.legend": "no",
+      "chart.label": "no",
+      "axis.titles": {
+        "x": "Monitors",
+        "y": "Memory Percentage (%)",
+        "z": ""
+      },
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "system.memory.used.percent.avg"
+      }
+    }
+  }
+}
+```
+
+Remember: **Complete structure integrity + TopN-specific constraints compliance is non-negotiable**. Violating any constraint results in generation failure.
+
+
+
+
+
+
+
+

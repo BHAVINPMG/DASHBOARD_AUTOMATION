@@ -78,6 +78,14 @@
       "default": "Area",
       "description": "If not specified, 'Area' will be used as the default visualization type."
     },
+    "child.visualization": {
+      "type": "string",
+      "enum": [
+        "Packed Bubble Chart",
+        "Tree View"
+      ],
+      "description": "Child visualization for Pie (Packed Bubble Chart) or Grid (Tree View) types."
+    },
     "visualization.data.sources": {
       "type": "array",
       "items": {
@@ -193,7 +201,9 @@
                     "min",
                     "max",
                     "sum",
-                    "last"
+                    "last",
+                    "count",
+                    "sparkline"
                   ]
                 },
                 "allOf": [
@@ -274,11 +284,20 @@
     "visualization.properties": {
       "type": "object",
       "properties": {
+        "sparkline": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "no"
+          ],
+          "description": "Enable sparkline support for Grid visualization type (metric type only)."
+        },
         "chart": {
           "type": "object",
           "properties": {
             "rotation.angle": {
-              "type": "string"
+              "type": "string",
+              "description": "Optional field - only include if explicitly specified by user."
             },
             "chart.legend": {
               "type": "string",
@@ -295,7 +314,8 @@
               ]
             },
             "line.width": {
-              "type": "integer"
+              "type": "integer",
+              "description": "Optional field - only include if explicitly specified by user."
             },
             "chart.label": {
               "type": "string",
@@ -338,7 +358,210 @@
                 "column": {
                   "type": "string"
                 }
+              },
+              "required": [
+                "limit",
+                "order",
+                "column"
+              ]
+            }
+          }
+        },
+        "grid": {
+          "type": "object",
+          "properties": {
+            "visualization.grid.properties.required": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "searchable": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "column.selection": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "header": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no"
+              ]
+            },
+            "style": {
+              "type": "object",
+              "properties": {
+                "header.font.size": {
+                  "type": "string",
+                  "enum": [
+                    "small",
+                    "medium",
+                    "large"
+                  ]
+                }
               }
+            },
+            "columns": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "show": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "sortable": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "disable": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "resizable": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "selectable": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "orderable": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no"
+                    ]
+                  },
+                  "position": {
+                    "type": "integer"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "sparkline"
+                    ]
+                  },
+                  "style": {
+                    "type": "object",
+                    "properties": {
+                      "width.percent": {
+                        "type": "number"
+                      },
+                      "inline.chart": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "sparkline"
+                            ]
+                          },
+                          "color": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "color.conditions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "operator": {
+                              "type": "string",
+                              "enum": [
+                                "=",
+                                ">",
+                                ">=",
+                                "<",
+                                "<=",
+                                "contain"
+                              ]
+                            },
+                            "value": {
+                              "type": "string"
+                            },
+                            "color.type": {
+                              "type": "string",
+                              "enum": [
+                                "foreground",
+                                "background"
+                              ]
+                            },
+                            "color": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "show",
+                  "sortable",
+                  "disable",
+                  "resizable",
+                  "selectable",
+                  "orderable"
+                ]
+              }
+            },
+            "sorting": {
+              "type": "object",
+              "properties": {
+                "limit": {
+                  "type": "integer",
+                  "maximum": 50
+                },
+                "order": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "column": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "limit",
+                "order",
+                "column"
+              ]
             }
           }
         }
@@ -387,5 +610,11 @@
         ]
       }
     }
-  }
+  },
+  "required": [
+    "visualization.category",
+    "visualization.type",
+    "visualization.data.sources",
+    "visualization.properties"
+  ]
 } 
