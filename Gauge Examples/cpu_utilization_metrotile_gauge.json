@@ -1,0 +1,61 @@
+{
+  "id": 1001,
+  "container.type": "dashboard",
+  "visualization.name": "CPU Utilization - MetroTile Gauge",
+  "visualization.description": "System CPU utilization displayed as a MetroTile gauge",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "MetroTile",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "type": "number",
+        "font.size": "large",
+        "text.align": "center",
+        "icon": {
+          "name": "Cpu",
+          "placement": "prefix"
+        },
+        "color.conditions": [
+          {
+            "color": "#F45B5B",
+            "operator": ">",
+            "value": 80
+          },
+          {
+            "color": "#f58518",
+            "operator": ">",
+            "value": 60
+          },
+          {
+            "color": "#4CAF50",
+            "operator": ">=",
+            "value": 0
+          }
+        ]
+      }
+    }
+  },
+  "visualization.result.by": []
+} 

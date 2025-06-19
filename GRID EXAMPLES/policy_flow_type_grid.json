@@ -1,0 +1,108 @@
+{
+  "id": 76335282569,
+  "container.type": "dashboard",
+  "visualization.name": "Policy Flow Type Violations Grid",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Grid",
+  "visualization.type": "Grid",
+  "visualization.data.sources": [
+    {
+      "type": "policy",
+      "category": "metric",
+      "filters": {
+        "data.filter": {}
+      },
+      "visualization.result.by": ["object.id"],
+      "data.points": [
+        {
+          "data.point": "flow.type",
+          "aggregator": "count"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "grid": {
+      "visualization.grid.properties.required": "no",
+      "searchable": "yes",
+      "column.selection": "no",
+      "header": "yes",
+      "layout": "Grid",
+      "style": {
+        "header.font.size": "small"
+      },
+      "columns": [
+        {
+          "name": "monitor",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 1
+        },
+        {
+          "name": "object.type",
+          "show": "no",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 2
+        },
+        {
+          "name": "object.vendor",
+          "show": "no",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 3
+        },
+        {
+          "name": "object.ip",
+          "show": "no",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 4
+        },
+        {
+          "name": "flow.type.count",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 5,
+          "style": {
+            "color.conditions": [
+              {
+                "operator": ">",
+                "value": "10",
+                "color.type": "background",
+                "color": "#ff0000"
+              },
+              {
+                "operator": ">",
+                "value": "5",
+                "color.type": "background",
+                "color": "#ffa500"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "visualization.result.by": ["object.id"]
+} 

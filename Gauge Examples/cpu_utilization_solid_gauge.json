@@ -1,0 +1,61 @@
+{
+  "id": 1002,
+  "container.type": "dashboard",
+  "visualization.name": "CPU Utilization - Solid Gauge",
+  "visualization.description": "System CPU utilization displayed as a solid gauge",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "SolidGauge",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "chart.legend": "no",
+        "chart.label": "no",
+        "type": "number",
+        "font.size": "medium",
+        "text.align": "center",
+        "icon": {
+          "name": "Cpu",
+          "placement": "prefix"
+        },
+        "color.conditions": [
+          {
+            "color": "#F45B5B",
+            "operator": ">",
+            "value": 80
+          },
+          {
+            "color": "#f58518",
+            "operator": ">",
+            "value": 60
+          },
+          {
+            "color": "#4CAF50",
+            "operator": ">=",
+            "value": 0
+          }
+        ]
+      }
+    }
+  },
+  "visualization.result.by": []
+} 

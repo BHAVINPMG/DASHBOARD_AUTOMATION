@@ -1,3 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Gauge Visualization JSON Cursor Rules
+
+## Overview
+You are a JSON configuration generator for Gauge-based visualizations. Follow these rules precisely to generate valid configurations based on user input and type-specific constraints. Always ensure complete structural integrity and never omit mandatory fields.
+
 # Gauge Visualization JSON Cursor Rules
 
 ## Overview
@@ -868,3 +878,238 @@ Before outputting JSON, verify:
    - Format consistently
 
 Remember: **Complete structure integrity + all validation rules compliance is non-negotiable**. Violating any constraint results in generation failure. 
+
+## 🔧 System Counter Mapping Rules
+
+### Generic Resource Term → System Counter Mapping
+
+When users mention generic resource terms, automatically map to standard system counters for consistent monitoring across all platforms.
+
+#### **CPU Related Terms**
+**User Input:** `"cpu"`, `"processor"`, `"cpu usage"`, `"cpu utilization"`
+**Default Counter:** `system.cpu.percent`
+**Alternative Counters:**
+- `system.cpu.user.percent` - User CPU time percentage
+- `system.cpu.system.percent` - System CPU time percentage
+- `system.cpu.idle.percent` - Idle CPU time percentage
+- `system.cpu.iowait.percent` - I/O wait CPU time percentage
+- `system.cpu.nice.percent` - Nice CPU time percentage
+
+#### **Memory Related Terms**
+**User Input:** `"memory"`, `"ram"`, `"memory usage"`, `"memory utilization"`
+**Default Counter:** `system.memory.usage.percent`
+**Alternative Counters:**
+- `system.memory.usage` - Memory usage in bytes
+- `system.memory.free` - Free memory in bytes
+- `system.memory.free.percent` - Free memory percentage
+- `system.memory.available` - Available memory in bytes
+- `system.memory.available.percent` - Available memory percentage
+- `system.memory.cached` - Cached memory in bytes
+- `system.memory.buffered` - Buffered memory in bytes
+
+#### **Disk Related Terms**
+**User Input:** `"disk"`, `"storage"`, `"disk usage"`, `"disk utilization"`
+**Default Counter:** `system.disk.usage.percent`
+**Alternative Counters:**
+- `system.disk.usage` - Disk usage in bytes
+- `system.disk.free` - Free disk space in bytes
+- `system.disk.free.percent` - Free disk space percentage
+- `system.disk.io.read.bytes` - Disk read bytes per second
+- `system.disk.io.write.bytes` - Disk write bytes per second
+- `system.disk.io.read.ops` - Disk read operations per second
+- `system.disk.io.write.ops` - Disk write operations per second
+- `system.disk.io.time.percent` - Disk I/O time percentage
+
+#### **Network Related Terms**
+**User Input:** `"network"`, `"bandwidth"`, `"network usage"`, `"network traffic"`
+**Default Counters:** `system.network.in.bytes`, `system.network.out.bytes`
+**Alternative Counters:**
+- `system.network.in.packets` - Network incoming packets per second
+- `system.network.out.packets` - Network outgoing packets per second
+- `system.network.in.errors` - Network incoming errors
+- `system.network.out.errors` - Network outgoing errors
+- `system.network.in.dropped` - Network incoming dropped packets
+- `system.network.out.dropped` - Network outgoing dropped packets
+
+#### **Process Related Terms**
+**User Input:** `"process"`, `"processes"`, `"process count"`
+**Default Counter:** `system.process.count`
+**Alternative Counters:**
+- `system.process.running` - Number of running processes
+- `system.process.sleeping` - Number of sleeping processes
+- `system.process.stopped` - Number of stopped processes
+- `system.process.zombie` - Number of zombie processes
+
+### **Default Behavior Rules**
+
+#### **Single Resource Charts**
+When user requests a single resource chart:
+- **CPU**: Use `system.cpu.percent` as primary counter
+- **Memory**: Use `system.memory.usage.percent` as primary counter
+- **Disk**: Use `system.disk.usage.percent` as primary counter
+- **Network**: Use `system.network.in.bytes` and `system.network.out.bytes` as primary counters
+
+#### **Multi-Resource Charts**
+When user requests multiple resources:
+- **CPU + Memory**: Use `system.cpu.percent` and `system.memory.usage.percent`
+- **CPU + Disk**: Use `system.cpu.percent` and `system.disk.usage.percent`
+- **Memory + Disk**: Use `system.memory.usage.percent` and `system.disk.usage.percent`
+- **All Resources**: Use percentage-based counters for consistent visualization
+
+#### **Performance Charts**
+When user requests performance analysis:
+- **CPU Performance**: Use `system.cpu.user.percent`, `system.cpu.system.percent`, `system.cpu.idle.percent`
+- **Memory Performance**: Use `system.memory.usage`, `system.memory.free`, `system.memory.cached`
+- **Disk Performance**: Use `system.disk.io.read.bytes`, `system.disk.io.write.bytes`, `system.disk.io.time.percent`
+- **Network Performance**: Use `system.network.in.bytes`, `system.network.out.bytes`, `system.network.in.packets`, `system.network.out.packets`
+
+### **Chart Generation Logic**
+
+#### **Example Usage Patterns**
+```typescript
+// User: "Create a cpu chart"
+function mapUserRequestToCounter(userInput) {
+  const input = userInput.toLowerCase();
+  
+  if (input.includes('cpu') || input.includes('processor')) {
+    return {
+      primary: "system.cpu.percent",
+      alternatives: ["system.cpu.user.percent", "system.cpu.system.percent", "system.cpu.idle.percent"]
+    };
+  }
+  
+  if (input.includes('memory') || input.includes('ram')) {
+    return {
+      primary: "system.memory.usage.percent",
+      alternatives: ["system.memory.usage", "system.memory.free.percent", "system.memory.available.percent"]
+    };
+  }
+  
+  if (input.includes('disk') || input.includes('storage')) {
+    return {
+      primary: "system.disk.usage.percent",
+      alternatives: ["system.disk.usage", "system.disk.free.percent", "system.disk.io.read.bytes", "system.disk.io.write.bytes"]
+    };
+  }
+  
+  if (input.includes('network') || input.includes('bandwidth')) {
+    return {
+      primary: ["system.network.in.bytes", "system.network.out.bytes"],
+      alternatives: ["system.network.in.packets", "system.network.out.packets"]
+    };
+  }
+  
+  // Default fallback
+  return {
+    primary: "system.cpu.percent",
+    alternatives: []
+  };
+}
+```
+
+#### **Marker Thresholds by Resource Type**
+```json
+{
+  "system.cpu.percent": {
+    "warning": 70,
+    "critical": 85,
+    "markers": [
+      {
+        "marker.type": "line",
+        "marker.threshold": 70,
+        "marker.color": "WARNING",
+        "marker.line.type": "dash",
+        "marker.label": "CPU Warning (70%)"
+      },
+      {
+        "marker.type": "line",
+        "marker.threshold": 85,
+        "marker.color": "CRITICAL",
+        "marker.line.type": "solid.bold",
+        "marker.label": "CPU Critical (85%)"
+      }
+    ]
+  },
+  "system.memory.usage.percent": {
+    "warning": 80,
+    "critical": 90,
+    "markers": [
+      {
+        "marker.type": "line",
+        "marker.threshold": 80,
+        "marker.color": "WARNING",
+        "marker.line.type": "dash",
+        "marker.label": "Memory Warning (80%)"
+      },
+      {
+        "marker.type": "line",
+        "marker.threshold": 90,
+        "marker.color": "CRITICAL",
+        "marker.line.type": "solid.bold",
+        "marker.label": "Memory Critical (90%)"
+      }
+    ]
+  },
+  "system.disk.usage.percent": {
+    "warning": 75,
+    "critical": 85,
+    "markers": [
+      {
+        "marker.type": "line",
+        "marker.threshold": 75,
+        "marker.color": "WARNING",
+        "marker.line.type": "dash",
+        "marker.label": "Disk Warning (75%)"
+      },
+      {
+        "marker.type": "line",
+        "marker.threshold": 85,
+        "marker.color": "CRITICAL",
+        "marker.line.type": "solid.bold",
+        "marker.label": "Disk Critical (85%)"
+      }
+    ]
+  }
+}
+```
+
+### **Enforcement Rules**
+
+1. **ALWAYS use system counters** when user mentions generic resource terms
+2. **NEVER use platform-specific counters** (like `hyperv.disk.used.percent`) for generic requests
+3. **Apply appropriate thresholds** based on resource type
+4. **Use percentage-based counters** for utilization charts
+5. **Use bytes/operations counters** for performance charts
+6. **Maintain consistency** across all chart generations
+
+### **Validation Checklist for System Counter Mapping**
+
+- [ ] User input contains generic resource terms (cpu, memory, disk, network)
+- [ ] Mapped to appropriate system counter(s)
+- [ ] Applied correct aggregator (usually "avg" for percentages, "sum" for bytes)
+- [ ] Set appropriate marker thresholds for resource type
+- [ ] Used consistent naming convention
+- [ ] Applied proper visualization type for resource monitoring
+
+This ensures **standardized, cross-platform monitoring** using universal system counters rather than vendor-specific metrics.
+
+## ⚠️ CRITICAL RULES - COMMON MISTAKES TO AVOID
+
+### 1. **NEVER Include Unnecessary Filters**
+- **Default behavior**: Use empty filter objects `{}` for all filter types
+- **Only add filters** when user explicitly requests filtering
+- **Wrong**: Including complex filter conditions for basic metrics
+- **Correct**: 
+```json
+"filters": {
+  "data.filter": {},
+  "result.filter": {},
+  "drill.down.filter": {}
+}
+```
+
+### 2. **Correct visualization.result.by Usage**
+- **For metric type**: Use `"monitor"` (NOT `"object.id"`)
+- **For policy type with category metric**: Use `"object.id"` (special case)
+- **Wrong**: `"visualization.result.by": ["object.id"]` for metric data sources
+- **Correct**: `"visualization.result.by": ["monitor"]` for metric data sources

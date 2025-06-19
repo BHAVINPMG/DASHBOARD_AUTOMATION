@@ -1,0 +1,90 @@
+{
+  "id": 76335282568,
+  "container.type": "dashboard",
+  "visualization.name": "Flow Volume Bytes Grid",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Grid",
+  "visualization.type": "Grid",
+  "visualization.data.sources": [
+    {
+      "type": "flow",
+      "category": "flow",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "visualization.result.by": ["source.ip", "destination.ip"],
+      "data.points": [
+        {
+          "data.point": "volume.bytes",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "grid": {
+      "visualization.grid.properties.required": "no",
+      "searchable": "yes",
+      "column.selection": "no",
+      "header": "yes",
+      "layout": "Grid",
+      "style": {
+        "header.font.size": "small"
+      },
+      "columns": [
+        {
+          "name": "source.ip",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 1
+        },
+        {
+          "name": "destination.ip",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 2
+        },
+        {
+          "name": "volume.bytes.avg",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 3,
+          "style": {
+            "color.conditions": [
+              {
+                "operator": ">",
+                "value": "1000000",
+                "color.type": "background",
+                "color": "#ff0000"
+              },
+              {
+                "operator": ">",
+                "value": "500000",
+                "color.type": "background",
+                "color": "#ffa500"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "visualization.result.by": ["source.ip", "destination.ip"]
+} 

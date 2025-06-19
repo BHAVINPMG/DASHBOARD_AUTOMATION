@@ -1,0 +1,169 @@
+{
+  "id": 76335282571,
+  "container.type": "dashboard",
+  "visualization.name": "Multi-Metric System Grid",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Grid",
+  "visualization.type": "Grid",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "visualization.result.by": ["monitor"],
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        },
+        {
+          "data.point": "system.memory.free.percent",
+          "aggregator": "avg"
+        },
+        {
+          "data.point": "system.disk.used.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "grid": {
+      "visualization.grid.properties.required": "no",
+      "searchable": "yes",
+      "column.selection": "no",
+      "header": "yes",
+      "layout": "Grid",
+      "style": {
+        "header.font.size": "small"
+      },
+      "columns": [
+        {
+          "name": "monitor",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 1
+        },
+        {
+          "name": "object.type",
+          "show": "no",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 2
+        },
+        {
+          "name": "object.vendor",
+          "show": "no",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 3
+        },
+        {
+          "name": "object.ip",
+          "show": "no",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 4
+        },
+        {
+          "name": "system.cpu.percent.avg",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 5,
+          "style": {
+            "color.conditions": [
+              {
+                "operator": ">",
+                "value": "80",
+                "color.type": "background",
+                "color": "#ff0000"
+              },
+              {
+                "operator": ">",
+                "value": "60",
+                "color.type": "background",
+                "color": "#ffa500"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system.memory.usage.percent.avg",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 6,
+          "style": {
+            "color.conditions": [
+              {
+                "operator": ">",
+                "value": "85",
+                "color.type": "background",
+                "color": "#ff0000"
+              },
+              {
+                "operator": ">",
+                "value": "70",
+                "color.type": "background",
+                "color": "#ffa500"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system.disk.used.percent.avg",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 7,
+          "style": {
+            "color.conditions": [
+              {
+                "operator": ">",
+                "value": "90",
+                "color.type": "background",
+                "color": "#ff0000"
+              },
+              {
+                "operator": ">",
+                "value": "80",
+                "color.type": "background",
+                "color": "#ffa500"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "visualization.result.by": ["monitor"]
+} 

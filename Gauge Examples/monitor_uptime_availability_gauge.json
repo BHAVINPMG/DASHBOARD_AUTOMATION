@@ -1,0 +1,60 @@
+{
+  "id": 1003,
+  "container.type": "dashboard",
+  "visualization.name": "Monitor Uptime - Availability Gauge",
+  "visualization.description": "Monitor uptime status displayed as availability gauge",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "MetroTile",
+  "visualization.data.sources": [
+    {
+      "type": "availability",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "monitor.up.count",
+          "aggregator": "avg"
+        },
+        {
+          "data.point": "monitor.down.count",
+          "aggregator": "avg"
+        },
+        {
+          "data.point": "monitor.suspend.count",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "layout": "Pie",
+        "chart.legend": "yes",
+        "chart.label": "yes",
+        "type": "number",
+        "font.size": "medium",
+        "text.align": "center",
+        "color.conditions": [
+          {
+            "color": "#4CAF50"
+          },
+          {
+            "color": "#f04e3e"
+          },
+          {
+            "color": "#f58518"
+          }
+        ]
+      }
+    }
+  },
+  "visualization.result.by": []
+} 

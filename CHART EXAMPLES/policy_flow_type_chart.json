@@ -1,0 +1,41 @@
+{
+  "id": 13,
+  "container.type": "dashboard",
+  "visualization.name": "Policy Flow Type Violations Chart",
+  "visualization.description": "Policy violations by flow type over time",
+  "visualization.granularity": "10 m",
+  "visualization.timeline": {
+    "relative.timeline": "today"
+  },
+  "visualization.category": "Chart",
+  "visualization.type": "Line",
+  "visualization.data.sources": [
+    {
+      "type": "policy",
+      "category": "flow",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "flow.type",
+          "aggregator": "count"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "line.width": 2,
+      "chart.legend": "yes",
+      "chart.label": "yes",
+      "axis.titles": {
+        "x": "Time",
+        "y": "Violation Count"
+      }
+    }
+  },
+  "visualization.result.by": ["severity"]
+}

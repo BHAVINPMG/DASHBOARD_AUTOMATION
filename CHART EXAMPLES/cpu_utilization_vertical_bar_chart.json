@@ -1,0 +1,55 @@
+{
+  "id": 4,
+  "container.type": "dashboard",
+  "visualization.name": "CPU Utilization - Vertical Bar Chart",
+  "visualization.description": "System CPU utilization displayed as a vertical bar chart",
+  "visualization.granularity": "10 m",
+  "visualization.timeline": {
+    "relative.timeline": "today"
+  },
+  "visualization.category": "Chart",
+  "visualization.type": "VerticalBar",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "chart.legend": "yes",
+      "chart.label": "yes",
+      "axis.titles": {
+        "x": "Monitors",
+        "y": "CPU Utilization (%)"
+      },
+      "marker.property": [
+        {
+          "marker.type": "line",
+          "marker.threshold": 80,
+          "marker.color": "WARNING",
+          "marker.line.type": "solid",
+          "marker.label": "Warning (80%)"
+        },
+        {
+          "marker.type": "line",
+          "marker.threshold": 95,
+          "marker.color": "CRITICAL",
+          "marker.line.type": "solid.bold",
+          "marker.label": "Critical (95%)"
+        }
+      ]
+    }
+  },
+  "visualization.result.by": ["monitor"]
+} 

@@ -1,0 +1,79 @@
+{
+  "id": 76335282570,
+  "container.type": "dashboard",
+  "visualization.name": "CPU Utilization Key-Value Grid",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Grid",
+  "visualization.type": "Grid",
+  "visualization.data.sources": [
+    {
+      "type": "metric",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "visualization.result.by": ["monitor"],
+      "data.points": [
+        {
+          "data.point": "system.cpu.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "grid": {
+      "visualization.grid.properties.required": "no",
+      "searchable": "yes",
+      "column.selection": "no",
+      "header": "yes",
+      "layout": "key-value",
+      "style": {
+        "header.font.size": "small"
+      },
+      "columns": [
+        {
+          "name": "monitor",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 1
+        },
+        {
+          "name": "system.cpu.percent.avg",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 2,
+          "style": {
+            "color.conditions": [
+              {
+                "operator": ">",
+                "value": "80",
+                "color.type": "background",
+                "color": "#ff0000"
+              },
+              {
+                "operator": ">",
+                "value": "60",
+                "color.type": "background",
+                "color": "#ffa500"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "visualization.result.by": ["monitor"]
+} 

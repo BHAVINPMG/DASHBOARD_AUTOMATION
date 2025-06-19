@@ -1,0 +1,53 @@
+{
+  "id": 1008,
+  "container.type": "dashboard",
+  "visualization.name": "Policy Flow Type Violations - Pie Gauge",
+  "visualization.description": "Policy violations by flow type displayed as pie gauge",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Gauge",
+  "visualization.type": "MetroTile",
+  "visualization.data.sources": [
+    {
+      "type": "policy",
+      "category": "flow",
+      "visualization.result.by": ["severity"],
+      "filters": {
+        "data.filter": {}
+      },
+      "severity": ["WARNING", "CRITICAL", "DOWN"],
+      "data.points": [
+        {
+          "data.point": "severity",
+          "aggregator": "count"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "gauge": {
+      "style": {
+        "layout": "Pie",
+        "chart.legend": "yes",
+        "chart.label": "yes",
+        "type": "number",
+        "font.size": "medium",
+        "text.align": "center",
+        "color.conditions": [
+          {
+            "color": "#f04e3e"
+          },
+          {
+            "color": "#f58518"
+          },
+          {
+            "color": "#4CAF50"
+          }
+        ]
+      }
+    }
+  },
+  "visualization.result.by": []
+} 

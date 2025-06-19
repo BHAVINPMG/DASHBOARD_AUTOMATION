@@ -1,0 +1,80 @@
+{
+  "id": 76335282567,
+  "container.type": "dashboard",
+  "visualization.name": "Log Message Count Grid",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Grid",
+  "visualization.type": "Grid",
+  "visualization.data.sources": [
+    {
+      "type": "log",
+      "category": "log",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "visualization.result.by": ["event.source.type"],
+      "data.points": [
+        {
+          "data.point": "message",
+          "aggregator": "count"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "grid": {
+      "visualization.grid.properties.required": "no",
+      "searchable": "yes",
+      "column.selection": "no",
+      "header": "yes",
+      "layout": "Grid",
+      "style": {
+        "header.font.size": "small"
+      },
+      "columns": [
+        {
+          "name": "event.source.type",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 1
+        },
+        {
+          "name": "message.count",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 2,
+          "style": {
+            "color.conditions": [
+              {
+                "operator": ">",
+                "value": "1000",
+                "color.type": "background",
+                "color": "#ff0000"
+              },
+              {
+                "operator": ">",
+                "value": "500",
+                "color.type": "background",
+                "color": "#ffa500"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "visualization.result.by": ["event.source.type"]
+} 

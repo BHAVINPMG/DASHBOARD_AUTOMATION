@@ -3,232 +3,2995 @@ description:
 globs: 
 alwaysApply: false
 ---
-# System KPI Selection Rules for Dashboard Creation
+# KPI Selection Rules (Top Counters Only)
 
-## Core KPI Categories
+For the full list of counters, see `kpi_selection_counters.md`.
 
-Select metrics from these categories when building system monitoring dashboards:
+---
 
-### CPU Metrics
-- **Primary**: `system.cpu.percent` - Overall CPU utilization monitoring
-- **Secondary**:
-  - `system.cpu.user.percent` - User process CPU utilization
-  - `system.cpu.idle.percent` - CPU availability (higher is better)
-  - `system.cpu.interrupt.percent` - Hardware interrupt troubleshooting
-- **System Info**: 
-  - `system.cpu.cores` - Number of CPU cores
-  - `system.logical.processors` - Number of logical processors
-  - `system.physical.processors` - Number of physical processors
+## activedirectoryreplication
+- ad.replication
+- ad.replication.destination
+- ad.replication.domain.name
+- ad.replication.error.code
+- ad.replication.error.message
+- ad.replication.last.attempted
+- ad.replication.naming.context
+- ad.replication.protocol
+- ad.replication.site
+- ad.replication.status
 
-### Memory Metrics
-- **Primary**: `system.memory.used.percent` - Overall memory utilization
-- **Secondary**:
-  - `system.memory.free.percent` - Available memory percentage
-  - `system.memory.available.bytes` - Precise memory availability
-  - `system.memory.used.bytes` - Absolute memory consumption
-  - `system.memory.free.bytes` - Total free RAM space
-- **Advanced**:
-  - `system.cache.memory.bytes` - Cache memory analysis
-  - `system.memory.committed.bytes` - Virtual memory analysis
-  - `system.paged.memory.bytes` - Paged memory analysis
-  - `system.non.paged.memory.bytes` - Non-paged memory analysis
+## activedirectoryrole
+- ad.role
+- ad.role.domain
+- ad.role.domain.naming.master.role
+- ad.role.forest
+- ad.role.schema.master.role
+- ad.role.status
 
-### Disk Metrics
-- **Utilization**:
-  - `system.disk.used.percent` - Overall disk usage percentage
-  - `system.disk.free.percent` - Available disk space percentage
-  - `system.disk.used.bytes` - Absolute disk usage
-  - `system.disk.free.bytes` - Absolute free space
-- **Performance**:
-  - `system.disk.io.ops.per.sec` - Overall disk operations
-  - `system.disk.io.bytes.per.sec` - Overall disk throughput
-  - `system.disk.io.read.ops.per.sec` - Read operations rate
-  - `system.disk.io.write.ops.per.sec` - Write operations rate
-  - `system.disk.io.read.bytes.per.sec` - Read throughput
-  - `system.disk.io.write.bytes.per.sec` - Write throughput
-  - `system.disk.io.queue.length` - Disk queue bottlenecks
-  - `system.disk.io.time.percent` - Disk busy time
-  - `system.disk.io.idle.time.percent` - Disk idle time during I/O
+## amazoncloudfront
+- aws.cloudfront.401.error.ratio.percent
+- aws.cloudfront.403.error.ratio.percent
+- aws.cloudfront.404.error.ratio.percent
+- aws.cloudfront.4xx.error.ratio.percent
+- aws.cloudfront.502.error.ratio.percent
+- aws.cloudfront.503.error.ratio.percent
+- aws.cloudfront.504.error.ratio.percent
+- aws.cloudfront.5xx.error.ratio.percent
+- aws.cloudfront.cache.hit.ratio.percent
+- aws.cloudfront.downloaded.bytes
+- ...and 4 more (see kpi_selection_counters.md)
 
-### Network Metrics
-- **Primary**:
-  - `system.network.bytes.per.sec` - Total network throughput
-  - `system.network.tcp.connections` - Connection count monitoring
-- **Directional Traffic**:
-  - `system.network.in.bytes.per.sec` - Incoming traffic volume
-  - `system.network.out.bytes.per.sec` - Outgoing traffic volume
-  - `system.network.in.packets.per.sec` - Incoming packet rate
-  - `system.network.out.packets.per.sec` - Outgoing packet rate
-- **Network Health**:
-  - `system.network.tcp.retransmissions` - Packet loss monitoring
-  - `system.network.error.packets` - Network error diagnosis
-  - `system.network.output.queue.length` - Network congestion monitoring
+## amazondocumentdb
+- aws.documentdb.aborted.transactions
+- aws.documentdb.backup.retention.period.storage.used.bytes
+- aws.documentdb.backup.storage.billed.bytes
+- aws.documentdb.buffer.cache.hit.ratio.percent
+- aws.documentdb.change.stream.log.size.bytes
+- aws.documentdb.cluster.replica.maximum.lag.ms
+- aws.documentdb.cluster.replica.minimum.lag.ms
+- aws.documentdb.command.opcounters
+- aws.documentdb.committed.transactions
+- aws.documentdb.cpu.percent
+- ...and 41 more (see kpi_selection_counters.md)
 
-### System Load Metrics
-- **Primary**:
-  - `system.processor.queue.length` - CPU scheduling queue
-  - `system.running.processes` - Process count monitoring
-- **Advanced**:
-  - `system.context.switches.per.sec` - Context switching overhead
-  - `system.interrupts.per.sec` - Hardware interrupt frequency
-  - `system.pages.per.sec` - Disk paging activity
-  - `system.pages.faults.per.sec` - Memory page fault frequency
-  - `system.threads` - Thread count monitoring
+## amazondynamodb
+- aws.dynamodb.account.max.reads
+- aws.dynamodb.account.max.table.reads
+- aws.dynamodb.account.max.table.writes
+- aws.dynamodb.account.max.writes
+- aws.dynamodb.amazon.resource.name
+- aws.dynamodb.batch.get.item.throttled.requests
+- aws.dynamodb.batch.write.item.throttled.requests
+- aws.dynamodb.client.connections
+- aws.dynamodb.consumed.reads.per.sec
+- aws.dynamodb.cpu.percent
+- ...and 62 more (see kpi_selection_counters.md)
 
-### System Information
-- `system.name` - System identification
-- `system.os.name` - Operating system identification
-- `system.os.version` - OS version tracking
-- `system.uptime` or `uptime.sec` - System stability monitoring
-- `system.virtual` - Virtual machine identification
-- `system.model` - Hardware model tracking
-- `system.vendor` - Hardware vendor identification
+## amazonebs
+- aws.ebs.volume
+- aws.ebs.volume.avg.read.latency.ms
+- aws.ebs.volume.avg.write.latency.ms
+- aws.ebs.volume.burst.balance.percent
+- aws.ebs.volume.consumed.read.write.operations
+- aws.ebs.volume.device
+- aws.ebs.volume.ec2.instance.id
+- aws.ebs.volume.idle.time.percent
+- aws.ebs.volume.max.io.ops.per.sec
+- aws.ebs.volume.queue.length
+- ...and 6 more (see kpi_selection_counters.md)
 
-## Dashboard-Specific KPI Selection
+## amazonec2
+- aws.ec2
+- aws.ec2.ami.launch.index
+- aws.ec2.architecture
+- aws.ec2.cpu
+- aws.ec2.cpu.credit.balance
+- aws.ec2.cpu.credit.usage
+- aws.ec2.cpu.percent
+- aws.ec2.cpu.surplus.credit.balance
+- aws.ec2.cpu.surplus.credit.charged
+- aws.ec2.disk.io.bytes.per.sec
+- ...and 26 more (see kpi_selection_counters.md)
 
-### 1. System Health Overview Dashboard
-- `system.cpu.percent`
-- `system.memory.used.percent`
-- `system.disk.used.percent`
-- `system.network.bytes.per.sec`
-- `system.running.processes`
+## amazonrds
+- aws.rds.cpu.credit.balance
+- aws.rds.cpu.credit.usage
+- aws.rds.cpu.percent
+- aws.rds.database.connections
+- aws.rds.db.instance.arn
+- aws.rds.db.name
+- aws.rds.disk.io.bytes.per.sec
+- aws.rds.disk.io.latency.ms
+- aws.rds.disk.io.ops.per.sec
+- aws.rds.disk.io.read.bytes.per.sec
+- ...and 21 more (see kpi_selection_counters.md)
 
-### 2. CPU Performance Dashboard
-- `system.cpu.percent`
-- `system.cpu.user.percent`
-- `system.cpu.idle.percent`
-- `system.processor.queue.length`
-- `system.interrupts.per.sec`
-- `system.context.switches.per.sec`
+## amazons3
+- aws.s3.bucket
+- aws.s3.bucket.bytes
+- aws.s3.bucket.downloaded.bytes
+- aws.s3.bucket.first.byte.latency.ms
+- aws.s3.bucket.http.4xx.errors
+- aws.s3.bucket.http.5xx.errors
+- aws.s3.bucket.http.delete.requests
+- aws.s3.bucket.http.get.requests
+- aws.s3.bucket.http.head.requests
+- aws.s3.bucket.http.post.requests
+- ...and 11 more (see kpi_selection_counters.md)
 
-### 3. Memory Analysis Dashboard
-- `system.memory.used.percent`
-- `system.memory.available.bytes`
-- `system.memory.committed.bytes`
-- `system.cache.memory.bytes`
-- `system.pages.faults.per.sec`
-- `system.pages.per.sec`
+## amazonsns
+- aws.sns.delivered.notifications
+- aws.sns.failed.notifications
+- aws.sns.failed.to.redrive.to.dlq.notifications
+- aws.sns.filtered.out.invalid.attribute.notifications
+- aws.sns.filtered.out.nomessage.attribute.notifications
+- aws.sns.filtered.out.notifications
+- aws.sns.published.bytes
+- aws.sns.published.messages
+- aws.sns.redriven.to.dlq.notifications
+- aws.sns.region
+- ...and 2 more (see kpi_selection_counters.md)
 
-### 4. Disk Performance Dashboard
-- `system.disk.used.percent`
-- `system.disk.io.ops.per.sec`
-- `system.disk.io.bytes.per.sec`
-- `system.disk.io.read.bytes.per.sec`
-- `system.disk.io.write.bytes.per.sec`
-- `system.disk.io.queue.length`
-- `system.disk.io.time.percent`
+## amazonsqs
+- aws.sqs.delayed.messages
+- aws.sqs.deleted.messages
+- aws.sqs.empty.messages
+- aws.sqs.hidden.messages
+- aws.sqs.oldest.message.age.seconds
+- aws.sqs.received.messages
+- aws.sqs.sent.bytes
+- aws.sqs.sent.messages
+- aws.sqs.visible.messages
 
-### 5. Network Activity Dashboard
-- `system.network.in.bytes.per.sec`
-- `system.network.out.bytes.per.sec`
-- `system.network.in.packets.per.sec`
-- `system.network.out.packets.per.sec`
-- `system.network.tcp.connections`
-- `system.network.tcp.retransmissions`
-- `system.network.error.packets`
-- `system.network.output.queue.length`
+## apache
+- apache.accesses
+- apache.active.requests
+- apache.busy.workers
+- apache.cpu.percent
+- apache.idle.workers
+- apache.requests.per.sec
+- apache.traffic.bytes.per.request
+- apache.traffic.bytes.per.sec
+- apache.traffic.volume.bytes
+- apache.version
 
-### 6. System Information Dashboard
-- `system.name`
-- `system.model`
-- `system.vendor`
-- `system.os.name`
-- `system.os.version`
-- `system.uptime`
-- `system.cpu.cores`
-- `system.logical.processors`
-- `system.physical.processors`
-- `system.memory.installed.bytes`
-- `system.disk.capacity.bytes`
+## arubawireless
+- aruba.wireless.access.point
+- aruba.wireless.controller
+- aruba.wireless.controller.cpu.percent
+- aruba.wireless.controller.host.name
+- aruba.wireless.controller.ip.address
+- aruba.wireless.controller.mac.address
+- aruba.wireless.controller.memory.free.bytes
+- aruba.wireless.controller.memory.installed.bytes
+- aruba.wireless.controller.memory.used.bytes
+- aruba.wireless.controller.memory.used.percent
+- ...and 23 more (see kpi_selection_counters.md)
 
-## KPI Pairing Rules
+## arubawirelessap
+- aruba.wireless.access.point
+- aruba.wireless.access.point.clients
+- aruba.wireless.access.point.cpu.utilization.percent
+- aruba.wireless.access.point.free.memory.bytes
+- aruba.wireless.access.point.group
+- aruba.wireless.access.point.interface
+- aruba.wireless.access.point.interface.bytes.rate
+- aruba.wireless.access.point.interface.clients
+- aruba.wireless.access.point.interface.current.channel
+- aruba.wireless.access.point.interface.mac.address
+- ...and 25 more (see kpi_selection_counters.md)
 
-1. **Complementary Metrics**: Always combine these pairs when possible:
-   - `system.cpu.user.percent` with `system.cpu.idle.percent`
-   - `system.memory.used.percent` with `system.memory.free.percent`
-   - `system.disk.io.read.bytes.per.sec` with `system.disk.io.write.bytes.per.sec`
-   - `system.network.in.bytes.per.sec` with `system.network.out.bytes.per.sec`
+## arubawirelessclient
+- aruba.wireless.ap
+- aruba.wireless.ap.ip.address
+- aruba.wireless.ap.mac.address
+- aruba.wireless.ap.table.1
+- aruba.wireless.ap.table.2
+- aruba.wireless.client
+- aruba.wireless.client.ap
+- aruba.wireless.client.ap.bss.id
+- aruba.wireless.client.ap.ip.address
+- aruba.wireless.client.ap.mac.address
+- ...and 23 more (see kpi_selection_counters.md)
 
-2. **Cause and Effect Metrics**: Pair metrics that reveal relationships:
-   - `system.processor.queue.length` with `system.cpu.percent`
-   - `system.pages.faults.per.sec` with `system.memory.used.percent`
-   - `system.disk.io.queue.length` with `system.disk.io.bytes.per.sec`
-   - `system.network.output.queue.length` with `system.network.out.bytes.per.sec`
+## arubawirelessrogueap
+- aruba.wireless.rogue.access.point
+- aruba.wireless.rogue.access.point.channel
+- aruba.wireless.rogue.access.point.class.type
+- aruba.wireless.rogue.access.point.index
+- aruba.wireless.rogue.access.point.interface.type
+- aruba.wireless.rogue.access.point.mac.address
+- aruba.wireless.rogue.access.point.ssid
+- aruba.wireless.rogue.access.point.status
+- aruba.wireless.rogue.access.points
+- aruba.wireless.rogue.client
+- ...and 7 more (see kpi_selection_counters.md)
 
-3. **Utilization and Performance Metrics**: Combine usage with performance indicators:
-   - `system.cpu.percent` with `system.context.switches.per.sec`
-   - `system.memory.used.percent` with `system.pages.per.sec`
-   - `system.disk.used.percent` with `system.disk.io.ops.per.sec`
-   - `system.network.tcp.connections` with `system.network.bytes.per.sec`
+## aws
+- aws.application.elb.instances
+- aws.autoscaling
+- aws.autoscaling.desired.capacity
+- aws.autoscaling.groups
+- aws.cloudfront.services
+- aws.discovery.regions
+- aws.documentdb.instances
+- aws.dynamodb.tables
+- aws.ebs.volumes
+- aws.ec2.instance.id
+- ...and 32 more (see kpi_selection_counters.md)
 
-## KPI Selection for Monitoring Scenarios
+## awsautoscaling
+- aws.autoscaling.group.desired.capacity
+- aws.autoscaling.group.in.service.capacity.units
+- aws.autoscaling.group.in.service.instances
+- aws.autoscaling.group.instances
+- aws.autoscaling.group.max.size
+- aws.autoscaling.group.min.size
+- aws.autoscaling.group.pending.capacity.units
+- aws.autoscaling.group.pending.instances
+- aws.autoscaling.group.provisioned.capacity.units
+- aws.autoscaling.group.standby.capacity.units
+- ...and 3 more (see kpi_selection_counters.md)
 
-### 1. Performance Bottleneck Identification
-- `system.cpu.percent`
-- `system.processor.queue.length`
-- `system.memory.used.percent`
-- `system.disk.io.queue.length`
-- `system.network.output.queue.length`
-- `system.context.switches.per.sec`
+## awsbilling
+- aws.billing.expenditure
+- aws.billing.service
+- aws.billing.service.cost
+- aws.billing.service.usage.amount
+- aws.billing.service.used.units
+- aws.billing.tax.amount
+- aws.billing.usage.forecast
 
-### 2. Capacity Planning
-- `system.cpu.percent` (with historical trend)
-- `system.memory.used.percent` (with historical trend)
-- `system.disk.used.percent` (with historical trend)
-- `system.disk.used.bytes` and `system.disk.capacity.bytes`
-- `system.network.bytes.per.sec` (peak analysis)
+## awselasticbeanstalk
+- aws.elasticbeanstalk.application.2xx.requests
+- aws.elasticbeanstalk.application.3xx.requests
+- aws.elasticbeanstalk.application.4xx.requests
+- aws.elasticbeanstalk.application.5xx.requests
+- aws.elasticbeanstalk.application.p10.latency.seconds
+- aws.elasticbeanstalk.application.p50.latency.seconds
+- aws.elasticbeanstalk.application.p75.latency.seconds
+- aws.elasticbeanstalk.application.p85.latency.seconds
+- aws.elasticbeanstalk.application.p90.latency.seconds
+- aws.elasticbeanstalk.application.p95.latency.seconds
+- ...and 24 more (see kpi_selection_counters.md)
 
-### 3. System Stability Monitoring
-- `uptime.sec` or `uptime`
-- `system.running.processes` (tracking sudden changes)
-- `system.cpu.percent` (looking for sustained high values)
-- `system.memory.free.percent` (tracking drops)
-- `system.pages.faults.per.sec` (spikes indicate issues)
+## awselb
+- aws.elb.2xx.responses
+- aws.elb.3xx.responses
+- aws.elb.4xx.responses
+- aws.elb.500.responses
+- aws.elb.502.responses
+- aws.elb.503.responses
+- aws.elb.504.responses
+- aws.elb.5xx.responses
+- aws.elb.active.connections
+- aws.elb.active.flows
+- ...and 36 more (see kpi_selection_counters.md)
 
-### 4. I/O Performance Analysis
-- `system.disk.io.bytes.per.sec`
-- `system.disk.io.ops.per.sec`
-- `system.disk.io.queue.length`
-- `system.disk.io.time.percent`
-- `system.network.bytes.per.sec`
-- `system.network.tcp.retransmissions`
+## awslambda
+- aws.lambda.concurrent.executions
+- aws.lambda.dead.letter.errors
+- aws.lambda.description
+- aws.lambda.destination.delivery.failures
+- aws.lambda.duration.ms
+- aws.lambda.errors
+- aws.lambda.invocations
+- aws.lambda.iterator.age.ms
+- aws.lambda.last.modified
+- aws.lambda.last.update.status
+- ...and 7 more (see kpi_selection_counters.md)
 
-### 5. Resource Saturation Detection
-- `system.cpu.idle.percent` (low values indicate saturation)
-- `system.processor.queue.length` (high values indicate saturation)
-- `system.memory.available.bytes` (low values indicate saturation)
-- `system.disk.io.queue.length` (high values indicate saturation)
-- `system.network.output.queue.length` (high values indicate saturation)
+## azureapplicationgateway
+- azure.application.gateway.active.connections
+- azure.application.gateway.backend.connect.time.ms
+- azure.application.gateway.backend.first.byte.response.time.ms
+- azure.application.gateway.backend.last.byte.response.time.ms
+- azure.application.gateway.backend.time.ms
+- azure.application.gateway.capacity.units
+- azure.application.gateway.client.rtt.ms
+- azure.application.gateway.compute.units
+- azure.application.gateway.cpu.percent
+- azure.application.gateway.estimated.billed.capacity.units
+- ...and 15 more (see kpi_selection_counters.md)
 
-## KPI Visualization Type Selection
+## azurebilling
+- azure.billing.amount
+- azure.billing.service
+- azure.billing.service.usage.amount
+- azure.billing.service.used.units
 
-Select visualization types based on the metrics being displayed:
+## azurecdn
+- azure.cdn.byte.hit.ratio.percent
+- azure.cdn.endpoints
+- azure.cdn.latency.ms
+- azure.cdn.requests
+- azure.cdn.response.bytes
 
-1. **Time Series Line Charts** - Best for:
-   - CPU, memory, and disk utilization percentages
-   - Network throughput metrics
-   - I/O operations rates
+## azurecosmosdb
+- azure.cosmos.db.account.diagnostics.setting.update.requests
+- azure.cosmos.db.account.network.setting.update.requests
+- azure.cosmos.db.available.storage.bytes
+- azure.cosmos.db.data.usage.bytes
+- azure.cosmos.db.document.quota.bytes
+- azure.cosmos.db.documents
+- azure.cosmos.db.index.usage.bytes
+- azure.cosmos.db.integrated.cache.query.expires
+- azure.cosmos.db.metadata.requests
+- azure.cosmos.db.normalized.ru.consumption.percent
+- ...and 9 more (see kpi_selection_counters.md)
 
-2. **Stacked Area Charts** - Best for:
-   - Memory composition (used, free, cache)
-   - Network traffic direction (in/out)
-   - Disk operations (read/write)
+## azurefunction
+- azure.function.5xx.requests
+- azure.function.app.domains
+- azure.function.availability.status
+- azure.function.connections
+- azure.function.current.assemblies
+- azure.function.execution.units
+- azure.function.executions
+- azure.function.gen.0.collections
+- azure.function.gen.1.collections
+- azure.function.gen.2.collections
+- ...and 16 more (see kpi_selection_counters.md)
 
-3. **Bar Charts** - Best for:
-   - Comparing system.running.processes across systems
-   - Comparing system.disk.used.percent across multiple disks
-   - Displaying system.network.tcp.connections by endpoint
+## azureloadbalancer
+- azure.loadbalancer.availability
+- azure.loadbalancer.bytes
+- azure.loadbalancer.dip.availability
+- azure.loadbalancer.packets
+- azure.loadbalancer.snat.connections
+- azure.loadbalancer.snat.ports
+- azure.loadbalancer.syn.packets
+- azure.loadbalancer.used.snat.ports
 
-4. **Gauge Charts** - Best for:
-   - system.cpu.percent
-   - system.memory.used.percent
-   - system.disk.used.percent
+## azuremysql
+- azure.mysql.aborted.connections
+- azure.mysql.active.transactions
+- azure.mysql.alter.table.queries
+- azure.mysql.create.table.queries
+- azure.mysql.delete.queries
+- azure.mysql.drop.table.queries
+- azure.mysql.ha.replication.lag.seconds
+- azure.mysql.ha.sql.status
+- azure.mysql.inno.db.rows.locks.waits
+- azure.mysql.insert.queries
+- ...and 27 more (see kpi_selection_counters.md)
 
-5. **Single Value Displays** - Best for:
-   - uptime.sec or uptime
-   - system.name
+## azurepostgresql
+- azure.postgresql.server
+- azure.postgresql.server.active.connections
+- azure.postgresql.server.backup.storage.used.bytes
+- azure.postgresql.server.cpu.percent
+- azure.postgresql.server.failed.connections
+- azure.postgresql.server.id
+- azure.postgresql.server.io.percent
+- azure.postgresql.server.log.storage.capacity.bytes
+- azure.postgresql.server.log.storage.used.bytes
+- azure.postgresql.server.log.storage.used.percent
+- ...and 8 more (see kpi_selection_counters.md)
 
+## azureservicebus
+- azure.psb.abandoned.messages
+- azure.psb.active.connections
+- azure.psb.active.messages
+- azure.psb.bytes
+- azure.psb.closed.connections
+- azure.psb.completed.messages
+- azure.psb.dead.lettered.messages
+- azure.psb.incoming.messages
+- azure.psb.incoming.requests
+- azure.psb.messages
+- ...and 19 more (see kpi_selection_counters.md)
 
+## azuresqldatabase
+- azure.sql.database
+- azure.sql.database.active.sessions
+- azure.sql.database.availability.percent
+- azure.sql.database.cpu.percent
+- azure.sql.database.data.io.percent
+- azure.sql.database.data.storage.allocated.bytes
+- azure.sql.database.data.storage.used.bytes
+- azure.sql.database.data.storage.used.percent
+- azure.sql.database.deadlocks
+- azure.sql.database.dtu.limit
+- ...and 20 more (see kpi_selection_counters.md)
 
+## azurestorage
+- azure.storage.availability.percent
+- azure.storage.blob
+- azure.storage.blob.account.name
+- azure.storage.blob.availability.percent
+- azure.storage.blob.capacity.bytes
+- azure.storage.blob.container.name
+- azure.storage.blob.content.type
+- azure.storage.blob.e2e.latency.ms
+- azure.storage.blob.egress.bytes
+- azure.storage.blob.etag
+- ...and 59 more (see kpi_selection_counters.md)
 
-   - system.os.name and system.os.version
+## azurevm
+- azure.vm.asp.net.application.active.requests
+- azure.vm.asp.net.application.errors.per.sec
+- azure.vm.asp.net.application.pipeline.instances
+- azure.vm.asp.net.application.queued.requests
+- azure.vm.asp.net.application.requests.per.sec
+- azure.vm.asp.net.application.unauthorized.requests
+- azure.vm.asp.net.rejected.requests
+- azure.vm.asp.net.request.execution.time.ms
+- azure.vm.asp.net.request.wait.time.ms
+- azure.vm.asp.net.running.applications
+- ...and 82 more (see kpi_selection_counters.md)
+
+## azurevmscaleset
+- azure.vmscaleset
+- azure.vmscaleset.cpu.consumed.credits
+- azure.vmscaleset.cpu.percent
+- azure.vmscaleset.cpu.remaining.credits
+- azure.vmscaleset.data.disk.io.cache.read.hit.percent
+- azure.vmscaleset.data.disk.io.cache.read.miss.percent
+- azure.vmscaleset.data.disk.io.percent
+- azure.vmscaleset.data.disk.percent
+- azure.vmscaleset.disk.io.cache.read.hit.percent
+- azure.vmscaleset.disk.io.cache.read.miss.percent
+- ...and 12 more (see kpi_selection_counters.md)
+
+## azurewebapp
+- azure.webapp
+- azure.webapp.app.domains
+- azure.webapp.avg.memory.bytes
+- azure.webapp.avg.response.time
+- azure.webapp.config.workers
+- azure.webapp.configured.target.workers
+- azure.webapp.configured.web.jobs
+- azure.webapp.connections
+- azure.webapp.cpu.time.seconds
+- azure.webapp.current.assemblies
+- ...and 33 more (see kpi_selection_counters.md)
+
+## bgp
+- bgp.peer
+- bgp.peer.admin.status
+- bgp.peer.identifier
+- bgp.peer.local.address
+- bgp.peer.remote.as
+- bgp.peer.state
+- bgp.peer.time
+- bgp.peer.updated.time
+- neighbour.route
+
+## bind9
+- bind9.opcode.incoming.requests.rate
+- bind9.opcode.notify.requests
+- bind9.opcode.outgoing.requests.rate
+- bind9.opcode.reserved10.requests
+- bind9.opcode.reserved11.requests
+- bind9.opcode.reserved12.requests
+- bind9.opcode.reserved13.requests
+- bind9.opcode.reserved14.requests
+- bind9.opcode.reserved15.requests
+- bind9.opcode.reserved3.requests
+- ...and 20 more (see kpi_selection_counters.md)
+
+## bind9netstat
+- bind9.nsstat.answered.auth.queries
+- bind9.nsstat.bad.edns.requests
+- bind9.nsstat.bad.prerequisite.updates
+- bind9.nsstat.bad.tsig.requests
+- bind9.nsstat.completed.zone.transfers
+- bind9.nsstat.dns64
+- bind9.nsstat.domain.nx.queries
+- bind9.nsstat.dropped.queries
+- bind9.nsstat.duplicate.queries
+- bind9.nsstat.empty.queries
+- ...and 44 more (see kpi_selection_counters.md)
+
+## bind9sockstat
+- bind9.sockstat.bind.fd.fails
+- bind9.sockstat.closed.raw.sockets
+- bind9.sockstat.failed.fd.connections
+- bind9.sockstat.failed.sockets
+- bind9.sockstat.fd.closes
+- bind9.sockstat.raw.active.connections
+- bind9.sockstat.raw.opens
+- bind9.sockstat.received.errors
+- bind9.sockstat.received.fd.errors
+- bind9.sockstat.sent.errors
+- ...and 52 more (see kpi_selection_counters.md)
+
+## certificate
+- certificate.expiry.date
+- certificate.issued.by.common.name
+- certificate.issued.by.organization
+- certificate.issued.by.organization.unit
+- certificate.issued.date
+- certificate.issued.to.common.name
+- certificate.issued.to.organization
+- certificate.issued.to.organization.unit
+- certificate.remaining.days
+
+## ciscoaci
+- cisco.aci.active.users
+- cisco.aci.fabric.global.health.score
+- cisco.aci.fabric.global.health.status
+- cisco.aci.fabric.global.max.severity
+- cisco.aci.leaf
+- cisco.aci.leaf.connected.node
+- cisco.aci.leaf.connected.node.interface
+- cisco.aci.leaf.connected.node.role
+- cisco.aci.leaf.interface
+- cisco.aci.node
+- ...and 1 more (see kpi_selection_counters.md)
+
+## ciscoaciendpoint
+- cisco.aci.endpoint
+- cisco.aci.endpoint.group
+- cisco.aci.endpoint.groups
+- cisco.aci.endpoint.ipv4.address
+- cisco.aci.endpoint.ipv6.address
+- cisco.aci.endpoint.mac.address
+- cisco.aci.endpoint.status
+- cisco.aci.endpoint.tenant
+- cisco.aci.endpoints
+
+## ciscoacifabric
+- admin.state
+- apic.type
+- cisco.aci.controller
+- cisco.aci.controller.admin.state
+- cisco.aci.controller.apic.type
+- cisco.aci.controller.cpu.used.percent
+- cisco.aci.controller.fabric.domain
+- cisco.aci.controller.fabric.id
+- cisco.aci.controller.fabric.mac.address
+- cisco.aci.controller.inb.management.gateway.address
+- ...and 70 more (see kpi_selection_counters.md)
+
+## ciscoacitenant
+- cisco.aci.tenant
+- cisco.aci.tenant.alias
+- cisco.aci.tenant.application.profiles
+- cisco.aci.tenant.bridge.domains
+- cisco.aci.tenant.description
+- cisco.aci.tenant.dn
+- cisco.aci.tenant.endpoint.groups
+- cisco.aci.tenant.global.health.score
+- cisco.aci.tenant.health.score
+- cisco.aci.tenant.status
+- ...and 2 more (see kpi_selection_counters.md)
+
+## ciscohardwaresensor
+- cisco.hardware.fan.sensor
+- cisco.hardware.fan.sensor.operational.state
+- cisco.hardware.power.supply.sensor
+- cisco.hardware.power.supply.sensor.operational.state
+- cisco.hardware.sensor.entity
+- cisco.hardware.sensor.entity.status
+- cisco.hardware.sensor.entity.table
+- cisco.hardware.sensor.entity.type
+- cisco.hardware.sensor.entity.value
+- cisco.hardware.temperature.sensor
+- ...and 2 more (see kpi_selection_counters.md)
+
+## ciscomeraki
+- cisco.meraki.client.errors
+- cisco.meraki.clients
+- cisco.meraki.connected.uplinks
+- cisco.meraki.disconnected.uplinks
+- cisco.meraki.licenses
+- cisco.meraki.networks
+- cisco.meraki.offline.devices
+- cisco.meraki.online.devices
+- cisco.meraki.server.errors
+
+## ciscomerakichannel
+- cisco.meraki.channel
+- cisco.meraki.channel.non.wifi.utilization.percent
+- cisco.meraki.channel.wifi.utilization.percent
+
+## ciscomerakiclient
+- cisco.meraki.client
+- cisco.meraki.client.description
+- cisco.meraki.client.device.connection
+- cisco.meraki.client.first.seen
+- cisco.meraki.client.ip.address
+- cisco.meraki.client.ipv6.address
+- cisco.meraki.client.last.seen
+- cisco.meraki.client.mac.address
+- cisco.meraki.client.manufacturer
+- cisco.meraki.client.os
+- ...and 8 more (see kpi_selection_counters.md)
+
+## ciscomerakiethernet
+- cisco.meraki.ethernet
+- cisco.meraki.ethernet.duplex
+- cisco.meraki.ethernet.poe.standard
+- cisco.meraki.ethernet.speed.bytes.per.sec
+
+## ciscomerakiinterface
+- cisco.meraki.interface
+- cisco.meraki.interface.gateway
+- cisco.meraki.interface.ip.address
+- cisco.meraki.interface.network
+- cisco.meraki.interface.public.ip.address
+- cisco.meraki.interface.received.bytes.per.sec
+- cisco.meraki.interface.sent.bytes.per.sec
+- cisco.meraki.interface.status
+
+## ciscomerakinetwork
+- cisco.meraki.network
+- cisco.meraki.network.alert.devices
+- cisco.meraki.network.clients
+- cisco.meraki.network.devices
+- cisco.meraki.network.dormant.devices
+- cisco.meraki.network.heavy.usage.clients
+- cisco.meraki.network.offline.devices
+- cisco.meraki.network.online.devices
+
+## ciscomerakiradio
+- cisco.meraki.radio.average.data.bytes.per.sec
+- cisco.meraki.radio.bands
+- cisco.meraki.radio.clients
+- cisco.meraki.radio.download.data.bytes.per.sec
+- cisco.meraki.radio.mac.address
+- cisco.meraki.radio.model
+- cisco.meraki.radio.network.id
+- cisco.meraki.radio.public.ip.address
+- cisco.meraki.radio.status
+- cisco.meraki.radio.upload.data.bytes.per.sec
+
+## ciscomerakisecurity
+- cisco.meraki.security.mac.address
+- cisco.meraki.security.model
+- cisco.meraki.security.network.id
+- cisco.meraki.security.performance.score
+- cisco.meraki.security.power.supply
+- cisco.meraki.security.power.supply.model
+- cisco.meraki.security.power.supply.serial.no
+- cisco.meraki.security.power.supply.slots
+- cisco.meraki.security.power.supply.status
+- cisco.meraki.security.power.supply.usage.watts
+- ...and 3 more (see kpi_selection_counters.md)
+
+## ciscomerakissid
+- cisco.meraki.ssid
+- cisco.meraki.ssid.advertised
+- cisco.meraki.ssid.bands
+- cisco.meraki.ssid.channel.width.hz
+- cisco.meraki.ssid.channels
+- cisco.meraki.ssid.enabled
+- cisco.meraki.ssid.name
+- cisco.meraki.ssid.power.dbm
+
+## ciscomerakistp
+- cisco.meraki.stp
+- cisco.meraki.stp.clients
+- cisco.meraki.stp.duplex
+- cisco.meraki.stp.enabled
+- cisco.meraki.stp.in.traffic.bytes.per.sec
+- cisco.meraki.stp.out.traffic.bytes.per.sec
+- cisco.meraki.stp.poe.allocated
+- cisco.meraki.stp.power.usage.watts
+- cisco.meraki.stp.received.bytes.per.sec
+- cisco.meraki.stp.sent.bytes.per.sec
+- ...and 9 more (see kpi_selection_counters.md)
+
+## ciscomerakisubnet
+- cisco.meraki.subnet
+- cisco.meraki.subnet.free
+- cisco.meraki.subnet.used
+- cisco.meraki.subnet.vlan.id
+
+## ciscomerakiswitch
+- cisco.meraki.switch.mac.address
+- cisco.meraki.switch.model
+- cisco.meraki.switch.network.id
+- cisco.meraki.switch.ports
+- cisco.meraki.switch.power.supply
+- cisco.meraki.switch.power.supply.model
+- cisco.meraki.switch.power.supply.serial.no
+- cisco.meraki.switch.power.supply.slots
+- cisco.meraki.switch.power.supply.status
+- cisco.meraki.switch.power.supply.usage.watts
+- ...and 3 more (see kpi_selection_counters.md)
+
+## ciscomerakivlan
+- cisco.meraki.vlan
+- cisco.meraki.vlan.interface
+- cisco.meraki.vlan.name
+- cisco.meraki.vlan.status
+
+## ciscomerakivpn
+- cisco.meraki.vpn
+- cisco.meraki.vpn.average.jitter.ms
+- cisco.meraki.vpn.average.latency.ms
+- cisco.meraki.vpn.average.mos
+- cisco.meraki.vpn.loss.percent
+- cisco.meraki.vpn.network.id
+- cisco.meraki.vpn.network.name
+- cisco.meraki.vpn.peer.network.id
+- cisco.meraki.vpn.peer.network.name
+- cisco.meraki.vpn.received.bytes.per.sec
+- ...and 3 more (see kpi_selection_counters.md)
+
+## ciscostack
+- cisco.hardware.sensor.entity
+- cisco.stack.bandwidth
+- cisco.stack.switch
+- cisco.stack.switch.hardware.priority
+- cisco.stack.switch.mac.address
+- cisco.stack.switch.members
+- cisco.stack.switch.model.no
+- cisco.stack.switch.port
+- cisco.stack.switch.port.status
+- cisco.stack.switch.role
+- ...and 5 more (see kpi_selection_counters.md)
+
+## ciscovbond
+- cisco.vbond.control.connection
+- cisco.vbond.control.connection.last.updated.time
+- cisco.vbond.control.connection.peer
+- cisco.vbond.control.connection.peer.protocol
+- cisco.vbond.control.connection.peer.type
+- cisco.vbond.control.connection.private.port
+- cisco.vbond.control.connection.public.port
+- cisco.vbond.control.connections
+- cisco.vbond.cpu.percent
+- cisco.vbond.cpus
+- ...and 7 more (see kpi_selection_counters.md)
+
+## ciscovedge
+- cisco.vedge.bfd.down.sessions
+- cisco.vedge.bfd.up.sessions
+- cisco.vedge.control.connections
+- cisco.vedge.cpu.percent
+- cisco.vedge.cpus
+- cisco.vedge.health.status
+- cisco.vedge.memory.used.percent
+- cisco.vedge.reachability.status
+- cisco.vedge.site.id
+- cisco.vedge.site.name
+- ...and 1 more (see kpi_selection_counters.md)
+
+## ciscovedgebgpneighbour
+- cisco.vedge.bgp.neighbour
+- cisco.vedge.bgp.neighbour.as
+- cisco.vedge.bgp.neighbour.peer.address
+- cisco.vedge.bgp.neighbour.status
+- cisco.vedge.bgp.neighbour.vpn
+
+## ciscovedgebgproute
+- cisco.vedge.bgp.route
+- cisco.vedge.bgp.route.afi.safi
+- cisco.vedge.bgp.route.as.path
+- cisco.vedge.bgp.route.next.hop
+- cisco.vedge.bgp.route.path
+- cisco.vedge.bgp.route.path.state
+- cisco.vedge.bgp.route.vpn
+- cisco.vedge.bgp.route.weight
+
+## ciscovedgehardwaresensor
+- cisco.vedge.hardware.current.sensor
+- cisco.vedge.hardware.current.sensor.amperes
+- cisco.vedge.hardware.current.sensor.state
+- cisco.vedge.hardware.fan.sensor
+- cisco.vedge.hardware.fan.sensor.speed
+- cisco.vedge.hardware.fan.sensor.state
+- cisco.vedge.hardware.power.sensor
+- cisco.vedge.hardware.power.sensor.state
+- cisco.vedge.hardware.power.sensor.watts
+- cisco.vedge.hardware.temperature.sensor
+- ...and 5 more (see kpi_selection_counters.md)
+
+## ciscovedgeinterface
+- cisco.vedge.interface
+- cisco.vedge.interface.admin.status
+- cisco.vedge.interface.classified.bytes
+- cisco.vedge.interface.classified.packets
+- cisco.vedge.interface.classifier.entry.name
+- cisco.vedge.interface.description
+- cisco.vedge.interface.dropped.bytes
+- cisco.vedge.interface.dropped.packets
+- cisco.vedge.interface.early.dropped.bytes
+- cisco.vedge.interface.early.dropped.packets
+- ...and 20 more (see kpi_selection_counters.md)
+
+## ciscovedgetloc
+- cisco.vedge.tloc
+- cisco.vedge.tloc.interface.description
+- cisco.vedge.tloc.interface.name
+- cisco.vedge.tloc.jitter.ms
+- cisco.vedge.tloc.latency.ms
+- cisco.vedge.tloc.lost.percent
+- cisco.vedge.tloc.state
+
+## ciscovedgetunnel
+- cisco.vedge.tunnel
+- cisco.vedge.tunnel.destination.ip
+- cisco.vedge.tunnel.destination.port
+- cisco.vedge.tunnel.health
+- cisco.vedge.tunnel.jitter.ms
+- cisco.vedge.tunnel.latency.ms
+- cisco.vedge.tunnel.local.color
+- cisco.vedge.tunnel.local.ip
+- cisco.vedge.tunnel.lost.percent
+- cisco.vedge.tunnel.protocol
+- ...and 10 more (see kpi_selection_counters.md)
+
+## ciscovmanage
+- cisco.vmanage.control.connection
+- cisco.vmanage.control.connection.last.updated.time
+- cisco.vmanage.control.connection.peer
+- cisco.vmanage.control.connection.peer.protocol
+- cisco.vmanage.control.connection.peer.type
+- cisco.vmanage.control.connection.private.port
+- cisco.vmanage.control.connection.public.port
+- cisco.vmanage.control.connections
+- cisco.vmanage.controllers
+- cisco.vmanage.cpu.percent
+- ...and 14 more (see kpi_selection_counters.md)
+
+## ciscovmanagesite
+- cisco.vmanage.connection
+- cisco.vmanage.connection.connected.sites
+- cisco.vmanage.connection.status
+- cisco.vmanage.site
+- cisco.vmanage.site.devices
+- cisco.vmanage.site.tunnels
+- cisco.vmanage.sites
+
+## ciscovsmart
+- cisco.vsmart.control.connection
+- cisco.vsmart.control.connection.last.updated.time
+- cisco.vsmart.control.connection.peer
+- cisco.vsmart.control.connection.peer.protocol
+- cisco.vsmart.control.connection.peer.type
+- cisco.vsmart.control.connection.private.port
+- cisco.vsmart.control.connection.public.port
+- cisco.vsmart.control.connections
+- cisco.vsmart.cpu.percent
+- cisco.vsmart.cpus
+- ...and 7 more (see kpi_selection_counters.md)
+
+## ciscowireless
+- cisco.wireless.access.point
+- cisco.wireless.access.point.interface
+- cisco.wireless.access.point.interface.admin.status
+- cisco.wireless.access.point.interface.current.channel
+- cisco.wireless.access.point.interface.operational.status
+- cisco.wireless.access.point.interface.power.level
+- cisco.wireless.access.point.interface.type
+- cisco.wireless.access.point.interface.wlan.override
+- cisco.wireless.access.points
+- cisco.wireless.clients
+- ...and 24 more (see kpi_selection_counters.md)
+
+## ciscowirelessap
+- cisco.wireless.access.point
+- cisco.wireless.access.point.admin.status
+- cisco.wireless.access.point.clients
+- cisco.wireless.access.point.cpu.percent
+- cisco.wireless.access.point.group
+- cisco.wireless.access.point.ip.address
+- cisco.wireless.access.point.location
+- cisco.wireless.access.point.mac.address
+- cisco.wireless.access.point.memory.percent
+- cisco.wireless.access.point.model
+- ...and 4 more (see kpi_selection_counters.md)
+
+## ciscowirelessclient
+- cisco.wireless.access.point
+- cisco.wireless.access.point.ip.address
+- cisco.wireless.client
+- cisco.wireless.client.ap
+- cisco.wireless.client.ap.ip.address
+- cisco.wireless.client.ap.mac.address
+- cisco.wireless.client.association.mode
+- cisco.wireless.client.auth.method
+- cisco.wireless.client.channel
+- cisco.wireless.client.interface.type
+- ...and 15 more (see kpi_selection_counters.md)
+
+## ciscowirelessrogueap
+- cisco.wireless.rogue.access.point
+- cisco.wireless.rogue.access.point.channel
+- cisco.wireless.rogue.access.point.class.type
+- cisco.wireless.rogue.access.point.clients
+- cisco.wireless.rogue.access.point.last.detected
+- cisco.wireless.rogue.access.point.mac.address
+- cisco.wireless.rogue.access.point.name
+- cisco.wireless.rogue.access.point.state
+- cisco.wireless.rogue.access.point.type
+- cisco.wireless.rogue.access.points
+- ...and 12 more (see kpi_selection_counters.md)
+
+## citrixxen
+- citrix.xen.api.memory.allocated.bytes
+- citrix.xen.api.memory.free.bytes
+- citrix.xen.api.memory.live.bytes
+- citrix.xen.api.memory.used.bytes
+- citrix.xen.cpu.percent
+- citrix.xen.disk.capacity.bytes
+- citrix.xen.disk.free.bytes
+- citrix.xen.disk.free.percent
+- citrix.xen.disk.used.bytes
+- citrix.xen.disk.used.percent
+- ...and 16 more (see kpi_selection_counters.md)
+
+## citrixxencluster
+- citrix.xen.cluster.cpu.cores
+- citrix.xen.cluster.halted.virtual.machines
+- citrix.xen.cluster.logical.processors
+- citrix.xen.cluster.master
+- citrix.xen.cluster.node
+- citrix.xen.cluster.node.cpu.speed.hz
+- citrix.xen.cluster.node.disk.used.bytes
+- citrix.xen.cluster.node.disk.used.percent
+- citrix.xen.cluster.node.enabled
+- citrix.xen.cluster.node.ip
+- ...and 30 more (see kpi_selection_counters.md)
+
+## citrixxenclusterconfig
+- citrix.xen.cluster
+- citrix.xen.cluster.description
+- citrix.xen.cluster.ha.allow.overcommit
+- citrix.xen.cluster.ha.enabled
+- citrix.xen.cluster.ha.host.failures
+- citrix.xen.cluster.ha.overcommitted
+- citrix.xen.cluster.ha.plan.exist
+- citrix.xen.cluster.redo.log.enabled
+- citrix.xen.cluster.uuid
+- citrix.xen.cluster.wlb.enabled
+- ...and 3 more (see kpi_selection_counters.md)
+
+## citrixxenconfig
+- citrix.xen.bios.vendor
+- citrix.xen.build.date
+- citrix.xen.build.version
+- citrix.xen.cpu.sockets
+- citrix.xen.cpu.speed.hz
+- citrix.xen.db.version
+- citrix.xen.description
+- citrix.xen.enabled
+- citrix.xen.iscsi.iqn
+- citrix.xen.license.expiration.date
+- ...and 10 more (see kpi_selection_counters.md)
+
+## citrixxennetwork
+- citrix.xen.network.interface
+- citrix.xen.network.interface.bytes.per.sec
+- citrix.xen.network.interface.in.bytes.per.sec
+- citrix.xen.network.interface.out.bytes.per.sec
+
+## citrixxenstorage
+- citrix.xen.datastore
+- citrix.xen.datastore.allocation.bytes
+- citrix.xen.datastore.capacity.bytes
+- citrix.xen.datastore.description
+- citrix.xen.datastore.free.bytes
+- citrix.xen.datastore.free.percent
+- citrix.xen.datastore.io.bytes.per.sec
+- citrix.xen.datastore.io.inflight.requests
+- citrix.xen.datastore.io.latency.ms
+- citrix.xen.datastore.io.ops.per.sec
+- ...and 12 more (see kpi_selection_counters.md)
+
+## citrixxenvm
+- citrix.xen.vm
+- citrix.xen.vm.cpu.percent
+- citrix.xen.vm.disk
+- citrix.xen.vm.disk.capacity.bytes
+- citrix.xen.vm.disk.io.avg.read.latency.ms
+- citrix.xen.vm.disk.io.avg.write.latency.ms
+- citrix.xen.vm.disk.io.read.bytes.per.sec
+- citrix.xen.vm.disk.io.write.bytes.per.sec
+- citrix.xen.vm.driver.version
+- citrix.xen.vm.guest.os
+- ...and 20 more (see kpi_selection_counters.md)
+
+## dellemcunity
+- dell.emc.unity.system.health.status
+- dell.emc.unity.system.mac.address
+- dell.emc.unity.system.model
+- dell.emc.unity.system.name
+- dell.emc.unity.system.serial.number
+- dell.emc.unity.system.snapshots.savings.ratio
+- dell.emc.unity.system.software.version
+- dell.emc.unity.system.storage.capacity.bytes
+- dell.emc.unity.system.storage.free.bytes
+- dell.emc.unity.system.storage.used.bytes
+- ...and 2 more (see kpi_selection_counters.md)
+
+## dellemcunityenclosure
+- dell.emc.unity.dae
+- dell.emc.unity.dae.avg.power.watts
+- dell.emc.unity.dae.avg.temperature.celsius
+- dell.emc.unity.dae.emc.part.number
+- dell.emc.unity.dae.emc.serial.number
+- dell.emc.unity.dae.enclosure.type
+- dell.emc.unity.dae.health.status
+- dell.emc.unity.dae.max.power.watts
+- dell.emc.unity.dae.max.speed.bits.per.sec
+- dell.emc.unity.dae.max.temperature.celsius
+- ...and 24 more (see kpi_selection_counters.md)
+
+## dellemcunityfileshare
+- dell.emc.unity.cifs.share
+- dell.emc.unity.cifs.share.creation.time
+- dell.emc.unity.cifs.share.description
+- dell.emc.unity.cifs.share.export.paths
+- dell.emc.unity.cifs.share.filesystem
+- dell.emc.unity.cifs.share.modification.time
+- dell.emc.unity.cifs.share.name
+- dell.emc.unity.cifs.share.nas.server
+- dell.emc.unity.cifs.share.path
+- dell.emc.unity.cifs.share.snap.name
+- ...and 21 more (see kpi_selection_counters.md)
+
+## dellemcunityfilesystem
+- dell.emc.unity.file.interface
+- dell.emc.unity.file.interface.gateway.address
+- dell.emc.unity.file.interface.health.status
+- dell.emc.unity.file.interface.ip.address
+- dell.emc.unity.file.interface.ip.port
+- dell.emc.unity.file.interface.mac.address
+- dell.emc.unity.file.interface.name
+- dell.emc.unity.file.interface.nas.server
+- dell.emc.unity.file.interface.netmask
+- dell.emc.unity.file.interface.storage.processor
+- ...and 43 more (see kpi_selection_counters.md)
+
+## dellemcunitystorage
+- dell.emc.unity.datastore
+- dell.emc.unity.datastore.capacity.bytes
+- dell.emc.unity.datastore.name
+- dell.emc.unity.disk
+- dell.emc.unity.disk.capacity.bytes
+- dell.emc.unity.disk.eol
+- dell.emc.unity.disk.group.name
+- dell.emc.unity.disk.health.status
+- dell.emc.unity.disk.manufacturer
+- dell.emc.unity.disk.max.speed.bytes.per.sec
+- ...and 56 more (see kpi_selection_counters.md)
+
+## dellemcunitystorageprocessor
+- dell.emc.unity.storage.processor
+- dell.emc.unity.storage.processor.emc.part.number
+- dell.emc.unity.storage.processor.emc.serial.number
+- dell.emc.unity.storage.processor.health.status
+- dell.emc.unity.storage.processor.memory.bytes
+- dell.emc.unity.storage.processor.model
+- dell.emc.unity.storage.processor.name
+- dell.emc.unity.storage.processor.part.number
+- dell.emc.unity.storage.processor.serial.number
+- dell.emc.unity.storage.processor.slot
+- ...and 1 more (see kpi_selection_counters.md)
+
+## docker
+- docker.containers
+- docker.cpu.cores
+- docker.images
+- docker.paused.containers
+- docker.running.containers
+- docker.stopped.containers
+- docker.volumes
+
+## dockercontainer
+- docker.container
+- docker.container.cpu.percent
+- docker.container.cpu.system.percent
+- docker.container.cpu.user.percent
+- docker.container.created.time
+- docker.container.id
+- docker.container.image
+- docker.container.image.id
+- docker.container.image.size.bytes
+- docker.container.image.tag
+- ...and 22 more (see kpi_selection_counters.md)
+
+## dockercontainerdisk
+- docker.container.disk
+- docker.container.disk.driver
+- docker.container.disk.mode
+- docker.container.disk.mount.destination
+- docker.container.disk.mount.source
+- docker.container.disk.name
+- docker.container.disk.propagation
+- docker.container.disk.read.write.access
+- docker.container.disk.type
+- docker.container.disks
+
+## dockercontainerprocess
+- docker.container.process
+- docker.container.process.command
+- docker.container.process.cpu.percent
+- docker.container.process.memory.percent
+- docker.container.process.pid
+- docker.container.process.ppid
+- docker.container.process.rss.memory.bytes
+- docker.processes
+
+## domain
+- domain.creation.date
+- domain.expiration.date
+- domain.name.servers
+- domain.registrar
+- domain.registrar.url
+- domain.remaining.days
+- domain.server.states
+- domain.updated.date
+- domain.whois.server
+
+## dotnet
+- dotnet.app
+- dotnet.app.app.domains
+- dotnet.app.assemblies
+- dotnet.app.ccws
+- dotnet.app.channels
+- dotnet.app.contentions
+- dotnet.app.contentions.per.sec
+- dotnet.app.context.bound.objects
+- dotnet.app.context.bound.proxies
+- dotnet.app.context.proxies
+- ...and 33 more (see kpi_selection_counters.md)
+
+## email
+- email.banner.match
+- email.connection.time.ms
+- email.hostname.valid
+- email.latency.ms
+- email.reverse.dns.match
+- email.security.type
+- service.check.latency.ms
+
+## esxi
+- esxi.active.memory.bytes
+- esxi.active.write.memory.bytes
+- esxi.balloon.memory.bytes
+- esxi.capacity
+- esxi.consumed.memory.bytes
+- esxi.cpu.capacity.hz
+- esxi.cpu.percent
+- esxi.cpu.ready.seconds
+- esxi.cpu.reserved.capacity.hz
+- esxi.cpu.swap.wait.seconds
+- ...and 36 more (see kpi_selection_counters.md)
+
+## esxiconfig
+- esxi.build.version
+- esxi.cpu.cores
+- esxi.cpu.description
+- esxi.cpu.speed.hz
+- esxi.hba.cards
+- esxi.license
+- esxi.license.expiration.date
+- esxi.license.key
+- esxi.logical.processors
+- esxi.maintenance.mode.enabled
+- ...and 10 more (see kpi_selection_counters.md)
+
+## esxidatastore
+- esxi.datastore
+- esxi.datastore.capacity.bytes
+- esxi.datastore.free.bytes
+- esxi.datastore.free.percent
+- esxi.datastore.read.bytes.per.sec
+- esxi.datastore.read.latency.ms
+- esxi.datastore.read.ops.per.sec
+- esxi.datastore.type
+- esxi.datastore.url
+- esxi.datastore.used.bytes
+- ...and 4 more (see kpi_selection_counters.md)
+
+## esxidisk
+- esxi.disk
+- esxi.disk.aborted.commands
+- esxi.disk.issued.commands.per.sec
+- esxi.disk.latency.ms
+- esxi.disk.queue.latency.ms
+- esxi.disk.queue.read.latency.seconds
+- esxi.disk.queue.write.latency.ms
+- esxi.disk.read.bytes.per.sec
+- esxi.disk.read.latency.ms
+- esxi.disk.read.ops.per.sec
+- ...and 3 more (see kpi_selection_counters.md)
+
+## esxihardwaresensor
+- esxi.sensor
+- esxi.sensor.current
+- esxi.sensor.health
+- esxi.sensor.type
+- esxi.sensor.unit
+- esxi.sensor.value
+- esxi.sensor.voltage
+
+## esxinetwork
+- esxi.network.interface
+- esxi.network.interface.bytes.per.sec
+- esxi.network.interface.in.bytes.per.sec
+- esxi.network.interface.out.bytes.per.sec
+
+## esxistorage
+- esxi.storage.adapter
+- esxi.storage.adapter.issued.commands.per.sec
+- esxi.storage.adapter.read.bytes.per.sec
+- esxi.storage.adapter.read.latency.ms
+- esxi.storage.adapter.read.ops.per.sec
+- esxi.storage.adapter.write.bytes.per.sec
+- esxi.storage.adapter.write.latency.ms
+- esxi.storage.adapter.write.ops.per.sec
+- esxi.storage.path
+- esxi.storage.path.issued.commands.per.sec
+- ...and 6 more (see kpi_selection_counters.md)
+
+## esxivm
+- esxi.vm
+- esxi.vm.active.memory.bytes
+- esxi.vm.active.write.memory.bytes
+- esxi.vm.balloon.memory.bytes
+- esxi.vm.connection.state
+- esxi.vm.consumed.memory.bytes
+- esxi.vm.cpu.capacity.hz
+- esxi.vm.cpu.max.usage.hz
+- esxi.vm.cpu.percent
+- esxi.vm.cpu.ready.seconds
+- ...and 47 more (see kpi_selection_counters.md)
+
+## exchangeclientaccessrole
+- exchange.client.access.role.application.restarts
+- exchange.client.access.role.auto.discovery.requests.per.sec
+- exchange.client.access.role.availability.free.or.busy.request.time.ms
+- exchange.client.access.role.availability.requests
+- exchange.client.access.role.control.panel.outbound.proxy.request.latency.ms
+- exchange.client.access.role.control.panel.request.latency.ms
+- exchange.client.access.role.nspi.rpc.browse.request.latency.ms
+- exchange.client.access.role.nspi.rpc.request.latency.ms
+- exchange.client.access.role.owa.requests.per.sec
+- exchange.client.access.role.owa.search.time.ms
+- ...and 19 more (see kpi_selection_counters.md)
+
+## exchangeedgetransportrole
+- exchange.edge.transport.role.active.mailbox.delivery.queue.length
+- exchange.edge.transport.role.active.non.smtp.delivery.queue.length
+- exchange.edge.transport.role.database.reads.per.sec
+- exchange.edge.transport.role.database.version.bucket.allocations
+- exchange.edge.transport.role.database.writes.per.sec
+- exchange.edge.transport.role.log.checkpoint.depth
+- exchange.edge.transport.role.log.reads.sec
+- exchange.edge.transport.role.log.record.stalls.per.sec
+- exchange.edge.transport.role.log.waiting.threads
+- exchange.edge.transport.role.log.writes.per.sec
+- ...and 32 more (see kpi_selection_counters.md)
+
+## exchangemailbox
+- exchange.mailbox
+- exchange.mailbox.average.mail.size.bytes
+- exchange.mailbox.database
+- exchange.mailbox.display.name
+- exchange.mailbox.email.address
+- exchange.mailbox.issue.warning.quota.bytes
+- exchange.mailbox.items
+- exchange.mailbox.last.login
+- exchange.mailbox.prohibit.send.or.receive.quota.bytes
+- exchange.mailbox.prohibit.send.quota.bytes
+- ...and 3 more (see kpi_selection_counters.md)
+
+## exchangemailboxrole
+- exchange.mailbox.role.alternate.witness.directory
+- exchange.mailbox.role.alternate.witness.server
+- exchange.mailbox.role.calendar.attendant.failed.requests
+- exchange.mailbox.role.calendar.attendant.processing.time
+- exchange.mailbox.role.copy.queue.length
+- exchange.mailbox.role.dag
+- exchange.mailbox.role.dag.witness.directory
+- exchange.mailbox.role.database.cache.hit.ratio.percent
+- exchange.mailbox.role.database.cache.size.bytes
+- exchange.mailbox.role.database.page.fault.stalls.per.sec
+- ...and 108 more (see kpi_selection_counters.md)
+
+## exchangeonlinemailbox
+- exchange.online.active.mailboxes
+- exchange.online.active.users
+- exchange.online.inactive.users
+- exchange.online.mailbox
+- exchange.online.mailbox.children.folders
+- exchange.online.mailbox.folders
+- exchange.online.mailbox.items
+- exchange.online.mailbox.quota.mailboxes
+- exchange.online.mailbox.quota.status
+- exchange.online.mailbox.storage.used.bytes
+- ...and 7 more (see kpi_selection_counters.md)
+
+## extremestack
+- extreme.stack.management.ip.address
+- extreme.stack.switch
+- extreme.stack.switch.1min.cpu.percent
+- extreme.stack.switch.5min.cpu.percent
+- extreme.stack.switch.cpu.percent
+- extreme.stack.switch.location
+- extreme.stack.switch.mac.address
+- extreme.stack.switch.member.type
+- extreme.stack.switch.members
+- extreme.stack.switch.memory.free.bytes
+- ...and 11 more (see kpi_selection_counters.md)
+
+## ftp
+- ftp.latency.ms
+
+## haproxy
+- ha.proxy.backend
+- ha.proxy.backend.active.servers
+- ha.proxy.backend.backup.servers
+- ha.proxy.backend.connection.errors
+- ha.proxy.backend.denied.requests
+- ha.proxy.backend.denied.responses
+- ha.proxy.backend.down.time.ms
+- ha.proxy.backend.http.client.errors
+- ha.proxy.backend.http.server.errors
+- ha.proxy.backend.last.started.time
+- ...and 60 more (see kpi_selection_counters.md)
+
+## haproxysession
+- ha.proxy.session
+- ha.proxy.session.age.sec
+- ha.proxy.session.backend
+- ha.proxy.session.frontend
+- ha.proxy.session.protocol
+- ha.proxy.session.request.read.time.seconds
+- ha.proxy.session.request.write.time.seconds
+- ha.proxy.session.response.read.time.seconds
+- ha.proxy.session.response.write.time.seconds
+- ha.proxy.session.source
+- ...and 1 more (see kpi_selection_counters.md)
+
+## hpe3par
+- hpe.3par.system.contact
+- hpe.3par.system.master.node.id
+- hpe.3par.system.model
+- hpe.3par.system.name
+- hpe.3par.system.serial.number
+- hpe.3par.system.storage.allocated.bytes
+- hpe.3par.system.storage.capacity.bytes
+- hpe.3par.system.storage.free.bytes
+- hpe.3par.system.storage.used.bytes
+- hpe.3par.system.storage.used.percent
+- ...and 2 more (see kpi_selection_counters.md)
+
+## hpe3pardisk
+- hpe.3par.cpg
+- hpe.3par.cpg.busy.percent
+- hpe.3par.cpg.capacity.bytes
+- hpe.3par.cpg.dedup.capable
+- hpe.3par.cpg.degraded.virtual.volumes
+- hpe.3par.cpg.failed.persistent.virtual.volumes
+- hpe.3par.cpg.free.bytes
+- hpe.3par.cpg.id
+- hpe.3par.cpg.io.bytes
+- hpe.3par.cpg.io.bytes.per.sec
+- ...and 71 more (see kpi_selection_counters.md)
+
+## hpe3parhost
+- hpe.3par.host
+- hpe.3par.host.fc.paths
+- hpe.3par.host.id
+- hpe.3par.host.iscsi.paths
+- hpe.3par.host.location
+- hpe.3par.host.model
+- hpe.3par.host.os
+- hpe.3par.host.set
+- hpe.3par.host.set.id
+- hpe.3par.host.set.members
+- ...and 3 more (see kpi_selection_counters.md)
+
+## hpe3parnode
+- hpe.3par.node
+- hpe.3par.node.access.io.read.ops.per.sec
+- hpe.3par.node.access.io.write.ops.per.sec
+- hpe.3par.node.cpu.context.switches.per.sec
+- hpe.3par.node.cpu.idle.percent
+- hpe.3par.node.cpu.interrupts.per.sec
+- hpe.3par.node.cpu.system.percent
+- hpe.3par.node.cpu.user.percent
+- hpe.3par.node.hit.io.read.ops.per.sec
+- hpe.3par.node.hit.io.read.ops.percent
+- ...and 13 more (see kpi_selection_counters.md)
+
+## hpe3parport
+- hpe.3par.port
+- hpe.3par.port.busy.percent
+- hpe.3par.port.configurable.bitrate
+- hpe.3par.port.connection.mode
+- hpe.3par.port.connection.type
+- hpe.3par.port.devices
+- hpe.3par.port.fcswitch
+- hpe.3par.port.fcswitch.logical.name
+- hpe.3par.port.fcswitch.ports
+- hpe.3par.port.fcswitch.type
+- ...and 24 more (see kpi_selection_counters.md)
+
+## hpe3parvolume
+- hpe.3par.lun
+- hpe.3par.lun.busy.percent
+- hpe.3par.lun.io.bytes
+- hpe.3par.lun.io.bytes.per.sec
+- hpe.3par.lun.io.latency.ms
+- hpe.3par.lun.io.ops.per.sec
+- hpe.3par.lun.io.read.bytes
+- hpe.3par.lun.io.read.bytes.per.sec
+- hpe.3par.lun.io.read.latency.ms
+- hpe.3par.lun.io.read.ops.per.sec
+- ...and 61 more (see kpi_selection_counters.md)
+
+## hpeprimera
+- hpe.primera.system.contact
+- hpe.primera.system.master.node.id
+- hpe.primera.system.model
+- hpe.primera.system.name
+- hpe.primera.system.serial.number
+- hpe.primera.system.storage.allocated.bytes
+- hpe.primera.system.storage.capacity.bytes
+- hpe.primera.system.storage.free.bytes
+- hpe.primera.system.storage.used.bytes
+- hpe.primera.system.storage.used.percent
+- ...and 2 more (see kpi_selection_counters.md)
+
+## hpeprimeradisk
+- hpe.primera.cpg
+- hpe.primera.cpg.busy.percent
+- hpe.primera.cpg.capacity.bytes
+- hpe.primera.cpg.dedup.capable
+- hpe.primera.cpg.degraded.virtual.volumes
+- hpe.primera.cpg.failed.persistent.virtual.volumes
+- hpe.primera.cpg.free.bytes
+- hpe.primera.cpg.id
+- hpe.primera.cpg.io.bytes
+- hpe.primera.cpg.io.bytes.per.sec
+- ...and 71 more (see kpi_selection_counters.md)
+
+## hpeprimerahost
+- hpe.primera.host
+- hpe.primera.host.fc.paths
+- hpe.primera.host.id
+- hpe.primera.host.iscsi.paths
+- hpe.primera.host.location
+- hpe.primera.host.model
+- hpe.primera.host.os
+- hpe.primera.host.set
+- hpe.primera.host.set.id
+- hpe.primera.host.set.members
+- ...and 3 more (see kpi_selection_counters.md)
+
+## hpeprimeranode
+- hpe.primera.node
+- hpe.primera.node.access.io.read.ops.per.sec
+- hpe.primera.node.access.io.write.ops.per.sec
+- hpe.primera.node.cpu.context.switches.per.sec
+- hpe.primera.node.cpu.idle.percent
+- hpe.primera.node.cpu.interrupts.per.sec
+- hpe.primera.node.cpu.system.percent
+- hpe.primera.node.cpu.user.percent
+- hpe.primera.node.hit.io.read.ops.per.sec
+- hpe.primera.node.hit.io.read.ops.percent
+- ...and 13 more (see kpi_selection_counters.md)
+
+## hpeprimeraport
+- hpe.primera.port
+- hpe.primera.port.busy.percent
+- hpe.primera.port.configurable.bitrate
+- hpe.primera.port.connection.mode
+- hpe.primera.port.connection.type
+- hpe.primera.port.devices
+- hpe.primera.port.fcswitch
+- hpe.primera.port.fcswitch.logical.name
+- hpe.primera.port.fcswitch.ports
+- hpe.primera.port.fcswitch.type
+- ...and 24 more (see kpi_selection_counters.md)
+
+## hpeprimeravolume
+- hpe.primera.lun
+- hpe.primera.lun.busy.percent
+- hpe.primera.lun.io.bytes
+- hpe.primera.lun.io.bytes.per.sec
+- hpe.primera.lun.io.latency.ms
+- hpe.primera.lun.io.ops.per.sec
+- hpe.primera.lun.io.read.bytes
+- hpe.primera.lun.io.read.bytes.per.sec
+- hpe.primera.lun.io.read.latency.ms
+- hpe.primera.lun.io.read.ops.per.sec
+- ...and 61 more (see kpi_selection_counters.md)
+
+## hpestoreonce
+- hpe.storeonce.cloud.capacity.bytes
+- hpe.storeonce.cloud.free.bytes
+- hpe.storeonce.cloud.used.bytes
+- hpe.storeonce.cloud.used.percent
+- hpe.storeonce.cpu.used.percent
+- hpe.storeonce.local.capacity.bytes
+- hpe.storeonce.local.free.bytes
+- hpe.storeonce.local.used.bytes
+- hpe.storeonce.local.used.percent
+- hpe.storeonce.memory.used.percent
+- ...and 6 more (see kpi_selection_counters.md)
+
+## hpestoreoncedisk
+- hpe.storeonce.cage
+- hpe.storeonce.cage.drive.carrier
+- hpe.storeonce.cage.model
+- hpe.storeonce.cage.name
+- hpe.storeonce.cage.serial.number
+- hpe.storeonce.cage.status
+- hpe.storeonce.cage.warranty.serial.number
+- hpe.storeonce.cages
+- hpe.storeonce.disk
+- hpe.storeonce.disk.capacity.bytes
+- ...and 26 more (see kpi_selection_counters.md)
+
+## hpestoreonceport
+- hpe.storeonce.port
+- hpe.storeonce.port.location
+- hpe.storeonce.port.mac.address
+- hpe.storeonce.port.max.speed
+- hpe.storeonce.port.name
+- hpe.storeonce.port.speed
+- hpe.storeonce.port.status
+- hpe.storeonce.port.type
+- hpe.storeonce.ports
+
+## hpestoreonceserviceset
+- hpe.storeonce.service
+- hpe.storeonce.service.cloud.disk.bytes
+- hpe.storeonce.service.dedupe.ratio.percent
+- hpe.storeonce.service.disk.bytes
+- hpe.storeonce.service.encryption
+- hpe.storeonce.service.files
+- hpe.storeonce.service.health.status
+- hpe.storeonce.service.items
+- hpe.storeonce.service.name
+- hpe.storeonce.service.replication.role
+- ...and 16 more (see kpi_selection_counters.md)
+
+## hyperv
+- hyperv.1g.gpa.pages
+- hyperv.2m.gpa.pages
+- hyperv.4k.gpa.pages
+- hyperv.address.spaces
+- hyperv.average.pressure
+- hyperv.cache.memory.bytes
+- hyperv.context.switches.per.sec
+- hyperv.cpu.idle.percent
+- hyperv.cpu.percent
+- hyperv.deposited.pages
+- ...and 51 more (see kpi_selection_counters.md)
+
+## hypervcluster
+- cluster.node.ip
+- cpu.command.output
+- domain.name
+- hyperv.cluster.cpu.cores
+- hyperv.cluster.disk.capacity.bytes
+- hyperv.cluster.disk.free.bytes
+- hyperv.cluster.disk.free.percent
+- hyperv.cluster.disk.used.bytes
+- hyperv.cluster.disk.used.percent
+- hyperv.cluster.logical.processors
+- ...and 40 more (see kpi_selection_counters.md)
+
+## hypervclusterstorage
+- hyperv.cluster.disk.volume
+- hyperv.cluster.disk.volume.capacity.bytes
+- hyperv.cluster.disk.volume.cluster.shared
+- hyperv.cluster.disk.volume.file.system
+- hyperv.cluster.disk.volume.free.bytes
+- hyperv.cluster.disk.volume.free.percent
+- hyperv.cluster.disk.volume.label
+- hyperv.cluster.disk.volume.owner.node
+- hyperv.cluster.disk.volume.state
+- hyperv.cluster.disk.volume.type
+- ...and 2 more (see kpi_selection_counters.md)
+
+## hypervconfig
+- hyperv.cpu.cores
+- hyperv.cpu.description
+- hyperv.cpu.type
+- hyperv.memory.available.bytes
+- hyperv.memory.installed.bytes
+- hyperv.memory.used.bytes
+- hyperv.memory.used.percent
+- hyperv.model
+- hyperv.name
+- hyperv.os.name
+- ...and 4 more (see kpi_selection_counters.md)
+
+## hypervnetwork
+- hyperv.network.interface
+- hyperv.network.interface.bytes.per.sec
+- hyperv.network.interface.in.bytes.per.sec
+- hyperv.network.interface.out.bytes.per.sec
+- hyperv.network.virtual.switch
+- hyperv.network.virtual.switch.bytes.per.sec
+- hyperv.network.virtual.switch.packets.per.sec
+- hyperv.virtual.network.interface
+- hyperv.virtual.network.interface.bytes.per.sec
+- hyperv.virtual.network.interface.packets.per.sec
+
+## hypervservice
+- hyperv.service
+- hyperv.service.description
+- hyperv.service.display.name
+- hyperv.service.startup.type
+- hyperv.service.status
+
+## hypervstorage
+- hyperv.disk
+- hyperv.disk.bytes.per.sec
+- hyperv.disk.ops.per.sec
+- hyperv.disk.queue.length
+- hyperv.disk.read.bytes.per.sec
+- hyperv.disk.read.ops.per.sec
+- hyperv.disk.read.time.percent
+- hyperv.disk.time.percent
+- hyperv.disk.volume
+- hyperv.disk.volume.capacity.bytes
+- ...and 20 more (see kpi_selection_counters.md)
+
+## hypervvm
+- hyperv.vm
+- hyperv.vm.1g.gpa.pages
+- hyperv.vm.2m.gpa.pages
+- hyperv.vm.4k.gpa.pages
+- hyperv.vm.address.spaces
+- hyperv.vm.average.pressure.percent
+- hyperv.vm.cpu.percent
+- hyperv.vm.current.pressure.percent
+- hyperv.vm.deposited.pages
+- hyperv.vm.disk.io.errors
+- ...and 31 more (see kpi_selection_counters.md)
+
+## ibmtapelibrary
+- ibm.tape.library.data.elements
+- ibm.tape.library.installed.drivers
+- ibm.tape.library.media
+- ibm.tape.library.media.capacity.bytes
+- ibm.tape.library.media.clearance.status
+- ibm.tape.library.media.description
+- ibm.tape.library.media.label
+- ibm.tape.library.media.location.type
+- ibm.tape.library.media.presence.status
+- ibm.tape.library.media.tag
+- ...and 1 more (see kpi_selection_counters.md)
+
+## iis
+- iis.404.errors
+- iis.404.errors.per.sec
+- iis.active.anonymous.users
+- iis.active.connections
+- iis.active.non.anonymous.users
+- iis.anonymous.users
+- iis.anonymous.users.per.sec
+- iis.bytes.per.sec
+- iis.cgi.requests
+- iis.cgi.requests.per.sec
+- ...and 50 more (see kpi_selection_counters.md)
+
+## iisapplication
+- iis.app
+- iis.app.abandoned.sessions
+- iis.app.aborted.transactions
+- iis.app.active.requests
+- iis.app.active.sessions
+- iis.app.anonymous.requests
+- iis.app.anonymous.requests.per.sec
+- iis.app.api.cache.items.per.sec
+- iis.app.bad.requests
+- iis.app.cache.api.entries
+- ...and 41 more (see kpi_selection_counters.md)
+
+## iisapppool
+- iis.app.pool
+- iis.app.pool.cpu.percent
+- iis.app.pool.file.cache.memory.bytes
+- iis.app.pool.max.file.cache.memory.bytes
+- iis.app.pool.memory.bytes
+- iis.app.pool.process.shutdown.failures
+- iis.app.pool.recent.worker.process.failures
+- iis.app.pool.state
+- iis.app.pool.worker.process.failures
+- iis.app.pool.worker.processes
+
+## iisaspnet
+- iis.asp.net.abandoned.sessions
+- iis.asp.net.active.sessions
+- iis.asp.net.application.restarts
+- iis.asp.net.applications.running
+- iis.asp.net.audit.failure.events
+- iis.asp.net.audit.success.events
+- iis.asp.net.current.requests
+- iis.asp.net.disconnected.requests
+- iis.asp.net.error.events
+- iis.asp.net.infrastructure.error.events
+- ...and 10 more (see kpi_selection_counters.md)
+
+## ipslaicmpecho
+- ipsla.icmp.echo
+- ipsla.max.latency.ms
+- ipsla.min.latency.ms
+
+## ipslaicmpjitter
+- ipsla.avg.jitter.ms
+- ipsla.destination.to.source.avg.jitter.ms
+- ipsla.destination.to.source.avg.latency.ms
+- ipsla.destination.to.source.avg.negative.jitter.ms
+- ipsla.destination.to.source.avg.positive.jitter.ms
+- ipsla.destination.to.source.negative.jitters
+- ipsla.destination.to.source.positive.jitters
+- ipsla.destination.to.source.sum.negative.jitter.ms
+- ipsla.destination.to.source.sum.positive.jitter.ms
+- ipsla.icmp.jitter
+- ...and 15 more (see kpi_selection_counters.md)
+
+## ipslapathecho
+- ipsla.path
+- ipsla.path.avg.latency
+- ipsla.path.completion.time.ms
+- ipsla.path.echo
+- ipsla.path.hop.index
+- ipsla.path.index
+- ipsla.path.packets
+- ipsla.path.target.address
+
+## isis
+- isis.neighbour
+- isis.neighbour.3way.state
+- isis.neighbour.hold.time
+- isis.neighbour.last.up.time
+- isis.neighbour.protocol
+- isis.neighbour.state
+- isis.neighbour.system.type
+- neighbour.route
+
+## lighthttpd
+- lighthttpd.busy.servers
+- lighthttpd.idle.servers
+- lighthttpd.requests.rate
+- lighthttpd.servers
+- lighthttpd.traffic.volume.bytes.rate
+- lighthttpd.version
+
+## linuxdhcp
+- dhcp.abandoned.ip.addresses
+- dhcp.active.ip.addresses
+- dhcp.available.ip.addresses
+- dhcp.failover.ip.addresses
+- dhcp.ip.addresses
+- dhcp.lease
+- dhcp.lease.binding.state
+- dhcp.lease.client.hostname
+- dhcp.lease.end.time
+- dhcp.lease.hardware.ethernet
+- ...and 25 more (see kpi_selection_counters.md)
+
+## linuxdirectory
+- system.directory.last.modified.time
+- system.directory.mode.group
+- system.directory.mode.others
+- system.directory.mode.owner
+- system.directory.modified.duration.minutes
+
+## linuxfile
+- system.file.last.modified.time
+- system.file.mode.group
+- system.file.mode.others
+- system.file.mode.owner
+- system.file.modified.duration.minutes
+
+## mariadb
+- mariadb.aborted.clients
+- mariadb.aborted.connections
+- mariadb.cached.threads
+- mariadb.connected.threads
+- mariadb.connections
+- mariadb.created.temp.disk.tables.rate
+- mariadb.created.temp.files.rate
+- mariadb.created.temp.tables.rate
+- mariadb.created.threads
+- mariadb.data.directory
+- ...and 48 more (see kpi_selection_counters.md)
+
+## mariadbcommand
+- mariadb.admin.commands
+- mariadb.alter.table.commands
+- mariadb.analyze.commands
+- mariadb.begin.transaction.commands.rate
+- mariadb.change.database.commands
+- mariadb.change.master.commands
+- mariadb.check.commands
+- mariadb.commit.transaction.commands.rate
+- mariadb.create.database.commands
+- mariadb.create.function.commands
+- ...and 42 more (see kpi_selection_counters.md)
+
+## mariadbindex
+- mariadb.index
+- mariadb.index.database.name
+- mariadb.index.fetches
+- mariadb.index.name
+- mariadb.index.read.rows
+- mariadb.index.table.name
+- mariadb.indices
+- mariadb.missing.index
+- mariadb.missing.index.column.name
+- mariadb.missing.index.database.name
+- ...and 7 more (see kpi_selection_counters.md)
+
+## mariadbinnodb
+- mariadb.innodb.average.row.lock.time.ms
+- mariadb.innodb.buffer.pool.data.pages
+- mariadb.innodb.buffer.pool.dirty.pages
+- mariadb.innodb.buffer.pool.flush.pages.rate
+- mariadb.innodb.buffer.pool.free.pages
+- mariadb.innodb.buffer.pool.free.waits
+- mariadb.innodb.buffer.pool.misc.pages
+- mariadb.innodb.buffer.pool.pages
+- mariadb.innodb.buffer.pool.random.ahead.reads
+- mariadb.innodb.buffer.pool.read.requests.rate
+- ...and 28 more (see kpi_selection_counters.md)
+
+## mariadbprocess
+- mariadb.process
+- mariadb.process.command
+- mariadb.process.db
+- mariadb.process.host
+- mariadb.process.id
+- mariadb.process.info
+- mariadb.process.state
+- mariadb.process.time.ms
+- mariadb.process.user
+
+## msmq
+- msmq.incoming.messages
+- msmq.incoming.messages.per.sec
+- msmq.incoming.multicast.sessions
+- msmq.ip.sessions
+- msmq.outgoing.http.sessions
+- msmq.outgoing.messages
+- msmq.outgoing.messages.per.sec
+- msmq.outgoing.multicast.sessions
+- msmq.pending.messages
+- msmq.queue
+- ...and 6 more (see kpi_selection_counters.md)
+
+## mssql
+- mssql.active.transactions
+- mssql.auto.param.attempts.per.sec
+- mssql.average.latch.wait.time.ms
+- mssql.average.wait.time.ms
+- mssql.batch.requests.per.sec
+- mssql.blocked.processes
+- mssql.buffer.cache.hit.ratio.percent
+- mssql.cache.hit.ratio.percent
+- mssql.cache.object.counts
+- mssql.cache.pages
+- ...and 53 more (see kpi_selection_counters.md)
+
+## mssqlbackup
+- mssql.backup
+- mssql.backup.bytes
+- mssql.backup.database.name
+- mssql.backup.end.time
+- mssql.backup.server.name
+- mssql.backup.start.time
+- mssql.backup.type
+
+## mssqldatabase
+- mssql.database
+- mssql.database.active.transactions
+- mssql.database.backup.restore.ops.per.sec
+- mssql.database.bulk.copy.ops.per.sec
+- mssql.database.bulk.copy.rows.per.sec
+- mssql.database.creation.time
+- mssql.database.data.file.path
+- mssql.database.data.file.size.bytes
+- mssql.database.database.size.bytes
+- mssql.database.dbcc.logical.scan.bytes.per.sec
+- ...and 24 more (see kpi_selection_counters.md)
+
+## mssqlindex
+- mssql.index
+- mssql.index.database.name
+- mssql.index.schema.name
+- mssql.index.table.name
+- mssql.index.user.lookups
+- mssql.index.user.scans
+- mssql.index.user.seeks
+- mssql.index.user.updates
+- mssql.indices
+- mssql.missing.index
+- ...and 17 more (see kpi_selection_counters.md)
+
+## mssqljob
+- mssql.job
+- mssql.job.current.status
+- mssql.job.current.status.code
+- mssql.job.last.execution.time
+- mssql.job.last.run.status
+- mssql.job.last.run.status.code
+- mssql.job.next.execution.time
+- mssql.job.retry.attempts
+- mssql.job.server
+
+## mssqlprocess
+- mssql.process
+- mssql.process.command
+- mssql.process.host
+- mssql.process.hostname
+- mssql.process.io.ops.rate
+- mssql.process.kernel.id
+- mssql.process.memory.bytes
+- mssql.process.name
+- mssql.process.status
+- mssql.process.wait.time.ms
+- ...and 3 more (see kpi_selection_counters.md)
+
+## mssqlreplication
+- mssql.alwayson
+- mssql.alwayson.availability.mode
+- mssql.alwayson.connected.state
+- mssql.alwayson.endpoint.url
+- mssql.alwayson.failover.mode
+- mssql.alwayson.name
+- mssql.alwayson.operational.state
+- mssql.alwayson.replica.name
+- mssql.alwayson.role
+- mssql.cluster
+- ...and 12 more (see kpi_selection_counters.md)
+
+## mssqlsession
+- mssql.active.sessions
+- mssql.blocked.session
+- mssql.blocked.session.blocked.query
+- mssql.blocked.session.blocking.query
+- mssql.blocked.session.database
+- mssql.blocked.session.domain
+- mssql.blocked.session.domain.user
+- mssql.blocked.session.id
+- mssql.blocked.session.program.name
+- mssql.blocked.session.remote.client
+- ...and 35 more (see kpi_selection_counters.md)
+
+## mssqlslowquery
+- mssql.query
+- mssql.query.avg.elapsed.time.seconds
+- mssql.query.cpu.time.seconds
+- mssql.query.creation.time
+- mssql.query.elapsed.time.seconds
+- mssql.query.execution.count
+- mssql.query.last.execution.time
+- mssql.query.logical.reads
+- mssql.query.logical.writes
+- mssql.query.physical.reads
+
+## multicast
+- cisco.multicast
+- discovery.test.oid
+- dropped.packets
+- multicast.dropped.packets
+- multicast.forwarded.bytes.rate
+- multicast.forwarding.entry
+- multicast.group.ip
+- multicast.interface
+- multicast.interface.in.packets.rate
+- multicast.interface.out.packets.rate
+- ...and 9 more (see kpi_selection_counters.md)
+
+## mysql
+- mysql.aborted.clients
+- mysql.aborted.connections
+- mysql.cached.threads
+- mysql.connected.threads
+- mysql.connections
+- mysql.created.temp.disk.tables.rate
+- mysql.created.temp.files.rate
+- mysql.created.temp.tables.rate
+- mysql.created.threads
+- mysql.data.directory
+- ...and 48 more (see kpi_selection_counters.md)
+
+## mysqlcommand
+- mysql.admin.commands
+- mysql.alter.table.commands
+- mysql.analyze.commands
+- mysql.backup.table.commands
+- mysql.begin.transaction.commands.rate
+- mysql.change.database.commands
+- mysql.change.master.commands
+- mysql.check.commands
+- mysql.commit.transaction.commands.rate
+- mysql.create.database.commands
+- ...and 49 more (see kpi_selection_counters.md)
+
+## mysqlindex
+- mssql.missing.index.column.name
+- mysql.index
+- mysql.index.database.name
+- mysql.index.fetches
+- mysql.index.name
+- mysql.index.read.rows
+- mysql.index.table.name
+- mysql.indices
+- mysql.missing.index
+- mysql.missing.index.table.name
+- ...and 8 more (see kpi_selection_counters.md)
+
+## mysqlinnodb
+- mysql.innodb.average.row.lock.time.ms
+- mysql.innodb.buffer.pool.data.pages
+- mysql.innodb.buffer.pool.dirty.pages
+- mysql.innodb.buffer.pool.flush.pages.rate
+- mysql.innodb.buffer.pool.free.pages
+- mysql.innodb.buffer.pool.free.waits
+- mysql.innodb.buffer.pool.misc.pages
+- mysql.innodb.buffer.pool.pages
+- mysql.innodb.buffer.pool.random.ahead.reads
+- mysql.innodb.buffer.pool.read.requests.rate
+- ...and 29 more (see kpi_selection_counters.md)
+
+## mysqlprocess
+- mysql.process
+- mysql.process.command
+- mysql.process.db
+- mysql.process.host
+- mysql.process.info
+- mysql.process.state
+- mysql.process.time.ms
+- mysql.process.user
+
+## netappontapcluster
+- netapp.ontap.cluster.contact
+- netapp.ontap.cluster.io.ops.per.sec
+- netapp.ontap.cluster.io.read.ops.per.sec
+- netapp.ontap.cluster.io.write.ops.per.sec
+- netapp.ontap.cluster.latency.ms
+- netapp.ontap.cluster.read.latency.ms
+- netapp.ontap.cluster.storage.capacity.bytes
+- netapp.ontap.cluster.storage.free.bytes
+- netapp.ontap.cluster.storage.physical.used.bytes
+- netapp.ontap.cluster.storage.used.bytes
+- ...and 6 more (see kpi_selection_counters.md)
+
+## netappontapclusterdisk
+- netapp.ontap.cluster.aggregate
+- netapp.ontap.cluster.aggregate.capacity.bytes
+- netapp.ontap.cluster.aggregate.created.time
+- netapp.ontap.cluster.aggregate.disks
+- netapp.ontap.cluster.aggregate.free.bytes
+- netapp.ontap.cluster.aggregate.home.node
+- netapp.ontap.cluster.aggregate.io.ops.per.sec
+- netapp.ontap.cluster.aggregate.latency.ms
+- netapp.ontap.cluster.aggregate.name
+- netapp.ontap.cluster.aggregate.node
+- ...and 27 more (see kpi_selection_counters.md)
+
+## netappontapclusterhardwaresensor
+- netapp.ontap.cluster.battery.sensor
+- netapp.ontap.cluster.battery.sensor.name
+- netapp.ontap.cluster.battery.sensor.node
+- netapp.ontap.cluster.battery.sensor.power
+- netapp.ontap.cluster.battery.sensor.status
+- netapp.ontap.cluster.fan.sensor
+- netapp.ontap.cluster.fan.sensor.name
+- netapp.ontap.cluster.fan.sensor.node
+- netapp.ontap.cluster.fan.sensor.speed
+- netapp.ontap.cluster.fan.sensor.status
+- ...and 10 more (see kpi_selection_counters.md)
+
+## netappontapclusterinterface
+- netapp.ontap.cluster.interface
+- netapp.ontap.cluster.interface.address
+- netapp.ontap.cluster.interface.admin.status
+- netapp.ontap.cluster.interface.current.node
+- netapp.ontap.cluster.interface.current.port
+- netapp.ontap.cluster.interface.ip.space
+- netapp.ontap.cluster.interface.name
+- netapp.ontap.cluster.interface.operational.status
+- netapp.ontap.cluster.interface.port.set
+- netapp.ontap.cluster.interface.protocol
+- ...and 2 more (see kpi_selection_counters.md)
+
+## netappontapclusternode
+- netapp.ontap.cluster.node
+- netapp.ontap.cluster.node.controller.board
+- netapp.ontap.cluster.node.controller.memory.bytes
+- netapp.ontap.cluster.node.controller.temperature
+- netapp.ontap.cluster.node.disks
+- netapp.ontap.cluster.node.location
+- netapp.ontap.cluster.node.membership
+- netapp.ontap.cluster.node.model
+- netapp.ontap.cluster.node.name
+- netapp.ontap.cluster.node.owner
+- ...and 7 more (see kpi_selection_counters.md)
+
+## netappontapclusterport
+- netapp.ontap.cluster.ethernet.port
+- netapp.ontap.cluster.ethernet.port.mac.address
+- netapp.ontap.cluster.ethernet.port.mtu.bytes
+- netapp.ontap.cluster.ethernet.port.name
+- netapp.ontap.cluster.ethernet.port.node
+- netapp.ontap.cluster.ethernet.port.speed
+- netapp.ontap.cluster.ethernet.port.state
+- netapp.ontap.cluster.ethernet.port.throughput.bytes.per.sec
+- netapp.ontap.cluster.fc.port
+- netapp.ontap.cluster.fc.port.address
+- ...and 10 more (see kpi_selection_counters.md)
+
+## netappontapclusterstorage
+- netapp.ontap.cluster.lun
+- netapp.ontap.cluster.lun.avg.io.ops.per.sec
+- netapp.ontap.cluster.lun.avg.latency.ms
+- netapp.ontap.cluster.lun.avg.throughput.bytes.per.sec
+- netapp.ontap.cluster.lun.capacity.bytes
+- netapp.ontap.cluster.lun.created.time
+- netapp.ontap.cluster.lun.free.bytes
+- netapp.ontap.cluster.lun.name
+- netapp.ontap.cluster.lun.os.type
+- netapp.ontap.cluster.lun.serial.number
+- ...and 34 more (see kpi_selection_counters.md)
+
+## netappontapclustersvm
+- netapp.ontap.cluster.svm
+- netapp.ontap.cluster.svm.aggregate
+- netapp.ontap.cluster.svm.fc.interfaces
+- netapp.ontap.cluster.svm.ipspace
+- netapp.ontap.cluster.svm.max.volumes
+- netapp.ontap.cluster.svm.name
+- netapp.ontap.cluster.svm.protocol
+- netapp.ontap.cluster.svm.state
+- netapp.ontap.cluster.svm.subtype
+- netapp.ontap.cluster.svms
+
+## nginx
+- nginx.active.connections
+- nginx.connections.rate
+- nginx.handled.connections
+- nginx.reading.connections
+- nginx.rejected.connections
+- nginx.requests.rate
+- nginx.waiting.connections
+- nginx.writing.connections
+
+## ntp
+- ntp.latency.ms
+
+## nutanix
+- nutanix.acropolis.connection.state
+- nutanix.cluster
+- nutanix.cluster.uuid
+- nutanix.controller.io.bytes.per.sec
+- nutanix.controller.io.latency.ms
+- nutanix.controller.io.ops.per.sec
+- nutanix.controller.io.read.bytes.per.sec
+- nutanix.controller.io.read.ops.per.sec
+- nutanix.controller.io.write.bytes.per.sec
+- nutanix.controller.io.write.ops.per.sec
+- ...and 42 more (see kpi_selection_counters.md)
+
+## nutanixdisk
+- nutanix.disk
+- nutanix.disk.boot.status
+- nutanix.disk.cluster
+- nutanix.disk.cluster.uuid
+- nutanix.disk.host
+- nutanix.disk.io.bytes.per.sec
+- nutanix.disk.io.latency.ms
+- nutanix.disk.io.ops.per.sec
+- nutanix.disk.io.read.bytes.per.sec
+- nutanix.disk.io.read.latency.ms
+- ...and 12 more (see kpi_selection_counters.md)
+
+## nutanixvm
+- nutanix.vm
+- nutanix.vm.cluster
+- nutanix.vm.cluster.uuid
+- nutanix.vm.controller.io.bytes.per.sec
+- nutanix.vm.controller.io.latency.ms
+- nutanix.vm.controller.io.ops.per.sec
+- nutanix.vm.controller.io.read.ops.per.sec
+- nutanix.vm.controller.io.write.ops.per.sec
+- nutanix.vm.cpu.percent
+- nutanix.vm.cpus
+- ...and 19 more (see kpi_selection_counters.md)
+
+## office365
+- office365.active.users
+- office365.consumed.units
+- office365.exchange.subscription
+- office365.licenses
+- office365.mobile.number
+- office365.onedrive.subscription
+- office365.sharepoint.subscription
+- office365.suspended.units
+- office365.teams.subscription
+- office365.unassigned.licenses
+- ...and 8 more (see kpi_selection_counters.md)
+
+## onedrive
+- onedrive.accounts
+- onedrive.active.accounts
+- onedrive.active.files
+- onedrive.active.users
+- onedrive.file.activity
+- onedrive.file.activity.events
+- onedrive.files
+- onedrive.inactive.users
+- onedrive.sites
+- onedrive.storage.used.bytes
+- ...and 3 more (see kpi_selection_counters.md)
+
+## oracle
+- oracle.active.sessions
+- oracle.avg.executions
+- oracle.blocking.sessions
+- oracle.buffer.busy.waits
+- oracle.buffer.cache.hit.ratio.percent
+- oracle.buffer.cache.used.bytes
+- oracle.consistent.gets
+- oracle.created.time
+- oracle.cursor.hit.ratio.percent
+- oracle.cursor.miss.ratio.percent
+- ...and 75 more (see kpi_selection_counters.md)
+
+## oracleasmdisk
+- oracle.asm.disk.group
+- oracle.asm.disk.group.free.bytes
+- oracle.asm.disk.group.number
+- oracle.asm.disk.group.provisioned.bytes
+- oracle.asm.disk.group.state
+- oracle.asm.disk.group.type
+- oracle.asm.disk.group.used.bytes
+
+## oracleindex
+- oracle.index
+- oracle.index.column.name
+- oracle.index.index.type
+- oracle.index.table.name
+- oracle.index.uniqueness
+- oracle.indices
+- oracle.unused.index
+- oracle.unused.index.constraint.name
+- oracle.unused.index.idle.time.days
+- oracle.unused.index.owner
+- ...and 4 more (see kpi_selection_counters.md)
+
+## oraclejob
+- oracle.job
+- oracle.job.current.status
+- oracle.job.elapsed.time
+- oracle.job.elapsed.time.seconds
+- oracle.job.enable
+- oracle.job.executions
+- oracle.job.fails
+- oracle.job.last.execution.duration.seconds
+- oracle.job.last.execution.time
+- oracle.job.last.status
+- ...and 2 more (see kpi_selection_counters.md)
+
+## oraclerac
+- oracle.rac.instance
+- oracle.rac.instance.database.version
+- oracle.rac.instance.host.name
+- oracle.rac.instance.status
+
+## oraclerollbacksegment
+- oracle.rollback.segment
+- oracle.rollback.segment.current.size.bytes
+- oracle.rollback.segment.extends
+- oracle.rollback.segment.hit.ratio.percent
+- oracle.rollback.segment.initial.extent.size.bytes
+- oracle.rollback.segment.next.extent.size.bytes
+- oracle.rollback.segment.shrinks
+- oracle.rollback.segment.status
+- oracle.rollback.segment.table.space
+- oracle.rollback.segment.water.mark.size
+- ...and 2 more (see kpi_selection_counters.md)
+
+## oraclesession
+- oracle.active.sessions
+- oracle.blocked.session
+- oracle.blocked.session.id
+- oracle.blocked.sessions
+- oracle.connected.sessions
+- oracle.idle.sessions
+- oracle.session
+- oracle.session.application
+- oracle.session.blocked.host
+- oracle.session.blocked.id
+- ...and 32 more (see kpi_selection_counters.md)
+
+## oracleslowquery
+- oracle.query
+- oracle.query.elapsed.seconds
+- oracle.query.executions
+- oracle.query.last.update.time
+- oracle.query.sid
+- oracle.query.sql.id
+- oracle.query.start.time
+- oracle.query.username
+
+## oracletablespace
+- oracle.data.file
+- oracle.data.file.physical.reads
+- oracle.data.file.physical.writes
+- oracle.data.file.read.time.ms
+- oracle.data.file.size.bytes
+- oracle.data.file.status
+- oracle.data.file.tablespace
+- oracle.data.file.write.time.ms
+- oracle.data.files
+- oracle.table
+- ...and 19 more (see kpi_selection_counters.md)
+
+## ospf
+- neighbour.route
+- ospf.neighbour
+- ospf.neighbour.remote.as
+- ospf.neighbour.status
+
+## ping
+- ping.latency.ms
+- ping.lost.packets
+- ping.max.latency.ms
+- ping.min.latency.ms
+- ping.packet.lost.percent
+- ping.received.packets
+- ping.sent.packets
+
+## port
+- port.command
+- port.command.output.max.lines
+- port.command.output.search.keyword
+- port.content
+- port.content.found
+- port.latency.ms
+- port.output.lines
+
+## postgresql
+- postgresql.active.connections
+- postgresql.active.queries
+- postgresql.allocated.buffers
+- postgresql.auto.vacuum
+- postgresql.backend.buffers
+- postgresql.backend.fsync.buffers
+- postgresql.before.xid.wraparound.transactions
+- postgresql.block.hits.rate
+- postgresql.block.reads.rate
+- postgresql.cache.hit.ratio.percent
+- ...and 46 more (see kpi_selection_counters.md)
+
+## postgresqldatabase
+- postgresql.database
+- postgresql.database.size.bytes
+
+## postgresqlindex
+- postgresql.index
+- postgresql.index.fetched.tuples
+- postgresql.index.read.tuples
+- postgresql.index.rows
+- postgresql.index.scans
+- postgresql.index.schema.name
+- postgresql.index.size.bytes
+- postgresql.index.table.name
+- postgresql.indices
+- postgresql.unused.index
+- ...and 4 more (see kpi_selection_counters.md)
+
+## postgresqlsession
+- postgres.active.sessions
+- postgres.held.locks
+- postgres.idle.sessions
+- postgres.session
+- postgres.session.application
+- postgres.session.id
+- postgres.session.lock
+- postgres.session.lock.granted
+- postgres.session.lock.id
+- postgres.session.lock.mode
+- ...and 7 more (see kpi_selection_counters.md)
+
+## postgresqltablespace
+- postgresql.table.space
+- postgresql.table.space.location
+- postgresql.table.space.owner
+- postgresql.table.space.size.bytes
+- postgresql.table.spaces
+
+## prism
+- prism.cluster
+- prism.host
+- prism.host.cluster.name
+- prism.host.ip
+- prism.host.state
+- prism.hosts
+- prism.powered.off.vms
+- prism.powered.on.vms
+- prism.vm
+- prism.vm.host.ip
+- ...and 4 more (see kpi_selection_counters.md)
+
+## prismcluster
+- prism.cluster
+- prism.cluster.arch
+- prism.cluster.controller.io.bytes.per.sec
+- prism.cluster.controller.io.latency.ms
+- prism.cluster.controller.io.ops.per.sec
+- prism.cluster.controller.io.read.ops.per.sec
+- prism.cluster.controller.io.write.ops.per.sec
+- prism.cluster.current.redundancy.factor
+- prism.cluster.desired.redundancy.factor
+- prism.cluster.domain.name
+- ...and 35 more (see kpi_selection_counters.md)
+
+## prismdisk
+- prism.disk
+- prism.disk.boot.status
+- prism.disk.cluster
+- prism.disk.cluster.uuid
+- prism.disk.host
+- prism.disk.model
+- prism.disk.mount.path
+- prism.disk.online.state
+- prism.disk.status
+- prism.disk.storage.capacity.bytes
+- ...and 4 more (see kpi_selection_counters.md)
+
+## prismstorage
+- prism.storage.capacity.bytes
+- prism.storage.container
+- prism.storage.container.capacity.bytes
+- prism.storage.container.cluster
+- prism.storage.container.compression
+- prism.storage.container.disk.deduplication
+- prism.storage.container.erasure.encoding
+- prism.storage.container.free.bytes
+- prism.storage.container.free.percent
+- prism.storage.container.io.bytes.per.sec
+- ...and 17 more (see kpi_selection_counters.md)
+
+## rabbitmq
+- rabbitmq.channels
+- rabbitmq.connections
+- rabbitmq.consumers
+- rabbitmq.exchanges
+- rabbitmq.message.confirms.per.sec
+- rabbitmq.message.publishes.per.sec
+- rabbitmq.messages
+- rabbitmq.node
+- rabbitmq.node.atom.memory.bytes
+- rabbitmq.node.binary.memory.bytes
+- ...and 21 more (see kpi_selection_counters.md)
+
+## rabbitmqchannel
+- rabbitmq.channel
+- rabbitmq.channel.confirms.per.sec
+- rabbitmq.channel.get.delivers.per.sec
+- rabbitmq.channel.noack.delivers.per.sec
+- rabbitmq.channel.prefetches
+- rabbitmq.channel.publishes.per.sec
+- rabbitmq.channel.unacknowledged.messages
+- rabbitmq.channel.uncommitted.acks
+- rabbitmq.channel.uncommitted.messages
+- rabbitmq.channel.unconfirmed.messages
+
+## rabbitmqconnection
+- rabbitmq.connection
+- rabbitmq.connection.protocol
+- rabbitmq.connection.received.bytes
+- rabbitmq.connection.received.bytes.per.sec
+- rabbitmq.connection.sent.bytes
+- rabbitmq.connection.sent.bytes.per.sec
+- rabbitmq.connection.state
+- rabbitmq.connection.user
+
+## rabbitmqexchange
+- rabbitmq.exchange
+- rabbitmq.exchange.confirms.per.sec
+- rabbitmq.exchange.in.publishes.per.sec
+- rabbitmq.exchange.out.publishes.per.sec
+- rabbitmq.exchange.type
+
+## rabbitmqqueue
+- rabbitmq.queue
+- rabbitmq.queue.acks.per.sec
+- rabbitmq.queue.gets.per.sec
+- rabbitmq.queue.publishes.per.sec
+- rabbitmq.queue.redelivers.per.sec
+
+## radius
+- radius.latency.ms
+- radius.secret
+
+## remotevpnconnection
+- discover.oid
+- discovery.test.oid
+- remote.vpn.active.connections
+- remote.vpn.client
+- remote.vpn.client.app
+- remote.vpn.client.app.version
+- remote.vpn.client.connection.ip
+- remote.vpn.client.duration
+- remote.vpn.client.duration.seconds
+- remote.vpn.client.encryption.algorithm
+- ...and 8 more (see kpi_selection_counters.md)
+
+## routing
+- ip.route
+- ip.route.interface.index
+- ip.route.last.updated
+- ip.route.last.updated.seconds
+- ip.route.metric
+- ip.route.next.hop
+- ip.route.protocol
+- ip.route.subnet.mask
+- ip.route.type
+- ip.routing.type
+
+## ruckuswireless
+- ruckus.wireless.access.point
+- ruckus.wireless.access.point.reboots
+- ruckus.wireless.access.point.status
+- ruckus.wireless.access.points
+- ruckus.wireless.active.wlans
+- ruckus.wireless.clients
+- ruckus.wireless.disconnected.access.points
+- ruckus.wireless.excellent.clients
+- ruckus.wireless.healthy.clients
+- ruckus.wireless.inactive.wlans
+- ...and 8 more (see kpi_selection_counters.md)
+
+## ruckuswirelessap
+- ruckus.wireless.access.point.bytes.rate
+- ruckus.wireless.access.point.clients
+- ruckus.wireless.access.point.cpu.percent
+- ruckus.wireless.access.point.description
+- ruckus.wireless.access.point.dns
+- ruckus.wireless.access.point.external.ip
+- ruckus.wireless.access.point.external.port
+- ruckus.wireless.access.point.free.memory.bytes
+- ruckus.wireless.access.point.gateway
+- ruckus.wireless.access.point.group
+- ...and 22 more (see kpi_selection_counters.md)
+
+## ruckuswirelessclient
+- ruckus.wireless.client
+- ruckus.wireless.client.ap
+- ruckus.wireless.client.ap.ip.address
+- ruckus.wireless.client.ap.mac.address
+- ruckus.wireless.client.auth.method
+- ruckus.wireless.client.auth.status
+- ruckus.wireless.client.channel
+- ruckus.wireless.client.channelization
+- ruckus.wireless.client.health
+- ruckus.wireless.client.host.name
+- ...and 23 more (see kpi_selection_counters.md)
+
+## ruckuswirelessrogueap
+- ruckus.wireless.rogue.access.point
+- ruckus.wireless.rogue.access.point.channel
+- ruckus.wireless.rogue.access.point.encryption
+- ruckus.wireless.rogue.access.point.interface.type
+- ruckus.wireless.rogue.access.point.last.detected
+- ruckus.wireless.rogue.access.point.mac.address
+- ruckus.wireless.rogue.type
+
+## ruckuswirelesswlan
+- ruckus.wireless.wlan
+- ruckus.wireless.wlan.access.vlan
+- ruckus.wireless.wlan.authentication.type
+- ruckus.wireless.wlan.background.scanning
+- ruckus.wireless.wlan.cipher
+- ruckus.wireless.wlan.clients
+- ruckus.wireless.wlan.description
+- ruckus.wireless.wlan.encryption
+- ruckus.wireless.wlan.group
+- ruckus.wireless.wlan.id
+- ...and 8 more (see kpi_selection_counters.md)
+
+## saphana
+- sap.hana.available.processors
+- sap.hana.cache
+- sap.hana.cache.hit.ratio.percent
+- sap.hana.cache.hits
+- sap.hana.cache.host
+- sap.hana.cache.misses
+- sap.hana.cache.size.bytes
+- sap.hana.cache.used.bytes
+- sap.hana.database
+- sap.hana.database.description
+- ...and 22 more (see kpi_selection_counters.md)
+
+## saphanabackup
+- sap.hana.backup.backint.data.path
+- sap.hana.backup.backint.executable
+- sap.hana.backup.backint.executable.link
+- sap.hana.backup.catalog
+- sap.hana.backup.catalog.bytes
+- sap.hana.backup.catalog.end.time
+- sap.hana.backup.catalog.entry.type
+- sap.hana.backup.catalog.service.type.name
+- sap.hana.backup.catalog.source.type
+- sap.hana.backup.catalog.start.time
+- ...and 25 more (see kpi_selection_counters.md)
+
+## saphanadisk
+- sap.hana.disk
+- sap.hana.disk.bytes
+- sap.hana.disk.data.volume.bytes
+- sap.hana.disk.free.percent
+- sap.hana.disk.host
+- sap.hana.disk.path
+- sap.hana.disk.type
+- sap.hana.disk.used.bytes
+- sap.hana.disk.used.percent
+- sap.hana.volume
+- ...and 15 more (see kpi_selection_counters.md)
+
+## saphanahost
+- sap.hana.host
+- sap.hana.host.allocation.limit.bytes
+- sap.hana.host.code.stack.bytes
+- sap.hana.host.commits.per.sec
+- sap.hana.host.compilations.per.sec
+- sap.hana.host.executions.per.sec
+- sap.hana.host.instance.memory.used.bytes
+- sap.hana.host.memory.bytes.per.sec
+- sap.hana.host.memory.free.bytes
+- sap.hana.host.memory.provisioned.bytes
+- ...and 12 more (see kpi_selection_counters.md)
+
+## saphanaservice
+- sap.hana.service
+- sap.hana.service.active.requests
+- sap.hana.service.active.threads
+- sap.hana.service.compactor.allocated.memory.bytes
+- sap.hana.service.compactor.memory.freeable.bytes
+- sap.hana.service.coordinator.type
+- sap.hana.service.cpu.percent
+- sap.hana.service.heap.memory.bytes
+- sap.hana.service.heap.memory.used.bytes
+- sap.hana.service.host
+- ...and 12 more (see kpi_selection_counters.md)
+
+## saphanasession
+- sap.hana.active.connections
+- sap.hana.idle.connections
+- sap.hana.queued.connections
+- sap.hana.session
+- sap.hana.session.auto.commit
+- sap.hana.session.client.pid
+- sap.hana.session.connection.id
+- sap.hana.session.connection.status
+- sap.hana.session.connection.type
+- sap.hana.session.current.schema.name
+- ...and 10 more (see kpi_selection_counters.md)
+
+## saphanatransaction
+- sap.hana.active.transactions
+- sap.hana.blocked.object.name
+- sap.hana.blocked.query
+- sap.hana.blocked.schema
+- sap.hana.blocked.time
+- sap.hana.blocked.transaction
+- sap.hana.blocked.transaction.id
+- sap.hana.blocked.transactions
+- sap.hana.blocking.lock.mode
+- sap.hana.blocking.lock.type
+- ...and 3 more (see kpi_selection_counters.md)
+
+## saphanaworkload
+- sap.hana.expensive.query
+- sap.hana.expensive.query.connection.id
+- sap.hana.expensive.query.cpu.time.ms
+- sap.hana.expensive.query.db.user
+- sap.hana.expensive.query.duration.ms
+- sap.hana.expensive.query.error
+- sap.hana.expensive.query.error.code
+- sap.hana.expensive.query.host
+- sap.hana.expensive.query.id
+- sap.hana.expensive.query.memory.bytes
+- ...and 11 more (see kpi_selection_counters.md)
+
+## sitevpn
+- failing.at.phase1.tunnel
+- phase1.tunnel
+- phase2.tunnel
+- tunnel.active.time
+- tunnel.active.time.seconds
+- tunnel.community
+- tunnel.created.time
+- tunnel.decrypted.bytes.rate
+- tunnel.decrypted.packets.rate
+- tunnel.destination
+- ...and 56 more (see kpi_selection_counters.md)
+
+## snmpnetworkconnection
+- destination.ip
+- destination.port
+- network.connection
+- network.connection.protocol
+- network.connection.state
+- network.connection.summary
+- network.connection.tcp.connections
+- network.connection.tcp.error.segments
+- network.connection.tcp.retransmitted.segments
+- network.connection.udp.connections
+- ...and 3 more (see kpi_selection_counters.md)
+
+## stp
+- stp.blocking.ports
+- stp.bridge.forward.delay.seconds
+- stp.bridge.hello.time.seconds
+- stp.bridge.mac.address
+- stp.bridge.max.age.seconds
+- stp.bridge.priority
+- stp.bridge.transmit.hold.count.seconds
+- stp.broken.ports
+- stp.disabled.ports
+- stp.forwarding.ports
+- ...and 14 more (see kpi_selection_counters.md)
+
+## switchportmapper
+- client.mac.address
+- client.port
+- vlan.ports
+- vlan.trunk.status
+
+## symantecemailgateway
+- smg.blower.fan.status
+- smg.cached.memory.bytes
+- smg.cached.memory.free.bytes
+- smg.cached.memory.percent
+- smg.cached.memory.used.bytes
+- smg.connected.users
+- smg.cpu.percent
+- smg.cpu.temperature.status
+- smg.disk.capacity.bytes
+- smg.disk.free.bytes
+- ...and 41 more (see kpi_selection_counters.md)
+
+## teams
+- teams.android.users
+- teams.calls
+- teams.channel
+- teams.channel.description
+- teams.channels
+- teams.chat.messages
+- teams.ios.users
+- teams.mac.users
+- teams.meetings
+- teams.private.chat.messages
+- ...and 4 more (see kpi_selection_counters.md)
+
+## tomcat
+- tomcat.active.sessions
+- tomcat.busy.threads
+- tomcat.cache.accesses
+- tomcat.cache.hit.ratio.percent
+- tomcat.cache.hits
+- tomcat.connections
+- tomcat.created.sessions
+- tomcat.errors
+- tomcat.expired.sessions
+- tomcat.heap.memory.used.bytes
+- ...and 28 more (see kpi_selection_counters.md)
+
+## url
+- url.connection.time.ms
+- url.content.found
+- url.content.search.keyword
+- url.dns.lookup.time.ms
+- url.first.byte.time.ms
+- url.page.content
+- url.response.code
+- url.size.bytes
+
+## vcenter
+- vcenter.clusters
+- vcenter.connected.nodes
+- vcenter.cpu.hz
+- vcenter.cpu.used.hz
+- vcenter.datacenters
+- vcenter.datastores
+- vcenter.disconnected.nodes
+- vcenter.memory.installed.bytes
+- vcenter.memory.used.bytes
+- vcenter.networks
+- ...and 21 more (see kpi_selection_counters.md)
+
+## vcentercluster
+- vcenter.cluster
+- vcenter.cluster.cpu.cores
+- vcenter.cluster.cpu.hz
+- vcenter.cluster.cpu.percent
+- vcenter.cluster.cpu.threads
+- vcenter.cluster.datacenter.name
+- vcenter.cluster.hosts
+- vcenter.cluster.memory.free.bytes
+- vcenter.cluster.memory.installed.bytes
+- vcenter.cluster.memory.used.bytes
+- ...and 1 more (see kpi_selection_counters.md)
+
+## vcenterdatacenter
+- vcenter.datacenter
+- vcenter.datacenter.cpu.hz
+- vcenter.datacenter.cpu.percent
+- vcenter.datacenter.memory.free.bytes
+- vcenter.datacenter.memory.installed.bytes
+- vcenter.datacenter.memory.used.bytes
+- vcenter.datacenter.memory.used.percent
+
+## vcenterdatastore
+- vcenter.datastore
+- vcenter.datastore.capacity.bytes
+- vcenter.datastore.free.bytes
+- vcenter.datastore.used.bytes
+- vcenter.datastore.used.percent
+
+## vrf
+- vrf.distribution.protocol
+- vrf.interface
+- vrf.interface.type
+- vrf.row.status
+- vrf.status
+- vrf.storage.type
+- vrf.tag
+
+## websphere
+- websphere.heap.memory.free.bytes
+- websphere.heap.memory.size.bytes
+- websphere.heap.memory.used.bytes
+- websphere.hit.ratio.percent
+- websphere.hits
+- websphere.jdbc.pool
+- websphere.jdbc.pool.allocated.connections
+- websphere.jdbc.pool.created.connections
+- websphere.jdbc.pool.destroyed.connections
+- websphere.jdbc.pool.discarded.statements
+- ...and 42 more (see kpi_selection_counters.md)
+
+## websphereservlet
+- websphere.servlet
+- websphere.servlet.active.sessions
+- websphere.servlet.affinity.broken.sessions
+- websphere.servlet.application.name
+- websphere.servlet.cache.discarded.sessions
+- websphere.servlet.created.sessions
+- websphere.servlet.discarded.sessions
+- websphere.servlet.invalid.timedout.sessions
+- websphere.servlet.invalidated.sessions
+- websphere.servlet.live.sessions
+- ...and 6 more (see kpi_selection_counters.md)
+
+## wildfly
+- wildfly.active.sessions
+- wildfly.application.rolledback.transactions
+- wildfly.collection.time.ms
+- wildfly.collections
+- wildfly.committed.transactions
+- wildfly.compilation.time.ms
+- wildfly.created.sessions
+- wildfly.errors
+- wildfly.expired.sessions
+- wildfly.heap.memory.used.bytes
+- ...and 37 more (see kpi_selection_counters.md)
+
+## windowscluster
+- windows.cluster.disk.capacity.bytes
+- windows.cluster.disk.free.bytes
+- windows.cluster.disk.used.bytes
+- windows.cluster.disk.used.percent
+- windows.cluster.ip
+- windows.cluster.network
+- windows.cluster.network.normal.message.queue.length
+- windows.cluster.network.normal.messages.per.sec
+- windows.cluster.network.received.bytes
+- windows.cluster.network.received.bytes.per.sec
+- ...and 41 more (see kpi_selection_counters.md)
+
+## windowsclusterdisk
+- windows.cluster.disk.volume
+- windows.cluster.disk.volume.capacity.bytes
+- windows.cluster.disk.volume.cluster.shared
+- windows.cluster.disk.volume.file.system
+- windows.cluster.disk.volume.free.bytes
+- windows.cluster.disk.volume.label
+- windows.cluster.disk.volume.owner.node
+- windows.cluster.disk.volume.state
+- windows.cluster.disk.volume.type
+- windows.cluster.disk.volume.used.bytes
+- ...and 1 more (see kpi_selection_counters.md)
+
+## windowsdhcp
+- windows.dhcp.acks
+- windows.dhcp.available.ip.addresses
+- windows.dhcp.declines
+- windows.dhcp.delay.config.scopes
+- windows.dhcp.delay.offer.scopes
+- windows.dhcp.delayed.offers
+- windows.dhcp.discovers
+- windows.dhcp.ip.address.pool.free.percent
+- windows.dhcp.ip.address.pool.utilization.percent
+- windows.dhcp.ip.address.scopes
+- ...and 8 more (see kpi_selection_counters.md)
+
+## windowsdhcpscope
+- dhcp.client
+- dhcp.client.description
+- dhcp.client.ip.address
+- dhcp.client.name
+- dhcp.client.scope
+- dhcp.client.type
+- dhcp.range.policy
+- dhcp.range.policy.end.range
+- dhcp.range.policy.scope
+- dhcp.range.policy.start.range
+- ...and 25 more (see kpi_selection_counters.md)
+
+## windowsdirectory
+- system.directory.last.access.time
+- system.directory.last.modified.by
+- system.directory.last.write.time
+
+## windowsdns
+- dns.axfr.success.receives
+- dns.axfr.success.sends
+- dns.caching.memory.bytes
+- dns.database.node.memory.bytes
+- dns.dynamic.queued.updates
+- dns.dynamic.update.database.writes
+- dns.dynamic.update.database.writes.per.sec
+- dns.dynamic.update.noops
+- dns.dynamic.update.noops.per.sec
+- dns.dynamic.update.receives
+- ...and 53 more (see kpi_selection_counters.md)
+
+## windowsfile
+- system.file.directory
+- system.file.last.access.time
+- system.file.last.modified.by
+- system.file.last.write.time
+
+## windowsrdp
+- windows.rdp.active.sessions
+- windows.rdp.inactive.sessions
+- windows.rdp.session
+- windows.rdp.session.device
+- windows.rdp.session.id
+- windows.rdp.session.idle.time.minutes
+- windows.rdp.session.logon.time
+- windows.rdp.session.process
+- windows.rdp.session.process.async.frame.errors
+- windows.rdp.session.process.async.overflows
+- ...and 51 more (see kpi_selection_counters.md)
+
+## windowstaskscheduler
+- windows.scheduler.failed.tasks
+- windows.scheduler.running.tasks
+- windows.scheduler.task
+- windows.scheduler.task.enabled
+- windows.scheduler.task.last.runtime
+- windows.scheduler.task.missed.runs
+- windows.scheduler.task.next.runtime
+- windows.scheduler.task.result
+- windows.scheduler.task.result.code
+- windows.scheduler.task.state
+- ...and 3 more (see kpi_selection_counters.md)
+
+## zimbra
+- zimbra.bis.reads
+- zimbra.bis.seek.ratio.percent
+- zimbra.calendar.cache.hits
+- zimbra.calendar.cache.lru.items
+- zimbra.calendar.cache.memory.hits
+- zimbra.cleartext.imap.connections
+- zimbra.cleartext.pop3.connections
+- zimbra.db.connection.latency.ms
+- zimbra.db.connections
+- zimbra.db.used.connections
+- ...and 76 more (see kpi_selection_counters.md)

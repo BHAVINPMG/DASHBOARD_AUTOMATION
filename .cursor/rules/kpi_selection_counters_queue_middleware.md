@@ -1,0 +1,82 @@
+# Queue_Middleware Service Counters
+
+## msmq
+- msmq.incoming.messages
+- msmq.incoming.messages.per.sec
+- msmq.incoming.multicast.sessions
+- msmq.ip.sessions
+- msmq.outgoing.http.sessions
+- msmq.outgoing.messages
+- msmq.outgoing.messages.per.sec
+- msmq.outgoing.multicast.sessions
+- msmq.pending.messages
+- msmq.queue
+- msmq.queue.journal.pending.messages
+- msmq.queue.journal.size.bytes
+- msmq.queue.pending.messages
+- msmq.queue.size.bytes
+- msmq.sessions
+- msmq.size.bytes
+
+## rabbitmq
+- rabbitmq.channels
+- rabbitmq.connections
+- rabbitmq.consumers
+- rabbitmq.exchanges
+- rabbitmq.message.confirms.per.sec
+- rabbitmq.message.publishes.per.sec
+- rabbitmq.messages
+- rabbitmq.node
+- rabbitmq.node.atom.memory.bytes
+- rabbitmq.node.binary.memory.bytes
+- rabbitmq.node.code.memory.bytes
+- rabbitmq.node.connection.memory.bytes
+- rabbitmq.node.disk.free.bytes
+- rabbitmq.node.memory.limit.bytes
+- rabbitmq.node.memory.used.bytes
+- rabbitmq.node.mgmt.db.memory.bytes
+- rabbitmq.node.mnesia.memory.bytes
+- rabbitmq.node.msg.index.memory.bytes
+- rabbitmq.node.other.ets.memory.bytes
+- rabbitmq.node.other.process.memory.bytes
+- rabbitmq.node.plugin.memory.bytes
+- rabbitmq.node.processes
+- rabbitmq.node.queue.memory.bytes
+- rabbitmq.node.sockets
+- rabbitmq.node.system.other.memory.bytes
+- rabbitmq.node.used.processes
+- rabbitmq.node.used.sockets
+- rabbitmq.queues
+- rabbitmq.ready.messages
+- rabbitmq.unacknowledged.messages
+- rabbitmq.version
+
+## rabbitmqchannel
+- rabbitmq.channel
+- rabbitmq.channel.confirms.per.sec
+- rabbitmq.channel.get.delivers.per.sec
+- rabbitmq.channel.noack.delivers.per.sec
+- rabbitmq.channel.prefetches
+- rabbitmq.channel.publishes.per.sec
+- rabbitmq.channel.unacknowledged.messages
+- rabbitmq.channel.uncommitted.acks
+- rabbitmq.channel.uncommitted.messages
+- rabbitmq.channel.unconfirmed.messages
+
+## rabbitmqconnection
+- rabbitmq.connection
+- rabbitmq.connection.protocol
+- rabbitmq.connection.received.bytes
+- rabbitmq.connection.received.bytes.per.sec
+- rabbitmq.connection.sent.bytes
+- rabbitmq.connection.sent.bytes.per.sec
+- rabbitmq.connection.state
+- rabbitmq.connection.user
+
+## rabbitmqqueue
+- rabbitmq.queue
+- rabbitmq.queue.acks.per.sec
+- rabbitmq.queue.gets.per.sec
+- rabbitmq.queue.publishes.per.sec
+- rabbitmq.queue.redelivers.per.sec
+

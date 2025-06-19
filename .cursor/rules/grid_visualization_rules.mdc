@@ -1979,3 +1979,24 @@ Before outputting JSON, verify:
 ```
 
 Remember: **Complete structure integrity + all validation rules compliance is non-negotiable**. Violating any constraint results in generation failure.
+
+## ⚠️ CRITICAL RULES - COMMON MISTAKES TO AVOID
+
+### 1. **NEVER Include Unnecessary Filters**
+- **Default behavior**: Use empty filter objects `{}` for all filter types
+- **Only add filters** when user explicitly requests filtering
+- **Wrong**: Including complex filter conditions for basic metrics
+- **Correct**: 
+```json
+"filters": {
+  "data.filter": {},
+  "result.filter": {},
+  "drill.down.filter": {}
+}
+```
+
+### 2. **Correct visualization.result.by Usage**
+- **For metric type**: Use `"monitor"` (NOT `"object.id"`)
+- **For policy type with category metric**: Use `"object.id"` (special case)
+- **Wrong**: `"visualization.result.by": ["object.id"]` for metric data sources
+- **Correct**: `"visualization.result.by": ["monitor"]` for metric data sources

@@ -1,0 +1,109 @@
+{
+  "id": 76335282566,
+  "container.type": "dashboard",
+  "visualization.name": "Availability Grid",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "Grid",
+  "visualization.type": "Grid",
+  "visualization.data.sources": [
+    {
+      "type": "availability",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "visualization.result.by": ["monitor"],
+      "data.points": [
+        {
+          "data.point": "monitor.uptime.percent",
+          "aggregator": "avg"
+        }
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "grid": {
+      "visualization.grid.properties.required": "no",
+      "searchable": "yes",
+      "column.selection": "no",
+      "header": "yes",
+      "layout": "Grid",
+      "style": {
+        "header.font.size": "small"
+      },
+      "columns": [
+        {
+          "name": "monitor",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 1
+        },
+        {
+          "name": "object.type",
+          "show": "no",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 2
+        },
+        {
+          "name": "object.vendor",
+          "show": "no",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 3
+        },
+        {
+          "name": "object.ip",
+          "show": "no",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 4
+        },
+        {
+          "name": "monitor.uptime.percent.avg",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 5,
+          "style": {
+            "color.conditions": [
+              {
+                "operator": "<",
+                "value": "95",
+                "color.type": "background",
+                "color": "#ff0000"
+              },
+              {
+                "operator": "<",
+                "value": "99",
+                "color.type": "background",
+                "color": "#ffa500"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "visualization.result.by": ["monitor"]
+} 
