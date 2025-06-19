@@ -167,7 +167,8 @@ These rules help generate valid JSON configurations for TopN visualizations base
 - **Allowed aggregators**: `"count"` only
 - **Default aggregator**: `"count"`
 - **Data point**: Must be `"severity"`
-- **Default visualization.result.by**: `["monitor"]` (metric category), `["severity"]` (log/trap/flow category)
+- **Default visualization.result.by**: `["object.id"]` (if user specifies monitor for metric category, always use object.id), `["severity"]` (log/trap/flow category)
+- **Allowed visualization.result.by**: For metric category: `["object.id"]`, `["severity"]`, `["policy.id"]` (max 1 selection)
 - **Category field required**: Must specify `"category": "metric"|"log"|"flow"|"trap"`
 - **Supported visualization types**: Area, Line, Bar, Pie, Grid (no TopN Solid Gauge View, no sparkline support)
 
@@ -523,7 +524,7 @@ function getAllowedResultBy(type, category) {
       maxSelections: 4
     },
     "policy": {
-      values: category === "metric" ? ["monitor", "severity", "policy.id"] : ["severity", "policy.id"],
+      values: category === "metric" ? ["object.id", "severity", "policy.id"] : ["severity", "policy.id"],
       maxSelections: 1
     }
   };
@@ -809,7 +810,8 @@ function validateAxisTitles(axisTitles) {
           "data.point": "severity",
           "aggregator": "count"
         }
-      ]
+      ],
+      "visualization.result.by": ["object.id"]
     }
   ],
   "visualization.properties": {

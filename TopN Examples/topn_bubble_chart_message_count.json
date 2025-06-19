@@ -1,0 +1,49 @@
+{
+  "id": 12,
+  "container.type": "dashboard",
+  "visualization.name": "TopN Bubble Chart - Message (Log)",
+  "visualization.description": "Displays top N message count using a packed bubble chart (log type).",
+  "visualization.granularity": "10 m",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "TopN",
+  "visualization.type": "Pie",
+  "child.visualization": "Packed Bubble Chart",
+  "visualization.data.sources": [
+    {
+      "type": "log",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "message",
+          "aggregator": "count"
+        }
+      ],
+      "visualization.result.by": [
+        "event.source.type"
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "chart.legend": "no",
+      "vertical.legend": "no",
+      "chart.label": "no",
+      "highchart.settings": {},
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "message.count"
+      }
+    }
+  },
+  "visualization.result.by": [
+    "event.source.type"
+  ]
+} 

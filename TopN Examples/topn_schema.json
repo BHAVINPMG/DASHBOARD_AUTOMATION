@@ -606,7 +606,8 @@
           "destination.country",
           "user",
           "severity",
-          "policy.id"
+          "policy.id",
+          "object.id"
         ]
       }
     }

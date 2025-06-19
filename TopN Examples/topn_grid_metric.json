@@ -1,0 +1,123 @@
+{
+    "id": 7,
+    "container.type": "dashboard",
+    "visualization.name": "TopN Grid - Memory Utilization",
+    "visualization.description": "Displays top N memory utilization in a grid view.",
+    "visualization.granularity": "10 m",
+    "visualization.timeline": {
+        "relative.timeline": "today",
+        "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "visualization.data.sources": [
+        {
+            "type": "metric",
+            "filters": {
+                "data.filter": {},
+                "result.filter": {},
+                "drill.down.filter": {}
+            },
+            "data.points": [
+                {
+                    "data.point": "system.memory.used.percent",
+                    "aggregator": "avg"
+                },
+                {
+                    "data.point": "system.memory.used.bytes",
+                    "aggregator": "avg"
+                }
+            ],
+            "visualization.result.by": [
+                "monitor"
+            ]
+        }
+    ],
+    "visualization.properties": {
+        "grid": {
+            "visualization.grid.properties.required": "yes",
+            "searchable": "yes",
+            "column.selection": "yes",
+            "header": "yes",
+            "columns": [
+                {
+                    "name": "monitor",
+                    "title": "Monitor",
+                    "show": "yes",
+                    "sortable": "yes",
+                    "disable": "no",
+                    "resizable": "yes",
+                    "selectable": "yes",
+                    "orderable": "yes",
+                    "position": 1,
+                    "style": {}
+                },
+                {
+                    "name": "system.memory.used.percent.avg",
+                    "title": "Memory Used Percent",
+                    "show": "yes",
+                    "sortable": "yes",
+                    "disable": "no",
+                    "resizable": "yes",
+                    "selectable": "yes",
+                    "orderable": "yes",
+                    "position": 2,
+                    "style": {}
+                },
+                {
+                    "name": "system.memory.used.bytes.avg",
+                    "title": "Memory Used Bytes",
+                    "show": "yes",
+                    "sortable": "yes",
+                    "disable": "no",
+                    "resizable": "yes",
+                    "selectable": "yes",
+                    "orderable": "yes",
+                    "position": 3,
+                    "style": {}
+                },
+                {
+                    "name": "object.type",
+                    "show": "no",
+                    "sortable": "yes",
+                    "disable": "no",
+                    "resizable": "yes",
+                    "selectable": "yes",
+                    "orderable": "yes",
+                    "position": 4,
+                    "style": {}
+                },
+                {
+                    "name": "object.vendor",
+                    "show": "no",
+                    "sortable": "yes",
+                    "disable": "no",
+                    "resizable": "yes",
+                    "selectable": "yes",
+                    "orderable": "yes",
+                    "position": 5,
+                    "style": {}
+                },
+                {
+                    "name": "object.ip",
+                    "show": "no",
+                    "sortable": "yes",
+                    "disable": "no",
+                    "resizable": "yes",
+                    "selectable": "yes",
+                    "orderable": "yes",
+                    "position": 6,
+                    "style": {}
+                }
+            ],
+            "sorting": {
+                "limit": 10,
+                "order": "desc",
+                "column": "system.memory.used.percent.avg"
+            }
+        }
+    },
+    "visualization.result.by": [
+        "monitor"
+    ]
+}

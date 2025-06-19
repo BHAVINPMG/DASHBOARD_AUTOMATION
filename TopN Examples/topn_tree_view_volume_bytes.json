@@ -1,0 +1,89 @@
+{
+  "id": 13,
+  "container.type": "dashboard",
+  "visualization.name": "TopN Tree View - Volume Bytes (Flow)",
+  "visualization.description": "Displays top N volume bytes using a tree view (flow type).",
+  "visualization.granularity": "10 m",
+  "visualization.timeline": {
+    "relative.timeline": "today",
+    "visualization.time.range.inclusive": "no"
+  },
+  "visualization.category": "TopN",
+  "visualization.type": "Grid",
+  "child.visualization": "Tree View",
+  "visualization.data.sources": [
+    {
+      "type": "flow",
+      "filters": {
+        "data.filter": {},
+        "result.filter": {},
+        "drill.down.filter": {}
+      },
+      "data.points": [
+        {
+          "data.point": "volume.bytes",
+          "aggregator": "sum"
+        }
+      ],
+      "visualization.result.by": [
+        "source.ip",
+        "destination.ip"
+      ]
+    }
+  ],
+  "visualization.properties": {
+    "grid": {
+      "visualization.grid.properties.required": "yes",
+      "searchable": "yes",
+      "column.selection": "yes",
+      "header": "yes",
+      "columns": [
+        {
+          "name": "source.ip",
+          "title": "Source IP",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 1,
+          "style": {}
+        },
+        {
+          "name": "destination.ip",
+          "title": "Destination IP",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 2,
+          "style": {}
+        },
+        {
+          "name": "volume.bytes.sum",
+          "title": "Volume Bytes",
+          "show": "yes",
+          "sortable": "yes",
+          "disable": "no",
+          "resizable": "yes",
+          "selectable": "yes",
+          "orderable": "yes",
+          "position": 3,
+          "style": {}
+        }
+      ],
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "volume.bytes.sum"
+      }
+    }
+  },
+  "visualization.result.by": [
+    "source.ip",
+    "destination.ip"
+  ]
+} 

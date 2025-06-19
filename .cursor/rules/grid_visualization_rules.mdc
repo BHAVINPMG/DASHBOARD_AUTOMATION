@@ -436,9 +436,39 @@ type DataSourceType = "metric" | "log" | "flow" | "policy" | "availability"
 ```
 
 #### **4. Type: `policy`, Category: `metric`**
-- **Allowed `visualization.result.by` values**: `"monitor"`, `"severity"`, `"policy.id"`
+- **Allowed `visualization.result.by` values**: `"monitor"`, `"severity"`, `"policy.id"`, `"object.id"`
 - **Maximum selections**: **1 value only**
-- **Default**: `["monitor"]`
+- **Default**: `["monitor"]` (but always use `["object.id"]` in generated JSON if user specifies monitor)
+
+**Special Rule:**
+> For type `policy` and category `metric`, if the user specifies `visualization.result.by` as `monitor`, always use `object.id` in the generated JSON.
+
+**Example:**
+```json
+{
+  "visualization.name": "TopN Policy Violations",
+  "visualization.type": "Grid",
+  "visualization.data.sources": [
+    {
+      "type": "policy",
+      "category": "metric",
+      "data.points": [
+        { "data.point": "severity", "aggregator": "count" }
+      ],
+      "visualization.result.by": ["object.id"]
+    }
+  ],
+  "visualization.properties": {
+    "grid": {
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "severity.count"
+      }
+    }
+  }
+}
+```
 
 ##### ✅ Column Mapping for Policy (Category: metric)
 ```json

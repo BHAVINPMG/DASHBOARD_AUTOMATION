@@ -1,0 +1,52 @@
+{
+    "id": 4,
+    "container.type": "dashboard",
+    "visualization.name": "TopN Vertical Bar Chart - Memory Utilization",
+    "visualization.description": "Displays top N memory utilization using a vertical bar chart.",
+    "visualization.granularity": "10 m",
+    "visualization.timeline": {
+        "relative.timeline": "today",
+        "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "VerticalBar",
+    "visualization.data.sources": [
+        {
+            "type": "metric",
+            "filters": {
+                "data.filter": {},
+                "result.filter": {},
+                "drill.down.filter": {}
+            },
+            "data.points": [
+                {
+                    "data.point": "system.memory.used.percent",
+                    "aggregator": "avg"
+                },
+                {
+                    "data.point": "system.memory.used.bytes",
+                    "aggregator": "avg"
+                }
+            ],
+            "visualization.result.by": [
+                "monitor"
+            ]
+        }
+    ],
+    "visualization.properties": {
+        "chart": {
+            "chart.legend": "no",
+            "vertical.legend": "no",
+            "chart.label": "no",
+            "highchart.settings": {},
+            "sorting": {
+                "limit": 10,
+                "order": "desc",
+                "column": "system.memory.used.percent.avg"
+            }
+        }
+    },
+    "visualization.result.by": [
+        "monitor"
+    ]
+}

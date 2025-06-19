@@ -268,7 +268,8 @@
                 "event.severity",
                 "event.category",
                 "severity",
-                "policy.id"
+                "policy.id",
+                "object.id"
               ]
             }
           }
@@ -980,7 +981,8 @@
           "event.severity",
           "event.category",
           "severity",
-          "policy.id"
+          "policy.id",
+          "object.id"
         ]
       }
     }

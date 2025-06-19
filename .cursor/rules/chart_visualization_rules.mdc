@@ -214,9 +214,39 @@ Define allowed and default values based on the `type` and optionally the `catego
 
 #### ▶ Type: `policy`, Category: `metric`
 
-* Allowed values: `"monitor"`, `"severity"`, `"policy.id"`
+* Allowed values: `"monitor"`, `"severity"`, `"policy.id"`, `"object.id"`
 * Max selections: **1 only**
-* Default: `"monitor"`
+* Default: `"monitor"` (but always use `"object.id"` in generated JSON if user specifies monitor)
+
+**Special Rule:**
+> For type `policy` and category `metric`, if the user specifies `visualization.result.by` as `monitor`, always use `object.id` in the generated JSON.
+
+**Example:**
+```json
+{
+  "visualization.name": "Policy Violations",
+  "visualization.type": "Line",
+  "visualization.data.sources": [
+    {
+      "type": "policy",
+      "category": "metric",
+      "data.points": [
+        { "data.point": "severity", "aggregator": "count" }
+      ],
+      "visualization.result.by": ["object.id"]
+    }
+  ],
+  "visualization.properties": {
+    "chart": {
+      "sorting": {
+        "limit": 10,
+        "order": "desc",
+        "column": "severity.count"
+      }
+    }
+  }
+}
+```
 
 #### ▶ Type: `policy`, Category: `log`, `trap`, or `flow`
 

@@ -1,0 +1,89 @@
+{
+    "id": 14,
+    "container.type": "dashboard",
+    "visualization.name": "TopN Tree View - Ingress Packets (Flow)",
+    "visualization.description": "Displays top N ingress packets using a tree view (flow type) for the last quarter.",
+    "visualization.granularity": "10 m",
+    "visualization.timeline": {
+        "relative.timeline": "last.quarter",
+        "visualization.time.range.inclusive": "no"
+    },
+    "visualization.category": "TopN",
+    "visualization.type": "Grid",
+    "child.visualization": "Tree View",
+    "visualization.data.sources": [
+        {
+            "type": "flow",
+            "filters": {
+                "data.filter": {},
+                "result.filter": {},
+                "drill.down.filter": {}
+            },
+            "data.points": [
+                {
+                    "data.point": "ingress.packets",
+                    "aggregator": "sum"
+                }
+            ],
+            "visualization.result.by": [
+                "source.ip",
+                "destination.ip"
+            ]
+        }
+    ],
+    "visualization.properties": {
+        "grid": {
+            "visualization.grid.properties.required": "yes",
+            "searchable": "yes",
+            "column.selection": "yes",
+            "header": "yes",
+            "columns": [
+                {
+                    "name": "source.ip",
+                    "title": "Source IP",
+                    "show": "yes",
+                    "sortable": "yes",
+                    "disable": "no",
+                    "resizable": "yes",
+                    "selectable": "yes",
+                    "orderable": "yes",
+                    "position": 1,
+                    "style": {}
+                },
+                {
+                    "name": "destination.ip",
+                    "title": "Destination IP",
+                    "show": "yes",
+                    "sortable": "yes",
+                    "disable": "no",
+                    "resizable": "yes",
+                    "selectable": "yes",
+                    "orderable": "yes",
+                    "position": 2,
+                    "style": {}
+                },
+                {
+                    "name": "ingress.packets.sum",
+                    "title": "Ingress Packets",
+                    "show": "yes",
+                    "sortable": "yes",
+                    "disable": "no",
+                    "resizable": "yes",
+                    "selectable": "yes",
+                    "orderable": "yes",
+                    "position": 3,
+                    "style": {}
+                }
+            ],
+            "sorting": {
+                "limit": 10,
+                "order": "desc",
+                "column": "ingress.packets.sum"
+            }
+        }
+    },
+    "visualization.result.by": [
+        "source.ip",
+        "destination.ip"
+    ]
+}
